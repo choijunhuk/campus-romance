@@ -1,0 +1,13 @@
+{
+  "scene_id": "solo_end",
+  "title": "혼자 서는 봄",
+  "background": "rooftop",
+  "bgm_mood": "calm_ending",
+  "nodes": [
+    { "type": "narration", "text": "대회가 끝났다. 누구의 곁도 아닌, 나 자신을 택한 학기였다." },
+    { "type": "narration", "text": "네 사람과 적당한 거리에서, 나는 나를 들여다보는 데 시간을 썼다. 복학 첫날의 그 다짐 — '이번엔 좀 다르게' — 그 다르게가, 꼭 누군가의 곁일 필요는 없었으니까." },
+    { "type": "narration", "text": "옥상 바람이 따뜻해졌다. 한 학기만큼 자란 채, 여름을 맞는다. 쓸쓸하지만, 나쁘지 않다." },
+    { "type": "narration", "text": "── 솔로 · SELF ENDING ──" }
+  ],
+  "next_scene": null
+}

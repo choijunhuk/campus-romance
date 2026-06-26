@@ -1,0 +1,13 @@
+{
+  "scene_id": "end_char_04_bad",
+  "title": "시혁 — 배드엔딩: 또, 늦었다",
+  "background": "club_room",
+  "bgm_mood": "lonely",
+  "nodes": [
+    { "type": "narration", "text": "또 늦었다. 시혁의 2년 묵은 한마디는 끝내 끝맺지 못했고, 그는 말없이 졸업을 향해 걸어갔다." },
+    { "type": "dialogue", "speaker": "char_04", "text": "...됐어. (피크 목걸이를 만지작거린다) 원래 내가 늘 그렇잖아. 한 박자 늦는 거. 잘 지내.", "expression": "sad", "sprite_position": "center" },
+    { "type": "narration", "text": "멀어지는 등. 못다 한 멜로디는 이번에도, 묻혔다." },
+    { "type": "narration", "text": "── 정시혁 루트 · BAD ENDING ──" }
+  ],
+  "next_scene": null
+}

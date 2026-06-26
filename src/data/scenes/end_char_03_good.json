@@ -1,0 +1,14 @@
+{
+  "scene_id": "end_char_03_good",
+  "title": "나래 — 굿엔딩: 나를 위한 선택",
+  "background": "han_river",
+  "bgm_mood": "warm_ending",
+  "nodes": [
+    { "type": "narration", "text": "여름. 나래가 알바 하나를 그만뒀다고 했다. '나를 위해서 처음 한 선택'이라며." },
+    { "type": "dialogue", "speaker": "char_03", "text": "선배 덕분이야. 모두한테 좋은 사람 안 돼도 괜찮다는 거. 이제 알았어. (진짜로 웃는다)", "expression": "laugh", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_03", "text": "오늘은 나 쉬는 날. 선배도 같이 쉴래? ...둘이서.", "expression": "blush", "sprite_position": "center" },
+    { "type": "narration", "text": "모두를 비추던 햇살이, 처음으로 자기 자리에 앉아 쉰다. 곁에서 함께 쉬는 두 사람의 여름." },
+    { "type": "narration", "text": "── 유나래 루트 · GOOD ENDING ──" }
+  ],
+  "next_scene": null
+}

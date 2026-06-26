@@ -1,0 +1,14 @@
+{
+  "scene_id": "r1_05",
+  "title": "발표, 그리고 그 다음",
+  "background": "lecture_hall",
+  "bgm_mood": "hopeful_morning",
+  "nodes": [
+    { "type": "narration", "text": "대회 발표장. '굿모닝 박스'가 무대 위에서 정확히 작동한다. 빛이 켜지고, 작은 펌프가 부드럽게 돈다. 박수." },
+    { "type": "dialogue", "speaker": "char_01", "text": "...됐다. 우리가. 같이. (옆에 선 나를 본다)", "expression": "smile", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_02", "text": "거봐요 5ms 딜레이 죽이죠. 어 근데 두 분 분위기가 왜...", "expression": "surprised", "sprite_position": "right" },
+    { "type": "dialogue", "speaker": "char_03", "text": "헐 뭐야뭐야! 나만 몰랐어?! 디테일 좀!", "expression": "laugh", "sprite_position": "left" },
+    { "type": "narration", "text": "한 학기가 끝났다. 결과가 어떻든, 이 사람과 나란히 선 이 순간은 이미 무언가를 증명했다." }
+  ],
+  "next_scene": "EVAL_ENDING:char_01"
+}

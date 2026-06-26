@@ -1,0 +1,21 @@
+{
+  "scene_id": "r1_04",
+  "title": "처음 내민 손",
+  "background": "rooftop",
+  "bgm_mood": "night_city",
+  "nodes": [
+    { "type": "narration", "text": "발표 전야. 시제품은 완성됐다. 옥상, 도시의 불빛. 지안 선배가 캔커피 두 개를 들고 올라왔다. 이번엔 저 사람이 먼저." },
+    { "type": "dialogue", "speaker": "char_01", "text": "자. 너 거. ...뽑아왔어. 내가. 너한테 뭐 주는 거, 처음이지 아마.", "expression": "embarrassed", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_01", "text": "이번 학기. 너 없었으면 또 똑같이 무너졌을 거야. 나는 기댈 줄을 몰라서.", "expression": "neutral", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_01", "text": "근데 너한테는... 기대는 게 안 무섭더라. 이상하게. (잠깐 망설이다) 이건. 동료한테 하는 말이 아니야.", "expression": "blush", "sprite_position": "center" },
+    { "type": "narration", "text": "차가운 도시 위로, 저 사람이 처음으로 손을 내민다. 받을 것인가." },
+    { "type": "choice", "choices": [
+      { "label": "그 손을 잡는다. \"나도요. 나도, 동료한테 하는 말 아니에요.\"", "affection": { "char_01": 20 }, "set_flags": ["jian_opened_up"], "goto": 6 },
+      { "label": "\"...우리, 일단 발표부터 끝내고요.\" (한 발 물러서기)", "affection": { "char_01": -5 }, "set_flags": [], "goto": 8 }
+    ] },
+    { "type": "dialogue", "speaker": "char_01", "text": "(눈이 동그래지더니, 처음 보는 얼굴로 웃는다) ...진짜. 너 진짜. (손을 마주 잡는다) ...됐어. 더 말 안 해도. 알겠으니까.", "expression": "laugh", "sprite_position": "center", "goto": 9 },
+    { "type": "dialogue", "speaker": "char_01", "text": "...그래. 그게 너답지. (옅게 웃지만 손을 거둔다) 발표부터. 그래, 그게 맞아.", "expression": "sad", "sprite_position": "center" },
+    { "type": "narration", "text": "내일이면 한 학기가 끝난다. 그리고 무언가는, 이제 막 시작되려 한다." }
+  ],
+  "next_scene": "r1_05"
+}

@@ -1,0 +1,150 @@
+[
+  {
+    "id": "char_01",
+    "name": "서지안",
+    "age": 23,
+    "year_major": "4학년 / 전기전자공학부",
+    "archetype": "츤데레 선배",
+    "personality": {
+      "summary": "동아리의 실질적 리더. 말은 퉁명스럽지만 결국 남의 일을 제일 먼저 챙긴다. 완벽주의라 자기 자신에게 가장 가혹하다.",
+      "strengths": ["책임감", "위기 대처", "남몰래 챙기는 다정함"],
+      "flaw": "도움을 청할 줄 모른다 — 혼자 떠안다 무너진다.",
+      "values": "약속과 신뢰. 한 번 맡은 건 끝까지."
+    },
+    "backstory": "3학년 때 동아리 대회를 혼자 떠맡다 번아웃으로 한 학기 쉬었다. 그 일을 아무에게도 제대로 말한 적 없다. 주인공이 휴학하기 전 같은 팀이었다.",
+    "route_theme": "강한 사람도 기댈 곳이 필요하다 — 책임과 의존 사이.",
+    "speech_style": {
+      "tone": "짧고 단정적, 끝을 흐리지 않는다. 칭찬은 인색하고 잔소리는 후하다.",
+      "verbal_tics": ["...됐고.", "쓸데없는 소리 하지 말고", "(한숨) 하여간"],
+      "sample_lines": ["됐고. 납땜이나 똑바로 해.", "너 또 밤샜지. 얼굴에 다 써 있어.", "...고맙다는 말은 안 할 거야. 기대도 마."]
+    },
+    "affection_stages": {
+      "0-30": "후배 다루듯 무뚝뚝. 거리를 둔다.",
+      "31-60": "잔소리가 늘고, 은근히 챙기기 시작한다.",
+      "61-90": "약한 모습을 조금씩 보인다. 농담에 웃어준다.",
+      "91-100": "처음으로 먼저 손을 내민다. 솔직해진다."
+    },
+    "appearance_lock": {
+      "base": "23 year old, slender tall woman, 168cm impression, composed posture",
+      "hair": "shoulder-length straight black hair, low ponytail, blunt bangs",
+      "eyes": "sharp almond eyes, dark brown",
+      "face": "small mole under left eye, fair skin, calm resting expression",
+      "outfit_default": "oversized grey knit cardigan over white tee, dark slim jeans, sleeves pushed up",
+      "accessory": "thin silver-framed glasses (worn when working)",
+      "vibe": "cool, reliable, quietly warm"
+    },
+    "seed": 110123,
+    "expression_set": ["neutral", "smile", "blush", "laugh", "sad", "angry", "surprised", "embarrassed"]
+  },
+  {
+    "id": "char_02",
+    "name": "한도윤",
+    "age": 21,
+    "year_major": "2학년 / 컴퓨터공학부",
+    "archetype": "엉뚱한 천재 후배",
+    "personality": {
+      "summary": "코딩 실력은 동아리 최고지만 사회성은 최하. 호기심이 폭주하면 밥도 잠도 잊는다. 거짓말을 못 한다.",
+      "strengths": ["천재적 문제 해결", "순수함", "한 번 꽂히면 끝장 보는 집중력"],
+      "flaw": "사람 마음을 읽지 못해 자주 상처를 준다 — 그리고 뒤늦게 안다.",
+      "values": "재미있는 것, 솔직한 것."
+    },
+    "backstory": "조기 입학한 영재. 또래보다 어려 늘 겉돌았다. 동아리에서 처음으로 '동료'를 경험하는 중. 주인공이 유일하게 자기 농담을 끝까지 들어준 사람으로 기억한다.",
+    "route_theme": "천재의 외로움 — 똑똑한 것과 이해받는 것은 다르다.",
+    "speech_style": {
+      "tone": "빠르고 직설적, 전문용어와 드립이 섞인다. 존댓말/반말이 흥분하면 무너진다.",
+      "verbal_tics": ["아 그거 완전 비효율인데요", "오 잠깐만요 이거 봐요!", "...어, 제가 뭐 잘못 말했어요?"],
+      "sample_lines": ["선배 그 코드 그렇게 짜면 밤새요. 제가 30분이면 끝내는데.", "재밌다 이거. 밤샐래요?", "사람 마음은... 디버깅이 안 되네요."]
+    },
+    "affection_stages": {
+      "0-30": "관심사 외엔 무반응. 거리 개념이 없다.",
+      "31-60": "주인공에게만 자기 세계를 보여주기 시작.",
+      "61-90": "서툴게 배려를 시도한다. 자주 실패하지만 노력한다.",
+      "91-100": "처음으로 '논리 밖의 마음'을 인정한다."
+    },
+    "appearance_lock": {
+      "base": "21 year old, lean short young man, 173cm impression, slightly slouched",
+      "hair": "messy soft light-brown hair, perpetual bedhead, covers eyebrows",
+      "eyes": "round curious eyes, hazel brown, slight eyebags",
+      "face": "youthful, faint freckles across nose, pale skin",
+      "outfit_default": "oversized black hoodie with faded print, loose cargo pants, sneakers",
+      "accessory": "large over-ear headphones around neck",
+      "vibe": "genius, sleepy, oddly endearing"
+    },
+    "seed": 220456,
+    "expression_set": ["neutral", "smile", "blush", "laugh", "sad", "angry", "surprised", "embarrassed"]
+  },
+  {
+    "id": "char_03",
+    "name": "유나래",
+    "age": 22,
+    "year_major": "3학년 / 산업디자인학과 (동아리 연합)",
+    "archetype": "햇살 무드메이커",
+    "personality": {
+      "summary": "동아리의 분위기 담당. 누구에게나 다정하고 늘 웃지만, 정작 자기 힘듦은 절대 내보이지 않는다.",
+      "strengths": ["공감 능력", "분위기 전환", "끝없는 추진력"],
+      "flaw": "모두에게 좋은 사람이려다 자기를 잃는다 — '거절'을 못 한다.",
+      "values": "사람들 사이의 평화, 모두가 즐거운 것."
+    },
+    "backstory": "디자인과지만 공대 동아리에 들어와 포스터·UI를 맡는다. 집안 사정으로 알바를 세 개 뛰면서도 티 내지 않는다. 주인공의 무던함을 '쉬어갈 수 있는 자리'로 느낀다.",
+    "route_theme": "모두를 비추는 사람은 누가 비춰주나 — 자기 돌봄.",
+    "speech_style": {
+      "tone": "밝고 빠른 리액션, 이모티콘 같은 말투. 진심일 때만 목소리가 낮아진다.",
+      "verbal_tics": ["헐 대박ㅋㅋ", "괜찮아 괜찮아~", "(작게) ...아니야, 아무것도."],
+      "sample_lines": ["자자 다들 당 떨어졌지! 내가 쏜다!", "선배는 그냥 옆에 있어줘서 좋아.", "나 사실... 안 괜찮은 거, 티 났어?"]
+    },
+    "affection_stages": {
+      "0-30": "누구에게나 친절한 그 톤 그대로.",
+      "31-60": "주인공 앞에서만 텐션이 살짝 풀린다.",
+      "61-90": "처음으로 약한 소리를 흘린다.",
+      "91-100": "가면을 내려놓고 진짜 얼굴을 보여준다."
+    },
+    "appearance_lock": {
+      "base": "22 year old, petite woman, 160cm impression, lively energetic posture",
+      "hair": "wavy warm-brown medium hair, often half-up, soft volume",
+      "eyes": "big bright round eyes, light brown, expressive",
+      "face": "warm smile, small dimple on right cheek, healthy glow",
+      "outfit_default": "pastel yellow oversized sweatshirt, denim overall skirt, colorful sneakers",
+      "accessory": "yellow star-shaped hairclip",
+      "vibe": "sunny, warm, secretly tired"
+    },
+    "seed": 330789,
+    "expression_set": ["neutral", "smile", "blush", "laugh", "sad", "angry", "surprised", "embarrassed"]
+  },
+  {
+    "id": "char_04",
+    "name": "정시혁",
+    "age": 24,
+    "year_major": "4학년 / 기계공학부 (복학생, 동기)",
+    "archetype": "무심한 동기",
+    "personality": {
+      "summary": "주인공과 같은 복학생 동기. 말수 적고 시니컬하지만 의외로 의리파. 음악(밴드)과 공학 사이에서 진로를 못 정했다.",
+      "strengths": ["담백한 솔직함", "흔들리지 않는 페이스", "결정적일 때의 행동력"],
+      "flaw": "마음을 표현하는 법을 모른다 — 다 식은 뒤에야 후회한다.",
+      "values": "쓸데없는 거 빼고 진짜인 것."
+    },
+    "backstory": "주인공과 1학년 때 같은 분반. 한때 밴드를 했지만 현실에 밀려 접었다. 복학 후 동아리에서 주인공과 재회하며 '그때 못 한 말들'을 떠올린다.",
+    "route_theme": "타이밍의 로맨스 — 늦은 고백, 그리고 다시 온 기회.",
+    "speech_style": {
+      "tone": "낮고 느린 톤, 말 사이 침묵이 길다. 농담도 무표정으로 한다.",
+      "verbal_tics": ["...뭐.", "알아서 해.", "(잠깐 침묵) 아니다."],
+      "sample_lines": ["오랜만이네. 안 변했다, 너.", "배고프면 말해. 사줄게. 그냥.", "그때 못 한 말이... 있었거든."]
+    },
+    "affection_stages": {
+      "0-30": "데면데면한 동기 사이, 짧은 대답.",
+      "31-60": "같이 있는 시간이 늘고 침묵이 편해진다.",
+      "61-90": "과거 이야기를 조금씩 꺼낸다.",
+      "91-100": "미뤄둔 진심을 처음으로 말한다."
+    },
+    "appearance_lock": {
+      "base": "24 year old, tall broad-shouldered man, 182cm impression, relaxed slouch",
+      "hair": "short dark-charcoal hair, slightly grown out, natural mess",
+      "eyes": "narrow half-lidded eyes, dark grey, sleepy look",
+      "face": "sharp jawline, faint stubble, single ear piercing on left",
+      "outfit_default": "worn black leather-ish jacket over plain tee, dark jeans, boots",
+      "accessory": "black guitar pick necklace",
+      "vibe": "cool, detached, quietly loyal"
+    },
+    "seed": 440012,
+    "expression_set": ["neutral", "smile", "blush", "laugh", "sad", "angry", "surprised", "embarrassed"]
+  }
+]

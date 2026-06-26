@@ -1,0 +1,14 @@
+{
+  "scene_id": "end_char_01_good",
+  "title": "지안 — 굿엔딩: 같이 하자",
+  "background": "rooftop",
+  "bgm_mood": "warm_ending",
+  "nodes": [
+    { "type": "narration", "text": "여름이 시작됐다. 종강한 캠퍼스는 한가하고, 옥상의 바람은 따뜻해졌다." },
+    { "type": "dialogue", "speaker": "char_01", "text": "다음 학기 프로젝트. ...또 할 거지? 혼자 안 할 거야, 이젠. 너랑 할 거야.", "expression": "smile", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_01", "text": "기대는 거. 너한테 배웠어. 생각보다, 안 무섭더라. (손을 내민다) ...같이 가자.", "expression": "laugh", "sprite_position": "center" },
+    { "type": "narration", "text": "강한 사람이 처음으로 누군가의 손을 잡는다. 책임을 나눠 지는 두 사람의, 진짜 첫 여름." },
+    { "type": "narration", "text": "── 서지안 루트 · GOOD ENDING ──" }
+  ],
+  "next_scene": null
+}

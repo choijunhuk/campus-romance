@@ -1,0 +1,13 @@
+{
+  "scene_id": "end_char_01_normal",
+  "title": "지안 — 노멀엔딩: 좋은 동료",
+  "background": "club_room",
+  "bgm_mood": "bittersweet",
+  "nodes": [
+    { "type": "narration", "text": "대회는 끝났고, 우리는 좋은 팀이었다. 그 이상도, 그 이하도 아닌 채로 여름을 맞는다." },
+    { "type": "dialogue", "speaker": "char_01", "text": "수고했어. ...진짜로. 다음 학기에 또 보자. 동아리, 계속 나올 거지?", "expression": "smile", "sprite_position": "center" },
+    { "type": "narration", "text": "하지 못한 말이 입안에 남았다. 아직은 동료라는 거리. 어쩌면 다음 학기엔, 조금 더 가까워질지도." },
+    { "type": "narration", "text": "── 서지안 루트 · NORMAL ENDING ──" }
+  ],
+  "next_scene": null
+}

@@ -1,0 +1,21 @@
+{
+  "scene_id": "r3_02",
+  "title": "나를 비춰준 사람",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    { "type": "narration", "text": "발표 전야. 다들 흩어진 뒤, 나래가 한강에 가자고 했다. 강바람 앞에서, 그녀는 처음으로 웃지 않았다." },
+    { "type": "dialogue", "speaker": "char_03", "text": "선배. 나 사실. 매일 무서워. 안 웃으면 사람들이 나를 안 찾을까 봐. 쓸모없어질까 봐.", "expression": "sad", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_03", "text": "근데 선배 옆에선. 안 웃어도, 안 사라지더라. 그게... 처음이었어.", "expression": "embarrassed", "sprite_position": "center" },
+    { "type": "narration", "text": "모두를 비추느라 정작 자기는 어둠 속에 있던 사람. 지금, 그 사람이 빛을 돌려받길 기다린다." },
+    { "type": "choice", "choices": [
+      { "label": "\"넌 웃지 않아도 충분해. 내가 옆에서 비춰줄게.\"", "affection": { "char_03": 22 }, "set_flags": ["narae_unmasked"], "goto": 5 },
+      { "label": "\"다들 너 좋아해. 너무 깊게 생각하지 마.\"", "affection": { "char_03": -5 }, "set_flags": [], "goto": 7 }
+    ] },
+    { "type": "dialogue", "speaker": "char_03", "text": "(눈물이 툭 떨어진다, 그러다 진짜로 웃는다) ...뭐야. 울리고 웃기고. (눈물 닦으며) 고마워. 진짜, 나. 처음으로 쉰 것 같아.", "expression": "laugh", "sprite_position": "center", "goto": 8 },
+    { "type": "narration", "text": "가면이 아니라, 진짜 얼굴이 거기 있었다.", "goto": 8 },
+    { "type": "dialogue", "speaker": "char_03", "text": "(다시 웃는 얼굴로 돌아간다) ...그치. 내가 예민했나봐! 괜찮아, 괜찮아~", "expression": "smile", "sprite_position": "center" },
+    { "type": "narration", "text": "강물 위로 도시 불빛이 부서진다. 내일이면 발표. 그리고 한 사람의 진심도, 답을 기다린다." }
+  ],
+  "next_scene": "EVAL_ENDING:char_03"
+}

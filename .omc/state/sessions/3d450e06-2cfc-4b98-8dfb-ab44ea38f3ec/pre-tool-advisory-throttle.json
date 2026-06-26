@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "entries": {
+    "79a93d4a2f8f50b95f852280616242fee1855dc99a3c75211917f55e72e95fae": {
+      "last_emitted_at_ms": 1782467227259,
+      "message": "Use parallel execution for independent tasks. Use run_in_background for long operations (npm install, builds, tests)."
+    },
+    "466399dafa2d20f60587180bad0a07358eb7f2bce724df0ff682f038ad33f5ad": {
+      "last_emitted_at_ms": 1782466997317,
+      "message": "Read multiple files in parallel when possible for faster analysis."
+    },
+    "445ed27a3872b681d98190bae61ccb84954e1bc4e140df5370be958dee776b3a": {
+      "last_emitted_at_ms": 1782466887250,
+      "message": "Verify changes work after editing. Test functionality before marking complete."
+    },
+    "c07c96b30bd9e2bcacd260d8c7abb46fe25d441084bc4b674bb54a155c3182ae": {
+      "last_emitted_at_ms": 1782466228272,
+      "message": "Spawning agent: oh-my-claudecode:executor (sonnet) [BACKGROUND] | Task: Build image-gen script"
+    },
+    "19d10535451f52d6336388528e7dbf3adc5c27f940105dd1a76995c4a1c118de": {
+      "last_emitted_at_ms": 1782466211949,
+      "message": "Spawning agent: oh-my-claudecode:executor (opus) [BACKGROUND] | Task: Build VN engine"
+    }
+  },
+  "updated_at": "2026-06-26T09:47:07.259Z"
+}

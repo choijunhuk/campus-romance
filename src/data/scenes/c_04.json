@@ -1,0 +1,24 @@
+{
+  "scene_id": "c_04",
+  "title": "갈림길",
+  "background": "lecture_hall",
+  "bgm_mood": "tense_afternoon",
+  "nodes": [
+    { "type": "narration", "text": "중간 점검일. 교수님 앞에서 시연. 그리고 하필 그 자리에서, 펌프가 멈췄다. 빛 알람은 깜빡이다 꺼졌다." },
+    { "type": "dialogue", "speaker": "char_01", "text": "...죄송합니다. 통합 단계에서 제가 놓쳤습니다. 제 책임입니다.", "expression": "sad", "sprite_position": "left" },
+    { "type": "narration", "text": "교수님이 나간 뒤, 과방의 공기가 무겁다. 지안 선배는 또 모든 걸 자기 탓으로 가져간다." },
+    { "type": "dialogue", "speaker": "char_02", "text": "선배 탓 아닌데요. 제 펌웨어 인터럽트랑 충돌난 거예요. 제가...", "expression": "sad", "sprite_position": "right" },
+    { "type": "dialogue", "speaker": "char_03", "text": "아냐 아냐 다 같이 한 건데! 누구 탓이 어딨어, 응? 일단 밥 먹고 다시 하자, 내가 살게!", "expression": "embarrassed", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_04", "text": "...나래야. 너 또 다 떠안으려 한다. 그리고 지안이 너도.", "expression": "neutral", "sprite_position": "center" },
+    { "type": "narration", "text": "팀이 흔들린다. 무너지기 직전, 누군가는 방향을 잡아야 한다. 나는 누구의 손을 잡을까." },
+    { "type": "narration", "text": "(이 선택은 마음의 무게를 보여준다. 지금까지 쌓인 호감도가 누구에게 향했는지가, 이 학기의 길을 정한다.)" },
+    { "type": "choice", "choices": [
+      { "label": "지안에게: \"혼자 다 짊어지지 마요. 같이 합시다.\"", "affection": { "char_01": 12 }, "set_flags": [], "goto": null },
+      { "label": "도윤에게: \"네 잘못 아니야. 같이 디버깅하자.\"", "affection": { "char_02": 12 }, "set_flags": [], "goto": null },
+      { "label": "나래에게: \"넌 좀 쉬어. 이번엔 우리가 챙길게.\"", "affection": { "char_03": 12 }, "set_flags": [], "goto": null },
+      { "label": "시혁에게: \"네가 중심 잡아줘. 나도 옆에 있을게.\"", "affection": { "char_04": 12 }, "set_flags": [], "goto": null }
+    ] },
+    { "type": "narration", "text": "한 사람에게로 마음이 기운다. 흔들리던 팀이 다시 한 방향을 본다. 남은 한 달, 길이 정해졌다." }
+  ],
+  "next_scene": "BRANCH_TO_ROUTE"
+}

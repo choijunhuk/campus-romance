@@ -1,0 +1,25 @@
+{
+  "scene_id": "c_02",
+  "title": "첫 회의",
+  "background": "gwabang",
+  "bgm_mood": "lively_afternoon",
+  "nodes": [
+    { "type": "narration", "text": "과방. 화이트보드엔 누가 그렸는지 모를 회로 낙서와 욕설이 공존한다. 첫 회의가 시작된다." },
+    { "type": "dialogue", "speaker": "char_01", "text": "대회 주제는 '일상을 바꾸는 작은 장치'. 한 달 반 안에 작동하는 시제품까지. 아이디어부터.", "expression": "neutral", "sprite_position": "left" },
+    { "type": "dialogue", "speaker": "char_02", "text": "자동으로 화분 물 주는 거요. 토양 수분 센서 + 펌프. 제가 펌웨어 30분이면 짜요.", "expression": "smile", "sprite_position": "right" },
+    { "type": "dialogue", "speaker": "char_03", "text": "오 귀엽다! 근데 그거 너무 많이 나오지 않았어? 디자인으로 차별화하면 될 거 같긴 한데!", "expression": "smile", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_04", "text": "...소리 안 나는 알람. 진동 말고. 빛으로 깨우는 거.", "expression": "neutral", "sprite_position": "center" },
+    { "type": "narration", "text": "다들 한마디씩 던진다. 시선이 슬그머니 나에게 모인다. 복학생의 첫 한마디. 첫인상이 갈리는 순간이다." },
+    { "type": "choice", "choices": [
+      { "label": "\"도윤이 아이디어에 나래 디자인 붙이자. 둘 다 살리는 쪽.\"", "affection": { "char_02": 8, "char_03": 8 }, "set_flags": [], "goto": null },
+      { "label": "\"시혁이 빛 알람. 그건 진짜 새롭다. 밀어보자.\"", "affection": { "char_04": 10 }, "set_flags": [], "goto": null },
+      { "label": "\"일단 지안 선배가 정해. 리더가 방향 잡는 게 빠르지.\"", "affection": { "char_01": 10 }, "set_flags": [], "goto": null }
+    ] },
+    { "type": "dialogue", "speaker": "char_01", "text": "...정리하면, 빛으로 깨우고 식물도 챙기는 '아침 루틴 디바이스'. 욕심 같지만 둘 다 작게 붙이면 돼.", "expression": "neutral", "sprite_position": "left" },
+    { "type": "dialogue", "speaker": "char_03", "text": "오 합쳤다! 이름은 내가 지을게. '굿모닝 박스' 어때!", "expression": "laugh", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_02", "text": "이름은 아무래도 상관없는데... 일정이 빡빡해요. 누가 밤새야 돼요 이거.", "expression": "neutral", "sprite_position": "right" },
+    { "type": "dialogue", "speaker": "char_01", "text": "밤은 내가 새. 나머지는 너희 파트만 똑바로. 됐고, 오늘은 여기까지.", "expression": "neutral", "sprite_position": "left" },
+    { "type": "narration", "text": "또 혼자 떠안는다. 2년 전에도 저랬다. 저 사람, 진짜 안 변했네." }
+  ],
+  "next_scene": "c_03"
+}

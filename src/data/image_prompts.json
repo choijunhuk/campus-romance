@@ -1,0 +1,93 @@
+{
+  "characters": {
+    "global_style": "anime visual novel sprite, modern korean campus, clean cel shading, soft natural lighting, warm muted palette, semi-realistic proportions, detailed eyes, masterpiece, best quality",
+    "negative": "lowres, bad anatomy, bad hands, extra fingers, missing fingers, watermark, signature, text, realistic photo, multiple characters, deformed, blurry, jpeg artifacts, cropped",
+    "list": [
+      {
+        "id": "char_01",
+        "seed": 110123,
+        "base_prompt": "{global_style}, solo, 23 year old slender tall woman composed posture, shoulder-length straight black hair in low ponytail with blunt bangs, sharp almond dark brown eyes, small mole under left eye fair skin, thin silver-framed glasses, oversized grey knit cardigan over white tee dark slim jeans sleeves pushed up, upper body, plain neutral background, looking at viewer",
+        "expressions": {
+          "neutral": "{base_prompt}, neutral calm expression",
+          "smile": "{base_prompt}, faint gentle smile",
+          "blush": "{base_prompt}, blushing, slightly shy averted eyes",
+          "laugh": "{base_prompt}, rare bright laugh, eyes softened",
+          "sad": "{base_prompt}, downcast tired sad expression",
+          "angry": "{base_prompt}, stern frown, sharp glare",
+          "surprised": "{base_prompt}, eyes widened, surprised",
+          "embarrassed": "{base_prompt}, flustered embarrassed, looking away"
+        }
+      },
+      {
+        "id": "char_02",
+        "seed": 220456,
+        "base_prompt": "{global_style}, solo, 21 year old lean short young man slightly slouched, messy soft light-brown bedhead hair covering eyebrows, round curious hazel brown eyes with slight eyebags, youthful pale skin faint freckles across nose, large over-ear headphones around neck, oversized black hoodie with faded print loose cargo pants, upper body, plain neutral background, looking at viewer",
+        "expressions": {
+          "neutral": "{base_prompt}, neutral absorbed expression",
+          "smile": "{base_prompt}, small excited smile",
+          "blush": "{base_prompt}, blushing, ears red, shy",
+          "laugh": "{base_prompt}, wide childlike laugh",
+          "sad": "{base_prompt}, dejected withdrawn expression",
+          "angry": "{base_prompt}, frustrated pout, brows knit",
+          "surprised": "{base_prompt}, eyes wide open, startled",
+          "embarrassed": "{base_prompt}, awkward embarrassed, scratching cheek"
+        }
+      },
+      {
+        "id": "char_03",
+        "seed": 330789,
+        "base_prompt": "{global_style}, solo, 22 year old petite woman lively energetic posture, wavy warm-brown medium hair half-up soft volume, big bright round light brown expressive eyes, warm healthy glow small dimple on right cheek, yellow star-shaped hairclip, pastel yellow oversized sweatshirt denim overall skirt, upper body, plain neutral background, looking at viewer",
+        "expressions": {
+          "neutral": "{base_prompt}, neutral bright expression",
+          "smile": "{base_prompt}, warm cheerful smile",
+          "blush": "{base_prompt}, blushing, sweet shy smile",
+          "laugh": "{base_prompt}, big joyful laugh",
+          "sad": "{base_prompt}, fragile sad expression behind a faltering smile",
+          "angry": "{base_prompt}, puffed cheeks, mock-angry pout",
+          "surprised": "{base_prompt}, gasping, surprised delight",
+          "embarrassed": "{base_prompt}, embarrassed, hands near face"
+        }
+      },
+      {
+        "id": "char_04",
+        "seed": 440012,
+        "base_prompt": "{global_style}, solo, 24 year old tall broad-shouldered man relaxed slouch, short dark-charcoal slightly grown out messy hair, narrow half-lidded dark grey sleepy eyes, sharp jawline faint stubble single left ear piercing, black guitar pick necklace, worn black jacket over plain tee dark jeans, upper body, plain neutral background, looking at viewer",
+        "expressions": {
+          "neutral": "{base_prompt}, neutral detached expression",
+          "smile": "{base_prompt}, faint rare half-smile",
+          "blush": "{base_prompt}, slight blush, looking aside",
+          "laugh": "{base_prompt}, low quiet laugh, eyes crinkled",
+          "sad": "{base_prompt}, quiet melancholy expression",
+          "angry": "{base_prompt}, cold annoyed stare",
+          "surprised": "{base_prompt}, brows raised, mild surprise",
+          "embarrassed": "{base_prompt}, awkward stiff, avoiding eyes"
+        }
+      }
+    ]
+  },
+  "backgrounds": {
+    "global_style": "anime visual novel background, modern korean university campus, detailed, soft lighting, no people, wide shot, warm muted palette",
+    "list": [
+      { "id": "gwabang", "base": "{global_style}, university department club lounge interior, old sofa, whiteboard with circuit doodles, instant noodle cups, posters on wall, cozy clutter", "time_variants": { "afternoon": "{base}, warm afternoon sunlight through blinds", "evening": "{base}, sunset orange light", "night": "{base}, night, fluorescent and desk lamp glow" } },
+      { "id": "library", "base": "{global_style}, central university library reading room, tall bookshelves, long study desks, soft ambient light", "time_variants": { "afternoon": "{base}, bright daylight from large windows", "evening": "{base}, low golden evening light", "night": "{base}, late night, scattered desk lamps, quiet" } },
+      { "id": "cafeteria", "base": "{global_style}, university cafeteria hall, food trays, long tables, menu board, lively but empty", "time_variants": { "afternoon": "{base}, midday bright light, busy atmosphere", "evening": "{base}, evening, warmer lighting", "night": "{base}, night, dim half-closed cafeteria" } },
+      { "id": "club_room", "base": "{global_style}, engineering club workshop room, soldering irons, component drawers, electronics on bench, last year's trophy on shelf, narrow cozy", "time_variants": { "afternoon": "{base}, afternoon light through small window", "evening": "{base}, evening amber glow", "night": "{base}, late night, single desk lamp pool of light" } },
+      { "id": "rooftop", "base": "{global_style}, university building rooftop, railing, water tank, city skyline beyond, open sky", "time_variants": { "afternoon": "{base}, clear blue afternoon sky", "evening": "{base}, dramatic orange sunset over city", "night": "{base}, night, glittering city lights, dark sky" } },
+      { "id": "cafe_street", "base": "{global_style}, small cafe alley near campus back gate, string lights, small cafes, brick pavement", "time_variants": { "afternoon": "{base}, soft afternoon sun", "evening": "{base}, warm sunset, glowing cafe signs", "night": "{base}, night, cozy lit cafe windows" } },
+      { "id": "lecture_hall", "base": "{global_style}, large tiered university lecture hall E201, rows of seats, big projector screen, podium", "time_variants": { "afternoon": "{base}, daylight from side windows", "evening": "{base}, evening dim, screen glow", "night": "{base}, night, empty hall, low lighting" } },
+      { "id": "han_river", "base": "{global_style}, han river park at riverside, grass, bicycle path, city skyline across water", "time_variants": { "afternoon": "{base}, sunny afternoon, breeze", "evening": "{base}, golden sunset reflecting on water", "night": "{base}, night, city lights shimmering on river" } }
+    ]
+  },
+  "event_cg": [
+    { "event_id": "char_01_good_ending", "scene": "옥상에서 지안이 처음 손을 내미는 순간", "prompt": "{characters.global_style}, char_01 appearance (Seo Jian, low ponytail black hair, silver glasses, grey cardigan), on building rooftop at warm sunset, reaching out her hand toward viewer with a rare soft smile, protagonist seen only as a faint silhouette/back, emotional, cinematic lighting, 16:9", "negative": "lowres, bad anatomy, extra fingers, watermark, two faces, realistic photo", "ref_char": "char_01" },
+    { "event_id": "char_02_good_ending", "scene": "동아리방에서 도윤이 활짝 웃는 고백 후", "prompt": "{characters.global_style}, char_02 appearance (Han Doyun, messy light-brown bedhead, headphones around neck, black hoodie), in club workshop room at night peeking over dual monitors with a bright childlike laugh, soft desk lamp glow, protagonist as faint back silhouette, emotional, cinematic, 16:9", "negative": "lowres, bad anatomy, extra fingers, watermark, two faces, realistic photo", "ref_char": "char_02" },
+    { "event_id": "char_03_good_ending", "scene": "한강에서 나래가 진짜 웃음을 보이는 순간", "prompt": "{characters.global_style}, char_03 appearance (Yu Narae, wavy warm-brown half-up hair, yellow star hairclip, pastel yellow sweatshirt), at han river sunset, genuine teary laughing smile wiping eyes, golden light reflecting on water, protagonist as faint silhouette, emotional, cinematic, 16:9", "negative": "lowres, bad anatomy, extra fingers, watermark, two faces, realistic photo", "ref_char": "char_03" },
+    { "event_id": "char_04_good_ending", "scene": "한강에서 시혁이 기타로 고백곡을 연주", "prompt": "{characters.global_style}, char_04 appearance (Jung Sihyuk, charcoal messy hair, ear piercing, guitar pick necklace, black jacket), at han river night holding an acoustic guitar, rare warm half-smile while playing, city lights on water, protagonist as faint silhouette in audience, emotional, cinematic, 16:9", "negative": "lowres, bad anatomy, extra fingers, watermark, two faces, realistic photo", "ref_char": "char_04" }
+  ],
+  "ui": {
+    "title_screen": "anime visual novel title screen background, modern korean engineering campus building at golden hour spring, cherry blossoms and old club building, warm nostalgic mood, no text, no people, atmospheric, 16:9, masterpiece",
+    "affection_icons": "set of small heart icons for an affection meter, clean flat style, dusty rose and soft teal palette, empty/half/full states, simple, transparent background",
+    "dialogue_box": "visual novel dialogue box UI, semi-transparent dark panel rounded corners, warm cream accent border, soft and readable, modern clean",
+    "cg_gallery_thumb": "visual novel CG gallery thumbnail frame, simple warm-toned rounded frame, locked state shows a soft silhouette placeholder"
+  }
+}

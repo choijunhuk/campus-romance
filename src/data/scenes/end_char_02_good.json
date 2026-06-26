@@ -1,0 +1,14 @@
+{
+  "scene_id": "end_char_02_good",
+  "title": "도윤 — 굿엔딩: 논리 밖의 다행",
+  "background": "club_room",
+  "bgm_mood": "warm_ending",
+  "nodes": [
+    { "type": "narration", "text": "여름방학. 텅 빈 동아리방에 우리 둘만 코드를 짜고 있다. 도윤이 모니터 너머로 빼꼼 나를 본다." },
+    { "type": "dialogue", "speaker": "char_02", "text": "선배. 사람 마음은 디버깅이 안 된다고 생각했거든요. 근데요. 안 풀려도 괜찮은 게 있더라고요.", "expression": "smile", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_02", "text": "선배가 그 변수예요. 안 풀려서, 다행인. (활짝 웃는다)", "expression": "laugh", "sprite_position": "center" },
+    { "type": "narration", "text": "천재의 외로움이 처음으로 누군가와 연결됐다. 둘이서 풀어가는, 긴 여름의 시작." },
+    { "type": "narration", "text": "── 한도윤 루트 · GOOD ENDING ──" }
+  ],
+  "next_scene": null
+}

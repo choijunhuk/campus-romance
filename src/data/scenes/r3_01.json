@@ -1,0 +1,21 @@
+{
+  "scene_id": "r3_01",
+  "title": "햇살의 뒷면",
+  "background": "cafe_street",
+  "bgm_mood": "soft_afternoon",
+  "nodes": [
+    { "type": "narration", "text": "후문 카페거리. 우연히, 알바 유니폼 차림으로 뛰어가는 나래를 봤다. 동아리에선 한 번도 못 본, 지친 옆얼굴." },
+    { "type": "dialogue", "speaker": "char_03", "text": "어! 선배! 어, 이거... 헤헤. 알바 세 개 뛰는 거, 비밀로 해줄래? 다들 걱정하잖아.", "expression": "embarrassed", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_03", "text": "난 괜찮아 괜찮아~ 늘 이래왔는걸. 웃으면 다 괜찮아져, 진짜로.", "expression": "smile", "sprite_position": "center" },
+    { "type": "narration", "text": "'괜찮아'를 두 번 말하는 사람은, 보통 안 괜찮다. 2년 쉬는 동안 그건 배웠다." },
+    { "type": "choice", "choices": [
+      { "label": "\"안 괜찮아 보여. 나한테는 안 웃어도 돼.\"", "affection": { "char_03": 18 }, "set_flags": ["narae_unmasked"], "goto": 5 },
+      { "label": "\"오 대단하다! 역시 나래는 에너지 넘쳐!\"", "affection": { "char_03": -8 }, "set_flags": ["narae_collapsed"], "goto": 7 }
+    ] },
+    { "type": "dialogue", "speaker": "char_03", "text": "(웃음이 멈춘다) ...안 웃어도 된다고. (눈가가 붉어진다) 그 말. 아무도 안 해줬는데. 다들 내 웃는 얼굴만 좋아해서.", "expression": "sad", "sprite_position": "center", "goto": 8 },
+    { "type": "dialogue", "speaker": "char_03", "text": "(잠깐 멈칫하더니 더 환하게 웃는다) 그치! 나 에너지 부자야! ...응. 고마워, 선배.", "expression": "smile", "sprite_position": "center" },
+    { "type": "narration", "text": "더 환하게 웃었다. 그 웃음이 더 멀게 느껴지는 건, 기분 탓일까." },
+    { "type": "narration", "text": "햇살 같은 사람의 그늘을, 처음으로 본 오후." }
+  ],
+  "next_scene": "r3_02"
+}

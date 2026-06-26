@@ -1,0 +1,13 @@
+{
+  "scene_id": "end_char_04_normal",
+  "title": "시혁 — 노멀엔딩: 편한 동기",
+  "background": "club_room",
+  "bgm_mood": "bittersweet",
+  "nodes": [
+    { "type": "narration", "text": "대회는 끝났고, 시혁과 나는 편한 동기로 남았다. 가끔 같이 밥을 먹고, 가끔 침묵을 나눈다. 그 이상은 또, 타이밍을 놓쳤다." },
+    { "type": "dialogue", "speaker": "char_04", "text": "배고프면 말해. 사줄게. 그냥. ...뭐. 다음 학기에도 보는 거지.", "expression": "neutral", "sprite_position": "center" },
+    { "type": "narration", "text": "다음 학기. 또 한 번의 타이밍이 남아 있다고, 그렇게 믿어보기로 한다." },
+    { "type": "narration", "text": "── 정시혁 루트 · NORMAL ENDING ──" }
+  ],
+  "next_scene": null
+}

@@ -1,0 +1,26 @@
+{
+  "scene_id": "c_01",
+  "title": "복학 첫날",
+  "background": "club_room",
+  "bgm_mood": "nostalgic_morning",
+  "nodes": [
+    { "type": "narration", "text": "2년 만에 잡아보는 손잡이. '회로의 봄'이라는 촌스러운 명패는 그대로다. 떨릴 줄 알았는데, 생각보다 그냥 문이다." },
+    { "type": "narration", "text": "심호흡 한 번. 그래, 이번엔 좀 다르게 살아보자. 문을 민다." },
+    { "type": "dialogue", "speaker": "char_03", "text": "어? 어어어?! 선배 맞죠?! 진짜 돌아왔다!", "expression": "surprised", "sprite_position": "center" },
+    { "type": "narration", "text": "유나래. 디자인과인데 어쩐 일인지 공대 동아리에 눌러앉은, 동아리 분위기 그 자체인 사람." },
+    { "type": "dialogue", "speaker": "char_03", "text": "다들 선배 온다 온다 했는데 진짜 왔네! 헐 대박ㅋㅋ 하나도 안 변했다!", "expression": "laugh", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_01", "text": "왔으면 짐부터 내려놓고. 입구 막지 말고.", "expression": "neutral", "sprite_position": "left" },
+    { "type": "narration", "text": "서지안. 1학년 때 같은 팀이었던 선배. 말투는 여전히 칼 같고, 눈빛은 여전히 피곤해 보인다." },
+    { "type": "dialogue", "speaker": "char_01", "text": "...오랜만이네. 얼굴 좋아졌다. 쉬다 와서.", "expression": "neutral", "sprite_position": "left" },
+    { "type": "narration", "text": "칭찬인지 잔소리인지 모를 인사. 저 사람 화법은 2년이 지나도 해석이 안 된다." },
+    { "type": "dialogue", "speaker": "char_02", "text": "아 선배 그 자리 제 모니터 가려요. 어, 안녕하세요. 한도윤이요. 2학년.", "expression": "neutral", "sprite_position": "right" },
+    { "type": "narration", "text": "한도윤. 처음 보는 후배. 인사를 하면서도 시선은 코드에 박혀 있다. 화면이 폭포처럼 스크롤된다." },
+    { "type": "dialogue", "speaker": "char_04", "text": "...야.", "expression": "neutral", "sprite_position": "center" },
+    { "type": "narration", "text": "그리고 구석 소파. 정시혁. 1학년 때 같은 분반이었던 동기. 밴드 한다더니 어느새 복학생이 되어 있다." },
+    { "type": "dialogue", "speaker": "char_04", "text": "안 변했네, 너. ...앉아. 자리 있어.", "expression": "neutral", "sprite_position": "center" },
+    { "type": "narration", "text": "네 사람. 낡은 소파, 납땜 냄새, 작년 대회 트로피. 한 학기가 여기서 시작된다는 예감이 든다." },
+    { "type": "dialogue", "speaker": "char_01", "text": "마침 잘 왔어. 이번 학기 대회 출품 팀, 너도 들어와. 사람 부족했거든.", "expression": "neutral", "sprite_position": "left" },
+    { "type": "narration", "text": "거절할 이유도, 사실 거절할 마음도 없다. 고개를 끄덕인다." }
+  ],
+  "next_scene": "c_02"
+}

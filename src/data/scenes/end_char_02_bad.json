@@ -1,0 +1,13 @@
+{
+  "scene_id": "end_char_02_bad",
+  "title": "도윤 — 배드엔딩: 닫힌 헤드폰",
+  "background": "club_room",
+  "bgm_mood": "lonely",
+  "nodes": [
+    { "type": "narration", "text": "오해는 끝내 풀리지 않았다. 도윤은 다시 헤드폰 안으로 들어갔고, 그 세계의 문은 이제 나에게도 닫혔다." },
+    { "type": "dialogue", "speaker": "char_02", "text": "...코드는 거짓말을 안 하는데. 사람은 왜 이렇게 어렵죠. (헤드폰을 올린다) 수고하셨어요, 선배.", "expression": "sad", "sprite_position": "center" },
+    { "type": "narration", "text": "키보드 소리만 남았다. 가장 똑똑한 사람의, 가장 외로운 침묵." },
+    { "type": "narration", "text": "── 한도윤 루트 · BAD ENDING ──" }
+  ],
+  "next_scene": null
+}

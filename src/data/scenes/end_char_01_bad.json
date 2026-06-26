@@ -1,0 +1,13 @@
+{
+  "scene_id": "end_char_01_bad",
+  "title": "지안 — 배드엔딩: 닫힌 문",
+  "background": "club_room",
+  "bgm_mood": "lonely",
+  "nodes": [
+    { "type": "narration", "text": "지안 선배는 끝까지 혼자 다 떠안았다. 발표는 아슬아슬하게 끝났고, 그 뒤로 선배의 자리는 자주 비었다." },
+    { "type": "dialogue", "speaker": "char_01", "text": "...신경 써줘서 고마웠어. 근데 난 원래 이래. 바뀌는 건 어렵더라.", "expression": "sad", "sprite_position": "center" },
+    { "type": "narration", "text": "다시 닫힌 문. 손을 내밀 타이밍은, 언제나 한 박자 빨라야 했다." },
+    { "type": "narration", "text": "── 서지안 루트 · BAD ENDING ──" }
+  ],
+  "next_scene": null
+}

@@ -1,0 +1,13 @@
+{
+  "scene_id": "end_char_03_normal",
+  "title": "나래 — 노멀엔딩: 좋은 친구",
+  "background": "gwabang",
+  "bgm_mood": "bittersweet",
+  "nodes": [
+    { "type": "narration", "text": "대회는 끝났고, 나래는 여전히 모두에게 웃는다. 다만 가끔, 나에게만은 웃음을 조금 내려놓는다." },
+    { "type": "dialogue", "speaker": "char_03", "text": "선배는 좀 특별해. 옆에 있으면 안 꾸며도 돼서. ...친구 맞지, 우리? 헤헤.", "expression": "smile", "sprite_position": "center" },
+    { "type": "narration", "text": "친구. 그 거리에서, 그래도 그녀는 조금 덜 외로워 보였다. 그걸로 충분한 여름." },
+    { "type": "narration", "text": "── 유나래 루트 · NORMAL ENDING ──" }
+  ],
+  "next_scene": null
+}

@@ -1,0 +1,21 @@
+{
+  "scene_id": "r4_02",
+  "title": "다시 온 타이밍",
+  "background": "han_river",
+  "bgm_mood": "night_city",
+  "nodes": [
+    { "type": "narration", "text": "발표 전야. 시혁이 한강으로 불러냈다. 기타를 메고 왔다. 접었다던 그 기타를." },
+    { "type": "dialogue", "speaker": "char_04", "text": "...1학년 때. 너한테 하려던 말이 있었어. 못 했지. 타이밍 놓쳐서. 그리고 너 휴학했고.", "expression": "neutral", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_04", "text": "2년 동안 후회했어. 말 한마디를. (기타를 고쳐 멘다) 이번엔. 안 늦을래.", "expression": "embarrassed", "sprite_position": "center" },
+    { "type": "narration", "text": "느린 사람의, 2년 묵은 용기. 강바람 속에서 그가 첫 코드를 짚는다." },
+    { "type": "choice", "choices": [
+      { "label": "\"늦지 않았어. 지금 들을게. 그때 그 말.\"", "affection": { "char_04": 22 }, "set_flags": ["sihyuk_confessed"], "goto": 5 },
+      { "label": "\"...지금은 발표가 먼저야. 다음에 듣자.\"", "affection": { "char_04": -5 }, "set_flags": ["sihyuk_too_late"], "goto": 7 }
+    ] },
+    { "type": "dialogue", "speaker": "char_04", "text": "(기타를 내려놓고 똑바로 본다) ...좋아한다. 1학년 때부터. 이 말 하려고 2년 걸렸다. (피식) 늦은 만큼, 진심이야.", "expression": "blush", "sprite_position": "center", "goto": 8 },
+    { "type": "narration", "text": "무심한 사람의 가장 솔직한 한 문장. 강물도 잠시 숨을 멈춘 것 같았다.", "goto": 8 },
+    { "type": "dialogue", "speaker": "char_04", "text": "...다음에. (기타를 다시 멘다) 그래. 다음에. (낮게) 또 늦는 거. 이젠 익숙하다.", "expression": "sad", "sprite_position": "center" },
+    { "type": "narration", "text": "내일이면 발표. 2년을 건너온 한마디가, 답을 기다린다." }
+  ],
+  "next_scene": "EVAL_ENDING:char_04"
+}

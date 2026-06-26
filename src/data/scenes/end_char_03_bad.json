@@ -1,0 +1,13 @@
+{
+  "scene_id": "end_char_03_bad",
+  "title": "나래 — 배드엔딩: 꺼진 햇살",
+  "background": "gwabang",
+  "bgm_mood": "lonely",
+  "nodes": [
+    { "type": "narration", "text": "나래는 끝내 가면을 내리지 못했다. 모두에게 웃어주다 지친 그녀는, 어느 날 조용히 동아리에 발을 끊었다." },
+    { "type": "dialogue", "speaker": "char_03", "text": "나 잠깐 쉴게~ 걱정 마! 늘 그랬듯이, 괜찮아질 거야. ...아마.", "expression": "sad", "sprite_position": "center" },
+    { "type": "narration", "text": "마지막까지 웃는 얼굴. 그 웃음 뒤를 끝내 보지 못한 게, 오래 마음에 남았다." },
+    { "type": "narration", "text": "── 유나래 루트 · BAD ENDING ──" }
+  ],
+  "next_scene": null
+}

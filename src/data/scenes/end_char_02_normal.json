@@ -1,0 +1,13 @@
+{
+  "scene_id": "end_char_02_normal",
+  "title": "도윤 — 노멀엔딩: 최고의 파트너",
+  "background": "club_room",
+  "bgm_mood": "bittersweet",
+  "nodes": [
+    { "type": "narration", "text": "대회는 잘 끝났다. 도윤과 나는 동아리 최고의 개발 콤비로 불린다. 그 이상은, 아직 정의되지 않은 변수." },
+    { "type": "dialogue", "speaker": "char_02", "text": "선배 다음 프로젝트도 같이 해요. 선배랑 짜면 효율이 1.8배예요. ...그게 다는 아닌데. 음. 나중에 말할게요.", "expression": "smile", "sprite_position": "center" },
+    { "type": "narration", "text": "나중에. 도윤의 '나중에'는 늘 미정의 상태. 그래도 콤파일은 통과했으니까, 그걸로 됐다, 일단은." },
+    { "type": "narration", "text": "── 한도윤 루트 · NORMAL ENDING ──" }
+  ],
+  "next_scene": null
+}

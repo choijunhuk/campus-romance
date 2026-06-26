@@ -1,0 +1,14 @@
+{
+  "scene_id": "end_char_04_good",
+  "title": "시혁 — 굿엔딩: 안 놓친 타이밍",
+  "background": "han_river",
+  "bgm_mood": "warm_ending",
+  "nodes": [
+    { "type": "narration", "text": "여름. 시혁이 작은 공연을 한다고 했다. 접었던 기타를 다시 든, 첫 무대. 객석엔 나 하나뿐이지만." },
+    { "type": "dialogue", "speaker": "char_04", "text": "이 곡. 1학년 때 너 생각하면서 만들었던 거야. 2년 만에 완성했다. ...들어줘.", "expression": "smile", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_04", "text": "이번 타이밍은. 안 놓쳤어. (드물게 환히 웃는다)", "expression": "laugh", "sprite_position": "center" },
+    { "type": "narration", "text": "늦은 사람의, 늦지 않은 고백. 2년을 돌아온 멜로디가 마침내 강 위에 울린다." },
+    { "type": "narration", "text": "── 정시혁 루트 · GOOD ENDING ──" }
+  ],
+  "next_scene": null
+}

@@ -1,0 +1,23 @@
+{
+  "scene_id": "r1_03",
+  "title": "기댈 줄 모르는 사람",
+  "background": "gwabang",
+  "bgm_mood": "tense_evening",
+  "nodes": [
+    { "type": "narration", "text": "대회 일주일 전. 일정표가 빨갛다. 그리고 지안 선배는, 또, 모든 칸에 자기 이름을 적어 넣고 있다." },
+    { "type": "dialogue", "speaker": "char_01", "text": "발표 자료도 내가 하고, 최종 테스트도 내가 돌릴게. 너희는 각자 파트만.", "expression": "neutral", "sprite_position": "center" },
+    { "type": "narration", "text": "데자뷔. 작년의 그 패턴이다. 혼자 다 떠안다가 무너지는 그 길. 막아야 한다." },
+    { "type": "choice", "choices": [
+      { "label": "\"선배. 그거 작년이랑 똑같아요. 역할 나눠요, 지금.\"", "affection": { "char_01": 15 }, "set_flags": [], "goto": 4 },
+      { "label": "\"...알겠어요. 선배가 편한 대로 해요.\" (물러서기)", "affection": { "char_01": -10 }, "set_flags": ["jian_pushed_away"], "goto": 8 }
+    ] },
+    { "type": "dialogue", "speaker": "char_01", "text": "...작년이랑 똑같다고? (멈칫) ...너 진짜. 그 말 하려고 일주일 내내 나 본 거야?", "expression": "surprised", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_01", "text": "(긴 침묵) ...그래. 무서웠어. 또 맡겼다가 어그러질까 봐. 근데 그게 결국 또 나를 갉아먹는 거였네.", "expression": "sad", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_01", "text": "발표는... 같이 하자. 너랑. 처음으로 누구한테 이런 말 하는 거야. 잘 좀 받아줘.", "expression": "blush", "sprite_position": "center" },
+    { "type": "narration", "text": "일정표의 빨간 이름들이 넷으로 나뉘었다. 처음으로, 이 팀이 진짜 '팀'처럼 보였다.", "goto": 10 },
+    { "type": "dialogue", "speaker": "char_01", "text": "...그래. 그럼 그렇게 해. (등을 돌린다) 너도 별수 없네. 다들 그냥 두고 보기만 하지.", "expression": "sad", "sprite_position": "center" },
+    { "type": "narration", "text": "물러섰다. 편한 길이었다. 하지만 저 등이 다시 멀어지는 게 보였다. 작년처럼." },
+    { "type": "narration", "text": "대회는 다가오고, 마음의 거리도 정해져 간다." }
+  ],
+  "next_scene": "r1_04"
+}
