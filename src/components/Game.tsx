@@ -6,7 +6,7 @@ import { SmartImage, useTypewriter } from './ui'
 import { SaveLoadMenu } from './SaveLoadMenu'
 import type { SpritePosition } from '../types'
 
-const BG_TIME = 'day' // sensible default time variant; placeholder shown if missing
+const BG_TIME = 'afternoon' // ponytail: assets only ship afternoon/evening/night; afternoon is the safe default
 
 const POS_CLASS: Record<SpritePosition, string> = {
   left: 'left-2 sm:left-12',
