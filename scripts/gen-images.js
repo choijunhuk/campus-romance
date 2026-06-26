@@ -60,7 +60,7 @@ const promptsFileOverride = promptsFileIdx !== -1 ? args[promptsFileIdx + 1] : n
 
 let provider = null;
 if (!isDryRun) {
-  const supported = ['gemini', 'openai', 'replicate'];
+  const supported = ['gemini', 'openai', 'replicate', 'local'];
   if (!supported.includes(providerName)) {
     console.error(`[error] Unknown provider "${providerName}". Supported: ${supported.join(', ')}`);
     process.exit(1);
