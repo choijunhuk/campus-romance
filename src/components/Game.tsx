@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useGame } from '../store'
 import { scenes, charById } from '../engine/load'
-import { endingSummary } from '../engine/branching'
+import { endingSummary, isEndingScene, endingEventId } from '../engine/branching'
 import { SmartImage, useTypewriter } from './ui'
 import { SaveLoadMenu } from './SaveLoadMenu'
 import type { SpritePosition } from '../types'
@@ -150,11 +150,21 @@ export function Game() {
   }
 
   const activeSpeaker = node.type === 'dialogue' ? node.speaker : null
+  // On ending scenes the unlocked event CG becomes the backdrop (sprites are
+  // suppressed) so the finale plays over its illustration, not a stock location.
+  const endingCG = isEndingScene(sceneId) ? endingEventId(sceneId) : null
 
   return (
     <div className="relative h-full w-full select-none overflow-hidden bg-ink">
-      {/* Background */}
-      {bg ? (
+      {/* Background — ending CG on finales, else the location art */}
+      {endingCG ? (
+        <SmartImage
+          src={`/assets/cg/${endingCG}.png`}
+          alt={endingCG}
+          label={scene.title}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      ) : bg ? (
         <SmartImage
           src={`/assets/backgrounds/${bg}_${BG_TIME}.png`}
           alt={bg}
@@ -165,8 +175,9 @@ export function Game() {
         <div className="absolute inset-0 bg-gradient-to-b from-panel to-ink" />
       )}
 
-      {/* Sprites */}
-      {(Object.entries(sprites) as [SpritePosition, { charId: string; expression: string }][]).map(
+      {/* Sprites (hidden on ending scenes so the CG reads clean) */}
+      {!endingCG &&
+        (Object.entries(sprites) as [SpritePosition, { charId: string; expression: string }][]).map(
         ([pos, sp]) => (
           <SmartImage
             key={pos}
