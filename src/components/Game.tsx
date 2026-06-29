@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react'
 import { useGame } from '../store'
 import { scenes, charById } from '../engine/load'
 import { endingSummary, isEndingScene, endingEventId } from '../engine/branching'
+import { bgTime } from '../engine/atmosphere'
 import { SmartImage, useTypewriter } from './ui'
 import { SaveLoadMenu } from './SaveLoadMenu'
 import type { SpritePosition } from '../types'
-
-const BG_TIME = 'afternoon' // ponytail: assets only ship afternoon/evening/night; afternoon is the safe default
 
 const POS_CLASS: Record<SpritePosition, string> = {
   left: 'left-2 sm:left-12',
@@ -139,15 +138,18 @@ export function Game() {
   // branch jumps/merges and loaded saves — a linear 0..nodeIndex scan would pull
   // in sibling-branch sprites at merge nodes).
   let bg = scene.background
+  let mood = scene.bgm_mood
   const sprites: Partial<Record<SpritePosition, { charId: string; expression: string }>> = {}
   for (const i of path) {
     const n = scene.nodes[i]
     if (!n) continue
     if ((n.type === 'narration' || n.type === 'dialogue') && n.background) bg = n.background
+    if (n.type === 'narration' && n.bgm_mood) mood = n.bgm_mood
     if (n.type === 'dialogue' && n.sprite_position && n.speaker !== 'protagonist') {
       sprites[n.sprite_position] = { charId: n.speaker, expression: n.expression ?? 'neutral' }
     }
   }
+  const time = bgTime(mood) // night/evening/afternoon plate from the scene's mood
 
   const activeSpeaker = node.type === 'dialogue' ? node.speaker : null
   // On ending scenes the unlocked event CG becomes the backdrop (sprites are
@@ -166,10 +168,11 @@ export function Game() {
         />
       ) : bg ? (
         <SmartImage
-          src={`/assets/backgrounds/${bg}_${BG_TIME}.png`}
+          key={`${bg}_${time}`}
+          src={`/assets/backgrounds/${bg}_${time}.png`}
           alt={bg}
           label={`배경: ${bg}`}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full animate-bgfade object-cover"
         />
       ) : (
         <div className="absolute inset-0 bg-gradient-to-b from-panel to-ink" />
