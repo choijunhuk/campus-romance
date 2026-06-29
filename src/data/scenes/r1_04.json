@@ -11,9 +11,9 @@
     { "type": "narration", "text": "차가운 도시 위로, 저 사람이 처음으로 손을 내민다. 받을 것인가." },
     { "type": "choice", "choices": [
       { "label": "그 손을 잡는다. \"나도요. 나도, 동료한테 하는 말 아니에요.\"", "affection": { "char_01": 20 }, "set_flags": ["jian_opened_up"], "goto": 6 },
-      { "label": "\"...우리, 일단 발표부터 끝내고요.\" (한 발 물러서기)", "affection": { "char_01": -5 }, "set_flags": [], "goto": 8 }
+      { "label": "\"...우리, 일단 발표부터 끝내고요.\" (한 발 물러서기)", "affection": { "char_01": -5 }, "set_flags": [], "goto": 7 }
     ] },
-    { "type": "dialogue", "speaker": "char_01", "text": "(눈이 동그래지더니, 처음 보는 얼굴로 웃는다) ...진짜. 너 진짜. (손을 마주 잡는다) ...됐어. 더 말 안 해도. 알겠으니까.", "expression": "laugh", "sprite_position": "center", "goto": 9 },
+    { "type": "dialogue", "speaker": "char_01", "text": "(눈이 동그래지더니, 처음 보는 얼굴로 웃는다) ...진짜. 너 진짜. (손을 마주 잡는다) ...됐어. 더 말 안 해도. 알겠으니까.", "expression": "laugh", "sprite_position": "center", "goto": 8 },
     { "type": "dialogue", "speaker": "char_01", "text": "...그래. 그게 너답지. (옅게 웃지만 손을 거둔다) 발표부터. 그래, 그게 맞아.", "expression": "sad", "sprite_position": "center" },
     { "type": "narration", "text": "내일이면 한 학기가 끝난다. 그리고 무언가는, 이제 막 시작되려 한다." }
   ],

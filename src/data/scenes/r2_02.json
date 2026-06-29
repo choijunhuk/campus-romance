@@ -12,7 +12,7 @@
       { "label": "\"그거 버그 아니야. 그냥 나도 똑같단 뜻이야.\"", "affection": { "char_02": 22 }, "set_flags": ["doyun_understood"], "goto": 5 },
       { "label": "\"...지금은 발표에 집중하자. 그 얘긴 나중에.\"", "affection": { "char_02": -5 }, "set_flags": [], "goto": 7 }
     ] },
-    { "type": "dialogue", "speaker": "char_02", "text": "(눈이 커진다) 똑같다고요? 진짜요? 와. (활짝 웃는다) 논리 밖의 변수도, 둘이면 풀 수 있는 거였네요.", "expression": "laugh", "sprite_position": "center", "goto": 8 },
+    { "type": "dialogue", "speaker": "char_02", "text": "(눈이 커진다) 똑같다고요? 진짜요? 와. (활짝 웃는다) 논리 밖의 변수도, 둘이면 풀 수 있는 거였네요.", "expression": "laugh", "sprite_position": "center", "goto": 6 },
     { "type": "narration", "text": "처음으로, 도윤이 모니터가 아니라 사람을 보며 웃었다.", "goto": 8 },
     { "type": "dialogue", "speaker": "char_02", "text": "...아. 네. 나중에. (헤드폰을 올린다) 나중에는, 안 오는 경우가 많던데. 알겠어요.", "expression": "sad", "sprite_position": "center" },
     { "type": "narration", "text": "내일이면 발표다. 풀리지 않은 변수 하나를 남긴 채, 밤이 깊어간다." }

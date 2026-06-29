@@ -9,6 +9,9 @@ export interface SaveData {
   playerName: string
   sceneId: string
   nodeIndex: number
+  // Ordered node indices actually visited in the current scene. Needed to derive
+  // sprites/background correctly after branch jumps and merges (a cursor alone loses it).
+  path: number[]
   affection: Record<string, number>
   flags: string[]
   seenCG: string[]
@@ -45,6 +48,7 @@ interface GameState {
   playerName: string
   sceneId: string
   nodeIndex: number
+  path: number[]
   affection: Record<string, number>
   flags: string[]
   seenCG: string[]
@@ -69,6 +73,7 @@ export const useGame = create<GameState>((set, get) => ({
   playerName: '',
   sceneId: START_SCENE,
   nodeIndex: 0,
+  path: [0],
   affection: {},
   flags: [],
   seenCG: [],
@@ -97,8 +102,22 @@ export const useGame = create<GameState>((set, get) => ({
     if (ended) return
     const scene = scenes.get(sceneId)
     if (!scene) return
+    // Node-level goto: narration/dialogue may jump after their line.
+    // number = node index (same scene), string = scene_id. null/absent = sequential.
+    const node = scene.nodes[nodeIndex]
+    const goto = node && 'goto' in node ? node.goto : undefined
+    if (typeof goto === 'number') {
+      set({ nodeIndex: goto, path: [...get().path, goto] })
+      get().save('auto')
+      return
+    }
+    if (typeof goto === 'string') {
+      get().goToScene(goto)
+      return
+    }
     if (nodeIndex < scene.nodes.length - 1) {
-      set({ nodeIndex: nodeIndex + 1 })
+      const ni = nodeIndex + 1
+      set({ nodeIndex: ni, path: [...get().path, ni] })
       get().save('auto')
     } else {
       const next = resolveNext(scene, get().affection, get().flags)
@@ -123,7 +142,7 @@ export const useGame = create<GameState>((set, get) => ({
 
     const goto = choice.goto ?? null
     if (typeof goto === 'number') {
-      set({ nodeIndex: goto })
+      set({ nodeIndex: goto, path: [...get().path, goto] })
       get().save('auto')
     } else if (typeof goto === 'string') {
       get().goToScene(goto)
@@ -133,7 +152,7 @@ export const useGame = create<GameState>((set, get) => ({
   },
 
   goToScene: (sceneId) => {
-    set({ sceneId, nodeIndex: 0, ended: false })
+    set({ sceneId, nodeIndex: 0, path: [0], ended: false })
     if (isEndingScene(sceneId)) {
       const eventId = endingEventId(sceneId)
       set({ seenCG: [...new Set([...get().seenCG, eventId])] })
@@ -148,6 +167,7 @@ export const useGame = create<GameState>((set, get) => ({
       playerName: s.playerName,
       sceneId: s.sceneId,
       nodeIndex: s.nodeIndex,
+      path: s.path,
       affection: s.affection,
       flags: s.flags,
       seenCG: s.seenCG,
@@ -176,6 +196,8 @@ export const useGame = create<GameState>((set, get) => ({
       playerName: data.playerName,
       sceneId: data.sceneId,
       nodeIndex: data.nodeIndex,
+      // Old saves lack path → best-effort linear fallback (correct for un-branched scenes).
+      path: data.path ?? Array.from({ length: (data.nodeIndex ?? 0) + 1 }, (_, i) => i),
       affection: data.affection ?? {},
       flags: data.flags ?? [],
       seenCG: data.seenCG ?? [],

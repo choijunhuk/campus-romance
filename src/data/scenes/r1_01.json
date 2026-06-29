@@ -9,11 +9,11 @@
     { "type": "dialogue", "speaker": "char_01", "text": "나? 난 괜찮아. 이 정도는 늘 하던 거야. 신경 쓰지 마.", "expression": "neutral", "sprite_position": "center" },
     { "type": "narration", "text": "늘 하던 거. 그 '늘'이 작년에 저 사람을 한 학기 쉬게 만들었다는 걸, 나는 안다." },
     { "type": "choice", "choices": [
-      { "label": "\"안 괜찮아 보여요. 절반 줘요, 같이 하게.\" (밀어붙이기)", "affection": { "char_01": 10 }, "set_flags": [], "goto": 6 },
-      { "label": "말없이 옆에 앉아 같이 부품을 집는다. (조용히 곁에)", "affection": { "char_01": 12 }, "set_flags": [], "goto": 8 }
+      { "label": "\"안 괜찮아 보여요. 절반 줘요, 같이 하게.\" (밀어붙이기)", "affection": { "char_01": 10 }, "set_flags": [], "goto": 5 },
+      { "label": "말없이 옆에 앉아 같이 부품을 집는다. (조용히 곁에)", "affection": { "char_01": 12 }, "set_flags": [], "goto": 7 }
     ] },
-    { "type": "dialogue", "speaker": "char_01", "text": "...너 진짜. (한숨) 하여간. ...됐어. 그럼 저 펌프 모듈 검사나 해. 잘못 만지면 죽는다.", "expression": "embarrassed", "sprite_position": "center", "goto": 10 },
-    { "type": "narration", "text": "퉁명스럽지만 절반을 내줬다. 저 사람한테 '절반'은 거의 항복이다." },
+    { "type": "dialogue", "speaker": "char_01", "text": "...너 진짜. (한숨) 하여간. ...됐어. 그럼 저 펌프 모듈 검사나 해. 잘못 만지면 죽는다.", "expression": "embarrassed", "sprite_position": "center", "goto": 6 },
+    { "type": "narration", "text": "퉁명스럽지만 절반을 내줬다. 저 사람한테 '절반'은 거의 항복이다.", "goto": 9 },
     { "type": "dialogue", "speaker": "char_01", "text": "...뭐야. 말도 없이. (잠깐 침묵) ...그래. 손 빠르네, 너. 나쁘지 않아.", "expression": "blush", "sprite_position": "center" },
     { "type": "narration", "text": "거절하지 않았다. 그게 이 사람식 '고마워'라는 걸, 2년 전엔 몰랐다." },
     { "type": "narration", "text": "새벽 3시. 부품 더미가 절반으로 줄었다. 둘이 하니까 정말 절반이 됐다. 당연한 건데, 저 사람은 그걸 늘 잊는다." },

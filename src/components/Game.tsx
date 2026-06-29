@@ -17,6 +17,7 @@ const POS_CLASS: Record<SpritePosition, string> = {
 export function Game() {
   const sceneId = useGame((s) => s.sceneId)
   const nodeIndex = useGame((s) => s.nodeIndex)
+  const path = useGame((s) => s.path)
   const ended = useGame((s) => s.ended)
   const playerName = useGame((s) => s.playerName)
   const showDebug = useGame((s) => s.showDebug)
@@ -71,13 +72,15 @@ export function Game() {
     )
   }
 
-  // Derive background + sprites deterministically from nodes[0..nodeIndex]
-  // (robust against jumps and loaded saves).
+  // Derive background + sprites from the actually-visited path (robust against
+  // branch jumps/merges and loaded saves — a linear 0..nodeIndex scan would pull
+  // in sibling-branch sprites at merge nodes).
   let bg = scene.background
   const sprites: Partial<Record<SpritePosition, { charId: string; expression: string }>> = {}
-  for (let i = 0; i <= nodeIndex; i++) {
+  for (const i of path) {
     const n = scene.nodes[i]
-    if (n.type === 'narration' && n.background) bg = n.background
+    if (!n) continue
+    if ((n.type === 'narration' || n.type === 'dialogue') && n.background) bg = n.background
     if (n.type === 'dialogue' && n.sprite_position && n.speaker !== 'protagonist') {
       sprites[n.sprite_position] = { charId: n.speaker, expression: n.expression ?? 'neutral' }
     }

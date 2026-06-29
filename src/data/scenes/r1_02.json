@@ -11,11 +11,11 @@
     { "type": "dialogue", "speaker": "char_01", "text": "혼자 다 하겠다고 우기다가, 결국 다 망쳤어. 팀도, 나도. 그래서 한 학기 도망쳤지. ...한심하지.", "expression": "sad", "sprite_position": "center" },
     { "type": "narration", "text": "뭐라고 답해야 할까. 해결책을 줄 수도, 그냥 들어줄 수도 있다." },
     { "type": "choice", "choices": [
-      { "label": "\"그럼 이번엔 역할을 나눠요. 시스템을 바꾸면 돼.\" (해결책)", "affection": { "char_01": 6 }, "set_flags": [], "goto": 8 },
-      { "label": "\"한심한 거 아니에요. ...많이 힘들었겠다.\" (그냥 들어주기)", "affection": { "char_01": 15 }, "set_flags": ["jian_opened_up"], "goto": 10 }
+      { "label": "\"그럼 이번엔 역할을 나눠요. 시스템을 바꾸면 돼.\" (해결책)", "affection": { "char_01": 6 }, "set_flags": [], "goto": 7 },
+      { "label": "\"한심한 거 아니에요. ...많이 힘들었겠다.\" (그냥 들어주기)", "affection": { "char_01": 15 }, "set_flags": ["jian_opened_up"], "goto": 9 }
     ] },
-    { "type": "dialogue", "speaker": "char_01", "text": "...맞는 말이야. 늘 그게 답이지. 근데 가끔은, 맞는 말이 제일 안 들릴 때가 있어. (옅게 웃음)", "expression": "neutral", "sprite_position": "center", "goto": 12 },
-    { "type": "narration", "text": "정답을 말했는데 거리가 조금 멀어진 기분. 이 사람한테 필요했던 건 솔루션이 아니었나 보다.", "goto": 12 },
+    { "type": "dialogue", "speaker": "char_01", "text": "...맞는 말이야. 늘 그게 답이지. 근데 가끔은, 맞는 말이 제일 안 들릴 때가 있어. (옅게 웃음)", "expression": "neutral", "sprite_position": "center", "goto": 8 },
+    { "type": "narration", "text": "정답을 말했는데 거리가 조금 멀어진 기분. 이 사람한테 필요했던 건 솔루션이 아니었나 보다.", "goto": 11 },
     { "type": "dialogue", "speaker": "char_01", "text": "...힘들었겠다, 라. (침묵) 그 말. 작년에 아무도 안 해줬어. 다들 '괜찮지?'만 물었거든.", "expression": "blush", "sprite_position": "center" },
     { "type": "dialogue", "speaker": "char_01", "text": "...고맙다는 말은 안 할 거야. 근데. (노을을 본다) 너한테는, 좀 기대도 될 것 같다.", "expression": "smile", "sprite_position": "center" },
     { "type": "narration", "text": "주황빛이 사그라들고, 도시에 불이 하나둘 켜진다. 이 사람의 어딘가에도, 작은 불이 하나 켜진 것 같았다." }

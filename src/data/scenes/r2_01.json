@@ -9,7 +9,7 @@
     { "type": "dialogue", "speaker": "char_02", "text": "사람들은 제 얘기 3분이면 도망가요. 근데 선배는 안 도망가네요. ...왜요?", "expression": "neutral", "sprite_position": "center" },
     { "type": "choice", "choices": [
       { "label": "\"재밌으니까. 너 말 빠른 거 빼면 다 좋아.\"", "affection": { "char_02": 18 }, "set_flags": ["doyun_understood"], "goto": 4 },
-      { "label": "\"3분이면 가는 게 정상이긴 해. 좀 줄여봐.\"", "affection": { "char_02": -8 }, "set_flags": ["doyun_hurt"], "goto": 6 }
+      { "label": "\"3분이면 가는 게 정상이긴 해. 좀 줄여봐.\"", "affection": { "char_02": -8 }, "set_flags": ["doyun_hurt"], "goto": 5 }
     ] },
     { "type": "dialogue", "speaker": "char_02", "text": "(키보드 소리가 멈춘다) ...다 좋다고요? (귀가 빨개진다) 그런 말. 처음 들어봐요. 컴파일 에러 없는 칭찬은.", "expression": "blush", "sprite_position": "center", "goto": 7 },
     { "type": "dialogue", "speaker": "char_02", "text": "...어. 또 그러네요. 다들 그래요. (헤드폰을 올려 쓴다) ...알겠어요. 줄일게요.", "expression": "sad", "sprite_position": "center" },
