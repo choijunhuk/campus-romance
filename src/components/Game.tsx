@@ -3,7 +3,7 @@ import { useGame } from '../store'
 import { scenes, charById } from '../engine/load'
 import { endingSummary, isEndingScene, endingEventId } from '../engine/branching'
 import { bgTime, bgmTrack } from '../engine/atmosphere'
-import { SmartImage, useTypewriter, useBgm, playSfx } from './ui'
+import { SmartImage, useTypewriter, useBgm, playSfx, assetUrl } from './ui'
 import { SaveLoadMenu } from './SaveLoadMenu'
 import { RelationshipPanel } from './RelationshipPanel'
 import type { SpritePosition } from '../types'
@@ -193,7 +193,7 @@ export function Game() {
       {/* Background — ending CG on finales, else the location art */}
       {endingCG ? (
         <SmartImage
-          src={`/assets/cg/${endingCG}.png`}
+          src={assetUrl(`assets/cg/${endingCG}.png`)}
           alt={endingCG}
           label={scene.title}
           className="absolute inset-0 h-full w-full object-cover"
@@ -201,7 +201,7 @@ export function Game() {
       ) : bg ? (
         <SmartImage
           key={`${bg}_${time}`}
-          src={`/assets/backgrounds/${bg}_${time}.png`}
+          src={assetUrl(`assets/backgrounds/${bg}_${time}.png`)}
           alt={bg}
           label={`배경: ${bg}`}
           className="absolute inset-0 h-full w-full animate-bgfade object-cover"
@@ -216,7 +216,7 @@ export function Game() {
         ([pos, sp]) => (
           <SmartImage
             key={pos}
-            src={`/assets/characters/${sp.charId}_${sp.expression}.png`}
+            src={assetUrl(`assets/characters/${sp.charId}_${sp.expression}.png`)}
             alt={`${sp.charId} ${sp.expression}`}
             label={`${charById.get(sp.charId)?.name ?? sp.charId}\n(${sp.expression})`}
             className={`absolute bottom-0 ${POS_CLASS[pos]} h-[70%] w-40 object-contain object-bottom transition-all duration-200 sm:w-56 ${

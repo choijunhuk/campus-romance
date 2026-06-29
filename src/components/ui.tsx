@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 
 /**
+ * Resolve a public asset path against Vite's base URL. Hardcoded "/assets/…"
+ * strings DON'T get the base prefix automatically, so on GitHub Pages
+ * (base "/campus-romance/") they'd 404. Always wrap asset paths with this.
+ */
+export const assetUrl = (path: string) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
+/**
  * Image that falls back to a labeled placeholder box instead of a broken
  * image / crash when the asset file is missing.
  */
@@ -96,7 +104,7 @@ export function useBgm(track: string | null, volume: number, muted: boolean) {
       a.pause()
       return
     }
-    const src = `/assets/bgm/${track}.mp3`
+    const src = assetUrl(`assets/bgm/${track}.mp3`)
     if (!a.src.endsWith(src)) {
       a.src = src
       a.play().catch(() => {
@@ -115,7 +123,7 @@ export function useBgm(track: string | null, volume: number, muted: boolean) {
 export function playSfx(name: string, volume: number) {
   if (typeof Audio === 'undefined' || volume <= 0) return
   try {
-    const a = new Audio(`/assets/sfx/${name}.mp3`)
+    const a = new Audio(assetUrl(`assets/sfx/${name}.mp3`))
     a.volume = Math.max(0, Math.min(1, volume))
     a.play().catch(() => {})
   } catch {
