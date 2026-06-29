@@ -9,7 +9,9 @@
     "build": "node scripts/validate-content.js && tsc -b && vite build",
     "preview": "vite preview",
     "gen-images": "node scripts/gen-images.js",
-    "gen-images:dry": "node scripts/gen-images.js --dry-run"
+    "gen-images:dry": "node scripts/gen-images.js --dry-run",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
@@ -19,6 +21,7 @@
     "zustand": "^4.5.5"
   },
   "devDependencies": {
+    "@types/node": "^26.0.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
@@ -26,6 +29,7 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.6.3",
-    "vite": "^5.4.11"
+    "vite": "^5.4.11",
+    "vitest": "^4.1.9"
   }
 }
