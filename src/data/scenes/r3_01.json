@@ -10,7 +10,7 @@
     { "type": "narration", "text": "'괜찮아'를 두 번 말하는 사람은, 보통 안 괜찮다. 2년 쉬는 동안 그건 배웠다." },
     { "type": "choice", "choices": [
       { "label": "\"안 괜찮아 보여. 나한테는 안 웃어도 돼.\"", "affection": { "char_03": 18 }, "set_flags": ["narae_unmasked"], "goto": 5 },
-      { "label": "\"오 대단하다! 역시 나래는 에너지 넘쳐!\"", "affection": { "char_03": -8 }, "set_flags": ["narae_collapsed"], "goto": 7 }
+      { "label": "\"오 대단하다! 역시 나래는 에너지 넘쳐!\"", "affection": { "char_03": -8 }, "set_flags": ["narae_collapsed"], "goto": 6 }
     ] },
     { "type": "dialogue", "speaker": "char_03", "text": "(웃음이 멈춘다) ...안 웃어도 된다고. (눈가가 붉어진다) 그 말. 아무도 안 해줬는데. 다들 내 웃는 얼굴만 좋아해서.", "expression": "sad", "sprite_position": "center", "goto": 8 },
     { "type": "dialogue", "speaker": "char_03", "text": "(잠깐 멈칫하더니 더 환하게 웃는다) 그치! 나 에너지 부자야! ...응. 고마워, 선배.", "expression": "smile", "sprite_position": "center" },

@@ -12,12 +12,16 @@ export const SPRITE_POSITIONS = ['left', 'center', 'right'] as const
 
 /* ── Scene nodes ─────────────────────────────────────────────────────────── */
 
+// int = node index (same scene), string = scene_id, null/omitted = next node.
+// Honoured on choices AND on narration/dialogue nodes (jump after the line).
+const GotoSchema = z.union([z.number(), z.string(), z.null()]).optional()
+
 export const ChoiceSchema = z.object({
   label: z.string(),
   affection: z.record(z.number()).optional(),
   set_flags: z.array(z.string()).optional(),
-  // int = node index (same scene), string = scene_id, null/omitted = next node
-  goto: z.union([z.number(), z.string(), z.null()]).optional(),
+  background: z.string().optional(),
+  goto: GotoSchema,
 })
 
 export const NodeSchema = z.discriminatedUnion('type', [
@@ -26,6 +30,7 @@ export const NodeSchema = z.discriminatedUnion('type', [
     text: z.string(),
     background: z.string().optional(),
     bgm_mood: z.string().optional(),
+    goto: GotoSchema,
   }),
   z.object({
     type: z.literal('dialogue'),
@@ -33,6 +38,8 @@ export const NodeSchema = z.discriminatedUnion('type', [
     text: z.string(),
     expression: z.string().optional(),
     sprite_position: z.enum(SPRITE_POSITIONS).optional(),
+    background: z.string().optional(),
+    goto: GotoSchema,
   }),
   z.object({
     type: z.literal('choice'),

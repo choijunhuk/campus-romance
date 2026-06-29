@@ -12,7 +12,7 @@
       { "label": "\"넌 웃지 않아도 충분해. 내가 옆에서 비춰줄게.\"", "affection": { "char_03": 22 }, "set_flags": ["narae_unmasked"], "goto": 5 },
       { "label": "\"다들 너 좋아해. 너무 깊게 생각하지 마.\"", "affection": { "char_03": -5 }, "set_flags": [], "goto": 7 }
     ] },
-    { "type": "dialogue", "speaker": "char_03", "text": "(눈물이 툭 떨어진다, 그러다 진짜로 웃는다) ...뭐야. 울리고 웃기고. (눈물 닦으며) 고마워. 진짜, 나. 처음으로 쉰 것 같아.", "expression": "laugh", "sprite_position": "center", "goto": 8 },
+    { "type": "dialogue", "speaker": "char_03", "text": "(눈물이 툭 떨어진다, 그러다 진짜로 웃는다) ...뭐야. 울리고 웃기고. (눈물 닦으며) 고마워. 진짜, 나. 처음으로 쉰 것 같아.", "expression": "laugh", "sprite_position": "center", "goto": 6 },
     { "type": "narration", "text": "가면이 아니라, 진짜 얼굴이 거기 있었다.", "goto": 8 },
     { "type": "dialogue", "speaker": "char_03", "text": "(다시 웃는 얼굴로 돌아간다) ...그치. 내가 예민했나봐! 괜찮아, 괜찮아~", "expression": "smile", "sprite_position": "center" },
     { "type": "narration", "text": "강물 위로 도시 불빛이 부서진다. 내일이면 발표. 그리고 한 사람의 진심도, 답을 기다린다." }

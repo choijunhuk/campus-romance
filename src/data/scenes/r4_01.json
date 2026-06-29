@@ -12,7 +12,7 @@
       { "label": "\"쓸데없지 않아. 아직 늦지 않았잖아.\"", "affection": { "char_04": 18 }, "set_flags": ["sihyuk_confessed"], "goto": 5 },
       { "label": "\"현실적으로 공학 쪽이 낫지. 잘 접었어.\"", "affection": { "char_04": -8 }, "set_flags": ["sihyuk_too_late"], "goto": 7 }
     ] },
-    { "type": "dialogue", "speaker": "char_04", "text": "(피크 목걸이를 꽉 쥔다) ...늦지 않았다, 라. 너는 늘 그런 말을 쉽게 하더라. (옅게 웃음) ...근데 그게, 듣기 좋네.", "expression": "smile", "sprite_position": "center", "goto": 8 },
+    { "type": "dialogue", "speaker": "char_04", "text": "(피크 목걸이를 꽉 쥔다) ...늦지 않았다, 라. 너는 늘 그런 말을 쉽게 하더라. (옅게 웃음) ...근데 그게, 듣기 좋네.", "expression": "smile", "sprite_position": "center", "goto": 6 },
     { "type": "narration", "text": "무표정 속에서 아주 잠깐, 1학년 때의 그 얼굴이 스쳤다.", "goto": 8 },
     { "type": "dialogue", "speaker": "char_04", "text": "...그래. 잘 접었지. (피크를 셔츠 안으로 넣는다) 맞는 말이야. 늘 그렇듯.", "expression": "sad", "sprite_position": "center" },
     { "type": "narration", "text": "도시 위로 바람이 분다. 못다 한 멜로디 하나가, 어딘가에 묻힌 채로." }
