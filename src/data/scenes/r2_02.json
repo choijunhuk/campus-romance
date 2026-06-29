@@ -17,5 +17,5 @@
     { "type": "dialogue", "speaker": "char_02", "text": "...아. 네. 나중에. (헤드폰을 올린다) 나중에는, 안 오는 경우가 많던데. 알겠어요.", "expression": "sad", "sprite_position": "center" },
     { "type": "narration", "text": "내일이면 발표다. 풀리지 않은 변수 하나를 남긴 채, 밤이 깊어간다." }
   ],
-  "next_scene": "EVAL_ENDING:char_02"
+  "next_scene": "r2_03"
 }

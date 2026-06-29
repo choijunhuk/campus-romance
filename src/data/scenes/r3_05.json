@@ -1,0 +1,13 @@
+{
+  "scene_id": "r3_05",
+  "title": "대회, 그리고 진짜 웃음",
+  "background": "lecture_hall",
+  "bgm_mood": "hopeful_morning",
+  "nodes": [
+    { "type": "narration", "text": "대회 발표장. 나래가 만든 포스터와 UI가 스크린을 가득 채운다. 따뜻한 노란빛 화면에 사람들이 탄성을 터뜨린다." },
+    { "type": "dialogue", "speaker": "char_03", "text": "헐 대박ㅋㅋ 내 디자인 저렇게 크게 보니까 부끄럽다! (나를 슬쩍 본다) ...근데 오늘은, 안 웃어도 안 무섭네. 진짜로.", "expression": "smile", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_01", "text": "(옆에서) 잘했어. 네 손이 제일 많이 갔으니까. ...칭찬은 여기까지.", "expression": "smile", "sprite_position": "left" },
+    { "type": "narration", "text": "한 학기가 끝났다. 모두를 비추던 사람이 처음으로 자기 자리에 선 그 순간, 결과가 호명되려 한다." }
+  ],
+  "next_scene": "EVAL_ENDING:char_03"
+}

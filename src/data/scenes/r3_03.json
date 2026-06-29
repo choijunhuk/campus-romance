@@ -1,0 +1,23 @@
+{
+  "scene_id": "r3_03",
+  "title": "가면 내려놓기",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    { "type": "narration", "text": "알바 세 개를 끝낸 나래를 한강에서 우연히 만났다. 사람들 앞에선 늘 환하던 얼굴이, 강바람 속에선 텅 비어 있었다." },
+    { "type": "dialogue", "speaker": "char_03", "text": "(나를 보더니 반사적으로) 어? 선배! 헐 여기서 다 만나네ㅋㅋ 나 방금 알바 끝나고...", "expression": "smile", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_03", "text": "(말이 끊긴다. 갑자기 어깨가 무너진다) ...미안. 나 사실. 지금 좀. (목소리가 낮아진다) ...안 괜찮아. 한참 됐어.", "expression": "sad", "sprite_position": "center" },
+    { "type": "narration", "text": "모두를 비추느라 자기 빛은 다 써버린 사람이, 처음으로 강물 앞에서 운다. 어떻게 받아줄 것인가." },
+    { "type": "choice", "choices": [
+      { "label": "아무 말 없이 옆에 앉아, 다 울 때까지 기다린다.", "affection": { "char_03": 15 }, "set_flags": [], "goto": 5 },
+      { "label": "\"그러게 진작 좀 쉬지. 알바를 왜 세 개나 해.\" (다그치기)", "affection": { "char_03": -10 }, "set_flags": [], "goto": 8 }
+    ] },
+    { "type": "dialogue", "speaker": "char_03", "text": "(한참을 울다가, 작게) ...왜 안 가? 나 이러는 거, 부담스럽지 않아?", "expression": "sad", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_03", "text": "(눈물을 닦으며 처음으로 힘없이, 그러나 진짜로 웃는다) ...고마워. 나 우는 거, 아무도 본 적 없거든. 선배가 처음이야.", "expression": "embarrassed", "sprite_position": "center" },
+    { "type": "narration", "text": "가면 아래 진짜 얼굴이, 강물 위 불빛처럼 조심스레 드러났다.", "goto": 10 },
+    { "type": "dialogue", "speaker": "char_03", "text": "(황급히 눈물을 닦고 웃는 얼굴로 돌아간다) ...아 맞다 그러니까! 내가 좀 욕심이 많았어ㅋㅋ 괜찮아 괜찮아~ 신경 쓰지 마!", "expression": "smile", "sprite_position": "center" },
+    { "type": "narration", "text": "가면이 다시 올라갔다. 그녀는 또 모두에게 웃는 얼굴로 돌아가, 자기 어둠을 혼자 안고 일어섰다." },
+    { "type": "narration", "text": "강물 위로 도시 불빛이 부서진다. 내일이면 발표. 그리고 한 사람의 진짜 얼굴도, 답을 기다린다." }
+  ],
+  "next_scene": "r3_04"
+}
