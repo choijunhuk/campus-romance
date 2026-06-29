@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useGame } from '../store'
 import { characters, charById } from '../engine/load'
-import { SmartImage } from './ui'
+import { SmartImage, assetUrl } from './ui'
 import type { EndingTier } from '../types'
 
 const TIERS: EndingTier[] = ['good', 'normal', 'bad']
@@ -53,7 +53,7 @@ export function Gallery() {
               <div className="aspect-video w-full bg-black/40">
                 {isUnlocked ? (
                   <SmartImage
-                    src={`/assets/cg/${eventId}.png`}
+                    src={assetUrl(`assets/cg/${eventId}.png`)}
                     alt={title}
                     label={title}
                     className="h-full w-full object-cover"
@@ -85,7 +85,7 @@ export function Gallery() {
           onClick={() => setZoom(null)}
         >
           <SmartImage
-            src={`/assets/cg/${zoom.eventId}.png`}
+            src={assetUrl(`assets/cg/${zoom.eventId}.png`)}
             alt={zoom.title}
             label={zoom.title}
             className="max-h-[80%] max-w-full rounded-xl object-contain ring-1 ring-white/15"

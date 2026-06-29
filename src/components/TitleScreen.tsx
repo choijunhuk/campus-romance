@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useGame } from '../store'
 import { world, usingDemo, loadErrors, characters } from '../engine/load'
 import { SaveLoadMenu } from './SaveLoadMenu'
-import { SmartImage } from './ui'
+import { SmartImage, assetUrl } from './ui'
 
 export function TitleScreen() {
   const start = useGame((s) => s.start)
@@ -23,7 +23,7 @@ export function TitleScreen() {
     <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-6 text-center">
       {/* Title art (falls back to a warm gradient if the asset is missing) */}
       <SmartImage
-        src="/assets/ui/title_screen.png"
+        src={assetUrl('assets/ui/title_screen.png')}
         alt="title"
         label=""
         className="absolute inset-0 h-full w-full object-cover"
