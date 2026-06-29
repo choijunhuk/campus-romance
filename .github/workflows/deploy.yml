@@ -32,6 +32,8 @@ jobs:
           BASE_PATH: /campus-romance/
 
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true # self-enable Pages (no manual Settings step)
 
       - uses: actions/upload-pages-artifact@v3
         with:
