@@ -23,27 +23,78 @@ export function Game() {
   const showDebug = useGame((s) => s.showDebug)
   const affection = useGame((s) => s.affection)
   const flags = useGame((s) => s.flags)
+  const auto = useGame((s) => s.auto)
+  const skip = useGame((s) => s.skip)
+  const uiHidden = useGame((s) => s.uiHidden)
+  const settings = useGame((s) => s.settings)
+  const history = useGame((s) => s.history)
+  const affPing = useGame((s) => s.affPing)
   const advance = useGame((s) => s.advance)
   const choose = useGame((s) => s.choose)
   const toggleDebug = useGame((s) => s.toggleDebug)
+  const toggleAuto = useGame((s) => s.toggleAuto)
+  const toggleSkip = useGame((s) => s.toggleSkip)
+  const toggleUiHidden = useGame((s) => s.toggleUiHidden)
+  const pushHistory = useGame((s) => s.pushHistory)
+  const clearPing = useGame((s) => s.clearPing)
   const setScreen = useGame((s) => s.setScreen)
 
-  const [menu, setMenu] = useState<'none' | 'save' | 'load'>('none')
+  const [menu, setMenu] = useState<'none' | 'save' | 'load' | 'log' | 'settings'>('none')
 
   const scene = scenes.get(sceneId)
   const node = scene?.nodes[nodeIndex]
   const isChoice = node?.type === 'choice'
   const lineText = node && node.type !== 'choice' ? node.text : ''
-  const tw = useTypewriter(lineText, `${sceneId}:${nodeIndex}`)
+  const tw = useTypewriter(lineText, `${sceneId}:${nodeIndex}`, settings.textSpeed)
+
+  const speakerName =
+    node?.type === 'dialogue'
+      ? node.speaker === 'protagonist'
+        ? playerName
+        : charById.get(node.speaker)?.name ?? node.speaker
+      : ''
 
   function onStage() {
-    if (ended || menu !== 'none' || !node) return
-    if (isChoice) return
+    if (uiHidden) {
+      toggleUiHidden() // first click just brings the UI back
+      return
+    }
+    if (ended || menu !== 'none' || !node || isChoice) return
     if (!tw.done) tw.finish()
     else advance()
   }
 
-  // Keyboard: Space/Enter advance, backtick toggles debug.
+  // Record each shown line into the backlog.
+  useEffect(() => {
+    if (!node || node.type === 'choice') return
+    pushHistory(speakerName, node.text)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sceneId, nodeIndex])
+
+  // Auto-advance: wait autoDelay after the line finishes, then advance.
+  useEffect(() => {
+    if (!auto || isChoice || ended || !tw.done || menu !== 'none') return
+    const id = setTimeout(() => advance(), settings.autoDelay)
+    return () => clearTimeout(id)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [auto, isChoice, ended, tw.done, settings.autoDelay, sceneId, nodeIndex, menu])
+
+  // Skip: race through lines (finish typewriter, then advance) until a choice/end.
+  useEffect(() => {
+    if (!skip || isChoice || ended || menu !== 'none') return
+    const id = setTimeout(() => (tw.done ? advance() : tw.finish()), 28)
+    return () => clearTimeout(id)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [skip, isChoice, ended, tw.done, sceneId, nodeIndex, menu])
+
+  // Affection feedback toast auto-dismiss.
+  useEffect(() => {
+    if (!affPing) return
+    const id = setTimeout(() => clearPing(), 1800)
+    return () => clearTimeout(id)
+  }, [affPing?.ts, affPing, clearPing])
+
+  // Keyboard: Space/Enter advance, Esc closes overlays, A=auto, Ctrl=skip, H=hide, backtick=debug.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.code === 'Backquote') {
@@ -51,21 +102,33 @@ export function Game() {
         toggleDebug()
         return
       }
-      if ((e.code === 'Space' || e.code === 'Enter') && menu === 'none') {
+      if (e.code === 'Escape') {
+        if (menu !== 'none') setMenu('none')
+        else if (uiHidden) toggleUiHidden()
+        return
+      }
+      if (menu !== 'none') return
+      if (e.code === 'Space' || e.code === 'Enter') {
         e.preventDefault()
         onStage()
+      } else if (e.code === 'KeyA') {
+        toggleAuto()
+      } else if (e.code === 'KeyH') {
+        toggleUiHidden()
+      } else if (e.code === 'ControlLeft' || e.code === 'ControlRight') {
+        toggleSkip()
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sceneId, nodeIndex, ended, tw.done, isChoice, menu])
+  }, [sceneId, nodeIndex, ended, tw.done, isChoice, menu, uiHidden])
 
   if (!scene || !node) {
     return (
-      <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-slate-900 p-6 text-center text-white">
+      <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-ink p-6 text-center text-cream">
         <p>씬을 찾을 수 없습니다: <code>{sceneId}</code></p>
-        <button onClick={() => setScreen('title')} className="rounded-lg bg-teal-500 px-4 py-2 text-slate-900">
+        <button onClick={() => setScreen('title')} className="rounded-lg bg-rose px-4 py-2 text-ink">
           타이틀로
         </button>
       </div>
@@ -86,16 +149,10 @@ export function Game() {
     }
   }
 
-  const speakerName =
-    node.type === 'dialogue'
-      ? node.speaker === 'protagonist'
-        ? playerName
-        : charById.get(node.speaker)?.name ?? node.speaker
-      : ''
   const activeSpeaker = node.type === 'dialogue' ? node.speaker : null
 
   return (
-    <div className="relative h-full w-full select-none overflow-hidden bg-slate-950">
+    <div className="relative h-full w-full select-none overflow-hidden bg-ink">
       {/* Background */}
       {bg ? (
         <SmartImage
@@ -105,7 +162,7 @@ export function Game() {
           className="absolute inset-0 h-full w-full object-cover"
         />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-700 to-slate-900" />
+        <div className="absolute inset-0 bg-gradient-to-b from-panel to-ink" />
       )}
 
       {/* Sprites */}
@@ -123,14 +180,6 @@ export function Game() {
         ),
       )}
 
-      {/* Top bar */}
-      <div className="absolute right-2 top-2 z-20 flex gap-2 text-xs">
-        <TopButton onClick={() => setMenu('save')}>저장</TopButton>
-        <TopButton onClick={() => setMenu('load')}>불러오기</TopButton>
-        <TopButton onClick={toggleDebug}>디버그</TopButton>
-        <TopButton onClick={() => setScreen('title')}>타이틀</TopButton>
-      </div>
-
       {/* Click-to-advance stage (sits under the dialogue/choice UI) */}
       <button
         className="absolute inset-0 z-0 h-full w-full cursor-pointer"
@@ -138,32 +187,59 @@ export function Game() {
         onClick={onStage}
       />
 
+      {/* Affection feedback toast */}
+      {affPing && (
+        <div
+          key={affPing.ts}
+          className="animate-afffloat pointer-events-none absolute left-1/2 top-20 z-20 -translate-x-1/2 rounded-full bg-panel/90 px-4 py-2 text-sm font-semibold shadow-lg ring-1 ring-white/10"
+        >
+          <span className={affPing.delta >= 0 ? 'text-rose-soft' : 'text-teal-soft'}>
+            {affPing.delta >= 0 ? '♥' : '···'} {affPing.charName} {affPing.delta >= 0 ? '+' : ''}
+            {affPing.delta}
+          </span>
+        </div>
+      )}
+
+      {/* Top bar */}
+      {!uiHidden && (
+        <div className="absolute right-2 top-2 z-20 flex flex-wrap justify-end gap-1.5 text-xs">
+          <TopButton active={auto} onClick={toggleAuto}>AUTO</TopButton>
+          <TopButton active={skip} onClick={toggleSkip}>SKIP</TopButton>
+          <TopButton onClick={() => setMenu('log')}>로그</TopButton>
+          <TopButton onClick={toggleUiHidden}>숨기기</TopButton>
+          <TopButton onClick={() => setMenu('settings')}>설정</TopButton>
+          <TopButton onClick={() => setMenu('save')}>저장</TopButton>
+          <TopButton onClick={() => setMenu('load')}>불러오기</TopButton>
+          <TopButton onClick={() => setScreen('title')}>타이틀</TopButton>
+        </div>
+      )}
+
       {/* Dialogue / narration box */}
-      {!isChoice && (
+      {!isChoice && !uiHidden && (
         <div
           className="absolute inset-x-0 bottom-0 z-10 cursor-pointer p-3 sm:p-6"
           onClick={onStage}
         >
-          <div className="mx-auto max-w-3xl rounded-2xl bg-slate-900/85 p-4 shadow-xl ring-1 ring-white/10 backdrop-blur sm:p-6">
+          <div className="mx-auto max-w-3xl rounded-2xl bg-panel/90 p-4 shadow-xl ring-1 ring-amber/20 backdrop-blur sm:p-6">
             {speakerName && (
-              <p className="mb-1 text-base font-bold text-teal-300">{speakerName}</p>
+              <p className="mb-1 text-base font-bold text-amber-soft">{speakerName}</p>
             )}
-            <p className="min-h-[3.5rem] text-[15px] leading-relaxed text-white sm:text-lg">
+            <p className="min-h-[3.5rem] text-[15px] leading-relaxed text-cream sm:text-lg">
               {tw.shown}
-              {tw.done && <span className="ml-1 animate-pulse text-teal-300">▼</span>}
+              {tw.done && <span className="ml-1 animate-pulse text-amber">▼</span>}
             </p>
           </div>
         </div>
       )}
 
       {/* Choices */}
-      {isChoice && node.type === 'choice' && (
+      {isChoice && node.type === 'choice' && !uiHidden && (
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 p-6">
           {node.choices.map((c, i) => (
             <button
               key={i}
               onClick={() => choose(c)}
-              className="w-full max-w-lg rounded-xl bg-slate-900/90 px-5 py-3.5 text-left text-white ring-1 ring-white/15 transition hover:bg-teal-600 hover:ring-teal-300"
+              className="w-full max-w-lg rounded-xl bg-panel/95 px-5 py-3.5 text-left text-cream ring-1 ring-white/15 transition hover:bg-rose hover:text-ink hover:ring-rose-soft"
             >
               {c.label}
             </button>
@@ -171,12 +247,19 @@ export function Game() {
         </div>
       )}
 
+      {/* Hidden-UI hint */}
+      {uiHidden && (
+        <p className="pointer-events-none absolute bottom-3 left-1/2 z-10 -translate-x-1/2 rounded-full bg-panel/70 px-3 py-1 text-xs text-cream/70">
+          UI 숨김 — 클릭 또는 Esc로 복귀
+        </p>
+      )}
+
       {/* Debug overlay */}
       {showDebug && (
         <div className="absolute left-2 top-2 z-20 max-w-[60%] rounded-lg bg-black/80 p-3 text-xs text-lime-300">
           <p className="font-bold">DEBUG (backtick to toggle)</p>
           <p>
-            scene: {sceneId} · node: {nodeIndex}/{scene.nodes.length - 1}
+            scene: {sceneId} · node: {nodeIndex}/{scene.nodes.length - 1} · path: {path.join('→')}
           </p>
           <p className="mt-1 font-semibold">affection</p>
           {charById.size === 0 ? (
@@ -193,22 +276,47 @@ export function Game() {
         </div>
       )}
 
+      {/* Backlog */}
+      {menu === 'log' && (
+        <Overlay title="대사 로그" onClose={() => setMenu('none')}>
+          {history.length === 0 ? (
+            <p className="text-sm text-cream/60">아직 기록이 없습니다.</p>
+          ) : (
+            <div className="space-y-3">
+              {history.map((h, i) => (
+                <div key={i}>
+                  {h.name && <p className="text-xs font-bold text-amber-soft">{h.name}</p>}
+                  <p className="text-sm leading-relaxed text-cream/90">{h.text}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </Overlay>
+      )}
+
+      {/* Settings */}
+      {menu === 'settings' && (
+        <Overlay title="설정" onClose={() => setMenu('none')}>
+          <SettingsBody />
+        </Overlay>
+      )}
+
       {/* Ending screen */}
       {ended && (
         <div className="absolute inset-0 z-30 flex flex-col items-center justify-center gap-5 bg-black/85 p-6 text-center">
-          <p className="text-sm tracking-widest text-teal-300">— THE END —</p>
-          <h2 className="text-2xl font-bold text-white sm:text-3xl">{scene.title}</h2>
-          <p className="max-w-md text-sm text-slate-300">{endingSummary(sceneId)}</p>
+          <p className="text-sm tracking-widest text-amber-soft">— THE END —</p>
+          <h2 className="text-2xl font-bold text-cream sm:text-3xl">{scene.title}</h2>
+          <p className="max-w-md text-sm text-cream/70">{endingSummary(sceneId)}</p>
           <div className="flex gap-3">
             <button
               onClick={() => setScreen('gallery')}
-              className="rounded-xl bg-slate-700 px-5 py-2.5 text-white hover:bg-slate-600"
+              className="rounded-xl bg-panel px-5 py-2.5 text-cream ring-1 ring-white/15 hover:bg-panel/70"
             >
               CG 갤러리
             </button>
             <button
               onClick={() => setScreen('title')}
-              className="rounded-xl bg-teal-500 px-5 py-2.5 font-semibold text-slate-900 hover:bg-teal-400"
+              className="rounded-xl bg-rose px-5 py-2.5 font-semibold text-ink hover:bg-rose-soft"
             >
               타이틀로
             </button>
@@ -216,18 +324,102 @@ export function Game() {
         </div>
       )}
 
-      {menu !== 'none' && <SaveLoadMenu mode={menu} onClose={() => setMenu('none')} />}
+      {(menu === 'save' || menu === 'load') && (
+        <SaveLoadMenu mode={menu} onClose={() => setMenu('none')} />
+      )}
     </div>
   )
 }
 
-function TopButton({ children, onClick }: { children: React.ReactNode; onClick: () => void }) {
+function TopButton({
+  children,
+  onClick,
+  active,
+}: {
+  children: React.ReactNode
+  onClick: () => void
+  active?: boolean
+}) {
   return (
     <button
       onClick={onClick}
-      className="rounded-lg bg-slate-900/80 px-3 py-1.5 text-white ring-1 ring-white/15 transition hover:bg-slate-700"
+      className={`rounded-lg px-3 py-1.5 ring-1 transition ${
+        active
+          ? 'bg-rose text-ink ring-rose-soft'
+          : 'bg-panel/85 text-cream ring-white/15 hover:bg-panel'
+      }`}
     >
       {children}
     </button>
+  )
+}
+
+function Overlay({
+  title,
+  children,
+  onClose,
+}: {
+  title: string
+  children: React.ReactNode
+  onClose: () => void
+}) {
+  return (
+    <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/70 p-4" onClick={onClose}>
+      <div
+        className="flex max-h-[80%] w-full max-w-md flex-col rounded-2xl bg-ink p-5 shadow-2xl ring-1 ring-amber/20"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-cream">{title}</h2>
+          <button onClick={onClose} className="rounded-lg bg-panel px-3 py-1 text-sm text-cream hover:bg-panel/70">
+            닫기
+          </button>
+        </div>
+        <div className="overflow-y-auto pr-1">{children}</div>
+      </div>
+    </div>
+  )
+}
+
+function SettingsBody() {
+  const settings = useGame((s) => s.settings)
+  const setSetting = useGame((s) => s.setSetting)
+  return (
+    <div className="space-y-5 text-cream">
+      <label className="block">
+        <div className="mb-1 flex justify-between text-sm">
+          <span>텍스트 속도</span>
+          <span className="text-cream/60">{settings.textSpeed <= 6 ? '빠름' : settings.textSpeed >= 40 ? '느림' : '보통'}</span>
+        </div>
+        {/* slider is inverted: left = fast (low ms), right = slow */}
+        <input
+          type="range"
+          min={2}
+          max={60}
+          step={2}
+          value={settings.textSpeed}
+          onChange={(e) => setSetting('textSpeed', Number(e.target.value))}
+          className="w-full accent-rose"
+        />
+      </label>
+      <label className="block">
+        <div className="mb-1 flex justify-between text-sm">
+          <span>자동 진행 대기</span>
+          <span className="text-cream/60">{(settings.autoDelay / 1000).toFixed(1)}초</span>
+        </div>
+        <input
+          type="range"
+          min={400}
+          max={3000}
+          step={100}
+          value={settings.autoDelay}
+          onChange={(e) => setSetting('autoDelay', Number(e.target.value))}
+          className="w-full accent-rose"
+        />
+      </label>
+      <p className="text-xs text-cream/50">
+        단축키: Space/Enter 진행 · A 자동 · Ctrl 스킵 · H UI 숨기기 · Esc 닫기
+      </p>
+    </div>
   )
 }

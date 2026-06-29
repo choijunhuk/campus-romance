@@ -17,5 +17,5 @@
     { "type": "dialogue", "speaker": "char_04", "text": "...다음에. (기타를 다시 멘다) 그래. 다음에. (낮게) 또 늦는 거. 이젠 익숙하다.", "expression": "sad", "sprite_position": "center" },
     { "type": "narration", "text": "내일이면 발표. 2년을 건너온 한마디가, 답을 기다린다." }
   ],
-  "next_scene": "EVAL_ENDING:char_04"
+  "next_scene": "r4_03"
 }

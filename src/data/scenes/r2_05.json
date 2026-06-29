@@ -1,0 +1,13 @@
+{
+  "scene_id": "r2_05",
+  "title": "대회, 그리고 첫 마음",
+  "background": "lecture_hall",
+  "bgm_mood": "hopeful_morning",
+  "nodes": [
+    { "type": "narration", "text": "대회 발표장. 도윤이 짠 코드가 무대 위에서 5ms 딜레이로 완벽하게 돈다. 빛이 켜지고, 박수가 터진다." },
+    { "type": "dialogue", "speaker": "char_02", "text": "거봐요 제가 30분이면 끝낸다 그랬죠. ...어, 근데 박수는 왜 이렇게 떨려요? 이거 또 디버깅 안 되는 거예요.", "expression": "surprised", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_01", "text": "(옆에서) 됐고. 떨면 그냥 떠는 거지. 그것도 못 풀어?", "expression": "smile", "sprite_position": "left" },
+    { "type": "narration", "text": "한 학기가 끝났다. 천재의 외로움이 처음으로 누군가와 연결된 자리에서, 결과가 호명되려 한다." }
+  ],
+  "next_scene": "EVAL_ENDING:char_02"
+}

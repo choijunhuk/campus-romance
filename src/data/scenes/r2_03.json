@@ -1,0 +1,23 @@
+{
+  "scene_id": "r2_03",
+  "title": "디버깅 안 되는 마음",
+  "background": "club_room",
+  "bgm_mood": "quiet_night",
+  "nodes": [
+    { "type": "narration", "text": "새벽 두 시. 동아리방엔 도윤과 나뿐이다. 키보드 소리가 멎고, 한참을 모니터만 보던 도윤이 입을 연다." },
+    { "type": "dialogue", "speaker": "char_02", "text": "선배. 저 질문 하나만요. ...사람들은 어떻게 안 외로워요? 그거 무슨 알고리즘이에요?", "expression": "neutral", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_02", "text": "전 진짜 모르겠어서요. 다들 옆에 누가 있어도 멀쩡한데. 저는 사람 많은 데가 제일 외롭더라고요. ...이거 버근가요?", "expression": "sad", "sprite_position": "center" },
+    { "type": "narration", "text": "동아리 최고의 천재가, 코드 밖의 언어로 처음 '외로움'을 더듬는다. 서툴고, 그래서 더 아프게." },
+    { "type": "choice", "choices": [
+      { "label": "\"버그 아니야. 다들 그래. 너만 솔직하게 말하는 것뿐이야.\"", "affection": { "char_02": 15 }, "set_flags": [], "goto": 5 },
+      { "label": "\"외로움은 그냥 변수 관리하듯 하면 돼. 일정 짜고 사람 만나고.\" (해법 제시)", "affection": { "char_02": -10 }, "set_flags": [], "goto": 8 }
+    ] },
+    { "type": "dialogue", "speaker": "char_02", "text": "(눈을 깜빡인다) ...다들 그렇다고요? 저만 이상한 게 아니라?", "expression": "surprised", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_02", "text": "(작게 웃는다) 와. 그 말 들으니까. 외로움이 한 줄 줄어든 느낌이에요. ...선배는 진짜, 제 말을 끝까지 듣네요.", "expression": "smile", "sprite_position": "center" },
+    { "type": "narration", "text": "처음으로, 도윤이 모니터가 아니라 사람 쪽으로 의자를 돌렸다.", "goto": 10 },
+    { "type": "dialogue", "speaker": "char_02", "text": "...아. 그렇게 처리하면 되는구나. (헤드폰을 올려 쓴다) 네. 효율적이네요. 그쵸.", "expression": "sad", "sprite_position": "center" },
+    { "type": "narration", "text": "도윤의 표정이 다시 모니터처럼 무표정해졌다. 무언가를, 또 혼자 닫아버린 얼굴로." },
+    { "type": "narration", "text": "키보드 소리가 다시 시작된다. 새벽은 길고, 풀리지 않은 변수 하나가 남았다." }
+  ],
+  "next_scene": "r2_04"
+}

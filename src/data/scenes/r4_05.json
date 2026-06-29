@@ -1,0 +1,13 @@
+{
+  "scene_id": "r4_05",
+  "title": "대회, 그리고 늦지 않은 말",
+  "background": "lecture_hall",
+  "bgm_mood": "hopeful_morning",
+  "nodes": [
+    { "type": "narration", "text": "대회 발표장. 시혁이 맡은 기구 설계가 무대 위에서 매끄럽게 작동한다. 박수가 터지고, 그는 무표정 그대로 무대를 내려온다." },
+    { "type": "dialogue", "speaker": "char_04", "text": "(나를 보고, 드물게 옅게 웃는다) ...끝났네. (잠깐 침묵) 이번엔. 늦은 거 하나도 없다. 다 제때 했어.", "expression": "smile", "sprite_position": "center" },
+    { "type": "dialogue", "speaker": "char_02", "text": "(끼어들며) 어 시혁 선배 방금 웃었어요? 와 처음 봐. 박제할래요 그거.", "expression": "laugh", "sprite_position": "right" },
+    { "type": "narration", "text": "한 학기가 끝났다. 늘 한 박자 늦던 사람이 처음으로 제때 선 그 자리에서, 결과가 호명되려 한다." }
+  ],
+  "next_scene": "EVAL_ENDING:char_04"
+}

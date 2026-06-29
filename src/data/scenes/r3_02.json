@@ -17,5 +17,5 @@
     { "type": "dialogue", "speaker": "char_03", "text": "(다시 웃는 얼굴로 돌아간다) ...그치. 내가 예민했나봐! 괜찮아, 괜찮아~", "expression": "smile", "sprite_position": "center" },
     { "type": "narration", "text": "강물 위로 도시 불빛이 부서진다. 내일이면 발표. 그리고 한 사람의 진심도, 답을 기다린다." }
   ],
-  "next_scene": "EVAL_ENDING:char_03"
+  "next_scene": "r3_03"
 }
