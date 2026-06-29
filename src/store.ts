@@ -33,6 +33,7 @@ export const SAVE_SLOTS = [
 
 const GALLERY_KEY = 'vn_gallery'
 const SETTINGS_KEY = 'vn_settings'
+const SEEN_KEY = 'vn_seen'
 const slotKey = (slot: string) => `vn_save_${slot}`
 const clamp = (v: number) => Math.max(0, Math.min(100, v))
 
@@ -54,13 +55,33 @@ function addToGallery(ids: string[]) {
 interface Settings {
   textSpeed: number // ms per character (lower = faster)
   autoDelay: number // ms to wait before auto-advancing a finished line
+  bgmVolume: number // 0..1
+  sfxVolume: number // 0..1
+  muted: boolean
+  skipUnread: boolean // allow SKIP to race through never-seen text too
 }
-const DEFAULT_SETTINGS: Settings = { textSpeed: 22, autoDelay: 1200 }
+const DEFAULT_SETTINGS: Settings = {
+  textSpeed: 22,
+  autoDelay: 1200,
+  bgmVolume: 0.6,
+  sfxVolume: 0.7,
+  muted: false,
+  skipUnread: false,
+}
 function readSettings(): Settings {
   try {
     return { ...DEFAULT_SETTINGS, ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') }
   } catch {
     return { ...DEFAULT_SETTINGS }
+  }
+}
+
+/** Lines the player has already read (key = `sceneId:nodeIndex`), for skip-unread. */
+function readSeen(): Set<string> {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(SEEN_KEY) || '[]'))
+  } catch {
+    return new Set()
   }
 }
 
@@ -117,6 +138,7 @@ interface GameState {
   uiHidden: boolean
   settings: Settings
   affPing: AffPing | null
+  seen: Set<string>
 
   setScreen: (screen: Screen) => void
   toggleDebug: () => void
@@ -131,6 +153,7 @@ interface GameState {
   toggleUiHidden: () => void
   setSetting: <K extends keyof Settings>(key: K, value: Settings[K]) => void
   clearPing: () => void
+  markSeen: (key: string) => void
 
   save: (slot: string) => void
   load: (slot: string) => boolean
@@ -156,6 +179,7 @@ export const useGame = create<GameState>((set, get) => ({
   uiHidden: false,
   settings: readSettings(),
   affPing: null,
+  seen: readSeen(),
 
   setScreen: (screen) => set({ screen }),
   toggleDebug: () => set((s) => ({ showDebug: !s.showDebug })),
@@ -275,6 +299,17 @@ export const useGame = create<GameState>((set, get) => ({
     }
   },
   clearPing: () => set({ affPing: null }),
+  markSeen: (key) => {
+    if (get().seen.has(key)) return
+    const seen = new Set(get().seen)
+    seen.add(key)
+    set({ seen })
+    try {
+      localStorage.setItem(SEEN_KEY, JSON.stringify([...seen]))
+    } catch {
+      /* storage unavailable — ignore */
+    }
+  },
 
   save: (slot) => {
     const s = get()

@@ -288,3 +288,20 @@ One auto-save slot (`auto`) and three manual slots (`s1`–`s3`), persisted in `
 | Click / Space / Enter | Advance text (second press skips the typewriter) |
 | Backtick `` ` `` | Toggle debug overlay (affection values, flags, node index) |
 | In-game top bar | 저장 / 불러오기 / 갤러리 / 타이틀 |
+
+---
+
+## 배포 / Deployment
+
+Live URL: **https://choijunhuk.github.io/campus-romance/**
+
+- **CI** — every pull request and push to `master` runs `npm test` and `npm run build` automatically via GitHub Actions.
+- **Pages deployment** — every push to `master` also triggers a deploy to GitHub Pages using the `deploy.yml` workflow.
+
+### One-time manual setup required
+
+The Pages deployment workflow cannot configure the GitHub Pages source itself. After the first push, go to:
+
+**Repo Settings → Pages → Source → select "GitHub Actions"**
+
+Without this step the `deploy.yml` workflow will fail with a 404/permissions error.
