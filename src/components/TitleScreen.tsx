@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useGame } from '../store'
-import { world, usingDemo, loadErrors } from '../engine/load'
+import { world, usingDemo, loadErrors, characters } from '../engine/load'
 import { SaveLoadMenu } from './SaveLoadMenu'
 import { SmartImage } from './ui'
 
@@ -9,11 +9,15 @@ export function TitleScreen() {
   const load = useGame((s) => s.load)
   const setScreen = useGame((s) => s.setScreen)
   const listSaves = useGame((s) => s.listSaves)
+  const galleryIds = useGame((s) => s.galleryIds)
   const [name, setName] = useState('')
   const [showLoad, setShowLoad] = useState(false)
 
   const hasAuto = !!listSaves().auto
   const titles = world?.title ?? ['Campus Romance']
+  // Ending collection: each character has good/normal/bad + the solo route.
+  const totalEndings = characters.length * 3 + 1
+  const seenEndings = galleryIds().filter((id) => id.endsWith('_ending')).length
 
   return (
     <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-6 text-center">
@@ -70,6 +74,12 @@ export function TitleScreen() {
             CG 갤러리
           </button>
         </div>
+        {seenEndings > 0 && (
+          <p className="text-xs text-amber-soft/80">
+            엔딩 수집 {seenEndings} / {totalEndings}
+            {seenEndings >= totalEndings && ' · 올 클리어! ✦'}
+          </p>
+        )}
       </div>
       </div>
 

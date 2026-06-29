@@ -1,8 +1,7 @@
 import { useGame, SAVE_SLOTS, type SaveData } from '../store'
-import { world } from '../engine/load'
+import { world, scenes } from '../engine/load'
+import { bgTime } from '../engine/atmosphere'
 import { SmartImage } from './ui'
-
-const BG_TIME = 'afternoon'
 
 /** background id -> Korean location name (from world_bible). */
 const LOC_NAME: Record<string, string> = Object.fromEntries(
@@ -64,7 +63,7 @@ export function SaveLoadMenu({
                 <div className="h-12 w-20 shrink-0 overflow-hidden rounded-lg bg-black/40">
                   {data?.bg && (
                     <SmartImage
-                      src={`/assets/backgrounds/${data.bg}_${BG_TIME}.png`}
+                      src={`/assets/backgrounds/${data.bg}_${bgTime(scenes.get(data.sceneId)?.bgm_mood)}.png`}
                       alt={data.bg}
                       label="…"
                       className="h-full w-full object-cover"
