@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useGame } from '../store'
 import { scenes, charById } from '../engine/load'
 import { endingSummary, isEndingScene, endingEventId } from '../engine/branching'
-import { bgTime } from '../engine/atmosphere'
-import { SmartImage, useTypewriter } from './ui'
+import { bgTime, bgmTrack } from '../engine/atmosphere'
+import { SmartImage, useTypewriter, useBgm, playSfx } from './ui'
 import { SaveLoadMenu } from './SaveLoadMenu'
+import { RelationshipPanel } from './RelationshipPanel'
 import type { SpritePosition } from '../types'
 
 const POS_CLASS: Record<SpritePosition, string> = {
@@ -28,6 +29,9 @@ export function Game() {
   const settings = useGame((s) => s.settings)
   const history = useGame((s) => s.history)
   const affPing = useGame((s) => s.affPing)
+  const seen = useGame((s) => s.seen)
+  const markSeen = useGame((s) => s.markSeen)
+  const setSetting = useGame((s) => s.setSetting)
   const advance = useGame((s) => s.advance)
   const choose = useGame((s) => s.choose)
   const toggleDebug = useGame((s) => s.toggleDebug)
@@ -38,7 +42,26 @@ export function Game() {
   const clearPing = useGame((s) => s.clearPing)
   const setScreen = useGame((s) => s.setScreen)
 
-  const [menu, setMenu] = useState<'none' | 'save' | 'load' | 'log' | 'settings'>('none')
+  const [menu, setMenu] = useState<'none' | 'save' | 'load' | 'log' | 'settings' | 'relationship'>(
+    'none',
+  )
+  // Whether the current line had been read in a PRIOR visit (snapshot taken
+  // before we mark it seen) — drives skip-unread.
+  const wasSeenRef = useRef(false)
+
+  // BGM for the current scene mood (track derived independently of the render
+  // path so this hook stays above the early return).
+  const bgmMood = (() => {
+    const sc = scenes.get(sceneId)
+    if (!sc) return null
+    let m = sc.bgm_mood
+    for (const i of path) {
+      const n = sc.nodes[i]
+      if (n?.type === 'narration' && n.bgm_mood) m = n.bgm_mood
+    }
+    return m
+  })()
+  useBgm(bgmMood ? bgmTrack(bgmMood) : null, settings.bgmVolume, settings.muted)
 
   const scene = scenes.get(sceneId)
   const node = scene?.nodes[nodeIndex]
@@ -63,10 +86,14 @@ export function Game() {
     else advance()
   }
 
-  // Record each shown line into the backlog.
+  // Record each shown line into the backlog + mark it read (snapshot prior
+  // seen-state first, so skip-unread can tell first-reads from re-reads).
   useEffect(() => {
+    const key = `${sceneId}:${nodeIndex}`
+    wasSeenRef.current = seen.has(key)
     if (!node || node.type === 'choice') return
     pushHistory(speakerName, node.text)
+    markSeen(key)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sceneId, nodeIndex])
 
@@ -79,12 +106,17 @@ export function Game() {
   }, [auto, isChoice, ended, tw.done, settings.autoDelay, sceneId, nodeIndex, menu])
 
   // Skip: race through lines (finish typewriter, then advance) until a choice/end.
+  // Unless skipUnread is on, skipping halts when it reaches never-before-read text.
   useEffect(() => {
     if (!skip || isChoice || ended || menu !== 'none') return
+    if (!wasSeenRef.current && !settings.skipUnread) {
+      toggleSkip() // hit unread text — stop skipping
+      return
+    }
     const id = setTimeout(() => (tw.done ? advance() : tw.finish()), 28)
     return () => clearTimeout(id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [skip, isChoice, ended, tw.done, sceneId, nodeIndex, menu])
+  }, [skip, isChoice, ended, tw.done, sceneId, nodeIndex, menu, settings.skipUnread])
 
   // Affection feedback toast auto-dismiss.
   useEffect(() => {
@@ -220,6 +252,10 @@ export function Game() {
           <TopButton active={auto} onClick={toggleAuto}>AUTO</TopButton>
           <TopButton active={skip} onClick={toggleSkip}>SKIP</TopButton>
           <TopButton onClick={() => setMenu('log')}>로그</TopButton>
+          <TopButton onClick={() => setMenu('relationship')}>관계</TopButton>
+          <TopButton active={settings.muted} onClick={() => setSetting('muted', !settings.muted)}>
+            {settings.muted ? '🔇' : '🔊'}
+          </TopButton>
           <TopButton onClick={toggleUiHidden}>숨기기</TopButton>
           <TopButton onClick={() => setMenu('settings')}>설정</TopButton>
           <TopButton onClick={() => setMenu('save')}>저장</TopButton>
@@ -252,7 +288,10 @@ export function Game() {
           {node.choices.map((c, i) => (
             <button
               key={i}
-              onClick={() => choose(c)}
+              onClick={() => {
+                playSfx('select', settings.sfxVolume)
+                choose(c)
+              }}
               className="w-full max-w-lg rounded-xl bg-panel/95 px-5 py-3.5 text-left text-cream ring-1 ring-white/15 transition hover:bg-rose hover:text-ink hover:ring-rose-soft"
             >
               {c.label}
@@ -314,6 +353,9 @@ export function Game() {
           <SettingsBody />
         </Overlay>
       )}
+
+      {/* Relationship meter */}
+      {menu === 'relationship' && <RelationshipPanel onClose={() => setMenu('none')} />}
 
       {/* Ending screen */}
       {ended && (
@@ -429,6 +471,54 @@ function SettingsBody() {
           value={settings.autoDelay}
           onChange={(e) => setSetting('autoDelay', Number(e.target.value))}
           className="w-full accent-rose"
+        />
+      </label>
+      <label className="block">
+        <div className="mb-1 flex justify-between text-sm">
+          <span>BGM 볼륨</span>
+          <span className="text-cream/60">{Math.round(settings.bgmVolume * 100)}%</span>
+        </div>
+        <input
+          type="range"
+          min={0}
+          max={1}
+          step={0.05}
+          value={settings.bgmVolume}
+          onChange={(e) => setSetting('bgmVolume', Number(e.target.value))}
+          className="w-full accent-rose"
+        />
+      </label>
+      <label className="block">
+        <div className="mb-1 flex justify-between text-sm">
+          <span>효과음 볼륨</span>
+          <span className="text-cream/60">{Math.round(settings.sfxVolume * 100)}%</span>
+        </div>
+        <input
+          type="range"
+          min={0}
+          max={1}
+          step={0.05}
+          value={settings.sfxVolume}
+          onChange={(e) => setSetting('sfxVolume', Number(e.target.value))}
+          className="w-full accent-rose"
+        />
+      </label>
+      <label className="flex items-center justify-between text-sm">
+        <span>음소거</span>
+        <input
+          type="checkbox"
+          checked={settings.muted}
+          onChange={(e) => setSetting('muted', e.target.checked)}
+          className="h-4 w-4 accent-rose"
+        />
+      </label>
+      <label className="flex items-center justify-between text-sm">
+        <span>안 읽은 텍스트도 스킵</span>
+        <input
+          type="checkbox"
+          checked={settings.skipUnread}
+          onChange={(e) => setSetting('skipUnread', e.target.checked)}
+          className="h-4 w-4 accent-rose"
         />
       </label>
       <p className="text-xs text-cream/50">

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { bgTime } from './atmosphere'
+import { bgTime, bgmTrack } from './atmosphere'
 
 describe('bgTime', () => {
   it('maps night moods to the night plate', () => {
@@ -22,5 +22,16 @@ describe('bgTime', () => {
 
   it('prioritises night over evening when both could match', () => {
     expect(bgTime('evening_into_night')).toBe('night')
+  })
+})
+
+describe('bgmTrack', () => {
+  it('maps moods to a small track set', () => {
+    expect(bgmTrack('quiet_night')).toBe('night')
+    expect(bgmTrack('night_city')).toBe('night')
+    expect(bgmTrack('tense_afternoon')).toBe('tense')
+    expect(bgmTrack('evening_wind')).toBe('evening')
+    expect(bgmTrack('soft_afternoon')).toBe('day')
+    expect(bgmTrack(undefined)).toBe('day')
   })
 })
