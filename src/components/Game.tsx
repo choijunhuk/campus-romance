@@ -29,6 +29,7 @@ export function Game() {
   const settings = useGame((s) => s.settings)
   const history = useGame((s) => s.history)
   const affPing = useGame((s) => s.affPing)
+  const cgPing = useGame((s) => s.cgPing)
   const seen = useGame((s) => s.seen)
   const markSeen = useGame((s) => s.markSeen)
   const setSetting = useGame((s) => s.setSetting)
@@ -40,6 +41,7 @@ export function Game() {
   const toggleUiHidden = useGame((s) => s.toggleUiHidden)
   const pushHistory = useGame((s) => s.pushHistory)
   const clearPing = useGame((s) => s.clearPing)
+  const clearCgPing = useGame((s) => s.clearCgPing)
   const setScreen = useGame((s) => s.setScreen)
 
   const [menu, setMenu] = useState<'none' | 'save' | 'load' | 'log' | 'settings' | 'relationship'>(
@@ -124,6 +126,13 @@ export function Game() {
     const id = setTimeout(() => clearPing(), 1800)
     return () => clearTimeout(id)
   }, [affPing?.ts, affPing, clearPing])
+
+  // CG unlock toast auto-dismiss.
+  useEffect(() => {
+    if (!cgPing) return
+    const id = setTimeout(() => clearCgPing(), 2200)
+    return () => clearTimeout(id)
+  }, [cgPing?.ts, cgPing, clearCgPing])
 
   // Keyboard: Space/Enter advance, Esc closes overlays, A=auto, Ctrl=skip, H=hide, backtick=debug.
   useEffect(() => {
@@ -243,6 +252,16 @@ export function Game() {
             {affPing.delta >= 0 ? '♥' : '···'} {affPing.charName} {affPing.delta >= 0 ? '+' : ''}
             {affPing.delta}
           </span>
+        </div>
+      )}
+
+      {/* CG unlock toast */}
+      {cgPing && (
+        <div
+          key={cgPing.ts}
+          className="animate-cgfloat pointer-events-none absolute left-1/2 top-6 z-20 rounded-full bg-panel/90 px-5 py-2 text-sm font-semibold shadow-lg ring-1 ring-amber/30"
+        >
+          <span className="text-amber-soft">✦ CG 획득 — {cgPing.title}</span>
         </div>
       )}
 

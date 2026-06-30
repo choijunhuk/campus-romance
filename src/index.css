@@ -25,6 +25,15 @@ body {
 }
 .animate-afffloat { animation: afffloat 1.8s ease-out forwards; }
 
+/* CG unlock toast (longer dwell than affection ping) */
+@keyframes cgfloat {
+  0% { opacity: 0; transform: translateX(-50%) translateY(8px) scale(0.96); }
+  12% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  80% { opacity: 1; transform: translateX(-50%) translateY(-2px); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-14px); }
+}
+.animate-cgfloat { animation: cgfloat 2.2s ease-out forwards; }
+
 /* Background crossfade on scene / time-of-day change */
 @keyframes bgfade {
   from { opacity: 0; }

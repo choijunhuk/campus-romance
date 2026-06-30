@@ -39,6 +39,14 @@ try {
 
 const args = process.argv.slice(2);
 const isDryRun = args.includes('--dry-run');
+// --force regenerates files that already exist (default: skip existing).
+const isForce = args.includes('--force');
+// --only TYPE[,TYPE] restricts to given task types (character|background|cg|ui).
+const onlyIdx = args.indexOf('--only');
+const onlyTypes = onlyIdx !== -1 ? new Set(args[onlyIdx + 1].split(',')) : null;
+// --no-ref drops img2img reference images, forcing free txt2img composition
+// (better for scene CGs whose text prompt already describes the character).
+const isNoRef = args.includes('--no-ref');
 
 const limitIdx = args.indexOf('--limit');
 const limit = limitIdx !== -1 ? parseInt(args[limitIdx + 1], 10) : Infinity;
@@ -270,7 +278,9 @@ function buildQueue(data) {
   return queue;
 }
 
-const fullQueue = buildQueue(prompts);
+const fullQueue = buildQueue(prompts)
+  .filter((t) => !onlyTypes || onlyTypes.has(t.type))
+  .map((t) => (isNoRef ? { ...t, refImagePath: null } : t));
 
 // ── Dry-run output ────────────────────────────────────────────────────────────
 
@@ -346,7 +356,7 @@ for (const task of fullQueue) {
 
   const rel = task.outPath.replace(ROOT + '/', '');
 
-  if (existsSync(task.outPath)) {
+  if (existsSync(task.outPath) && !isForce) {
     console.log(`[skip] ${rel}`);
     skipped++;
     continue;

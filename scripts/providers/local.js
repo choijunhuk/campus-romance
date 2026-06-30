@@ -14,6 +14,11 @@
  *   SD_SAMPLER          (default: DPM++ 2M Karras)
  *   SD_DENOISE          (default: 0.5)    img2img strength for ref consistency
  *   SD_NEGATIVE_EXTRA   (appended to every negative prompt)
+ *   SD_HIRES            (default: off)    "1" enables hires.fix on txt2img (sharper, more detail)
+ *   SD_HR_SCALE         (default: 1.5)    hires upscale factor
+ *   SD_HR_UPSCALER      (default: R-ESRGAN 4x+ Anime6B)
+ *   SD_HR_STEPS         (default: 12)     second-pass steps
+ *   SD_HR_DENOISE       (default: 0.4)    hires denoising strength
  *
  * Consistency: when refImagePath is given, uses /sdapi/v1/img2img with the base
  * image + fixed seed so expressions keep the same face. Otherwise /sdapi/v1/txt2img.
@@ -63,6 +68,9 @@ export default {
   async generate(prompt, { seed, negative, refImagePath } = {}) {
     const base = common(negative);
     if (seed != null) base.seed = seed;
+    // Quality boosters (e.g. "masterpiece, best quality") matter a lot for
+    // SDXL anime checkpoints; prepend without editing every prompt in JSON.
+    if (process.env.SD_POSITIVE_EXTRA) prompt = `${process.env.SD_POSITIVE_EXTRA}, ${prompt}`;
 
     if (refImagePath && existsSync(refImagePath)) {
       const initB64 = readFileSync(refImagePath).toString('base64');
@@ -73,6 +81,16 @@ export default {
         denoising_strength: Number(process.env.SD_DENOISE || 0.5),
       });
     }
-    return post('/sdapi/v1/txt2img', { ...base, prompt });
+    const txt = { ...base, prompt };
+    // hires.fix: render small then upscale+refine in-pipeline. Big quality win
+    // for SDXL anime (more coherent detail, fewer mushy faces) at ~2x the time.
+    if (process.env.SD_HIRES === '1') {
+      txt.enable_hr = true;
+      txt.hr_scale = Number(process.env.SD_HR_SCALE || 1.5);
+      txt.hr_upscaler = process.env.SD_HR_UPSCALER || 'R-ESRGAN 4x+ Anime6B';
+      txt.hr_second_pass_steps = Number(process.env.SD_HR_STEPS || 12);
+      txt.denoising_strength = Number(process.env.SD_HR_DENOISE || 0.4);
+    }
+    return post('/sdapi/v1/txt2img', txt);
   },
 };

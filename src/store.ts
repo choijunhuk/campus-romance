@@ -118,6 +118,10 @@ export interface AffPing {
   delta: number
   ts: number
 }
+export interface CgPing {
+  title: string
+  ts: number
+}
 
 interface GameState {
   screen: Screen
@@ -138,6 +142,7 @@ interface GameState {
   uiHidden: boolean
   settings: Settings
   affPing: AffPing | null
+  cgPing: CgPing | null
   seen: Set<string>
 
   setScreen: (screen: Screen) => void
@@ -153,6 +158,7 @@ interface GameState {
   toggleUiHidden: () => void
   setSetting: <K extends keyof Settings>(key: K, value: Settings[K]) => void
   clearPing: () => void
+  clearCgPing: () => void
   markSeen: (key: string) => void
 
   save: (slot: string) => void
@@ -179,6 +185,7 @@ export const useGame = create<GameState>((set, get) => ({
   uiHidden: false,
   settings: readSettings(),
   affPing: null,
+  cgPing: null,
   seen: readSeen(),
 
   setScreen: (screen) => set({ screen }),
@@ -199,6 +206,7 @@ export const useGame = create<GameState>((set, get) => ({
       skip: false,
       uiHidden: false,
       affPing: null,
+      cgPing: null,
     })
     get().goToScene(START_SCENE)
   },
@@ -272,8 +280,14 @@ export const useGame = create<GameState>((set, get) => ({
     set({ sceneId, nodeIndex: 0, path: [0], ended: false })
     if (isEndingScene(sceneId)) {
       const eventId = endingEventId(sceneId)
+      // Detect whether this CG is being unlocked for the first time this session.
+      const isNew = !get().seenCG.includes(eventId) && !readGallery().includes(eventId)
       set({ seenCG: [...new Set([...get().seenCG, eventId])] })
       addToGallery([eventId])
+      if (isNew) {
+        const sceneTitle = scenes.get(sceneId)?.title ?? sceneId
+        set({ cgPing: { title: sceneTitle, ts: Date.now() } })
+      }
     }
     get().save('auto')
   },
@@ -299,6 +313,7 @@ export const useGame = create<GameState>((set, get) => ({
     }
   },
   clearPing: () => set({ affPing: null }),
+  clearCgPing: () => set({ cgPing: null }),
   markSeen: (key) => {
     if (get().seen.has(key)) return
     const seen = new Set(get().seen)

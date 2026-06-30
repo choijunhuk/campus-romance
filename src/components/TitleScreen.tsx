@@ -4,6 +4,17 @@ import { world, usingDemo, loadErrors, characters } from '../engine/load'
 import { SaveLoadMenu } from './SaveLoadMenu'
 import { SmartImage, assetUrl } from './ui'
 
+const GALLERY_SEEN_KEY = 'vn_gallery_seen'
+
+function hasUnviewedCGs(galleryIds: string[]): boolean {
+  try {
+    const seen = new Set(JSON.parse(localStorage.getItem(GALLERY_SEEN_KEY) || '[]'))
+    return galleryIds.some((id) => !seen.has(id))
+  } catch {
+    return false
+  }
+}
+
 export function TitleScreen() {
   const start = useGame((s) => s.start)
   const load = useGame((s) => s.load)
@@ -17,7 +28,9 @@ export function TitleScreen() {
   const titles = world?.title ?? ['Campus Romance']
   // Ending collection: each character has good/normal/bad + the solo route.
   const totalEndings = characters.length * 3 + 1
-  const seenEndings = galleryIds().filter((id) => id.endsWith('_ending')).length
+  const unlockedIds = galleryIds()
+  const seenEndings = unlockedIds.filter((id) => id.endsWith('_ending')).length
+  const hasNewCGs = hasUnviewedCGs(unlockedIds)
 
   return (
     <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-6 text-center">
@@ -69,9 +82,12 @@ export function TitleScreen() {
           </button>
           <button
             onClick={() => setScreen('gallery')}
-            className="flex-1 rounded-xl bg-panel/90 py-2.5 text-cream ring-1 ring-white/10 transition hover:bg-panel"
+            className="relative flex-1 rounded-xl bg-panel/90 py-2.5 text-cream ring-1 ring-white/10 transition hover:bg-panel"
           >
             CG 갤러리
+            {hasNewCGs && (
+              <span className="absolute right-2.5 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-amber" />
+            )}
           </button>
         </div>
         {seenEndings > 0 && (
