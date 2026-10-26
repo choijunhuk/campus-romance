@@ -42,8 +42,10 @@ async function finish(page:Page,route:0|1,preference=0) {
       await expect(page.locator('.dialogue-footer')).toContainText('클릭 또는 Space')
       await page.screenshot({path:`test-results/cg-route-${route}-desktop.png`})
       await page.setViewportSize({width:390,height:844})
-      const art=await page.locator('.cg-art').boundingBox(),dialogue=await page.locator('.dialogue').boundingBox()
-      expect(art!.y+art!.height).toBeLessThanOrEqual(dialogue!.y)
+      await expect.poll(async()=>{
+        const art=await page.locator('.cg-art').boundingBox(),dialogue=await page.locator('.dialogue').boundingBox()
+        return art!.y+art!.height-dialogue!.y
+      }).toBeLessThanOrEqual(0)
       await page.screenshot({path:`test-results/cg-route-${route}-mobile.png`})
       await page.setViewportSize({width:1440,height:900})
       captured=true

@@ -20,8 +20,6 @@ export function Game() {
   const stage = scene ? presentation(scene, path) : null
   const [menu, setMenu] = useState<Menu>('none')
   const [returnToTitle, setReturnToTitle] = useState(false)
-  const stageRef = useRef<HTMLElement>(null)
-  const dialogueRef = useRef<HTMLButtonElement>(null)
   const isChoice = node?.type === 'choice'
   const tw = useTypewriter(node && node.type !== 'choice' ? node.text : '', `${sceneId}:${nodeIndex}`, settings.textSpeed)
   const seenKey = `${STORY_VERSION}:${sceneId}:${nodeIndex}`
@@ -36,15 +34,6 @@ export function Game() {
     if (ended || menu !== 'none' || returnToTitle || isChoice) return
     if (tw.done) game.advance(); else tw.finish()
   }
-  useEffect(() => {
-    const box=dialogueRef.current
-    if(!box)return
-    const measure=()=>stageRef.current?.style.setProperty('--dialogue-height',`${box.offsetHeight}px`)
-    measure()
-    const observer=new ResizeObserver(measure)
-    observer.observe(box)
-    return ()=>observer.disconnect()
-  },[isChoice,uiHidden,settings.fontSize])
   useEffect(() => {
     wasSeen.current = useGame.getState().seen.has(seenKey)
     if (!node || node.type === 'choice') return
@@ -107,7 +96,7 @@ export function Game() {
   const focusChar = speaker && speaker !== 'protagonist' ? speaker : null
   const sprites = Object.entries(stage?.sprites ?? {})
   const choicePrompt = [...path].reverse().map(i => scene.nodes[i]).find(n => n.type === 'narration')
-  return <main ref={stageRef} className={`game-stage ${cg ? 'has-cg' : ''}`} data-time={bgTime(stage?.mood)} data-hidden={uiHidden} style={{'--cg-focus':cg?.mobile_focus??'50% 50%'} as React.CSSProperties}>
+  return <main className={`game-stage ${cg ? 'has-cg' : ''}`} data-time={bgTime(stage?.mood)} data-hidden={uiHidden} style={{'--cg-focus':cg?.mobile_focus??'50% 50%'} as React.CSSProperties}>
     <SmartImage key={cg?.file ?? `${background}:${bgTime(stage?.mood)}`}
       src={assetUrl(cg ? ART_ROOT + cg.file : backgroundAsset(background, stage?.mood))}
       fallbackSrc={assetUrl('assets/art-v2/campus.webp')} alt={cg?.title ?? '캠퍼스 풍경'} className={`stage-background ${cg ? 'cg-art' : ''}`} />
@@ -125,7 +114,7 @@ export function Game() {
           <button onClick={() => setMenu('main')} aria-label="게임 메뉴 열기">메뉴 <span aria-hidden="true">☰</span></button>
         </nav>
       </header>
-      {!isChoice ? <button ref={dialogueRef} className={`dialogue ${speaker ? '' : 'narration'}`} onClick={advance} aria-label="대사를 마치거나 다음으로 진행">
+      {!isChoice ? <button className={`dialogue ${speaker ? '' : 'narration'}`} onClick={advance} aria-label="대사를 마치거나 다음으로 진행">
         <span className="speaker-name">{speakerName || '과방 너머 봄'}<span>{speakerName ? '대화' : '이야기'}</span></span>
         <span className="dialogue-text" style={{ fontSize: `${settings.fontSize}px` }}>{tw.shown}</span>
         <span className="dialogue-footer"><span>{tw.done ? '클릭 또는 Space' : '클릭하면 전체 보기'}</span><span aria-hidden="true">{tw.done ? '다음 →' : '· · ·'}</span></span>

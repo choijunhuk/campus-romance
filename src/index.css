@@ -52,8 +52,11 @@ button { touch-action:manipulation; }
 .game-stage { position:relative; isolation:isolate; width:100%; height:100%; overflow:hidden; background:#242e2c; color:#f4f3eb; }
 .stage-background { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; animation:fade-in .45s ease-out; }
 .stage-background.cg-art { object-fit:contain; background:#222b28; }
-.has-cg .stage-background { top:80px; height:calc(100% - var(--dialogue-height,210px) - 115px); }
-.has-cg[data-hidden=true] .stage-background { top:0; height:100%; }
+.has-cg { display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:80px minmax(0,1fr) auto; }
+.has-cg .stage-background { position:relative; inset:auto; grid-row:2; min-height:0; min-width:0; width:100%; height:100%; }
+.has-cg .dialogue { position:relative; grid-row:3; left:auto; right:auto; bottom:auto; margin:12px 6% 24px; }
+.has-cg[data-hidden=true] { display:block; }
+.has-cg[data-hidden=true] .stage-background.cg-art { position:absolute; inset:0; height:100%; object-fit:contain; object-position:center; }
 .game-stage[data-time=evening]:not(.has-cg) .stage-background { filter:sepia(.13) saturate(.82); }
 .stage-shade { position:absolute; inset:0; background:linear-gradient(180deg,#111b1a91 0%,transparent 24%,transparent 52%,#111b1a80 100%); pointer-events:none; z-index:1; }
 .stage-character { position:absolute; z-index:2; height:85%; width:auto; bottom:2%; pointer-events:none; transition:filter .22s; filter:drop-shadow(0 6px 8px #10181820); }
@@ -206,8 +209,9 @@ button { touch-action:manipulation; }
  .gallery-grid { gap:20px; }
 }
 @media(max-width:480px) {
- .has-cg .stage-background.cg-art { top:114px; height:calc(100% - var(--dialogue-height,210px) - 140px); object-fit:cover; object-position:var(--cg-focus,50% 50%); }
- .has-cg[data-hidden=true] .stage-background.cg-art { top:0; height:100%; object-fit:contain; object-position:center; }
+ .has-cg { grid-template-rows:114px minmax(0,1fr) auto; }
+ .has-cg .stage-background.cg-art { object-fit:cover; object-position:var(--cg-focus,50% 50%); }
+ .has-cg .dialogue { margin:12px 10px max(10px,env(safe-area-inset-bottom)); }
  .title-hero { display:flex; flex-direction:column; align-items:stretch; gap:0; position:relative; padding-top:24px; min-height:0; }
  .title-copy { position:relative; padding-top:8px; }
  .title-copy .eyebrow { font-size:9px; }
