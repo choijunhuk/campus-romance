@@ -46,6 +46,16 @@
         "id": "han_river",
         "name": "한강공원 (캠퍼스 인근)",
         "desc": "시험 끝나면 다 같이 몰려가는, 치맥과 자전거의 해방구."
+      },
+      {
+        "id": "radio_room",
+        "name": "학생회관 3층 방송실",
+        "desc": "방음 유리, ON AIR 표시와 믹서. 월·수 19시 정규 방송, 22시 폐실."
+      },
+      {
+        "id": "track",
+        "name": "중앙 운동장과 관중석",
+        "desc": "400m 트랙과 낮은 관중석. 동아리 훈련·사용성 실습·사진 전시가 만나는 공간."
       }
     ],
     "season": "2026년 3월 4일~6월 26일. 4월 중간고사, 5월 25일 주간 축제, 6월 19일 대회, 6월 말 종강.",
@@ -96,14 +106,14 @@
     "갈등 뒤에 구체적인 사과와 조율을 제공한다."
   ],
   "art_direction": {
-    "style_keywords": "hand-inked indie 2D visual novel, matte flat colors, restrained cel shadows, natural adult proportions, muted paper palette, no photorealistic gloss",
+    "style_keywords": "premium 2D bishoujo visual novel, clean ink, expressive adult faces, modern campus fashion, controlled cel shading",
     "color_palette": [
-      "cream",
-      "charcoal",
-      "muted olive",
-      "dusty blue",
-      "dusty rose"
+      "ivory",
+      "navy",
+      "coral",
+      "plum",
+      "teal"
     ],
-    "lighting_mood": "단순한 면과 절제된 그림자. 피부 광택·과한 빛 번짐·사진 같은 피사계 심도 없음."
+    "lighting_mood": "선명한 인물 실루엣과 부드러운 셀 그림자. 사진·3D 피부 광택 대신 일관된 선화."
   }
 }

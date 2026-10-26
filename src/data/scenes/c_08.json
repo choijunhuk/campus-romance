@@ -52,6 +52,26 @@
           "goto": "r3_01"
         },
         {
+          "label": "서하에게: 방송 끝나면, 인터뷰 말고 데이트할래요?",
+          "affection": {
+            "char_05": 40
+          },
+          "set_flags": [
+            "route_seoha"
+          ],
+          "goto": "r5_01"
+        },
+        {
+          "label": "이서에게: 이번 주말엔 기록 말고, 나랑 한 바퀴 걸을래요?",
+          "affection": {
+            "char_06": 40
+          },
+          "set_flags": [
+            "route_iseo"
+          ],
+          "goto": "r6_01"
+        },
+        {
           "label": "도윤과 시제품을 끝까지 개선한다. [우정·프로젝트]",
           "affection": {
             "char_02": 40

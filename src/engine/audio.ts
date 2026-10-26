@@ -1,57 +1,67 @@
-// Original, deliberately sparse ambient accompaniment. No remote audio requests
-// or missing media files: sound is synthesized after the first user gesture.
+import soundtrack from '../data/soundtrack.json'
+
 let context: AudioContext | null = null
+const buffers = new Map<string, AudioBuffer>()
 function audioContext() {
   if (typeof AudioContext === 'undefined') return null
   context ??= new AudioContext()
-  void context.resume().catch(() => {})
   return context
 }
-const chords: Record<string, number[][]> = {
-  day: [[48,55,59,64],[45,52,55,60],[41,48,52,57],[43,50,55,59]],
-  evening: [[45,52,55,60],[41,48,52,57],[48,55,59,64],[43,50,57,59]],
-  night: [[45,52,59,60],[41,48,55,57],[48,55,59,62],[43,50,55,59]],
-  tense: [[45,52,59,62],[41,48,55,59],[43,50,57,60],[45,52,55,59]],
+function resumeAudio() { void audioContext()?.resume().catch(() => {}) }
+if (typeof document !== 'undefined') {
+  // The first Start click is a real autoplay gesture. Retry a denied resume on
+  // the next gesture, rather than leaving the player permanently silent.
+  document.addEventListener('pointerdown', resumeAudio)
+  document.addEventListener('keydown', resumeAudio)
 }
-function note(ctx: AudioContext, out: AudioNode, midi: number, start: number, duration: number, level: number) {
-  const oscillator=ctx.createOscillator(), envelope=ctx.createGain()
-  oscillator.type='sine'
-  oscillator.frequency.value=440 * 2 ** ((midi-69)/12)
-  envelope.gain.setValueAtTime(0,start)
-  envelope.gain.linearRampToValueAtTime(level,start+Math.min(.35,duration*.15))
-  envelope.gain.exponentialRampToValueAtTime(.0001,start+duration)
-  oscillator.connect(envelope); envelope.connect(out)
-  oscillator.start(start); oscillator.stop(start+duration+.03)
-  oscillator.onended=()=>{oscillator.disconnect();envelope.disconnect()}
-}
+
+/** Browsers strip MP3 encoder padding when decoding. The source loops at sample
+ * boundaries; the cache retains only two decoded scores, not the whole OST. */
 export function ambient(track: string) {
-  const ctx=audioContext()
-  if(!ctx)return null
-  const master=ctx.createGain()
-  master.gain.value=0
-  master.connect(ctx.destination)
-  let step=0,next=ctx.currentTime+.05
-  const progression=chords[track]??chords.day
-  const schedule=()=>{
-    if(next>ctx.currentTime+2)return
-    const chord=progression[step++%progression.length]
-    chord.forEach((pitch,i)=>note(ctx,master,pitch,next+i*.12,6.5,.16))
-    // One quiet upper note makes room for the text instead of a busy melody.
-    note(ctx,master,chord[(step+1)%chord.length]+12,next+2.5,2.8,.035)
-    next+=8
+  const ctx=audioContext(), entry=soundtrack.find(t=>t.id===track)
+  if(!ctx || !entry)return null
+  const gain=ctx.createGain(), abort=new AbortController()
+  gain.gain.value=0;gain.connect(ctx.destination)
+  let source:AudioBufferSourceNode|null=null, stopped=false, level=0
+  const start=(buffer:AudioBuffer)=>{
+    if(stopped)return
+    source=ctx.createBufferSource();source.buffer=buffer;source.loop=true
+    gain.gain.setValueAtTime(0,ctx.currentTime)
+    source.connect(gain);source.start()
+    gain.gain.setTargetAtTime(level,ctx.currentTime,.35)
   }
-  schedule()
-  const timer=setInterval(schedule,750)
+  const cached=buffers.get(track)
+  if(cached)start(cached)
+  else void (async()=>{
+    const response=await fetch(`${import.meta.env.BASE_URL}assets/bgm-v3/${entry.file}`,{signal:abort.signal})
+    if(!response.ok)throw new Error(`Music ${response.status}`)
+    const buffer=await ctx.decodeAudioData(await response.arrayBuffer())
+    if(stopped)return
+    buffers.set(track,buffer)
+    while(buffers.size>2)buffers.delete(buffers.keys().next().value!)
+    start(buffer)
+  })().catch(()=>{/* A failed request never blocks reading or retries every line. */})
   return {
-    volume(value:number){master.gain.setTargetAtTime(Math.max(0,value)*.15,ctx.currentTime,.25)},
-    stop(){clearInterval(timer);master.gain.setTargetAtTime(0,ctx.currentTime,.2);setTimeout(()=>master.disconnect(),7000)},
+    volume(value:number){level=Math.max(0,Math.min(1,value));if(source)gain.gain.setTargetAtTime(level,ctx.currentTime,.12)},
+    stop(){
+      if(stopped)return
+      stopped=true;abort.abort()
+      gain.gain.setTargetAtTime(0,ctx.currentTime,.25)
+      const oldSource=source
+      if(oldSource)oldSource.stop(ctx.currentTime+1.1)
+      setTimeout(()=>{oldSource?.disconnect();gain.disconnect()},1200)
+    },
   }
 }
+
+/** Small UI feedback is independent from the sampled soundtrack. */
 export function selectionSound(volume:number) {
   if(volume<=0)return
   const ctx=audioContext()
   if(!ctx)return
-  const out=ctx.createGain();out.gain.value=volume*.08;out.connect(ctx.destination)
-  note(ctx,out,79,ctx.currentTime,.18,.45)
-  setTimeout(()=>out.disconnect(),500)
+  const oscillator=ctx.createOscillator(),out=ctx.createGain(),now=ctx.currentTime
+  oscillator.type='sine';oscillator.frequency.value=1175
+  out.gain.setValueAtTime(volume*.06,now);out.gain.exponentialRampToValueAtTime(.0001,now+.12)
+  oscillator.connect(out);out.connect(ctx.destination);oscillator.start();oscillator.stop(now+.13)
+  oscillator.onended=()=>{oscillator.disconnect();out.disconnect()}
 }

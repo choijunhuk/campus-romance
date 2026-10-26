@@ -1,0 +1,19 @@
+{
+  "scene_id": "end_char_06_bad",
+  "title": "다른 방향의 한 바퀴",
+  "date": "6월의 마지막 주",
+  "chapter": "에필로그 · 서로 다른 방향",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "이서는 약속을 붙잡지 않았다. 같이 걷던 트랙을 마지막으로 한 번 돌아 나왔다."
+    },
+    {
+      "type": "narration",
+      "text": "지갑의 사진을 어떻게 할지는 각자가 정하기로 했다. 한 봄의 마음까지 실패한 기록으로 남기고 싶지는 않았다."
+    }
+  ],
+  "next_scene": null
+}

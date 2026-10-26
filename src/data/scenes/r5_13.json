@@ -1,0 +1,63 @@
+{
+  "scene_id": "r5_13",
+  "title": "우리 팀의 설명",
+  "date": "6월 19일 · 대회",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "lecture_hall",
+  "bgm_mood": "hopeful_morning",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "발표장 뒤편에 서하가 앉았다. 내 발표가 끝나고 질문이 시작되자 작게 주먹을 쥐어 보여준다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "마지막 문장 안 급했어. 잘 들렸어.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "앞에 아는 청취자가 있어서요."
+    },
+    {
+      "type": "narration",
+      "text": "서하는 인터뷰 내용을 부스 설명 패널에 붙이는 것까지 도왔다. 자기 이름은 진행·편집 칸에 직접 적었다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "오늘 저녁엔 내가 청취자 할게. 네 마지막 방송 얘기 들려줘.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_equal"
+          ]
+        },
+        {
+          "label": "내일 아침은 아무 일정 없이 같이 먹자.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_breakfast"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "좋아. 다음엔 내 발표도 와줘. 연애 출석 점수는 안 주지만, 보고 싶을 거야.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "r5_14"
+}

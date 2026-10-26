@@ -1,0 +1,64 @@
+{
+  "scene_id": "r6_14",
+  "title": "다음 계절의 출발선",
+  "date": "6월 26일 · 종강",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "track",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "여름 훈련표와 내 계절학기 시간표를 트랙 옆 벤치에 나란히 놓았다. 이서가 빈 토요일을 짚는다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "다음 학기도 나랑 만날래? 기록 없는 날도, 잘 안되는 날도 포함해서.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "응. 다음 계절에도 네 연인으로 옆에 있고 싶어.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_future"
+          ],
+          "clear_flags": [
+            "iseo_farewell"
+          ]
+        },
+        {
+          "label": "좋았어. 이제는 친구로 서로 응원하고 싶어.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [],
+          "clear_flags": [
+            "iseo_future",
+            "iseo_farewell"
+          ]
+        },
+        {
+          "label": "다음 약속은 하지 말자. 관계는 여기서 끝내고 싶어.",
+          "set_flags": [
+            "iseo_farewell"
+          ],
+          "clear_flags": [
+            "iseo_future"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "출발 신호 대신 서로의 말을 기다렸다. 어느 방향이든, 우리가 고른 다음 걸음이어야 했다."
+    }
+  ],
+  "next_scene": "EVAL_ENDING:char_06"
+}

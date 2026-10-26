@@ -1,0 +1,77 @@
+{
+  "scene_id": "r5_02",
+  "title": "세 문장짜리 승부",
+  "date": "5월 11일",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "cafeteria",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "서하가 학식 트레이 옆에 세 장의 쪽지를 놓는다. 상대를 웃긴 사람이 디저트를 고르는 게임이다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "사연 없는 라디오도 재미있어야 하잖아요. 오늘은 일상 실력 시험.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "디저트로 사람을 시험하는 학과가 있나요?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "지금 생겼어요. 학점은 제가 줘요.",
+      "expression": "laugh",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "최악의 제품 광고를 즉석에서 들려준다.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_adlib"
+          ]
+        },
+        {
+          "label": "서하의 멘트를 흉내 내며 디저트 방송을 진행한다.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_impression"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "“늦잠도 자동화하세요. 책임은 본인에게.” 서하가 물을 마시다 웃음을 터뜨렸다. 이 카피는 절대 방송에 못 내보내겠다고 했다.",
+      "requires_flags": [
+        "seoha_adlib"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "내가 목소리를 낮추자 서하가 팔짱을 끼었다. “나 그렇게 느끼하지 않은데.” 그러고는 다음 문장을 먼저 읽어주었다.",
+      "requires_flags": [
+        "seoha_impression"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "내가 고른 푸딩을 반으로 나눴다. 서하가 바닐라 향을 좋아한다는 걸 오늘 처음 알았다."
+    }
+  ],
+  "next_scene": "r5_03"
+}

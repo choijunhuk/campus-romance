@@ -1,0 +1,48 @@
+{
+  "scene_id": "r5_04",
+  "title": "오늘의 선곡권",
+  "date": "5월 16일",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "cafe_street",
+  "bgm_mood": "lively_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "토요일. 레코드 숍과 강변 중 어디로 갈지 길모퉁이에서 고른다. 서하는 오늘 내 목소리를 녹음하지 않겠다고 휴대폰을 가방에 넣었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "방송 소재 수집 아닙니다. 데이트 사전 답사도 아니고. 그냥 데이트.",
+      "expression": "blush",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "레코드 숍에서 서로에게 한 곡씩 골라준다.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_record"
+          ],
+          "goto": "r5_04_record"
+        },
+        {
+          "label": "강변에서 이어폰 없이 주변 소리를 듣는다.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_soundwalk"
+          ],
+          "goto": "r5_04_walk"
+        }
+      ]
+    }
+  ],
+  "next_scene": null
+}

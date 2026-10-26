@@ -1,0 +1,73 @@
+{
+  "scene_id": "r5_07",
+  "title": "ON AIR 대신",
+  "date": "5월 25일 · 축제",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "rooftop",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "방송 끝나고 축제 소리가 멀리 들리는 계단에 앉았다. 서하가 헤드폰을 가방에 넣는다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "오늘은 제가 먼저 질문할게요. 나랑 사귈래요? 방송 밖에서도 자주 보고 싶어요.",
+      "expression": "blush",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "네. 저도요. 이제 대답하고 나니까 존댓말이 좀 멀게 느껴져요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "그럼 천천히 바꿔보자. 한 번에 능숙해지면 재미없어.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "손을 잡고 이름을 한 번 더 부른다.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_dating",
+            "seoha_hand"
+          ]
+        },
+        {
+          "label": "내 옆에 기대도 돼. 오늘 수고했어.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_dating",
+            "seoha_shoulder"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "좋다. 방송 끝나면 기다리는 사람이 있다는 거.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "평소처럼 가볍게 웃은 뒤 서하가 내 손을 놓지 않았다. 오늘의 끝인사는 돌아가는 길 내내 이어졌다."
+    }
+  ],
+  "next_scene": "r5_08"
+}

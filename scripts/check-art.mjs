@@ -12,10 +12,12 @@ for(const file of new Set([...Object.values(art.sprites),...art.events.map(e=>e.
  if(Object.values(art.sprites).includes(file)){
   const stats=await sharp(resolve(dir,file)).stats()
   if(!metadata.hasAlpha||stats.channels[3].min!==0)throw new Error(`Sprite has no genuine transparency: ${file}`)
+  if(file.endsWith('-v3.webp')&&(metadata.width!==1024||metadata.height!==2049))throw new Error(`Invalid six-expression atlas: ${file}`)
  }
 }
-for(const name of ['workshop','library','cafeteria','cafe','rooftop','river'])for(const time of ['day','night']){
+for(const name of ['workshop','library','cafeteria','cafe','rooftop','river','radio','track'])for(const time of ['day','night']){
  const info=await sharp(resolve(dir,`${name}-${time}.webp`)).metadata()
  if(Math.abs(info.width/info.height-16/9)>.01)throw new Error(`Bad backdrop ratio: ${name}-${time}`)
 }
-console.log('Art verified: decoding, dimensions, atlas alpha, 13 backgrounds, 4 event CGs.')
+if(art.events.length!==8)throw new Error('Expected eight story CGs')
+console.log('Art verified: decoding, dimensions, 24 heroine expressions, atlas alpha, 17 backgrounds, 8 event CGs.')

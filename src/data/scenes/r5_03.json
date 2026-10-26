@@ -1,0 +1,62 @@
+{
+  "scene_id": "r5_03",
+  "title": "녹음 버튼은 둘이",
+  "date": "5월 14일",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "radio_room",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "부스 소개 녹음을 마쳤다. 서하가 헤드폰 한쪽을 내 귀에 대주며 편집본을 들려준다. 손끝이 관자놀이에 닿는다.",
+      "cg": "seoha_studio",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "떨린 부분만 잘라달라고 했죠. 그런데 여기는 살리고 싶어서. 웃는 목소리가 좋아요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "제품 이야기는 남기고, 사적인 농담은 둘이만 듣자.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_private_take"
+          ]
+        },
+        {
+          "label": "이 농담까지는 괜찮아요. 대신 최종본은 같이 듣고 내요.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_shared_take"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "오케이. 매력적인 목소리라고 사용권까지 넘어오는 건 아니니까.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "재생이 끝났는데도 서하가 헤드폰을 바로 거두지 않았다. 유리창에 비친 두 얼굴이 생각보다 가까웠다.",
+      "cg": "seoha_studio",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "r5_04"
+}

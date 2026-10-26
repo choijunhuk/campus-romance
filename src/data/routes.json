@@ -293,6 +293,174 @@
         }
       },
       "kind": "friendship"
+    },
+    {
+      "char_id": "char_05",
+      "scenes": [
+        {
+          "scene_id": "r5_01",
+          "title": "인터뷰에 없는 질문"
+        },
+        {
+          "scene_id": "r5_02",
+          "title": "세 문장짜리 승부"
+        },
+        {
+          "scene_id": "r5_03",
+          "title": "녹음 버튼은 둘이"
+        },
+        {
+          "scene_id": "r5_04",
+          "title": "오늘의 선곡권"
+        },
+        {
+          "scene_id": "r5_04_record",
+          "title": "B면의 첫 곡"
+        },
+        {
+          "scene_id": "r5_04_walk",
+          "title": "아무 말 안 하는 방송"
+        },
+        {
+          "scene_id": "r5_05",
+          "title": "익명 사연의 당사자"
+        },
+        {
+          "scene_id": "r5_06",
+          "title": "무대 뒤에도 같은 사람"
+        },
+        {
+          "scene_id": "r5_07",
+          "title": "ON AIR 대신"
+        },
+        {
+          "scene_id": "r5_08",
+          "title": "올리지 않은 십 초"
+        },
+        {
+          "scene_id": "r5_09",
+          "title": "대본에 없던 사과"
+        },
+        {
+          "scene_id": "r5_10",
+          "title": "다른 목소리도 듣기"
+        },
+        {
+          "scene_id": "r5_11",
+          "title": "너에게만 낮춘 목소리"
+        },
+        {
+          "scene_id": "r5_12",
+          "title": "들어줄 차례"
+        },
+        {
+          "scene_id": "r5_13",
+          "title": "우리 팀의 설명"
+        },
+        {
+          "scene_id": "r5_14",
+          "title": "다음 채널에서도"
+        }
+      ],
+      "endings": {
+        "good": {
+          "condition": "affection >= 75 AND flag 'seoha_future' set",
+          "summary": "방송실 대신 역 앞에서 만난다. 서하가 헤드폰 한쪽을 내게 건네고는 빼앗아 간다. “아니다. 오늘은 네 얘기 먼저 들을래.” 음악은 잠깐 멈추고, 둘의 다음 계절이 시작됐다."
+        },
+        "normal": {
+          "condition": "bad 조건 미충족 AND good 조건 미충족 (호감도가 높아도 관계 지속 플래그가 없으면 normal)",
+          "summary": "서하는 답을 재촉하지 않았다. 서로 조금 멀어진 시간이 지난 뒤, 졸업 발표 초대가 왔다. 좋아했던 목소리는 남았다. 이제는 다른 자리에서 진심으로 박수를 보낼 수 있었다."
+        },
+        "bad": {
+          "condition": "affection < 20 OR flag 'seoha_farewell' set",
+          "summary": "서하가 짧게 숨을 고르고 고개를 끄덕였다. 좋았던 시간을 편집해서 없애지는 않기로 했다. 함께 고른 노래는 각자의 재생목록에 남았고, 다음 곡은 따로 골랐다."
+        }
+      },
+      "kind": "romance"
+    },
+    {
+      "char_id": "char_06",
+      "scenes": [
+        {
+          "scene_id": "r6_01",
+          "title": "기록 없는 한 바퀴"
+        },
+        {
+          "scene_id": "r6_02",
+          "title": "렌즈를 돌리는 사람"
+        },
+        {
+          "scene_id": "r6_03",
+          "title": "승부는 과자까지"
+        },
+        {
+          "scene_id": "r6_04",
+          "title": "남길 사진, 지울 사진"
+        },
+        {
+          "scene_id": "r6_04_finish",
+          "title": "결승선 다음의 표정"
+        },
+        {
+          "scene_id": "r6_04_private",
+          "title": "우리만 보는 인화지"
+        },
+        {
+          "scene_id": "r6_05",
+          "title": "내가 정한 출발선"
+        },
+        {
+          "scene_id": "r6_06",
+          "title": "수고했어 대신 보고 싶었어"
+        },
+        {
+          "scene_id": "r6_07",
+          "title": "먼저 잡은 손"
+        },
+        {
+          "scene_id": "r6_08",
+          "title": "응원은 감독이 아니라서"
+        },
+        {
+          "scene_id": "r6_09",
+          "title": "칠 분 늦은 연락"
+        },
+        {
+          "scene_id": "r6_10",
+          "title": "사진에 없는 연습"
+        },
+        {
+          "scene_id": "r6_11",
+          "title": "한 걸음 남은 거리"
+        },
+        {
+          "scene_id": "r6_12",
+          "title": "반대로 맞춰보는 속도"
+        },
+        {
+          "scene_id": "r6_13",
+          "title": "렌즈 앞의 우리"
+        },
+        {
+          "scene_id": "r6_14",
+          "title": "다음 계절의 출발선"
+        }
+      ],
+      "endings": {
+        "good": {
+          "condition": "affection >= 75 AND flag 'iseo_future' set",
+          "summary": "새벽 훈련이 없는 토요일. 이서는 운동화 대신 샌들을 신고 약속 장소에 왔다. “오늘은 네가 길 골라. 천천히 가도 돼.” 기록을 재지 않는 하루가 둘에게 하나 더 생겼다."
+        },
+        "normal": {
+          "condition": "bad 조건 미충족 AND good 조건 미충족 (호감도가 높아도 관계 지속 플래그가 없으면 normal)",
+          "summary": "이서는 아쉽다고 말한 뒤 내 시간표를 돌려주었다. 대답해줘서 고맙다는 말도 했다. 나중에 사진 전시에서 다시 만났다. 같은 프레임 안에 서지 않아도 서로의 다음 장면을 응원할 수 있었다."
+        },
+        "bad": {
+          "condition": "affection < 20 OR flag 'iseo_farewell' set",
+          "summary": "이서는 약속을 붙잡지 않았다. 같이 걷던 트랙을 마지막으로 한 번 돌아 나왔다. 지갑의 사진을 어떻게 할지는 각자가 정하기로 했다. 한 봄의 마음까지 실패한 기록으로 남기고 싶지는 않았다."
+        }
+      },
+      "kind": "romance"
     }
   ],
   "solo_route": {
@@ -308,14 +476,20 @@
     "design_seen",
     "bus_with_jian",
     "cafe_visit",
+    "seoha_curious",
+    "seoha_challenge",
     "stayed_for_test",
     "kept_schedule",
+    "iseo_test",
+    "iseo_photo",
     "group_dinner",
     "personal_time",
     "festival_shift_jian",
     "festival_shift_narae",
     "route_jian",
     "route_narae",
+    "route_seoha",
+    "route_iseo",
     "route_doyun",
     "route_sihyuk",
     "jian_direct",
@@ -389,7 +563,65 @@
     "r4_together_3",
     "r4_review_3",
     "sihyuk_confessed",
-    "sihyuk_too_late"
+    "sihyuk_too_late",
+    "seoha_direct",
+    "seoha_offair",
+    "seoha_adlib",
+    "seoha_impression",
+    "seoha_private_take",
+    "seoha_shared_take",
+    "seoha_record",
+    "seoha_soundwalk",
+    "seoha_answer",
+    "seoha_wait",
+    "seoha_named",
+    "seoha_asked",
+    "seoha_dating",
+    "seoha_hand",
+    "seoha_shoulder",
+    "seoha_no_clip",
+    "seoha_clip_limit",
+    "seoha_repair",
+    "seoha_reset",
+    "seoha_celebrate",
+    "seoha_afterparty",
+    "seoha_kiss",
+    "seoha_embrace",
+    "seoha_listen",
+    "seoha_rehearse",
+    "seoha_equal",
+    "seoha_breakfast",
+    "seoha_future",
+    "seoha_farewell",
+    "iseo_icecream",
+    "iseo_nocamera",
+    "iseo_candid",
+    "iseo_pose",
+    "iseo_team",
+    "iseo_rival",
+    "iseo_finish",
+    "iseo_private",
+    "iseo_cheer",
+    "iseo_own_day",
+    "iseo_flirt",
+    "iseo_miss",
+    "iseo_dating",
+    "iseo_names",
+    "iseo_hand",
+    "iseo_autonomy",
+    "iseo_recovery",
+    "iseo_apology",
+    "iseo_exact_time",
+    "iseo_credit",
+    "iseo_support",
+    "iseo_kiss",
+    "iseo_hold",
+    "iseo_break",
+    "iseo_morning",
+    "iseo_together_photo",
+    "iseo_after_photo",
+    "iseo_future",
+    "iseo_farewell"
   ],
   "flowchart_mermaid": "flowchart TD\n  c01[복학 첫날] --> c02[첫 회의] --> c03[야식과 야근] --> c04{갈림길}\n  c04 -->|지안 호감 최고| r1[지안 루트]\n  c04 -->|도윤 호감 최고| r2[도윤 루트]\n  c04 -->|나래 호감 최고| r3[나래 루트]\n  c04 -->|시혁 호감 최고| r4[시혁 루트]\n  c04 -->|40 미만| solo[혼자 엔딩]\n  r1 --> r1end{지안 엔딩: 굿/노멀/배드}\n  r2 --> r2end{도윤 엔딩: 굿/노멀/배드}\n  r3 --> r3end{나래 엔딩: 굿/노멀/배드}\n  r4 --> r4end{시혁 엔딩: 굿/노멀/배드}"
 }

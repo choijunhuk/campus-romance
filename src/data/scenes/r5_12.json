@@ -1,0 +1,64 @@
+{
+  "scene_id": "r5_12",
+  "title": "들어줄 차례",
+  "date": "6월 15일",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "library",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "졸업 작품 발표를 앞둔 내 이야기를 서하가 듣는다. 오늘은 대본도 마이크도 없이, 내가 말을 고를 때마다 기다려준다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "내가 고쳐줄 문장이 필요한 거야, 그냥 들어줄 사람이 필요한 거야?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "한 번만 끝까지 들어줘. 그다음 질문해줘.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_listen"
+          ]
+        },
+        {
+          "label": "발표 연습 같이 해줄래? 네 질문이 제일 도움이 돼.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_rehearse"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "쉬는 시간에 레코드 숍에서 고른 곡을 들었다. 서하가 박자를 두드리다가 내 어깨를 톡 쳤다. “끝나면 이 곡 틀고 걸어가자.”",
+      "requires_flags": [
+        "seoha_record"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "쉬는 시간에는 말없이 도서관 정원을 걸었다. 처음 오 분을 못 버텼던 사람과 이번에는 편하게 침묵했다.",
+      "requires_flags": [
+        "seoha_soundwalk"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "시간이 끝나자 서하가 자기 과제 파일을 연다. 한쪽만 계속 말하는 밤이 되지 않도록, 이번엔 내가 의자를 당겼다."
+    }
+  ],
+  "next_scene": "r5_13"
+}

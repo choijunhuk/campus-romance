@@ -1,0 +1,64 @@
+{
+  "scene_id": "r5_14",
+  "title": "다음 채널에서도",
+  "date": "6월 26일 · 종강",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "radio_room",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "방송실 열쇠를 반납하는 날. 서하가 빈 키링을 돌리다가 내 쪽으로 돌아선다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "여기서 기다리는 건 이제 끝이네. 그래도 다음 학기도 나랑 만날래? 장소는 새로 고르면 되니까.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "응. 방송이 없어도 너랑 계속 만나고 싶어.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_future"
+          ],
+          "clear_flags": [
+            "seoha_farewell"
+          ]
+        },
+        {
+          "label": "고마웠어. 다음 학기엔 친구로 만나고 싶어.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [],
+          "clear_flags": [
+            "seoha_future",
+            "seoha_farewell"
+          ]
+        },
+        {
+          "label": "좋아했던 마음은 남기고, 여기서 헤어지자.",
+          "set_flags": [
+            "seoha_farewell"
+          ],
+          "clear_flags": [
+            "seoha_future"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "익숙한 끝인사 대신 서로의 대답을 들었다. 다음 이야기는 자동으로 재생되지 않는다. 둘이 함께 골라야 한다."
+    }
+  ],
+  "next_scene": "EVAL_ENDING:char_05"
+}

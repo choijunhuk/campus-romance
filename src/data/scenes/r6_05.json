@@ -1,0 +1,63 @@
+{
+  "scene_id": "r6_05",
+  "title": "내가 정한 출발선",
+  "date": "5월 20일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "track",
+  "bgm_mood": "tense_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "이번 주말 대회와 우리가 잡은 약속이 겹쳤다. 이서가 출전표와 내 메시지를 번갈아 본다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "예선 통과할 줄 몰랐어요. 기쁜데 미안하네요. 나가는 건 이미 마음 정했어요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "응원하러 갈게. 데이트는 끝나고 새로 잡자.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_cheer"
+          ]
+        },
+        {
+          "label": "그날은 내 일정 할게. 경기 끝나면 먼저 연락해줘.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_own_day"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "고마워요. 제가 뛸지 말지는 안 물어봐서.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "그건 이서 경기잖아요. 대신 다음 약속은 먼저 골라줘요."
+    },
+    {
+      "type": "narration",
+      "text": "이서가 달력에 새 날짜를 적어 보내왔다. 응원과 무조건 기다리는 일은 다른 약속이었다."
+    }
+  ],
+  "next_scene": "r6_06"
+}

@@ -1,0 +1,55 @@
+{
+  "scene_id": "r6_09",
+  "title": "칠 분 늦은 연락",
+  "date": "6월 2일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "cafe_street",
+  "bgm_mood": "tense_evening",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "이번에는 내가 프로젝트 수정 때문에 늦었다. 이서는 혼자 메뉴를 고르지 못한 채 기다리고 있었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "미안해. 거의 끝났다고 생각했는데."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "내가 대회 때문에 약속 바꿀 땐 먼저 말했잖아. 기다리는 사람이 시간 계산하게 하진 말자.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "남은 일을 설명하고, 오늘 기다린 시간은 정확히 사과한다.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_apology"
+          ]
+        },
+        {
+          "label": "오늘은 먼저 먹게 하고, 내가 갈 수 있는 시간을 확정해서 보낸다.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_exact_time"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "멋있게 수습할 말은 없었다. 그날은 내가 늦은 저녁을 샀고, 이서는 싫었던 부분을 숨기지 않았다. 헤어질 때 손은 놓지 않았다."
+    }
+  ],
+  "next_scene": "r6_10"
+}

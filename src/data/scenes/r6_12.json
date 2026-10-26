@@ -1,0 +1,58 @@
+{
+  "scene_id": "r6_12",
+  "title": "반대로 맞춰보는 속도",
+  "date": "6월 15일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "library",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "시험 기간에는 내 시간표가 더 빽빽했다. 이서는 저녁 러닝을 마치고 도서관 앞에 왔다. 공부 끝날 시간을 먼저 물었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "오늘은 내가 네 페이스 맞출게. 기다리면서 내 보고서 쓰면 되니까.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "한 시간 뒤에 쉬는 시간을 확정해서 같이 저녁 먹는다.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_break"
+          ]
+        },
+        {
+          "label": "오늘은 각자 마무리하고 내일 아침을 같이 먹는다.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_morning"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "좋아. 같이 있는 시간만 중요한 건 아니지. 약속한 시간이 맞는 것도 좋더라.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "무조건 같은 속도로 살지는 못했다. 대신 서로의 시간을 궁금해하고, 맞출 수 있는 곳을 직접 골랐다."
+    }
+  ],
+  "next_scene": "r6_13"
+}

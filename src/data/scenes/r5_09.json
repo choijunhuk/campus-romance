@@ -1,0 +1,69 @@
+{
+  "scene_id": "r5_09",
+  "title": "대본에 없던 사과",
+  "date": "5월 30일",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "cafe_street",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "어제는 내가 불편한 이유 대신 너를 의심하는 것처럼 말했어. 미안해."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "나도 작업 과정을 네가 알 거라고 생각했어. 밖으로 나갈 건 당사자한테 먼저 보여줄게.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "서하는 홍보 폴더에서 사적인 영상을 뺐다. 대신 내가 제품을 시연하는 장면으로 연결했다. 영상의 흐름도 더 좋아졌다.",
+      "requires_flags": [
+        "seoha_no_clip"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "같이 고른 컷에는 둘의 얼굴 대신 웃음과 마이크만 남았다. 서하가 크레딧에 촬영 허락을 확인한 날짜를 적었다.",
+      "requires_flags": [
+        "seoha_clip_limit"
+      ]
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "지금도 좋아해. 다음번엔 불편한 순간에 바로 말할게.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_repair"
+          ]
+        },
+        {
+          "label": "오늘은 작업 말고 데이트하자. 얘기는 다 듣고 갈게.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_reset"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "좋아. 그리고 오늘 계산은 내가 할 거야. 사과값 아니고, 내가 부른 데이트니까.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "r5_10"
+}

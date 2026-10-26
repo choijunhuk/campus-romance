@@ -75,6 +75,66 @@
     {
       "type": "narration",
       "text": "빗방울이 굵어진다. 단톡에는 도윤이 테스트 로그를 올렸고, 시혁은 ‘다들 귀가 체크’라는 메시지를 남겼다."
+    },
+    {
+      "type": "narration",
+      "text": "카페 앞에서 헤드폰을 목에 건 여자가 휴대폰 녹음을 끈다. 학생회관 라디오에서 매일 듣던 목소리였다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "회로의 봄 맞죠? 방송부 윤서하예요. 축제 체험 부스 소개, 인터뷰 가능해요? 목소리 좋은 사람이면 더 좋고.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "목소리 심사부터 하나요?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "아뇨. 방금 통과하셨어요. 내용 심사가 더 어려울 텐데.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "국문과 4학년, 스물셋. 서하는 방송 시간을 안내한 뒤 녹음 전에는 꼭 허락을 받겠다고 덧붙였다. 농담과 일의 구분이 또렷했다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "방송실 구경도 되나요? 마이크 앞에서는 어떤 사람인지 궁금해요.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_curious"
+          ]
+        },
+        {
+          "label": "부스 시연부터 보여줄게요. 질문이 날카로우면 더 좋겠네요.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_challenge"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "좋아요. 다음엔 방송 말고 제 이름부터 불러주세요. 계속 진행자님이라고 하면 늙는 기분이라.",
+      "expression": "laugh",
+      "sprite_position": "center",
+      "clear_sprites": true
     }
   ],
   "next_scene": "c_05"

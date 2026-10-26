@@ -1,0 +1,58 @@
+{
+  "scene_id": "r6_08",
+  "title": "응원은 감독이 아니라서",
+  "date": "5월 29일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "track",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "발목이 뻐근하다는 이서에게 오늘은 뛰지 말라고 말해버렸다. 이서는 트레이너에게 이미 상태를 확인받았다고 했다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "걱정하는 건 알아. 그런데 내가 무조건 무리할 사람이라고 생각하진 말아줘.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "내가 먼저 정했네. 미안해. 어떤 운동을 하기로 했는지 들려줄래?",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_autonomy"
+          ]
+        },
+        {
+          "label": "오늘은 회복 메뉴 끝나고 만나자. 필요한 게 있으면 말해줘.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_recovery"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "오늘은 걷기랑 스트레칭만. 내 몸 오래 쓰고 싶어서 나도 계산해.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "내가 이서를 좋아하는 이유에 추진력이 있었다. 그 추진력을 내가 통제해야만 안심하는 사람이 되고 싶진 않았다."
+    }
+  ],
+  "next_scene": "r6_09"
+}

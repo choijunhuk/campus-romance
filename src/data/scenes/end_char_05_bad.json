@@ -1,0 +1,19 @@
+{
+  "scene_id": "end_char_05_bad",
+  "title": "마지막 끝인사",
+  "date": "6월의 마지막 주",
+  "chapter": "에필로그 · 서로 다른 방향",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "서하가 짧게 숨을 고르고 고개를 끄덕였다. 좋았던 시간을 편집해서 없애지는 않기로 했다."
+    },
+    {
+      "type": "narration",
+      "text": "함께 고른 노래는 각자의 재생목록에 남았고, 다음 곡은 따로 골랐다."
+    }
+  ],
+  "next_scene": null
+}

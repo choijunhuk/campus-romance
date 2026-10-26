@@ -4,38 +4,72 @@
       "id": "jian_coffee",
       "title": "업무가 끝난 뒤에도",
       "character": "char_01",
-      "file": "jian-coffee.webp",
-      "mobile_focus": "60% 50%",
+      "file": "jian-coffee-v3.webp",
+      "mobile_focus": "50% 50%",
       "hint": "지안과 첫 외출을 약속한 밤"
     },
     {
       "id": "jian_rooftop",
       "title": "선배라는 말 다음에",
       "character": "char_01",
-      "file": "jian-rooftop.webp",
-      "mobile_focus": "60% 50%",
+      "file": "jian-rooftop-v3.webp",
+      "mobile_focus": "50% 50%",
       "hint": "지안에게 마음을 말한 밤"
     },
     {
       "id": "narae_rain",
       "title": "우산 하나의 거리",
       "character": "char_03",
-      "file": "narae-rain.webp",
-      "mobile_focus": "30% 50%",
+      "file": "narae-rain-v3.webp",
+      "mobile_focus": "50% 50%",
       "hint": "나래의 카페 마감을 기다린 날"
     },
     {
       "id": "narae_river",
       "title": "다음 약속은 내가",
       "character": "char_03",
-      "file": "narae-river.webp",
-      "mobile_focus": "35% 50%",
+      "file": "narae-river-v3.webp",
+      "mobile_focus": "50% 50%",
       "hint": "나래와 둘만의 약속을 정한 날"
+    },
+    {
+      "id": "seoha_studio",
+      "title": "목소리보다 가까운 거리",
+      "character": "char_05",
+      "file": "seoha-studio-v3.webp",
+      "mobile_focus": "50% 50%",
+      "hint": "서하와 편집본을 함께 들은 날"
+    },
+    {
+      "id": "seoha_offair",
+      "title": "너에게만 낮춘 목소리",
+      "character": "char_05",
+      "file": "seoha-offair-v3.webp",
+      "mobile_focus": "50% 50%",
+      "hint": "서하의 마지막 정규 방송이 끝난 밤"
+    },
+    {
+      "id": "iseo_finish",
+      "title": "수고했어 대신 보고 싶었어",
+      "character": "char_06",
+      "file": "iseo-finish-v3.webp",
+      "mobile_focus": "50% 50%",
+      "hint": "이서의 경기 뒤 다시 만난 날"
+    },
+    {
+      "id": "iseo_stands",
+      "title": "한 걸음 남은 거리",
+      "character": "char_06",
+      "file": "iseo-stands-v3.webp",
+      "mobile_focus": "50% 50%",
+      "hint": "사진전을 정리하고 관중석에 앉은 밤"
     }
   ],
   "sprites": {
-    "char_01": "jian.webp",
-    "char_03": "narae.webp",
+    "char_01": "jian-v3.webp",
+    "char_03": "narae-v3.webp",
+    "char_05": "seoha-v3.webp",
+    "char_06": "iseo-v3.webp",
     "char_02": "friends.webp",
     "char_04": "friends.webp"
   },
@@ -47,6 +81,8 @@
     "cafe_street": "cafe",
     "rooftop": "rooftop",
     "han_river": "river",
-    "lecture_hall": "lecture"
+    "lecture_hall": "lecture",
+    "radio_room": "radio",
+    "track": "track"
   }
 }

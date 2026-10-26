@@ -1,0 +1,74 @@
+[
+  {
+    "id": "day",
+    "title": "407호의 좋은 예감",
+    "bpm": 98,
+    "style": "lofi",
+    "file": "day.mp3",
+    "duration": 97.95918367346938
+  },
+  {
+    "id": "evening",
+    "title": "데이트는 스윙으로",
+    "bpm": 114,
+    "style": "jazz",
+    "file": "evening.mp3",
+    "duration": 84.21052631578948
+  },
+  {
+    "id": "night",
+    "title": "막차 하나 전까지",
+    "bpm": 94,
+    "style": "soul",
+    "file": "night.mp3",
+    "duration": 102.12765957446808
+  },
+  {
+    "id": "confession",
+    "title": "대답을 기다리는 박자",
+    "bpm": 88,
+    "style": "piano",
+    "file": "confession.mp3",
+    "duration": 109.0909090909091
+  },
+  {
+    "id": "tense",
+    "title": "마감 10분 전",
+    "bpm": 120,
+    "style": "pulse",
+    "file": "tense.mp3",
+    "duration": 80
+  },
+  {
+    "id": "jian",
+    "title": "선배의 반칙",
+    "bpm": 106,
+    "style": "funk",
+    "file": "jian.mp3",
+    "duration": 90.56603773584905
+  },
+  {
+    "id": "narae",
+    "title": "별표 친 오후",
+    "bpm": 118,
+    "style": "bossa",
+    "file": "narae.mp3",
+    "duration": 81.35593220338983
+  },
+  {
+    "id": "seoha",
+    "title": "ON AIR, 너에게만",
+    "bpm": 112,
+    "style": "city",
+    "file": "seoha.mp3",
+    "duration": 85.71428571428571
+  },
+  {
+    "id": "iseo",
+    "title": "한 바퀴 더, 너와",
+    "bpm": 126,
+    "style": "rock",
+    "file": "iseo.mp3",
+    "duration": 76.19047619047619
+  }
+]

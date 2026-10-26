@@ -1,0 +1,36 @@
+{
+  "scene_id": "r6_04_finish",
+  "title": "결승선 다음의 표정",
+  "date": "5월 16일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "track",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "이때 기록은 별로였는데, 표정은 좋네요. 제가 먼저 다시 뛰겠다고 한 날이라.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "기록표에는 없는 일이네요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "그럼 그걸 써야겠다. 운동하는 사람도 매번 이겨서 하는 건 아니거든요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "사진 제목은 이서가 골랐다. ‘또 할 마음’. 나는 사진 뒤에 찍은 날짜를 적었다. 누가 누구를 설명할지 둘이 나눠 가졌다."
+    }
+  ],
+  "next_scene": "r6_05"
+}

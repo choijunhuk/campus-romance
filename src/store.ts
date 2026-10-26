@@ -5,7 +5,7 @@ import type { Choice, Scene } from './types'
 import { visibleNode, presentation } from './engine/presentation'
 import { eventById } from './art'
 
-export const STORY_VERSION = 2
+export const STORY_VERSION = 3
 
 export type Screen = 'title' | 'game' | 'gallery'
 

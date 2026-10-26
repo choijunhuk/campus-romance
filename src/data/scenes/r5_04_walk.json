@@ -1,0 +1,40 @@
+{
+  "scene_id": "r5_04_walk",
+  "title": "아무 말 안 하는 방송",
+  "date": "5월 16일",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "han_river",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "오 분 동안 말하지 않기. 서하가 먼저 제안하고 삼십 초 만에 내 소매를 잡았다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "저 강아지 좀 봐요. 아, 탈락.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "방송 사고네요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "진행자가 바뀌면 수습해주세요. 저는 지금 구경하느라 바빠요.",
+      "expression": "laugh",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "돌아오는 길에는 내가 먼저 손을 내밀었다. 서하가 손 대신 소매 끝을 잡고, 다음 횡단보도에서 손바닥으로 옮겨왔다."
+    }
+  ],
+  "next_scene": "r5_05"
+}
