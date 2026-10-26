@@ -1,95 +1,395 @@
 {
   "affection_system": {
     "scale": "0-100",
-    "thresholds": { "route_unlock": 40, "good_ending": 75, "bad_ending_below": 20 },
+    "thresholds": {
+      "route_unlock": 40,
+      "good_ending": 75,
+      "bad_ending_below": 20
+    },
     "decay_rule": "none"
   },
   "common_route": {
     "scenes": [
-      { "scene_id": "c_01", "title": "복학 첫날", "summary": "복학 첫날, 동아리 '회로의 봄' 방에 다시 들어선다. 지안·도윤·나래·시혁 네 사람과 첫 조우. 동아리 대회 출품 프로젝트 팀에 합류한다.", "locations": ["club_room"], "characters_present": ["char_01", "char_02", "char_03", "char_04"], "branch_point": false },
-      { "scene_id": "c_02", "title": "첫 회의", "summary": "프로젝트 아이디어 회의. 각자 성격이 드러난다. 주인공의 첫 선택이 네 사람과의 초기 거리감을 가른다.", "locations": ["gwabang"], "characters_present": ["char_01", "char_02", "char_03", "char_04"], "branch_point": false },
-      { "scene_id": "c_03", "title": "야식과 야근", "summary": "납땜과 코딩으로 늦어진 밤. 자판기 커피를 사이에 두고 한 사람과 짧은 진짜 대화를 나눈다. 누구와의 호감도가 오르는지에 따라 분위기가 달라진다.", "locations": ["club_room", "rooftop"], "characters_present": ["char_01", "char_02", "char_03", "char_04"], "branch_point": false },
-      { "scene_id": "c_04", "title": "갈림길", "summary": "중간 점검일. 프로젝트가 위기를 맞고 팀이 흔들린다. 이 위기에서 누구의 편에 서는가로 개별 루트가 갈린다.", "locations": ["lecture_hall", "cafeteria"], "characters_present": ["char_01", "char_02", "char_03", "char_04"], "branch_point": true }
+      {
+        "scene_id": "c_01",
+        "title": "출입 명단에 다시 이름을"
+      },
+      {
+        "scene_id": "c_02",
+        "title": "삼십이만 원짜리 아침"
+      },
+      {
+        "scene_id": "c_03",
+        "title": "학식의 빈자리"
+      },
+      {
+        "scene_id": "c_04",
+        "title": "끝나는 시간이 다른 사람들"
+      },
+      {
+        "scene_id": "c_05",
+        "title": "실패한 시연의 담당자"
+      },
+      {
+        "scene_id": "c_06",
+        "title": "빌린 것과 돌려줄 것"
+      },
+      {
+        "scene_id": "c_07",
+        "title": "축제 전의 작은 소란"
+      },
+      {
+        "scene_id": "c_08",
+        "title": "수요일 저녁 다음의 약속"
+      }
     ],
-    "branch_logic": "c_04 종료 시점에 호감도가 route_unlock(40) 이상인 캐릭터 중 최고치인 캐릭터의 개별 루트로 진입. 40 이상이 없으면 solo 루트(공통 '혼자' 엔딩)로 진입. 동률이면 c_04의 마지막 선택 goto로 명시 분기."
+    "branch_logic": "c_08에서 플레이어가 연애·우정·솔로 경로를 직접 선택한다. 호감도 최고 인물에게 자동 진입하지 않는다."
   },
   "character_routes": [
     {
       "char_id": "char_01",
       "scenes": [
-        { "scene_id": "r1_01", "title": "혼자 떠안은 밤", "summary": "지안이 또 혼자 야근하는 걸 발견한다. 도와주겠다는 제안에 그녀가 처음으로 흔들린다.", "key_choice": "강하게 밀어붙일까, 곁에서 조용히 기다릴까", "affection_swing": "±10" },
-        { "scene_id": "r1_02", "title": "번아웃의 그림자", "summary": "옥상에서 지안이 작년의 번아웃을 처음 입에 올린다. 위로의 방식이 시험대에 오른다.", "key_choice": "해결책 제시 vs 그냥 들어주기", "affection_swing": "±15" },
-        { "scene_id": "r1_03", "title": "기댈 줄 모르는 사람", "summary": "대회 직전 지안이 다시 모든 걸 떠안으려 한다. 막아설지, 믿고 맡길지.", "key_choice": "역할을 나눠 갖자고 설득", "affection_swing": "±15" },
-        { "scene_id": "r1_04", "title": "처음 내민 손", "summary": "발표 전야. 지안이 처음으로 먼저 도움을, 그리고 마음을 청한다.", "key_choice": "마음을 받을지 한 발 물러설지", "affection_swing": "±20" },
-        { "scene_id": "r1_05", "title": "발표, 그리고 그 다음", "summary": "대회 결과 발표. 지안 루트의 엔딩 분기로 진입한다.", "key_choice": "엔딩 분기 (호감도/플래그 평가)", "affection_swing": "0" }
+        {
+          "scene_id": "r1_01",
+          "title": "커피는 회의비가 아니다"
+        },
+        {
+          "scene_id": "r1_02",
+          "title": "선배도 틀리는 문제"
+        },
+        {
+          "scene_id": "r1_03",
+          "title": "당연하게 기다리는 사람"
+        },
+        {
+          "scene_id": "r1_04",
+          "title": "다른 약속을 지키는 법"
+        },
+        {
+          "scene_id": "r1_05",
+          "title": "우리 둘만 아는 표정"
+        },
+        {
+          "scene_id": "r1_06",
+          "title": "수요일이 아닌 전화"
+        },
+        {
+          "scene_id": "r1_07",
+          "title": "선배라는 말 다음에"
+        },
+        {
+          "scene_id": "r1_08",
+          "title": "좋아한다는 말 이후의 아침"
+        },
+        {
+          "scene_id": "r1_09",
+          "title": "마감과 약속 사이"
+        },
+        {
+          "scene_id": "r1_09_work",
+          "title": "열 시에 닫은 노트북"
+        },
+        {
+          "scene_id": "r1_09_cinema",
+          "title": "휴대폰을 뒤집어 놓는 연습"
+        },
+        {
+          "scene_id": "r1_10",
+          "title": "먼저 정해버린 사람"
+        },
+        {
+          "scene_id": "r1_11",
+          "title": "고치려는 말, 듣고 싶은 말"
+        },
+        {
+          "scene_id": "r1_12",
+          "title": "막차를 보내기 전에"
+        },
+        {
+          "scene_id": "r1_13",
+          "title": "함께 만든 장치"
+        },
+        {
+          "scene_id": "r1_14",
+          "title": "다음 학기의 빈칸"
+        }
       ],
       "endings": {
-        "good": { "condition": "affection.char_01 >= 75 AND flag 'jian_opened_up' set", "summary": "지안이 처음으로 '같이 하자'고 말한다. 책임을 나눠 지는 두 사람의 새 시작." },
-        "normal": { "condition": "affection.char_01 75 미만 AND >= 40", "summary": "좋은 동료로 남는다. 말하지 못한 마음은 다음 학기로 미뤄진다." },
-        "bad": { "condition": "affection.char_01 < 20 OR flag 'jian_pushed_away' set", "summary": "끝까지 혼자 떠안은 지안은 다시 멀어진다. 닫힌 문." }
-      }
+        "good": {
+          "condition": "affection.char_01 >= 75 AND flag 'jian_opened_up' set",
+          "summary": "지안이 일정표의 빈 날을 짚는다. 이번에는 일정을 채워 넣기 전에 내 얼굴부터 본다. “이 날, 바다 갈래? 일주일은 아직 못 비워도 하루는 되겠다.” 같이 일하는 방법을 배운 뒤, 같이 쉬는 방법을 배우기 시작했다."
+        },
+        "normal": {
+          "condition": "bad 조건 미충족 AND good 조건 미충족 (호감도가 높아도 관계 지속 플래그가 없으면 normal)",
+          "summary": "지안이 잠깐 고개를 숙였다가 똑바로 나를 본다. 아쉽다는 말과 알겠다는 말을 둘 다 해준다. 그날 이후에도 동아리에서 만났다. 둘만의 약속을 당연하게 잡지는 않았지만, 서로의 일을 존중하는 마음은 남았다."
+        },
+        "bad": {
+          "condition": "affection.char_01 < 20 OR flag 'jian_pushed_away' set",
+          "summary": "좋았던 시간이 없었던 일이 되지는 않는다. 다만 다음 약속을 하지 않기로 했다. 지안이 먼저 손을 놓았다. 며칠 뒤 팀 단톡에 올라온 인사는 짧고 평온했다. 둘은 각자의 여름으로 걸어갔다."
+        }
+      },
+      "kind": "romance"
     },
     {
       "char_id": "char_02",
       "scenes": [
-        { "scene_id": "r2_01", "title": "밤샘 디버깅", "summary": "도윤과 단둘이 밤샘. 그의 세계로 처음 초대받는다.", "key_choice": "그의 페이스에 맞출까, 쉬게 할까", "affection_swing": "±10" },
-        { "scene_id": "r2_02", "title": "겉도는 천재", "summary": "도윤이 무심코 나래에게 상처를 준다. 주인공이 중재에 나선다.", "key_choice": "도윤을 감쌀지, 잘못을 짚어줄지", "affection_swing": "±15" },
-        { "scene_id": "r2_03", "title": "디버깅 안 되는 마음", "summary": "도윤이 처음으로 '외로움'을 코드 밖 언어로 더듬는다.", "key_choice": "공감 vs 가르치려 듦", "affection_swing": "±15" },
-        { "scene_id": "r2_04", "title": "논리 밖의 변수", "summary": "도윤이 자기 마음을 '설명할 수 없는 변수'라 부르며 고백을 시도한다.", "key_choice": "마음을 받을지", "affection_swing": "±20" },
-        { "scene_id": "r2_05", "title": "대회, 그리고 첫 마음", "summary": "도윤 루트 엔딩 분기.", "key_choice": "엔딩 분기", "affection_swing": "0" }
+        {
+          "scene_id": "r2_01",
+          "title": "재현되는 버그"
+        },
+        {
+          "scene_id": "r2_02",
+          "title": "빠른 것보다 남는 것"
+        },
+        {
+          "scene_id": "r2_03",
+          "title": "내가 한 일의 이름"
+        },
+        {
+          "scene_id": "r2_04",
+          "title": "남의 속도"
+        },
+        {
+          "scene_id": "r2_05",
+          "title": "프로젝트 다음에도"
+        }
       ],
       "endings": {
-        "good": { "condition": "affection.char_02 >= 75 AND flag 'doyun_understood' set", "summary": "도윤이 '논리로 안 풀리는 게 있어서 다행'이라 웃는다. 서로를 배워가는 시작." },
-        "normal": { "condition": "affection.char_02 75 미만 AND >= 40", "summary": "최고의 개발 파트너로 남는다. 마음은 미정의 변수로." },
-        "bad": { "condition": "affection.char_02 < 20 OR flag 'doyun_hurt' set", "summary": "오해를 풀지 못한 도윤이 다시 자기 세계로 숨는다." }
-      }
+        "good": {
+          "condition": "affection.char_02 >= 75 AND flag 'doyun_understood' set",
+          "summary": "도윤이 새 저장소에 내 이름을 초대했다. 밤이 아니라 다음 날 아침에 알림이 왔다. 일을 잘하는 동료가 한 명 늘었다. 막히는 곳을 솔직히 말할 수 있는 친구도 한 명 늘었다."
+        },
+        "normal": {
+          "condition": "bad 조건 미충족 AND good 조건 미충족 (호감도가 높아도 관계 지속 플래그가 없으면 normal)",
+          "summary": "도윤은 여름 개인 프로젝트를 시작했고 나는 밀린 전공을 정리했다. 각자 만든 것을 가끔 보내며 지냈다. 함께한 일의 이름은 발표 자료에 그대로 남았다."
+        },
+        "bad": {
+          "condition": "affection.char_02 < 20 OR flag 'doyun_hurt' set",
+          "summary": "도윤과 다음 프로젝트를 함께하지 않기로 했다. 역할과 일정이 맞지 않는다는 말을 늦게나마 했다. 좋았던 협업까지 지울 필요는 없었다. 저장소의 마지막 기록에는 네 사람의 이름이 남았다."
+        }
+      },
+      "kind": "friendship"
     },
     {
       "char_id": "char_03",
       "scenes": [
-        { "scene_id": "r3_01", "title": "햇살의 뒷면", "summary": "나래가 알바 세 개로 무너지기 직전임을 우연히 본다.", "key_choice": "모른 척 vs 다가가기", "affection_swing": "±10" },
-        { "scene_id": "r3_02", "title": "거절하지 못하는 사람", "summary": "나래가 모두의 부탁을 떠안다 쓰러진다. 주인공이 처음으로 '아니'라고 대신 말해준다.", "key_choice": "대신 막아줄지, 스스로 말하게 할지", "affection_swing": "±15" },
-        { "scene_id": "r3_03", "title": "가면 내려놓기", "summary": "한강에서 나래가 처음 자기 힘듦을 운다.", "key_choice": "위로의 방식", "affection_swing": "±15" },
-        { "scene_id": "r3_04", "title": "나를 비춰준 사람", "summary": "나래가 '처음으로 쉴 수 있었다'며 마음을 전한다.", "key_choice": "마음을 받을지", "affection_swing": "±20" },
-        { "scene_id": "r3_05", "title": "대회, 그리고 진짜 웃음", "summary": "나래 루트 엔딩 분기.", "key_choice": "엔딩 분기", "affection_swing": "0" }
+        {
+          "scene_id": "r3_01",
+          "title": "약속의 길이는 사십 분"
+        },
+        {
+          "scene_id": "r3_02",
+          "title": "귀엽다는 말의 다음"
+        },
+        {
+          "scene_id": "r3_03",
+          "title": "마감 시간에 맞춰 온 사람"
+        },
+        {
+          "scene_id": "r3_04",
+          "title": "모두에게 보내는 말은 아니야"
+        },
+        {
+          "scene_id": "r3_05",
+          "title": "만원짜리 취향"
+        },
+        {
+          "scene_id": "r3_05_music",
+          "title": "이어폰 한쪽의 취향"
+        },
+        {
+          "scene_id": "r3_05_sketch",
+          "title": "닮지 않아서 남는 그림"
+        },
+        {
+          "scene_id": "r3_06",
+          "title": "좋은 사람 말고 같이 있는 사람"
+        },
+        {
+          "scene_id": "r3_07",
+          "title": "내가 먼저 고른 사람"
+        },
+        {
+          "scene_id": "r3_08",
+          "title": "알려도 되는 이야기"
+        },
+        {
+          "scene_id": "r3_09",
+          "title": "말하지 않으면 모르는 일"
+        },
+        {
+          "scene_id": "r3_10",
+          "title": "듣기 전에 고치지 않기"
+        },
+        {
+          "scene_id": "r3_11",
+          "title": "남겨둔 마지막 한 시간"
+        },
+        {
+          "scene_id": "r3_12",
+          "title": "내일도 어색하지 않게"
+        },
+        {
+          "scene_id": "r3_13",
+          "title": "나래의 이름으로"
+        },
+        {
+          "scene_id": "r3_14",
+          "title": "다음 약속은 내가"
+        }
       ],
       "endings": {
-        "good": { "condition": "affection.char_03 >= 75 AND flag 'narae_unmasked' set", "summary": "나래가 처음으로 자기를 위한 선택을 한다. 곁에서 함께 쉬는 두 사람." },
-        "normal": { "condition": "affection.char_03 75 미만 AND >= 40", "summary": "좋은 친구로 남는다. 그녀는 여전히 모두에게 웃는다." },
-        "bad": { "condition": "affection.char_03 < 20 OR flag 'narae_collapsed' set", "summary": "끝내 가면을 내리지 못한 나래는 조용히 동아리를 떠난다." }
-      }
+        "good": {
+          "condition": "affection.char_03 >= 75 AND flag 'narae_unmasked' set",
+          "summary": "나래가 쉬는 날에 동그라미를 하나 더 친다. 내 계절학기 시간표를 옆에 놓고 둘이 날짜를 고른다. “다음엔 내가 기다릴게. 수업 끝나면 천천히 나와.” 말하지 않아도 알아주는 사람보다, 말하면 함께 정할 수 있는 사람이 되었다."
+        },
+        "normal": {
+          "condition": "bad 조건 미충족 AND good 조건 미충족 (호감도가 높아도 관계 지속 플래그가 없으면 normal)",
+          "summary": "나래가 종이를 반으로 접었다. “아쉽다. 그래도 말해줘서 고마워.” 조금의 시간이 필요했다. 다시 만난 동아리 회의에서 나래가 자기 디자인을 설명했고, 나는 예전처럼 진지하게 들었다."
+        },
+        "bad": {
+          "condition": "affection.char_03 < 20 OR flag 'narae_collapsed' set",
+          "summary": "나래는 억지로 웃지 않았다. 나도 괜찮은 척을 부탁하지 않았다. “잘 지내요.” 짧은 말 뒤에 버스가 왔다. 함께 걸었던 골목은 남았지만, 이제 돌아가는 길은 각자 골랐다."
+        }
+      },
+      "kind": "romance"
     },
     {
       "char_id": "char_04",
       "scenes": [
-        { "scene_id": "r4_01", "title": "안 변한 너", "summary": "시혁과 단둘이 남아 1학년 시절 이야기를 한다. 미묘한 거리.", "key_choice": "과거를 캐물을지, 현재에 머물지", "affection_swing": "±10" },
-        { "scene_id": "r4_02", "title": "접어둔 밴드", "summary": "시혁이 접은 밴드와 진로의 망설임을 털어놓는다.", "key_choice": "꿈을 응원 vs 현실을 직시시킴", "affection_swing": "±15" },
-        { "scene_id": "r4_03", "title": "그때 못 한 말", "summary": "시혁이 1학년 때 하려다 만 고백이 있었음을 흘린다.", "key_choice": "지금 듣고 싶다고 할지, 모른 척할지", "affection_swing": "±15" },
-        { "scene_id": "r4_04", "title": "다시 온 타이밍", "summary": "시혁이 '이번엔 안 늦겠다'며 마음을 말한다.", "key_choice": "마음을 받을지", "affection_swing": "±20" },
-        { "scene_id": "r4_05", "title": "대회, 그리고 늦지 않은 말", "summary": "시혁 루트 엔딩 분기.", "key_choice": "엔딩 분기", "affection_swing": "0" }
+        {
+          "scene_id": "r4_01",
+          "title": "기타 케이스는 부품함이 아니다"
+        },
+        {
+          "scene_id": "r4_02",
+          "title": "다시 잡는 코드"
+        },
+        {
+          "scene_id": "r4_03",
+          "title": "무대와 면접 사이"
+        },
+        {
+          "scene_id": "r4_04",
+          "title": "들어줄 사람"
+        },
+        {
+          "scene_id": "r4_05",
+          "title": "늦지 않은 합주"
+        }
       ],
       "endings": {
-        "good": { "condition": "affection.char_04 >= 75 AND flag 'sihyuk_confessed' set", "summary": "시혁이 미뤄둔 말을 끝낸다. '이번 타이밍은 안 놓쳐.' 새 시작." },
-        "normal": { "condition": "affection.char_04 75 미만 AND >= 40", "summary": "편한 동기로 남는다. 타이밍은 또 어긋났다." },
-        "bad": { "condition": "affection.char_04 < 20 OR flag 'sihyuk_too_late' set", "summary": "또 늦었다. 시혁은 말없이 졸업을 향해 걸어간다." }
-      }
+        "good": {
+          "condition": "affection.char_04 >= 75 AND flag 'sihyuk_confessed' set",
+          "summary": "여름 합주실. 시혁이 박자를 세고 기타를 잡는다. 나는 도윤과 객석 맨 앞에 앉았다. 다 해낸 어른이 되지는 못했지만, 다시 해보겠다는 친구의 첫 관객은 될 수 있었다."
+        },
+        "normal": {
+          "condition": "bad 조건 미충족 AND good 조건 미충족 (호감도가 높아도 관계 지속 플래그가 없으면 normal)",
+          "summary": "시혁의 합주와 내 계절학기는 자주 겹쳤다. 대신 공연 영상을 보내면 끝까지 보고 답했다. 같은 장소에 매번 있지 않아도 오래 가는 우정이 있었다."
+        },
+        "bad": {
+          "condition": "affection.char_04 < 20 OR flag 'sihyuk_too_late' set",
+          "summary": "공연을 계속 도울 여유가 없다고 전했다. 시혁은 아쉽다고 했고 나는 미안하다고 했다. 함께 걷던 길에서 갈라졌지만 다음에 인사할 문까지 닫지는 않았다."
+        }
+      },
+      "kind": "friendship"
     }
   ],
   "solo_route": {
     "scene_id": "solo_end",
     "title": "혼자 서는 봄",
     "condition": "c_04 종료 시 호감도 40 이상 캐릭터 없음",
-    "summary": "누구의 곁도 아닌 자기 자신을 택한다. 프로젝트는 끝났고, 한 학기만큼 자란 채 여름을 맞는다. 쓸쓸하지만 나쁘지 않은 엔딩."
+    "summary": "누구와 연인이 될지보다 자신의 생활과 전공을 다시 정리하기로 한 봄. 동아리 친구들과 다음 학기를 약속한다."
   },
   "flags": [
-    "jian_opened_up — 지안이 약한 모습을 보였고 주인공이 받아줌 (굿엔딩 조건)",
-    "jian_pushed_away — 지안의 짐을 무시/강요해 멀어짐 (배드 조건)",
-    "doyun_understood — 도윤의 외로움에 공감해줌 (굿엔딩 조건)",
-    "doyun_hurt — 도윤의 실수를 몰아세움 (배드 조건)",
-    "narae_unmasked — 나래가 진짜 얼굴을 보임 (굿엔딩 조건)",
-    "narae_collapsed — 나래의 신호를 놓침 (배드 조건)",
-    "sihyuk_confessed — 시혁의 미뤄둔 말을 들어줌 (굿엔딩 조건)",
-    "sihyuk_too_late — 시혁의 타이밍을 또 놓침 (배드 조건)"
+    "prototype_first",
+    "user_first",
+    "notes_borrowed",
+    "design_seen",
+    "bus_with_jian",
+    "cafe_visit",
+    "stayed_for_test",
+    "kept_schedule",
+    "group_dinner",
+    "personal_time",
+    "festival_shift_jian",
+    "festival_shift_narae",
+    "route_jian",
+    "route_narae",
+    "route_doyun",
+    "route_sihyuk",
+    "jian_direct",
+    "jian_slow",
+    "jian_practice",
+    "jian_walk",
+    "jian_after_hours",
+    "jian_last_bus",
+    "jian_date_named",
+    "jian_date_asked",
+    "jian_private",
+    "jian_lowkey",
+    "jian_pickup",
+    "jian_phone",
+    "jian_dating",
+    "jian_taking_time",
+    "jian_public",
+    "jian_tell_later",
+    "jian_work_boundary",
+    "jian_kept_date",
+    "jian_talk_now",
+    "jian_talk_tomorrow",
+    "jian_ask_first",
+    "jian_offday",
+    "jian_kiss",
+    "jian_handwalk",
+    "jian_opened_up",
+    "jian_pushed_away",
+    "narae_favorite_route",
+    "narae_new_route",
+    "narae_function",
+    "narae_form",
+    "narae_ask_first",
+    "narae_take_turns",
+    "narae_direct",
+    "narae_ask_meaning",
+    "narae_playlist",
+    "narae_peoplewatch",
+    "narae_festival_hand",
+    "narae_festival_quiet",
+    "narae_dating",
+    "narae_taking_time",
+    "narae_public",
+    "narae_private_photo",
+    "narae_contact_boundary",
+    "narae_talk_later",
+    "narae_checkin",
+    "narae_protected_day",
+    "narae_dinner",
+    "narae_rest",
+    "narae_kiss",
+    "narae_stay_close",
+    "narae_unmasked",
+    "narae_collapsed",
+    "r2_together_0",
+    "r2_review_0",
+    "r2_together_1",
+    "r2_review_1",
+    "r2_together_2",
+    "r2_review_2",
+    "r2_together_3",
+    "r2_review_3",
+    "doyun_understood",
+    "doyun_hurt",
+    "r4_together_0",
+    "r4_review_0",
+    "r4_together_1",
+    "r4_review_1",
+    "r4_together_2",
+    "r4_review_2",
+    "r4_together_3",
+    "r4_review_3",
+    "sihyuk_confessed",
+    "sihyuk_too_late"
   ],
   "flowchart_mermaid": "flowchart TD\n  c01[복학 첫날] --> c02[첫 회의] --> c03[야식과 야근] --> c04{갈림길}\n  c04 -->|지안 호감 최고| r1[지안 루트]\n  c04 -->|도윤 호감 최고| r2[도윤 루트]\n  c04 -->|나래 호감 최고| r3[나래 루트]\n  c04 -->|시혁 호감 최고| r4[시혁 루트]\n  c04 -->|40 미만| solo[혼자 엔딩]\n  r1 --> r1end{지안 엔딩: 굿/노멀/배드}\n  r2 --> r2end{도윤 엔딩: 굿/노멀/배드}\n  r3 --> r3end{나래 엔딩: 굿/노멀/배드}\n  r4 --> r4end{시혁 엔딩: 굿/노멀/배드}"
 }

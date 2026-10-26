@@ -1,21 +1,76 @@
 {
   "scene_id": "r3_01",
-  "title": "햇살의 뒷면",
+  "title": "약속의 길이는 사십 분",
+  "date": "5월 8일",
+  "chapter": "유나래 · 둘만의 속도",
   "background": "cafe_street",
-  "bgm_mood": "soft_afternoon",
+  "bgm_mood": "warm_afternoon",
   "nodes": [
-    { "type": "narration", "text": "후문 카페거리. 우연히, 알바 유니폼 차림으로 뛰어가는 나래를 봤다. 동아리에선 한 번도 못 본, 지친 옆얼굴." },
-    { "type": "dialogue", "speaker": "char_03", "text": "어! 선배! 어, 이거... 헤헤. 알바 세 개 뛰는 거, 비밀로 해줄래? 다들 걱정하잖아.", "expression": "embarrassed", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_03", "text": "난 괜찮아 괜찮아~ 늘 이래왔는걸. 웃으면 다 괜찮아져, 진짜로.", "expression": "smile", "sprite_position": "center" },
-    { "type": "narration", "text": "'괜찮아'를 두 번 말하는 사람은, 보통 안 괜찮다. 2년 쉬는 동안 그건 배웠다." },
-    { "type": "choice", "choices": [
-      { "label": "\"안 괜찮아 보여. 나한테는 안 웃어도 돼.\"", "affection": { "char_03": 18 }, "set_flags": ["narae_unmasked"], "goto": 5 },
-      { "label": "\"오 대단하다! 역시 나래는 에너지 넘쳐!\"", "affection": { "char_03": -8 }, "set_flags": ["narae_collapsed"], "goto": 6 }
-    ] },
-    { "type": "dialogue", "speaker": "char_03", "text": "(웃음이 멈춘다) ...안 웃어도 된다고. (눈가가 붉어진다) 그 말. 아무도 안 해줬는데. 다들 내 웃는 얼굴만 좋아해서.", "expression": "sad", "sprite_position": "center", "goto": 8 },
-    { "type": "dialogue", "speaker": "char_03", "text": "(잠깐 멈칫하더니 더 환하게 웃는다) 그치! 나 에너지 부자야! ...응. 고마워, 선배.", "expression": "smile", "sprite_position": "center" },
-    { "type": "narration", "text": "더 환하게 웃었다. 그 웃음이 더 멀게 느껴지는 건, 기분 탓일까." },
-    { "type": "narration", "text": "햇살 같은 사람의 그늘을, 처음으로 본 오후." }
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "오늘 사십 분밖에 없는데 괜찮아요? 금요일엔 카페 일찍 들어가야 해서.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "그럼 사십 분짜리 산책을 하자."
+    },
+    {
+      "type": "narration",
+      "text": "나래는 미안하다는 대신 지도를 켰다. 가장 좋아하는 빵집을 거쳐 후문으로 돌아오는 길."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "네가 좋아하는 길로 안내해줘.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_favorite_route"
+          ]
+        },
+        {
+          "label": "오늘은 번갈아 골목을 고를까? 모르는 길도 하나쯤 가보자.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_new_route"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "선배는 시간 짧다고 아쉬운 티 안 내네요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "아쉬워. 그래서 다음 약속도 잡으려고."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "…그런 말은 담담하게 하면 반칙인데.",
+      "expression": "blush",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "나래가 근무표를 켜서 다음 주 화요일에 동그라미를 친다. ‘이 날은 한 시간.’ 약속이 이십 분 늘었다."
+    }
   ],
   "next_scene": "r3_02"
 }

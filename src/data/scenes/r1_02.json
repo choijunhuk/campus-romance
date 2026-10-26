@@ -1,24 +1,90 @@
 {
   "scene_id": "r1_02",
-  "title": "번아웃의 그림자",
-  "background": "rooftop",
-  "bgm_mood": "evening_wind",
+  "title": "선배도 틀리는 문제",
+  "date": "5월 11일",
+  "chapter": "서지안 · 같은 편",
+  "background": "library",
+  "bgm_mood": "warm_afternoon",
   "nodes": [
-    { "type": "narration", "text": "노을이 공학관 옥상을 주황으로 적신다. 지안 선배가 난간에 기대 멍하니 도시를 본다. 부르지도 않았는데 따라 올라왔다." },
-    { "type": "dialogue", "speaker": "char_01", "text": "...너 또 따라왔네. (피식) 하긴, 여기 경치는 좋지.", "expression": "smile", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_01", "text": "작년에. 나 여기 자주 올라왔어. 도망 올 데가 여기밖에 없어서.", "expression": "sad", "sprite_position": "center" },
-    { "type": "narration", "text": "처음이다. 저 사람이 먼저 작년 얘기를 꺼낸 건." },
-    { "type": "dialogue", "speaker": "char_01", "text": "혼자 다 하겠다고 우기다가, 결국 다 망쳤어. 팀도, 나도. 그래서 한 학기 도망쳤지. ...한심하지.", "expression": "sad", "sprite_position": "center" },
-    { "type": "narration", "text": "뭐라고 답해야 할까. 해결책을 줄 수도, 그냥 들어줄 수도 있다." },
-    { "type": "choice", "choices": [
-      { "label": "\"그럼 이번엔 역할을 나눠요. 시스템을 바꾸면 돼.\" (해결책)", "affection": { "char_01": 6 }, "set_flags": [], "goto": 7 },
-      { "label": "\"한심한 거 아니에요. ...많이 힘들었겠다.\" (그냥 들어주기)", "affection": { "char_01": 15 }, "set_flags": ["jian_opened_up"], "goto": 9 }
-    ] },
-    { "type": "dialogue", "speaker": "char_01", "text": "...맞는 말이야. 늘 그게 답이지. 근데 가끔은, 맞는 말이 제일 안 들릴 때가 있어. (옅게 웃음)", "expression": "neutral", "sprite_position": "center", "goto": 8 },
-    { "type": "narration", "text": "정답을 말했는데 거리가 조금 멀어진 기분. 이 사람한테 필요했던 건 솔루션이 아니었나 보다.", "goto": 11 },
-    { "type": "dialogue", "speaker": "char_01", "text": "...힘들었겠다, 라. (침묵) 그 말. 작년에 아무도 안 해줬어. 다들 '괜찮지?'만 물었거든.", "expression": "blush", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_01", "text": "...고맙다는 말은 안 할 거야. 근데. (노을을 본다) 너한테는, 좀 기대도 될 것 같다.", "expression": "smile", "sprite_position": "center" },
-    { "type": "narration", "text": "주황빛이 사그라들고, 도시에 불이 하나둘 켜진다. 이 사람의 어딘가에도, 작은 불이 하나 켜진 것 같았다." }
+    {
+      "type": "narration",
+      "text": "면접 예상 질문을 읽어주다가 지안이 세 번째로 답을 지운다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "팀 갈등을 해결한 경험. 이 질문이 제일 싫어. 잘 해결한 사람만 질문을 받는 것 같아서.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "지난번 통합 테스트는요? 혼자 해결했다고 안 해도 되잖아요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "네가 먼저 실수 인정한 거? 그걸 내 경험으로 써도 돼?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "선배가 책임 찾는 걸 멈췄잖아요."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "면접관처럼 다시 질문해볼게요. 이번엔 끝까지 말해봐요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_practice"
+          ]
+        },
+        {
+          "label": "공책 덮고 한 바퀴 걸어요. 돌아와서 한 문장만 쓰죠.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_walk"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "지안이 처음으로 답을 지우지 않고 끝까지 말했다. 나는 허술한 부분보다 좋은 문장을 먼저 짚었다.",
+      "requires_flags": [
+        "jian_practice"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "복도 창문에 둘이 나란히 비쳤다. 지안이 ‘같이 기준을 정했습니다’라고 중얼거리고는 그 문장을 휴대폰에 적었다.",
+      "requires_flags": [
+        "jian_walk"
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "오늘은 네가 더 선배 같네. 익숙해지진 마.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "그 말 뒤에, 먼저 내 가방을 들어주는 손이 따라왔다."
+    }
   ],
   "next_scene": "r1_03"
 }

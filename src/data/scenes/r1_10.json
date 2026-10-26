@@ -1,0 +1,69 @@
+{
+  "scene_id": "r1_10",
+  "title": "먼저 정해버린 사람",
+  "date": "6월 5일",
+  "chapter": "서지안 · 같은 편",
+  "background": "gwabang",
+  "bgm_mood": "tense_evening",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "지안이 내 발표 파트를 자기 이름으로 바꿔두었다. 면접 준비하라고, 내가 요즘 피곤해 보여서 그랬다고 했다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "고맙지만 먼저 물어봐줬으면 좋겠어요. 제 파트니까요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "널 편하게 해주려고 했어. 그런데 이것도 내가 정한 거구나.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "오늘 여기서 역할을 다시 정하자고 한다.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_talk_now"
+          ]
+        },
+        {
+          "label": "조금 가라앉힌 뒤 내일 둘이 이야기하자고 한다.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_talk_tomorrow"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "지안은 변명 대신 내가 하고 싶은 범위를 물었다. 나도 도와주려는 마음까지 밀어내지는 않으려 했다.",
+      "requires_flags": [
+        "jian_talk_now"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "집에 가는 길에 ‘내일 열한 시, 도서관 앞’이라고 보냈다. 지안이 ‘응. 기다릴게’라고 답했다. 침묵이 이별은 아니었다.",
+      "requires_flags": [
+        "jian_talk_tomorrow"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "화를 안 내는 사람이 되는 것보다, 화난 뒤에도 다음 대화가 있는 사람이 되고 싶었다."
+    }
+  ],
+  "next_scene": "r1_11"
+}

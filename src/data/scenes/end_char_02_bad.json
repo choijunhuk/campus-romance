@@ -1,13 +1,19 @@
 {
   "scene_id": "end_char_02_bad",
-  "title": "도윤 — 배드엔딩: 닫힌 헤드폰",
-  "background": "club_room",
-  "bgm_mood": "lonely",
+  "title": "다른 작업실",
+  "date": "6월의 마지막 주",
+  "chapter": "에필로그 · 서로 다른 방향",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
   "nodes": [
-    { "type": "narration", "text": "오해는 끝내 풀리지 않았다. 도윤은 다시 헤드폰 안으로 들어갔고, 그 세계의 문은 이제 나에게도 닫혔다." },
-    { "type": "dialogue", "speaker": "char_02", "text": "...코드는 거짓말을 안 하는데. 사람은 왜 이렇게 어렵죠. (헤드폰을 올린다) 수고하셨어요, 선배.", "expression": "sad", "sprite_position": "center" },
-    { "type": "narration", "text": "키보드 소리만 남았다. 가장 똑똑한 사람의, 가장 외로운 침묵." },
-    { "type": "narration", "text": "── 한도윤 루트 · BAD ENDING ──" }
+    {
+      "type": "narration",
+      "text": "도윤과 다음 프로젝트를 함께하지 않기로 했다. 역할과 일정이 맞지 않는다는 말을 늦게나마 했다."
+    },
+    {
+      "type": "narration",
+      "text": "좋았던 협업까지 지울 필요는 없었다. 저장소의 마지막 기록에는 네 사람의 이름이 남았다."
+    }
   ],
   "next_scene": null
 }

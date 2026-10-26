@@ -1,21 +1,88 @@
 {
   "scene_id": "r1_04",
-  "title": "처음 내민 손",
-  "background": "rooftop",
-  "bgm_mood": "night_city",
+  "title": "다른 약속을 지키는 법",
+  "date": "5월 16일",
+  "chapter": "서지안 · 같은 편",
+  "background": "cafe_street",
+  "bgm_mood": "warm_afternoon",
   "nodes": [
-    { "type": "narration", "text": "발표 전야. 시제품은 완성됐다. 옥상, 도시의 불빛. 지안 선배가 캔커피 두 개를 들고 올라왔다. 이번엔 저 사람이 먼저." },
-    { "type": "dialogue", "speaker": "char_01", "text": "자. 너 거. ...뽑아왔어. 내가. 너한테 뭐 주는 거, 처음이지 아마.", "expression": "embarrassed", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_01", "text": "이번 학기. 너 없었으면 또 똑같이 무너졌을 거야. 나는 기댈 줄을 몰라서.", "expression": "neutral", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_01", "text": "근데 너한테는... 기대는 게 안 무섭더라. 이상하게. (잠깐 망설이다) 이건. 동료한테 하는 말이 아니야.", "expression": "blush", "sprite_position": "center" },
-    { "type": "narration", "text": "차가운 도시 위로, 저 사람이 처음으로 손을 내민다. 받을 것인가." },
-    { "type": "choice", "choices": [
-      { "label": "그 손을 잡는다. \"나도요. 나도, 동료한테 하는 말 아니에요.\"", "affection": { "char_01": 20 }, "set_flags": ["jian_opened_up"], "goto": 6 },
-      { "label": "\"...우리, 일단 발표부터 끝내고요.\" (한 발 물러서기)", "affection": { "char_01": -5 }, "set_flags": [], "goto": 7 }
-    ] },
-    { "type": "dialogue", "speaker": "char_01", "text": "(눈이 동그래지더니, 처음 보는 얼굴로 웃는다) ...진짜. 너 진짜. (손을 마주 잡는다) ...됐어. 더 말 안 해도. 알겠으니까.", "expression": "laugh", "sprite_position": "center", "goto": 8 },
-    { "type": "dialogue", "speaker": "char_01", "text": "...그래. 그게 너답지. (옅게 웃지만 손을 거둔다) 발표부터. 그래, 그게 맞아.", "expression": "sad", "sprite_position": "center" },
-    { "type": "narration", "text": "내일이면 한 학기가 끝난다. 그리고 무언가는, 이제 막 시작되려 한다." }
+    {
+      "type": "narration",
+      "text": "토요일. 나는 부품 상가 봉투를 들고 나타났다. 책방에 가기로 한 약속 앞에서 봉투가 유난히 커 보인다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "설마 이것도 데이트 비용 처리할 생각은 아니지?",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "데이트 맞는 거예요?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "아니면 나만 옷 갈아입고 나온 사람 되는데.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "그럼 오늘은 데이트. 봉투는 보관함에 넣고 올게요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_date_named"
+          ]
+        },
+        {
+          "label": "나도 그렇게 생각했어요. 그런데 괜히 혼자 앞서갈까 봐요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_date_asked"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "지안이 고른 건 기술 서적이 아니라 여행 에세이였다. 가보지도 않은 바닷가 페이지에 손가락을 오래 두었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "졸업하면 쉬고 싶어. 하루 말고 일주일쯤.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "그땐 연락 안 하면 되겠네요?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "너한테 하지 말란 말은 안 했는데.",
+      "expression": "blush",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "책방을 나와 걷다가 손등이 한 번 닿았다. 이번에는 둘 다 보폭을 바꾸지 않았다."
+    }
   ],
   "next_scene": "r1_05"
 }

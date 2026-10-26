@@ -1,53 +1,15 @@
 import { useGame } from '../store'
 import { characters } from '../engine/load'
-
-/** Affection tier label + bar colour (mirrors routes.json thresholds). */
-function tierOf(v: number): { label: string; color: string } {
-  if (v >= 75) return { label: '특별한 사이', color: 'bg-rose' }
-  if (v >= 40) return { label: '호감', color: 'bg-amber' }
-  if (v >= 20) return { label: '관심', color: 'bg-teal' }
-  return { label: '서먹함', color: 'bg-cream/40' }
-}
+import { CharacterSprite } from './CharacterSprite'
+import { Modal } from './Modal'
 
 export function RelationshipPanel({ onClose }: { onClose: () => void }) {
-  const affection = useGame((s) => s.affection)
-
-  return (
-    <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/70 p-4" onClick={onClose}>
-      <div
-        className="w-full max-w-md rounded-2xl bg-ink p-5 shadow-2xl ring-1 ring-amber/20"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-cream">관계</h2>
-          <button onClick={onClose} className="rounded-lg bg-panel px-3 py-1 text-sm text-cream hover:bg-panel/70">
-            닫기
-          </button>
-        </div>
-        <div className="space-y-4">
-          {characters.map((c) => {
-            const v = affection[c.id] ?? 0
-            const t = tierOf(v)
-            return (
-              <div key={c.id}>
-                <div className="mb-1 flex items-baseline justify-between text-sm">
-                  <span className="font-medium text-cream">{c.name}</span>
-                  <span className="text-xs text-cream/60">{t.label} · {v}</span>
-                </div>
-                <div className="h-2.5 w-full overflow-hidden rounded-full bg-panel">
-                  <div
-                    className={`h-full rounded-full ${t.color} transition-all duration-500`}
-                    style={{ width: `${v}%` }}
-                  />
-                </div>
-              </div>
-            )
-          })}
-          {characters.length === 0 && (
-            <p className="text-sm text-cream/50">캐릭터 데이터를 불러오지 못했습니다.</p>
-          )}
-        </div>
-      </div>
-    </div>
-  )
+  const { affection, flags, settings } = useGame()
+  return <Modal title="우리 사이" onClose={onClose}><div className="relationships">{characters.map(c => {
+    const friendship = c.route_kind === 'friendship'
+    const v = affection[c.id] ?? 0
+    const dating = c.id === 'char_01' ? flags.includes('jian_dating') : flags.includes('narae_dating')
+    const label = friendship ? v >= 40 ? '함께하는 동료' : '동아리 친구' : dating ? '마음을 확인한 사이' : v >= 40 ? '따로 약속하는 사이' : v > 0 ? '조금씩 알아가는 중' : '같은 캠퍼스의 사람'
+    return <article key={c.id}><div className="relationship-portrait"><CharacterSprite charId={c.id} expression="smile" /></div><div><small>{friendship ? '우정 · 프로젝트' : '연애 이야기'}</small><h3>{c.name}</h3><p>{label}{settings.showAffection ? ` · ${v}` : ''}</p><span>{String(c.year_major ?? '')}</span></div></article>
+  })}</div><p className="menu-caption">친절과 연애는 다른 마음이에요. 누구와 어떤 관계로 지낼지는 직접 고를 수 있습니다.</p></Modal>
 }

@@ -1,13 +1,77 @@
 {
   "scene_id": "r4_05",
-  "title": "대회, 그리고 늦지 않은 말",
+  "title": "늦지 않은 합주",
+  "date": "6월 19일",
+  "chapter": "우정 · 함께 만드는 사람들",
   "background": "lecture_hall",
-  "bgm_mood": "hopeful_morning",
+  "bgm_mood": "warm_afternoon",
   "nodes": [
-    { "type": "narration", "text": "대회 발표장. 시혁이 맡은 기구 설계가 무대 위에서 매끄럽게 작동한다. 박수가 터지고, 그는 무표정 그대로 무대를 내려온다." },
-    { "type": "dialogue", "speaker": "char_04", "text": "(나를 보고, 드물게 옅게 웃는다) ...끝났네. (잠깐 침묵) 이번엔. 늦은 거 하나도 없다. 다 제때 했어.", "expression": "smile", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_02", "text": "(끼어들며) 어 시혁 선배 방금 웃었어요? 와 처음 봐. 박제할래요 그거.", "expression": "laugh", "sprite_position": "right" },
-    { "type": "narration", "text": "한 학기가 끝났다. 늘 한 박자 늦던 사람이 처음으로 제때 선 그 자리에서, 결과가 호명되려 한다." }
+    {
+      "type": "narration",
+      "text": "대회가 끝나고 시혁이 여름 합주 일정을 보여준다. 내가 갈 수 있는 날을 동그라미 친다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_04",
+      "text": "너 혼자 구석에서 박수 치지 말고 도윤이도 데려와.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "이제 관객까지 내가 섭외하냐."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_04",
+      "text": "의리로 하는 일도 좀 있어야지.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "다음 약속도 함께한다. [우정 엔딩]",
+          "affection": {
+            "char_04": 20
+          },
+          "set_flags": [
+            "sihyuk_confessed"
+          ],
+          "clear_flags": [
+            "sihyuk_too_late"
+          ]
+        },
+        {
+          "label": "각자 일정에 집중하되 좋은 동료로 남는다.",
+          "affection": {
+            "char_04": 5
+          },
+          "set_flags": [],
+          "clear_flags": [
+            "sihyuk_confessed",
+            "sihyuk_too_late"
+          ]
+        },
+        {
+          "label": "함께하기 어렵다는 말을 미루지 않고 전한다.",
+          "set_flags": [
+            "sihyuk_too_late"
+          ],
+          "clear_flags": [
+            "sihyuk_confessed"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "학기는 끝나고, 함께할 일의 모양이 달라진다."
+    }
   ],
   "next_scene": "EVAL_ENDING:char_04"
 }

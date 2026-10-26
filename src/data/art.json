@@ -1,0 +1,52 @@
+{
+  "events": [
+    {
+      "id": "jian_coffee",
+      "title": "업무가 끝난 뒤에도",
+      "character": "char_01",
+      "file": "jian-coffee.webp",
+      "mobile_focus": "60% 50%",
+      "hint": "지안과 첫 외출을 약속한 밤"
+    },
+    {
+      "id": "jian_rooftop",
+      "title": "선배라는 말 다음에",
+      "character": "char_01",
+      "file": "jian-rooftop.webp",
+      "mobile_focus": "60% 50%",
+      "hint": "지안에게 마음을 말한 밤"
+    },
+    {
+      "id": "narae_rain",
+      "title": "우산 하나의 거리",
+      "character": "char_03",
+      "file": "narae-rain.webp",
+      "mobile_focus": "30% 50%",
+      "hint": "나래의 카페 마감을 기다린 날"
+    },
+    {
+      "id": "narae_river",
+      "title": "다음 약속은 내가",
+      "character": "char_03",
+      "file": "narae-river.webp",
+      "mobile_focus": "35% 50%",
+      "hint": "나래와 둘만의 약속을 정한 날"
+    }
+  ],
+  "sprites": {
+    "char_01": "jian.webp",
+    "char_03": "narae.webp",
+    "char_02": "friends.webp",
+    "char_04": "friends.webp"
+  },
+  "backgrounds": {
+    "club_room": "workshop",
+    "gwabang": "workshop",
+    "library": "library",
+    "cafeteria": "cafeteria",
+    "cafe_street": "cafe",
+    "rooftop": "rooftop",
+    "han_river": "river",
+    "lecture_hall": "lecture"
+  }
+}

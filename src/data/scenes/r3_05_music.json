@@ -1,0 +1,49 @@
+{
+  "scene_id": "r3_05_music",
+  "title": "이어폰 한쪽의 취향",
+  "date": "5월 23일 · 음악을 고른 오후",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "나래는 크게 웃는 노래보다 조용한 기타 곡을 더 오래 들었다. 제목을 물어보자 휴대폰 대신 자기 이어폰 한쪽을 내민다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "말로 설명하면 좀 재미없어져요. 여기, 두 번째 후렴 들어봐요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "듣는 동안 나래의 어깨가 내 팔에 닿았다. 선을 당기지 않으려 둘이 조금 더 가까이 앉는다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "생각보다 조용한 노래 좋아하네."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "내가 안 떠들어도 심심하지 않은 게 좋아서.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "나랑 있을 때도 안 떠들어도 돼."
+    },
+    {
+      "type": "narration",
+      "text": "나래는 대답 대신 소리를 조금 줄였다. 곡이 끝나도 이어폰을 돌려달라고 하지 않았다."
+    }
+  ],
+  "next_scene": "r3_06"
+}

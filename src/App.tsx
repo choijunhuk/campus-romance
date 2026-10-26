@@ -6,7 +6,7 @@ import { Gallery } from './components/Gallery'
 export default function App() {
   const screen = useGame((s) => s.screen)
   return (
-    <div className="mx-auto h-full w-full max-w-6xl">
+    <div className="app-shell">
       {screen === 'title' && <TitleScreen />}
       {screen === 'game' && <Game />}
       {screen === 'gallery' && <Gallery />}

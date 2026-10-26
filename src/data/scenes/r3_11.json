@@ -1,0 +1,62 @@
+{
+  "scene_id": "r3_11",
+  "title": "남겨둔 마지막 한 시간",
+  "date": "6월 9일",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "club_room",
+  "bgm_mood": "quiet_night",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "나래의 과제 발표 파일이 깨졌다. 오늘은 내가 내 발표 준비를 접고 파일 복구를 도왔다. 처음으로 나래의 프로젝트에서 내가 보조가 된다."
+    },
+    {
+      "type": "narration",
+      "text": "처음 케이스 구조를 같이 바꾸던 이야기를 꺼냈다. ‘모양이 마음에 들면 열리는 방법을 만들면 되지.’ 나래가 그 말을 기억하고 있었다.",
+      "requires_flags": [
+        "narae_form"
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "옆에 있어줘서 좋다는 말, 그동안 너무 쉽게 했나 봐. 지금은 진짜 그래요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "이번엔 네가 발표하고, 내가 객석에 앉으면 되겠다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "발표 끝나면 내가 저녁 고를게. 오늘은 너 먹고 싶은 것부터 말해.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_dinner"
+          ]
+        },
+        {
+          "label": "발표만 끝내고 둘이 아무것도 안 하는 시간을 잡자.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_rest"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "저장 완료 메시지를 둘이 같이 확인했다. 나래가 어깨를 내 어깨에 기댄 채 한동안 일어나지 않았다."
+    }
+  ],
+  "next_scene": "r3_12"
+}

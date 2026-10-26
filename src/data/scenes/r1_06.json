@@ -1,0 +1,94 @@
+{
+  "scene_id": "r1_06",
+  "title": "수요일이 아닌 전화",
+  "date": "5월 22일",
+  "chapter": "서지안 · 같은 편",
+  "background": "cafe_street",
+  "bgm_mood": "night_city",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "밤 열 시. 지안에게 전화가 왔다. 연결하자 한동안 바람 소리만 들렸다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "면접 끝났어. 잘했는지 모르겠는데, 끝나자마자 네 생각이 났어.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "지금 어디예요?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "후문. 만나달라고 하면 부담돼?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "십 분이면 가요. 편의점 앞에서 기다려요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_pickup"
+          ]
+        },
+        {
+          "label": "오늘은 집에서 쉬어요. 전화는 끊지 말고, 걸어가는 동안 같이 있어요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_phone"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "후문에 도착하자 지안이 내 소매를 잠깐 잡았다. ‘오니까 좋네.’ 대답할 틈 없이 먼저 걷기 시작했다.",
+      "requires_flags": [
+        "jian_pickup"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "버스 정류장 안내음이 수화기 너머로 들린다. 평소라면 끝났을 대화를, 둘 다 조금씩 늘려갔다.",
+      "requires_flags": [
+        "jian_phone"
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "오늘은 답 맞혀주는 사람 말고, 그냥 내 편이 필요했나 봐.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "저도 그런 날 전화해도 돼요?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "그건 허락 안 받아도 돼.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "r1_07"
+}

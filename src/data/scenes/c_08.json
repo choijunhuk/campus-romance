@@ -1,0 +1,83 @@
+{
+  "scene_id": "c_08",
+  "title": "수요일 저녁 다음의 약속",
+  "date": "5월 6일 · 선택",
+  "chapter": "다시, 봄",
+  "background": "rooftop",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "해가 길어졌다. 정기 회의가 끝나고 휴대폰을 꺼낸다. 이번에는 누가 제일 친절했는지가 아니라, 누구와 시간을 더 보내고 싶은지를 생각한다."
+    },
+    {
+      "type": "narration",
+      "text": "단체 저녁은 즐거웠다. 그 웃음 속에서 자꾸 시선이 향한 사람도 있었다.",
+      "requires_flags": [
+        "group_dinner"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "시험 날짜 옆에 적어둔 빈칸. 이제 그 칸에 약속을 써도 될 것 같다.",
+      "requires_flags": [
+        "personal_time"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "연애를 시작할 수 있는 약속도, 친구와 함께할 일도, 혼자 정리할 시간도 남아 있다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "지안에게: 이번엔 일 말고, 둘이 커피 마실래요?",
+          "affection": {
+            "char_01": 40
+          },
+          "set_flags": [
+            "route_jian"
+          ],
+          "goto": "r1_01"
+        },
+        {
+          "label": "나래에게: 근무 없는 날에 같이 걷자. 둘이.",
+          "affection": {
+            "char_03": 40
+          },
+          "set_flags": [
+            "route_narae"
+          ],
+          "goto": "r3_01"
+        },
+        {
+          "label": "도윤과 시제품을 끝까지 개선한다. [우정·프로젝트]",
+          "affection": {
+            "char_02": 40
+          },
+          "set_flags": [
+            "route_doyun"
+          ],
+          "goto": "r2_01"
+        },
+        {
+          "label": "시혁의 축제 공연을 함께 준비한다. [우정·진로]",
+          "affection": {
+            "char_04": 40
+          },
+          "set_flags": [
+            "route_sihyuk"
+          ],
+          "goto": "r4_01"
+        },
+        {
+          "label": "이번 학기는 내 생활을 다시 만드는 데 쓴다.",
+          "set_flags": [],
+          "goto": "solo_end"
+        }
+      ]
+    }
+  ],
+  "next_scene": null
+}

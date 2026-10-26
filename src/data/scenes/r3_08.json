@@ -1,0 +1,66 @@
+{
+  "scene_id": "r3_08",
+  "title": "알려도 되는 이야기",
+  "date": "5월 29일",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "cafeteria",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "나래가 우리 사진을 보여준다. 사진은 마음에 드는데 단톡에 올려도 되는지는 모르겠다고 했다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "같이 고른 사진을 올리고, 우리가 만나는 사이라고 말한다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_public"
+          ]
+        },
+        {
+          "label": "사진은 둘이 간직하고, 친구들에게는 직접 이야기한다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_private_photo"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "좋아. 나 혼자 추측 안 해도 돼서 편하다.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_02",
+      "text": "그럼 제품 홍보 사진에는 두 분 손만 안 나오게 찍으면 되죠?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "도윤아, 제품이 주인공인 사진 좀 찍어.",
+      "expression": "laugh",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "친구들은 놀리고 나서 평소처럼 메뉴를 골랐다. 세상이 바뀌지는 않았지만, 내 옆자리를 나래가 당연하게 골랐다."
+    }
+  ],
+  "next_scene": "r3_09"
+}

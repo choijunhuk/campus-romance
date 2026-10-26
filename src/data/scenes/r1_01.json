@@ -1,23 +1,85 @@
 {
   "scene_id": "r1_01",
-  "title": "혼자 떠안은 밤",
-  "background": "club_room",
-  "bgm_mood": "quiet_night",
+  "title": "커피는 회의비가 아니다",
+  "date": "5월 8일",
+  "chapter": "서지안 · 같은 편",
+  "background": "cafe_street",
+  "bgm_mood": "warm_afternoon",
   "nodes": [
-    { "type": "narration", "text": "새벽 1시. 불이 켜진 동아리방. 들여다보니 지안 선배 혼자다. 또. 책상엔 식은 컵라면과 뜯지도 않은 에너지바." },
-    { "type": "dialogue", "speaker": "char_01", "text": "...안 자고 뭐 해. 가서 자.", "expression": "neutral", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_01", "text": "나? 난 괜찮아. 이 정도는 늘 하던 거야. 신경 쓰지 마.", "expression": "neutral", "sprite_position": "center" },
-    { "type": "narration", "text": "늘 하던 거. 그 '늘'이 작년에 저 사람을 한 학기 쉬게 만들었다는 걸, 나는 안다." },
-    { "type": "choice", "choices": [
-      { "label": "\"안 괜찮아 보여요. 절반 줘요, 같이 하게.\" (밀어붙이기)", "affection": { "char_01": 10 }, "set_flags": [], "goto": 5 },
-      { "label": "말없이 옆에 앉아 같이 부품을 집는다. (조용히 곁에)", "affection": { "char_01": 12 }, "set_flags": [], "goto": 7 }
-    ] },
-    { "type": "dialogue", "speaker": "char_01", "text": "...너 진짜. (한숨) 하여간. ...됐어. 그럼 저 펌프 모듈 검사나 해. 잘못 만지면 죽는다.", "expression": "embarrassed", "sprite_position": "center", "goto": 6 },
-    { "type": "narration", "text": "퉁명스럽지만 절반을 내줬다. 저 사람한테 '절반'은 거의 항복이다.", "goto": 9 },
-    { "type": "dialogue", "speaker": "char_01", "text": "...뭐야. 말도 없이. (잠깐 침묵) ...그래. 손 빠르네, 너. 나쁘지 않아.", "expression": "blush", "sprite_position": "center" },
-    { "type": "narration", "text": "거절하지 않았다. 그게 이 사람식 '고마워'라는 걸, 2년 전엔 몰랐다." },
-    { "type": "narration", "text": "새벽 3시. 부품 더미가 절반으로 줄었다. 둘이 하니까 정말 절반이 됐다. 당연한 건데, 저 사람은 그걸 늘 잊는다." },
-    { "type": "dialogue", "speaker": "char_01", "text": "...오늘은. 좀 빨리 끝났네. (작게) 가끔은. 이런 것도 나쁘지 않고.", "expression": "smile", "sprite_position": "center" }
+    {
+      "type": "narration",
+      "text": "지안이 먼저 와 있었다. 노트북도 공책도 없는 테이블이 이상하게 낯설다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "이거 회의 아니지? 그래서 빈손으로 왔어.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "저도요. 그런데 좀 긴장되네요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "나랑 커피 마시는 게 전원 켜는 것보다 어려워?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "실패하면 다시 켤 수 있는 건 회로 쪽이라서요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_direct"
+          ]
+        },
+        {
+          "label": "일 안 하는 선배는 처음 보니까요. 천천히 알아가려고요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_slow"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "지안이 컵을 내려놓다 웃음을 삼킨다. 이번에는 농담으로 돌려보내지 않는다.",
+      "requires_flags": [
+        "jian_direct"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "‘나도.’ 짧은 대답 뒤에 지안이 메뉴판을 밀어준다. 평소 어떤 걸 좋아하느냐고 물었다.",
+      "requires_flags": [
+        "jian_slow"
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "금요일 오후는 비워둘 수 있어. 네 수업 끝나면 연락해.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "첫 약속에서 알아낸 건 거창하지 않았다. 지안은 단것을 좋아하고, 빨대 껍질을 접는 버릇이 있고, 내 다음 금요일이 궁금하다."
+    }
   ],
   "next_scene": "r1_02"
 }

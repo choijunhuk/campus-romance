@@ -1,26 +1,111 @@
 {
   "scene_id": "c_01",
-  "title": "복학 첫날",
+  "title": "출입 명단에 다시 이름을",
+  "date": "3월 4일 · 개강 주",
+  "chapter": "다시, 봄",
   "background": "club_room",
-  "bgm_mood": "nostalgic_morning",
+  "bgm_mood": "warm_afternoon",
   "nodes": [
-    { "type": "narration", "text": "2년 만에 잡아보는 손잡이. '회로의 봄'이라는 촌스러운 명패는 그대로다. 떨릴 줄 알았는데, 생각보다 그냥 문이다." },
-    { "type": "narration", "text": "심호흡 한 번. 그래, 이번엔 좀 다르게 살아보자. 문을 민다." },
-    { "type": "dialogue", "speaker": "char_03", "text": "어? 어어어?! 선배 맞죠?! 진짜 돌아왔다!", "expression": "surprised", "sprite_position": "center" },
-    { "type": "narration", "text": "유나래. 디자인과인데 어쩐 일인지 공대 동아리에 눌러앉은, 동아리 분위기 그 자체인 사람." },
-    { "type": "dialogue", "speaker": "char_03", "text": "다들 선배 온다 온다 했는데 진짜 왔네! 헐 대박ㅋㅋ 하나도 안 변했다!", "expression": "laugh", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_01", "text": "왔으면 짐부터 내려놓고. 입구 막지 말고.", "expression": "neutral", "sprite_position": "left" },
-    { "type": "narration", "text": "서지안. 1학년 때 같은 팀이었던 선배. 말투는 여전히 칼 같고, 눈빛은 여전히 피곤해 보인다." },
-    { "type": "dialogue", "speaker": "char_01", "text": "...오랜만이네. 얼굴 좋아졌다. 쉬다 와서.", "expression": "neutral", "sprite_position": "left" },
-    { "type": "narration", "text": "칭찬인지 잔소리인지 모를 인사. 저 사람 화법은 2년이 지나도 해석이 안 된다." },
-    { "type": "dialogue", "speaker": "char_02", "text": "아 선배 그 자리 제 모니터 가려요. 어, 안녕하세요. 한도윤이요. 2학년.", "expression": "neutral", "sprite_position": "right" },
-    { "type": "narration", "text": "한도윤. 처음 보는 후배. 인사를 하면서도 시선은 코드에 박혀 있다. 화면이 폭포처럼 스크롤된다." },
-    { "type": "dialogue", "speaker": "char_04", "text": "...야.", "expression": "neutral", "sprite_position": "center" },
-    { "type": "narration", "text": "그리고 구석 소파. 정시혁. 1학년 때 같은 분반이었던 동기. 밴드 한다더니 어느새 복학생이 되어 있다." },
-    { "type": "dialogue", "speaker": "char_04", "text": "안 변했네, 너. ...앉아. 자리 있어.", "expression": "neutral", "sprite_position": "center" },
-    { "type": "narration", "text": "네 사람. 낡은 소파, 납땜 냄새, 작년 대회 트로피. 한 학기가 여기서 시작된다는 예감이 든다." },
-    { "type": "dialogue", "speaker": "char_01", "text": "마침 잘 왔어. 이번 학기 대회 출품 팀, 너도 들어와. 사람 부족했거든.", "expression": "neutral", "sprite_position": "left" },
-    { "type": "narration", "text": "거절할 이유도, 사실 거절할 마음도 없다. 고개를 끄덕인다." }
+    {
+      "type": "narration",
+      "text": "공학관 407호. 문 옆 출입 명단에서 내 이름만 두 번 지워져 있다. 2022년에 썼던 글씨 위에 새 이름표를 붙인다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "학생증 찍고 들어와. 올해부터 야간 출입 기록 남겨야 해.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "복학 인사보다 보안 교육이 먼저네요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "사람은 반가운데, 문 열어놓고 가는 습관은 안 반가워.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "서지안. 나보다 한 학번 위, 나이는 같은 스물넷. 1학년 때 내가 태운 기판을 말없이 다시 만들어준 사람이었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_04",
+      "text": "야, 네 자리 안 없어졌다. 의자가 없어졌지.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "그게 더 나쁜 거 아니냐."
+    },
+    {
+      "type": "narration",
+      "text": "시혁이 접이식 의자를 발로 밀어준다. 군대에 다녀온 사이에도 이 녀석의 인사법은 그대로다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "아, 회로 태운 전설의 선배! 전 나래예요. 24학번 디자인과. 선배 작업일지에 그림 엄청 많던데요.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "설명하려고 그린 건데."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "네. 그래서 제가 읽을 수 있었나 봐요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_02",
+      "text": "저는 도윤이요. 25학번. 작업일지 그 배선도, 진짜 도움 됐어요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "처음 만난 두 사람에게는 내가 남긴 실패도 이미 작은 자료가 되어 있었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "올해 대회는 6월 19일. 할 거면 이번엔 중간에 사라지지 말고.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "수업 따라가는 게 먼저긴 한데… 수요일 저녁은 비어 있어요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "좋아. 그 정도로 시작해. 빈 시간 전부 바치겠다는 말보다 낫네.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    }
   ],
   "next_scene": "c_02"
 }

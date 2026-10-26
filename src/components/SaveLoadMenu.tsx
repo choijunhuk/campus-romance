@@ -1,97 +1,25 @@
-import { useGame, SAVE_SLOTS, type SaveData } from '../store'
-import { world, scenes } from '../engine/load'
-import { bgTime } from '../engine/atmosphere'
-import { SmartImage, assetUrl } from './ui'
+import { useState } from 'react'
+import { useGame, SAVE_SLOTS, STORY_VERSION } from '../store'
+import { scenes } from '../engine/load'
+import { backgroundAsset } from '../art'
+import { assetUrl, SmartImage } from './ui'
+import { Modal } from './Modal'
 
-/** background id -> Korean location name (from world_bible). */
-const LOC_NAME: Record<string, string> = Object.fromEntries(
-  (world?.setting.key_locations ?? []).map((l) => [l.id, l.name]),
-)
-
-function metaLine(data: SaveData): string {
-  const when = new Date(data.ts).toLocaleString('ko-KR', {
-    month: 'numeric',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  })
-  const loc = data.bg ? LOC_NAME[data.bg] ?? data.bg : null
-  const parts = [data.playerName, loc, data.topChar ? `♥ ${data.topChar}` : null, when].filter(
-    Boolean,
-  )
-  return parts.join(' · ')
-}
-
-export function SaveLoadMenu({
-  mode,
-  onClose,
-}: {
-  mode: 'save' | 'load'
-  onClose: () => void
-}) {
-  const listSaves = useGame((s) => s.listSaves)
-  const save = useGame((s) => s.save)
-  const load = useGame((s) => s.load)
+export function SaveLoadMenu({mode,onClose}:{mode:'save'|'load';onClose:()=>void}) {
+  const { listSaves, save, load } = useGame()
+  const [overwrite, setOverwrite] = useState<string | null>(null)
+  const [error, setError] = useState('')
   const saves = listSaves()
-
-  return (
-    <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/70 p-4" onClick={onClose}>
-      <div
-        className="w-full max-w-md rounded-2xl bg-ink p-5 shadow-2xl ring-1 ring-amber/20"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h2 className="mb-4 text-lg font-semibold text-cream">
-          {mode === 'save' ? '저장하기' : '불러오기'}
-        </h2>
-        <div className="space-y-2">
-          {SAVE_SLOTS.map(({ id, label }) => {
-            const data = saves[id]
-            const disabled = mode === 'load' && !data
-            return (
-              <button
-                key={id}
-                disabled={disabled}
-                onClick={() => {
-                  if (mode === 'save') {
-                    save(id)
-                    onClose()
-                  } else if (load(id)) onClose()
-                }}
-                className="flex w-full items-center gap-3 rounded-xl bg-panel px-3 py-2.5 text-left ring-1 ring-white/10 transition enabled:hover:bg-panel/70 disabled:opacity-40"
-              >
-                {/* thumbnail */}
-                <div className="h-12 w-20 shrink-0 overflow-hidden rounded-lg bg-black/40">
-                  {data?.bg && (
-                    <SmartImage
-                      src={assetUrl(`assets/backgrounds/${data.bg}_${bgTime(scenes.get(data.sceneId)?.bgm_mood)}.png`)}
-                      alt={data.bg}
-                      label="…"
-                      className="h-full w-full object-cover"
-                    />
-                  )}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium text-rose-soft">{label}</p>
-                  {data ? (
-                    <>
-                      <p className="truncate text-xs text-cream/90">{data.sceneTitle}</p>
-                      <p className="truncate text-[11px] text-cream/50">{metaLine(data)}</p>
-                    </>
-                  ) : (
-                    <p className="text-xs text-cream/40">— 비어 있음 —</p>
-                  )}
-                </div>
-              </button>
-            )
-          })}
-        </div>
-        <button
-          onClick={onClose}
-          className="mt-4 w-full rounded-xl bg-panel py-2 text-sm text-cream hover:bg-panel/70"
-        >
-          닫기
-        </button>
-      </div>
-    </div>
-  )
+  return <Modal title={mode==='save'?'이 장면 남겨두기':'저장한 이야기'} onClose={onClose}>
+    {overwrite ? <><p>이 슬롯의 저장을 현재 장면으로 바꿀까요?</p><div className="action-row"><button className="primary-button" onClick={()=>{save(overwrite);onClose()}}>덮어쓰기</button><button className="quiet-button" onClick={()=>setOverwrite(null)}>취소</button></div></> : <div className="save-slots">{SAVE_SLOTS.map(({id,label})=>{
+      const data=saves[id], old=!!data&&data.storyVersion!==STORY_VERSION
+      const disabled=mode==='load'&&(!data||old)
+      return <button key={id} disabled={disabled} onClick={()=>{
+        if(mode==='save'){if(data)setOverwrite(id);else{save(id);onClose()}}
+        else if(load(id))onClose();else setError('이 저장을 불러올 수 없습니다. 다른 슬롯을 선택해주세요.')
+      }}><div className="save-thumb">{data?.bg&&<SmartImage src={assetUrl(backgroundAsset(data.bg, scenes.get(data.sceneId)?.bgm_mood))} alt="저장한 장소" className="h-full w-full object-cover" />}</div><span><strong>{label}</strong><span>{data?.sceneTitle??'아직 남겨두지 않은 장면'}</span><small>{old?'이전 이야기 버전 · 원본 보관 중':data?`${data.playerName} · ${new Date(data.ts).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}`:'비어 있음'}</small></span></button>
+    })}</div>}
+    {Object.values(saves).some(s=>s&&s.storyVersion!==STORY_VERSION)&&<p className="menu-caption">이야기 구성이 달라져 이전 버전 저장은 불러올 수 없어요. 수동 슬롯은 덮어쓰지 않는 한 보관됩니다.</p>}
+    {error&&<p role="alert">{error}</p>}
+  </Modal>
 }

@@ -1,21 +1,54 @@
 {
   "scene_id": "r2_04",
-  "title": "논리 밖의 변수",
-  "background": "rooftop",
-  "bgm_mood": "night_city",
+  "title": "남의 속도",
+  "date": "6월 9일",
+  "chapter": "우정 · 함께 만드는 사람들",
+  "background": "club_room",
+  "bgm_mood": "warm_afternoon",
   "nodes": [
-    { "type": "narration", "text": "발표 전야. 도윤이 옥상으로 나를 불러냈다. 헤드폰을 목에 건 채, 드물게 말이 없다." },
-    { "type": "dialogue", "speaker": "char_02", "text": "선배. 제가 요즘. 디버깅이 안 되는 게 하나 있어요. 코드 아니고. ...여기.", "expression": "embarrassed", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_02", "text": "선배 생각하면 집중이 깨져요. 처음엔 버그인 줄 알고 원인을 찾았는데요. 아무리 봐도 변수가 안 잡혀요. 설명할 수가 없어요. ...이 변수, 이름이 뭐예요?", "expression": "blush", "sprite_position": "center" },
-    { "type": "narration", "text": "세상에서 제일 똑똑한 후배가, 세상에서 제일 서툴게 마음을 더듬는다. 답은 정해져 있다. 받을 것인가." },
-    { "type": "choice", "choices": [
-      { "label": "\"그거 버그 아니야. 그 변수 이름은... 나도 똑같단 뜻이야.\"", "affection": { "char_02": 20 }, "set_flags": ["doyun_understood"], "goto": 5 },
-      { "label": "\"...지금은 발표에 집중하자. 그 얘긴 나중에.\" (한 발 물러서기)", "affection": { "char_02": -15 }, "set_flags": ["doyun_hurt"], "goto": 7 }
-    ] },
-    { "type": "dialogue", "speaker": "char_02", "text": "(눈이 커진다) 똑같다고요? 진짜요? 와. (활짝 웃는다) 논리 밖의 변수도, 둘이면 풀 수 있는 거였네요. 아 진짜 다행이다.", "expression": "laugh", "sprite_position": "center", "goto": 6 },
-    { "type": "narration", "text": "처음으로, 도윤이 모니터가 아니라 사람을 보며 환하게 웃었다. 풀 수 없는 변수 하나가, 둘의 것이 되었다.", "goto": 8 },
-    { "type": "dialogue", "speaker": "char_02", "text": "...아. 네. 나중에. (헤드폰을 올려 쓴다) 나중에는, 안 오는 경우가 많던데. ...제가 또 뭐 잘못 말했나 봐요. 알겠어요.", "expression": "sad", "sprite_position": "center" },
-    { "type": "narration", "text": "내일이면 발표다. 풀리지 않은 변수 하나를 남긴 채, 밤이 깊어간다." }
+    {
+      "type": "narration",
+      "text": "나래가 버튼 모양을 바꾸자 도윤이 비효율이라고 말했다. 나래가 이유를 설명할 때까지 기다려보기로 했다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_02",
+      "text": "아… 쓰는 사람은 코드 안 보죠. 제가 너무 제 화면에서만 봤네요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "사과는 짧았고, 다음 수정에는 나래를 먼저 불렀다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "지금 같이 해보고 방법을 맞춘다.",
+          "affection": {
+            "char_02": 5
+          },
+          "set_flags": [
+            "r2_together_3"
+          ]
+        },
+        {
+          "label": "각자 해온 뒤 서로 검토할 시간을 정한다.",
+          "affection": {
+            "char_02": 5
+          },
+          "set_flags": [
+            "r2_review_3"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "각자의 방식은 달랐지만 다음에 무엇을 할지는 분명해졌다."
+    }
   ],
   "next_scene": "r2_05"
 }

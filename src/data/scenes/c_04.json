@@ -1,24 +1,81 @@
 {
   "scene_id": "c_04",
-  "title": "갈림길",
-  "background": "lecture_hall",
-  "bgm_mood": "tense_afternoon",
+  "title": "끝나는 시간이 다른 사람들",
+  "date": "3월 27일 · 비 오는 후문",
+  "chapter": "다시, 봄",
+  "background": "cafe_street",
+  "bgm_mood": "evening_wind",
   "nodes": [
-    { "type": "narration", "text": "중간 점검일. 교수님 앞에서 시연. 그리고 하필 그 자리에서, 펌프가 멈췄다. 빛 알람은 깜빡이다 꺼졌다." },
-    { "type": "dialogue", "speaker": "char_01", "text": "...죄송합니다. 통합 단계에서 제가 놓쳤습니다. 제 책임입니다.", "expression": "sad", "sprite_position": "left" },
-    { "type": "narration", "text": "교수님이 나간 뒤, 과방의 공기가 무겁다. 지안 선배는 또 모든 걸 자기 탓으로 가져간다." },
-    { "type": "dialogue", "speaker": "char_02", "text": "선배 탓 아닌데요. 제 펌웨어 인터럽트랑 충돌난 거예요. 제가...", "expression": "sad", "sprite_position": "right" },
-    { "type": "dialogue", "speaker": "char_03", "text": "아냐 아냐 다 같이 한 건데! 누구 탓이 어딨어, 응? 일단 밥 먹고 다시 하자, 내가 살게!", "expression": "embarrassed", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_04", "text": "...나래야. 너 또 다 떠안으려 한다. 그리고 지안이 너도.", "expression": "neutral", "sprite_position": "center" },
-    { "type": "narration", "text": "팀이 흔들린다. 무너지기 직전, 누군가는 방향을 잡아야 한다. 나는 누구의 손을 잡을까." },
-    { "type": "narration", "text": "(이 선택은 마음의 무게를 보여준다. 지금까지 쌓인 호감도가 누구에게 향했는지가, 이 학기의 길을 정한다.)" },
-    { "type": "choice", "choices": [
-      { "label": "지안에게: \"혼자 다 짊어지지 마요. 같이 합시다.\"", "affection": { "char_01": 12 }, "set_flags": [], "goto": null },
-      { "label": "도윤에게: \"네 잘못 아니야. 같이 디버깅하자.\"", "affection": { "char_02": 12 }, "set_flags": [], "goto": null },
-      { "label": "나래에게: \"넌 좀 쉬어. 이번엔 우리가 챙길게.\"", "affection": { "char_03": 12 }, "set_flags": [], "goto": null },
-      { "label": "시혁에게: \"네가 중심 잡아줘. 나도 옆에 있을게.\"", "affection": { "char_04": 12 }, "set_flags": [], "goto": null }
-    ] },
-    { "type": "narration", "text": "한 사람에게로 마음이 기운다. 흔들리던 팀이 다시 한 방향을 본다. 남은 한 달, 길이 정해졌다." }
+    {
+      "type": "narration",
+      "text": "동아리 단톡에 나래의 답장이 늦는다. ‘오늘 카페 마감. 시안은 11시에 보낼게요.’ 편의점 앞에서 지안도 같은 메시지를 읽고 있다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "케이스는 내일 봐도 돼. 단톡에 그렇게 써야겠다.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "선배는 이제 집에 가요?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "스터디. 다음 달 면접 있어서. 동아리 끝나도 하루가 안 끝나네.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "나만 복학에 애를 먹는 줄 알았는데, 사람마다 끝나는 시간이 달랐다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "지안과 버스 정류장까지 걸으며 면접 이야기를 듣는다.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "bus_with_jian"
+          ]
+        },
+        {
+          "label": "카페에 들러 나래에게 오늘 시안은 안 보내도 된다고 직접 전한다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "cafe_visit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "지안은 지원한 회사 세 곳의 이름 대신, 가고 싶은 팀 이야기를 했다. ‘손으로 만든 게 실제로 쓰이는 데.’ 버스가 올 때까지 그 이야기를 들었다.",
+      "requires_flags": [
+        "bus_with_jian"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "유리문 너머 나래가 컵을 닦다 나를 본다. 검지로 시계를 가리키자 웃으며 휴대폰을 꺼낸다. 잠시 뒤 ‘그럼 오늘은 진짜 쉰다?’는 답장이 온다.",
+      "requires_flags": [
+        "cafe_visit"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "빗방울이 굵어진다. 단톡에는 도윤이 테스트 로그를 올렸고, 시혁은 ‘다들 귀가 체크’라는 메시지를 남겼다."
+    }
   ],
-  "next_scene": "BRANCH_TO_ROUTE"
+  "next_scene": "c_05"
 }

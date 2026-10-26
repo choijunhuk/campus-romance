@@ -1,21 +1,59 @@
 {
   "scene_id": "r4_04",
-  "title": "다시 온 타이밍",
+  "title": "들어줄 사람",
+  "date": "6월 8일",
+  "chapter": "우정 · 함께 만드는 사람들",
   "background": "han_river",
-  "bgm_mood": "night_city",
+  "bgm_mood": "warm_afternoon",
   "nodes": [
-    { "type": "narration", "text": "발표 전야. 시혁이 한강으로 불러냈다. 기타를 메고 왔다. 접었다던 그 기타를." },
-    { "type": "dialogue", "speaker": "char_04", "text": "...1학년 때. 너한테 하려던 말. 못 했지. 타이밍 놓쳐서. 그리고 너 휴학했고.", "expression": "neutral", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_04", "text": "2년 동안 후회했어. 말 한마디를. (기타를 고쳐 멘다) 이번엔. 안 늦을래. ...들어줄래?", "expression": "embarrassed", "sprite_position": "center" },
-    { "type": "narration", "text": "느린 사람의, 2년 묵은 용기. 강바람 속에서 그가 첫 코드를 짚는다. 받을 것인가." },
-    { "type": "choice", "choices": [
-      { "label": "\"안 늦었어. 지금 들을게. 그때 그 말, 전부.\"", "affection": { "char_04": 20 }, "set_flags": ["sihyuk_confessed"], "goto": 5 },
-      { "label": "\"...지금은 발표가 먼저야. 다음에 듣자.\" (한 발 물러서기)", "affection": { "char_04": -15 }, "set_flags": ["sihyuk_too_late"], "goto": 7 }
-    ] },
-    { "type": "dialogue", "speaker": "char_04", "text": "(기타를 내려놓고 똑바로 본다) ...좋아한다. 1학년 때부터. 이 말 하려고 2년 걸렸다. (피식) 늦은 만큼, 진심이야.", "expression": "blush", "sprite_position": "center", "goto": 6 },
-    { "type": "narration", "text": "무심한 사람의 가장 솔직한 한 문장. 강물도 잠시 숨을 멈춘 것 같았다. 어긋났던 타이밍이, 처음으로 맞물렸다.", "goto": 8 },
-    { "type": "dialogue", "speaker": "char_04", "text": "...다음에. (기타를 다시 멘다) 그래. 다음에. (낮게) 또 늦는 거. 이젠 익숙하다.", "expression": "sad", "sprite_position": "center" },
-    { "type": "narration", "text": "내일이면 발표. 2년을 건너온 한마디가, 답을 기다린다." }
+    {
+      "type": "dialogue",
+      "speaker": "char_04",
+      "text": "공연 영상 보내니까 엄마가 끝까지 봤대. 엔지니어 안 할 거냐고는 그다음에 물었고.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "둘 다 궁금하실 수 있지."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_04",
+      "text": "응. 나도 둘 다 아직 궁금해. 그래서 둘 다 조금씩 해보려고.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "지금 같이 해보고 방법을 맞춘다.",
+          "affection": {
+            "char_04": 5
+          },
+          "set_flags": [
+            "r4_together_3"
+          ]
+        },
+        {
+          "label": "각자 해온 뒤 서로 검토할 시간을 정한다.",
+          "affection": {
+            "char_04": 5
+          },
+          "set_flags": [
+            "r4_review_3"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "각자의 방식은 달랐지만 다음에 무엇을 할지는 분명해졌다."
+    }
   ],
   "next_scene": "r4_05"
 }

@@ -1,0 +1,78 @@
+{
+  "scene_id": "r1_12",
+  "title": "막차를 보내기 전에",
+  "date": "6월 12일",
+  "chapter": "서지안 · 같은 편",
+  "background": "rooftop",
+  "bgm_mood": "night_city",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "발표 연습 뒤, 밤바람에 열이 식는다. 지안이 내가 일어나려 하자 손을 놓지 않는다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "오늘은 조금 더 있고 싶어. 너는?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "나도요. 가까이 가도 돼요?",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_kiss"
+          ]
+        },
+        {
+          "label": "나도 더 있고 싶어요. 오늘은 손만 잡고 걸을래요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_handwalk"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "지안이 고개를 끄덕였다. 가까워지기 전에 안경을 벗어 접는 손이 조금 떨린다. 짧게 입을 맞춘 뒤, 둘 다 웃음이 새어 나왔다.",
+      "requires_flags": [
+        "jian_kiss"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "‘좋아.’ 지안이 손을 더 깊게 맞잡았다. 계단을 내려오며 다음에는 내가 먼저 만나자고 하겠다고 말했다.",
+      "requires_flags": [
+        "jian_handwalk"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "헤어지는 시간이 늦어졌다. 마지막 버스를 보내는 대신 택시를 부르자는 말도, 오늘은 여기까지 하자는 말도 편하게 꺼낼 수 있었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "집 도착하면 연락해. 의무 말고, 내가 궁금해서.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "다음 날 지안의 메시지가 먼저 와 있었다. ‘어제 좋았어. 이번 주 일요일도 비워둬.’",
+      "cg": "jian_rooftop",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "r1_13"
+}

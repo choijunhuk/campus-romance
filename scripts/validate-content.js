@@ -32,6 +32,12 @@ const readJSON = (p) => JSON.parse(readFileSync(p, 'utf8'));
 // ── Load data ────────────────────────────────────────────────────────────────
 const characters = readJSON(join(DATA, 'characters.json'));
 const routes = readJSON(join(DATA, 'routes.json'));
+const art = readJSON(join(DATA, 'art.json'));
+const events = new Set(art.events.map(e => e.id));
+const declaredFlags = new Set(routes.flags.map(f => f.split(' — ')[0]));
+for (const file of new Set([...Object.values(art.sprites), ...art.events.map(e => e.file), 'campus.webp', 'lecture.webp'])) {
+  if (!existsSync(join(ASSETS, 'art-v2', file))) err(`art.json: missing art-v2/${file}`);
+}
 const prompts = existsSync(join(DATA, 'image_prompts.json'))
   ? readJSON(join(DATA, 'image_prompts.json'))
   : null;
@@ -56,11 +62,11 @@ for (const f of sceneFiles) {
 
 // ── Allowed keys (mirrors src/types.ts) ───────────────────────────────────────
 const NODE_KEYS = {
-  narration: new Set(['type', 'text', 'background', 'bgm_mood', 'goto']),
-  dialogue: new Set(['type', 'speaker', 'text', 'expression', 'sprite_position', 'background', 'goto']),
+  narration: new Set(['type', 'text', 'background', 'bgm_mood', 'goto', 'requires_flags', 'unless_flags', 'cg', 'clear_sprites']),
+  dialogue: new Set(['type', 'speaker', 'text', 'expression', 'sprite_position', 'background', 'goto', 'requires_flags', 'unless_flags', 'cg', 'clear_sprites']),
   choice: new Set(['type', 'choices']),
 };
-const CHOICE_KEYS = new Set(['label', 'affection', 'set_flags', 'background', 'goto']);
+const CHOICE_KEYS = new Set(['label', 'affection', 'set_flags', 'clear_flags', 'background', 'goto']);
 
 const isSentinel = (s) => s === 'BRANCH_TO_ROUTE' || s.startsWith('EVAL_ENDING:');
 
@@ -69,6 +75,7 @@ for (const scene of scenes.values()) {
   const where = scene._file;
   const nodes = scene.nodes ?? [];
   const last = nodes.length - 1;
+  if (scene.cg && !events.has(scene.cg)) err(`${where}: unknown event CG ${scene.cg}`);
 
   // next_scene resolves?
   const ns = scene.next_scene;
@@ -85,6 +92,9 @@ for (const scene of scenes.values()) {
 
   nodes.forEach((n, i) => {
     const at = `${where} node[${i}]`;
+    if (n.cg && !events.has(n.cg)) err(`${at}: unknown event CG ${n.cg}`);
+    for (const flag of [...(n.requires_flags ?? []), ...(n.unless_flags ?? [])])
+      if (!declaredFlags.has(flag)) err(`${at}: unknown condition flag ${flag}`);
     const allowed = NODE_KEYS[n.type];
     if (!allowed) {
       err(`${at}: unknown node type "${n.type}"`);
@@ -113,6 +123,8 @@ for (const scene of scenes.values()) {
         for (const k of Object.keys(c))
           if (!CHOICE_KEYS.has(k)) warn(`${cat}: unknown key "${k}" (ignored)`);
         if (!c.label) err(`${cat}: missing label`);
+        for (const flag of [...(c.set_flags ?? []), ...(c.clear_flags ?? [])])
+          if (!declaredFlags.has(flag)) err(`${cat}: unknown flag ${flag}`);
         for (const aid of Object.keys(c.affection ?? {}))
           if (!charIds.has(aid)) err(`${cat}: affection targets unknown character "${aid}"`);
         checkGoto(c.goto, nodes, last, cat);

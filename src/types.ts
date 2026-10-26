@@ -18,8 +18,9 @@ const GotoSchema = z.union([z.number(), z.string(), z.null()]).optional()
 
 export const ChoiceSchema = z.object({
   label: z.string(),
-  affection: z.record(z.number()).optional(),
+  affection: z.record(z.string(), z.number()).optional(),
   set_flags: z.array(z.string()).optional(),
+  clear_flags: z.array(z.string()).optional(),
   background: z.string().optional(),
   goto: GotoSchema,
 })
@@ -28,6 +29,10 @@ export const NodeSchema = z.discriminatedUnion('type', [
   z.object({
     type: z.literal('narration'),
     text: z.string(),
+    requires_flags: z.array(z.string()).optional(),
+    unless_flags: z.array(z.string()).optional(),
+    cg: z.string().nullable().optional(),
+    clear_sprites: z.boolean().optional(),
     background: z.string().optional(),
     bgm_mood: z.string().optional(),
     goto: GotoSchema,
@@ -36,6 +41,10 @@ export const NodeSchema = z.discriminatedUnion('type', [
     type: z.literal('dialogue'),
     speaker: z.string(),
     text: z.string(),
+    requires_flags: z.array(z.string()).optional(),
+    unless_flags: z.array(z.string()).optional(),
+    cg: z.string().nullable().optional(),
+    clear_sprites: z.boolean().optional(),
     expression: z.string().optional(),
     sprite_position: z.enum(SPRITE_POSITIONS).optional(),
     background: z.string().optional(),
@@ -50,6 +59,9 @@ export const NodeSchema = z.discriminatedUnion('type', [
 export const SceneSchema = z.object({
   scene_id: z.string(),
   title: z.string(),
+  date: z.string().optional(),
+  chapter: z.string().optional(),
+  cg: z.string().optional(),
   background: z.string().optional(),
   bgm_mood: z.string().optional(),
   nodes: z.array(NodeSchema),
