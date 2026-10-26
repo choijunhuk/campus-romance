@@ -1,0 +1,19 @@
+{
+  "scene_id": "end_char_05_normal",
+  "title": "방송이 끝난 뒤의 친구",
+  "date": "6월의 마지막 주",
+  "chapter": "에필로그 · 다른 이름의 관계",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "서하는 답을 재촉하지 않았다. 서로 조금 멀어진 시간이 지난 뒤, 졸업 발표 초대가 왔다."
+    },
+    {
+      "type": "narration",
+      "text": "좋아했던 목소리는 남았다. 이제는 다른 자리에서 진심으로 박수를 보낼 수 있었다."
+    }
+  ],
+  "next_scene": null
+}

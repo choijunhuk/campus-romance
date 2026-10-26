@@ -1,0 +1,19 @@
+{
+  "scene_id": "end_char_06_good",
+  "title": "같이 고른 페이스",
+  "date": "6월의 마지막 주",
+  "chapter": "에필로그 · 계속되는 이야기",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "새벽 훈련이 없는 토요일. 이서는 운동화 대신 샌들을 신고 약속 장소에 왔다."
+    },
+    {
+      "type": "narration",
+      "text": "“오늘은 네가 길 골라. 천천히 가도 돼.” 기록을 재지 않는 하루가 둘에게 하나 더 생겼다."
+    }
+  ],
+  "next_scene": null
+}

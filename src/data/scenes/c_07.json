@@ -90,6 +90,26 @@
       "expression": "neutral",
       "sprite_position": "center",
       "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "축제 방송은 제가, 사진은 이서 씨가. 그런데 홍보 문구가 ‘습기 주의’면 곤란해요.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "물 튀는 장면은 역동적이긴 했어요. 제품은 안 역동적인 게 좋겠지만.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "서하는 마이크를 내 쪽으로, 이서는 카메라 화면을 내 쪽으로 돌린다. 처음 알던 동아리 밖으로 이번 봄이 넓어진다."
     }
   ],
   "next_scene": "c_08"

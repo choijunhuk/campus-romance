@@ -1,0 +1,66 @@
+{
+  "scene_id": "r6_11",
+  "title": "한 걸음 남은 거리",
+  "date": "6월 10일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "track",
+  "bgm_mood": "quiet_night",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "전시를 정리한 뒤 운동장 관중석에 앉았다. 이서가 내 어깨에 턱을 잠깐 얹는다. 트랙의 불이 하나씩 꺼진다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "오늘은 체력 남았어? 좀 더 같이 있고 싶은데.",
+      "expression": "blush",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "응. 입 맞춰도 돼?",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_kiss"
+          ]
+        },
+        {
+          "label": "응. 이대로 안고 조금만 더 앉아 있자.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_hold"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "이서가 웃으며 고개를 끄덕인다. 가까워지는 순간만큼은 둘 다 서두르지 않았다. 입술이 떨어진 뒤 이서가 내 손을 다시 자기 무릎 위로 당겼다.",
+      "requires_flags": [
+        "iseo_kiss"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "이서가 몸을 돌려 나를 안았다. “그럼 오늘은 이걸 오래.” 장난스럽던 목소리가 어깨에 닿아 조금 낮아졌다.",
+      "requires_flags": [
+        "iseo_hold"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "관리인이 문 닫을 시간을 알렸다. 이서가 먼저 일어나 내게 손을 내민다. 둘이 동시에 웃어서 또 잠깐 늦었다.",
+      "cg": "iseo_stands",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "r6_12"
+}

@@ -23,7 +23,7 @@ function play(route: number, preference = 0, ending = 0) {
     if (s.ended) return { scene: s.sceneId, lines, visited }
     const n = scene.nodes[s.nodeIndex]
     if (n.type === 'choice') {
-      const final = ['r1_14', 'r3_14', 'r2_05', 'r4_05'].includes(s.sceneId)
+      const final = ['r1_14', 'r3_14', 'r5_14', 'r6_14', 'r2_05', 'r4_05'].includes(s.sceneId)
       s.choose(n.choices[s.sceneId === 'c_08' ? route : final ? ending : preference])
     } else { lines.push(n.text); s.advance() }
   }
@@ -31,7 +31,7 @@ function play(route: number, preference = 0, ending = 0) {
 }
 
 describe('real authored playthroughs', () => {
-  for (const [route, char] of [[0, 'char_01'], [1, 'char_03'], [2, 'char_02'], [3, 'char_04']] as const) {
+  for (const [route, char] of [[0, 'char_01'], [1, 'char_03'], [2, 'char_05'], [3, 'char_06'], [4, 'char_02'], [5, 'char_04']] as const) {
     for (const [ending, tier] of [[0, 'good'], [1, 'normal'], [2, 'bad']] as const) {
       it(`${char}: reaches the ${tier} ending through actual choices`, () => {
         const result = play(route, 0, ending)
@@ -52,8 +52,17 @@ describe('real authored playthroughs', () => {
     expect(result.lines.some(l => l.includes('둘이 멋대로 지은 이야기'))).toBe(false)
   })
   it('solo is an explicit choice, independent of relationship points', () => {
-    expect(play(4).scene).toBe('solo_end')
+    expect(play(6).scene).toBe('solo_end')
   })
+  for(const [route,char,branch,unselected]of [[2,'char_05','r5_04_walk','r5_04_record'],[3,'char_06','r6_04_private','r6_04_finish']] as const){
+    it(`${char}: slower choices preserve the romance and take a different date`,()=>{
+      const result=play(route,1,0)
+      expect(result.scene).toBe(`end_${char}_good`)
+      expect(result.visited.has(branch)).toBe(true)
+      expect(result.visited.has(unselected)).toBe(false)
+      expect(useGame.getState().flags).not.toContain(route===2?'seoha_kiss':'iseo_kiss')
+    })
+  }
   it('a choice cannot be applied a second time after its node is left', () => {
     const s = useGame.getState()
     s.goToScene('c_08')
@@ -104,11 +113,11 @@ describe('presentation and persistence', () => {
     const s = useGame.getState()
     expect(presentation(scenes.get(s.sceneId)!, s.path).cg).toBe('jian_coffee')
   })
-  it('does not load previous story-version saves into changed node indexes', () => {
+  it.each([undefined,2])('does not load previous story-version %s saves into changed node indexes', (oldVersion) => {
     useGame.getState().save('s1')
     const data = JSON.parse(localStorage.getItem('vn_save_s1')!)
     expect(data.storyVersion).toBe(STORY_VERSION)
-    delete data.storyVersion
+    data.storyVersion=oldVersion
     localStorage.setItem('vn_save_s1', JSON.stringify(data))
     expect(useGame.getState().load('s1')).toBe(false)
   })

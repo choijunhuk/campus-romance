@@ -1,0 +1,63 @@
+{
+  "scene_id": "r6_13",
+  "title": "렌즈 앞의 우리",
+  "date": "6월 19일 · 대회",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "lecture_hall",
+  "bgm_mood": "hopeful_morning",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "시연이 끝나자 이서가 엄지를 들어 보인다. 사용성 검증 보고서에는 이서가 쓴 관찰 기록이 따로 붙었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "버튼 잘 눌렸어. 뛰고 온 사람 손으로도. 이건 진짜 칭찬.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "사진도 잘 찍어줘요. 제일 괜찮은 표정으로."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "그건 내가 골라도 되는 거야?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "같이 확인하자. 우리 둘 사진도 한 장 부탁하고.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_together_photo"
+          ]
+        },
+        {
+          "label": "시연 중인 사진부터 남기자. 데이트 사진은 끝나고 찍자.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_after_photo"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "이서는 카메라를 시혁에게 건네고 내 옆으로 왔다. 찍는 사람과 찍히는 사람이 처음으로 같은 프레임에 들어갔다."
+    }
+  ],
+  "next_scene": "r6_14"
+}

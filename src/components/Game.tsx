@@ -3,7 +3,8 @@ import { useGame, STORY_VERSION } from '../store'
 import { scenes, charById } from '../engine/load'
 import { endingSummary } from '../engine/branching'
 import { presentation } from '../engine/presentation'
-import { bgTime, bgmTrack } from '../engine/atmosphere'
+import { bgTime, scoreForScene } from '../engine/atmosphere'
+import soundtrack from '../data/soundtrack.json'
 import { ART_ROOT, eventById, spriteAtlases, backgroundAsset } from '../art'
 import { SmartImage, useTypewriter, useBgm, playSfx, assetUrl } from './ui'
 import { CharacterSprite } from './CharacterSprite'
@@ -28,7 +29,8 @@ export function Game() {
   const speakerName = speaker === 'protagonist' ? playerName : speaker ? charById.get(speaker)?.name ?? speaker : ''
   const cg = stage?.cg ? eventById.get(stage.cg) : null
   const background = stage?.background
-  useBgm(stage?.mood ? bgmTrack(stage.mood) : null, settings.bgmVolume, settings.muted)
+  const track=scoreForScene(sceneId,stage?.mood)
+  useBgm(track, settings.bgmVolume, settings.muted)
   const advance = () => {
     if (uiHidden) { game.toggleUiHidden(); return }
     if (ended || menu !== 'none' || returnToTitle || isChoice) return
@@ -84,7 +86,7 @@ export function Game() {
       else if (e.code === 'KeyA') game.toggleAuto()
       else if (e.code === 'KeyH') game.toggleUiHidden()
       else if (e.code === 'ControlLeft' || e.code === 'ControlRight') game.toggleSkip()
-      else if (isChoice && /^Digit[1-5]$/.test(e.code) && node?.type === 'choice') {
+      else if (isChoice && /^Digit[1-9]$/.test(e.code) && node?.type === 'choice') {
         const choice = node.choices[Number(e.code.slice(-1)) - 1]
         if (choice) game.choose(choice)
       }
@@ -106,7 +108,7 @@ export function Game() {
     <button className="advance-stage" onClick={advance} aria-label={uiHidden ? 'UI 다시 보기' : '다음 대사'} tabIndex={-1} />
     {!uiHidden && <>
       <header className="game-header">
-        <div className="chapter-label"><span>{scene.chapter}</span><small>{scene.date} <i> / </i> {scene.title}</small></div>
+        <div className="chapter-label"><span>{scene.chapter}</span><small>{scene.date} <i> / </i> {scene.title}</small><small className="now-playing" data-track={track}>{settings.muted?'♪ 음소거':`♫ ${soundtrack.find(t=>t.id===track)?.title}`}</small></div>
         <nav aria-label="플레이 조작">
           <button onClick={game.toggleAuto} aria-pressed={auto}>자동</button>
           <button onClick={game.toggleSkip} aria-pressed={skip}>스킵</button>
@@ -162,6 +164,6 @@ export function SettingsBody() {
     <label className="check-label"><input type="checkbox" checked={settings.muted} onChange={e => setSetting('muted', e.target.checked)} />소리 끄기</label>
     <label className="check-label"><input type="checkbox" checked={settings.skipUnread} onChange={e => setSetting('skipUnread', e.target.checked)} />안 읽은 대사도 스킵하기</label>
     <label className="check-label"><input type="checkbox" checked={settings.showAffection} onChange={e => setSetting('showAffection', e.target.checked)} />선택 후 관계 수치 표시</label>
-    <p className="menu-caption">Space 진행 · A 자동 · Ctrl 스킵 · H 장면 감상 · Esc 메뉴 · 숫자 1–5 선택</p>
+    <p className="menu-caption">Space 진행 · A 자동 · Ctrl 스킵 · H 장면 감상 · Esc 메뉴 · 숫자 1–7 선택</p>
   </div>
 }

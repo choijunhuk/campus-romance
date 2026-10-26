@@ -1,0 +1,63 @@
+{
+  "scene_id": "r5_05",
+  "title": "익명 사연의 당사자",
+  "date": "5월 20일",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "radio_room",
+  "bgm_mood": "quiet_night",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "방송 끝나기 십 분 전. 서하가 화면의 익명 사연을 가리킨다. ‘좋아하는 사람이 제 목소리를 좋아한대요.’"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "그 사람 목소리가 꽤 유명한가 보네요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "유명한지는 모르겠는데, 지금 엄청 의식하네요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "사연에 답장한다. 목소리 말고도 좋아할 이유가 많다고.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_answer"
+          ]
+        },
+        {
+          "label": "직접 말할게요. 다음 방송도 끝나고 기다려도 돼요?",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_wait"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "네. 출연료는 편의점 아이스크림이면 돼요. 아니, 기다리는 건 제가 받는 거구나.",
+      "expression": "blush",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "끝인사를 하면서 한 단어를 틀렸다. 빨간 불이 꺼지자 서하가 이마를 책상에 가볍게 댔다."
+    }
+  ],
+  "next_scene": "r5_06"
+}

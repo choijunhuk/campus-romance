@@ -23,6 +23,27 @@ for(const name of ['jian','narae','friends','jian-coffee','jian-rooftop','narae-
 }
 art.events=art.events.map(e=>({...e,file:e.file.replace(/\.png$/,'.webp')}))
 art.sprites=Object.fromEntries(Object.entries(art.sprites).map(([id,file])=>[id,file.replace(/\.png$/,'.webp')]))
-art.backgrounds={club_room:'workshop',gwabang:'workshop',library:'library',cafeteria:'cafeteria',cafe_street:'cafe',rooftop:'rooftop',han_river:'river',lecture_hall:'lecture'}
+art.backgrounds={...art.backgrounds,radio_room:'radio',track:'track'}
+// Atlas extraction and transparent gutters only; illustration originals remain intact.
+for(const name of ['jian','narae','seoha','iseo']){
+ const input=sharp(resolve(sources,`${name}-v3.png`)),{width,height}=await input.metadata(),cells=[]
+ for(let i=0;i<6;i++){
+  const col=i%2,row=Math.floor(i/2),left=Math.round(width*col/2),top=Math.round(height*row/3)
+  const buffer=await input.clone().extract({left,top,width:Math.round(width*(col+1)/2)-left,height:Math.round(height*(row+1)/3)-top}).resize({width:496,height:667,fit:'contain',background:'#00000000'}).extend({top:8,bottom:8,left:8,right:8,background:'#00000000'}).png().toBuffer()
+  cells.push({input:buffer,left:col*512,top:row*683})
+ }
+ await sharp({create:{width:1024,height:2049,channels:4,background:'#00000000'}}).composite(cells).webp({quality:92,alphaQuality:100}).toFile(resolve(dir,`${name}-v3.webp`))
+ // Two wide 16:9 CG panels per original sheet.
+ const cg=sharp(resolve(sources,`${name}-cg-v3.png`)),meta=await cg.metadata()
+ for(const [row,event]of art.events.filter(e=>e.character===({jian:'char_01',narae:'char_03',seoha:'char_05',iseo:'char_06'})[name]).entries()){
+  const top=Math.round(meta.height*row/2)
+  await cg.clone().extract({left:0,top,width:meta.width,height:Math.round(meta.height*(row+1)/2)-top}).resize(1280,720,{fit:'cover'}).webp({quality:93}).toFile(resolve(dir,event.file))
+ }
+}
+const bg=sharp(resolve(sources,'new-locations-v3.png')),meta=await bg.metadata()
+for(let i=0;i<4;i++){
+ const col=i%2,row=Math.floor(i/2),left=Math.round(meta.width*col/2),top=Math.round(meta.height*row/2)
+ await bg.clone().extract({left,top,width:Math.round(meta.width*(col+1)/2)-left,height:Math.round(meta.height*(row+1)/2)-top}).resize(1280,720,{fit:'cover'}).webp({quality:92}).toFile(resolve(dir,`${col?'track':'radio'}-${row?'night':'day'}.webp`))
+}
 writeFileSync(artPath,JSON.stringify(art,null,2)+'\n')
-console.log('Prepared 13 background plates, 3 transparent sprite atlases, 4 event CGs, and title art.')
+console.log('Prepared 17 background plates, 5 transparent atlases (24 heroine expressions), 8 event CGs and title art.')

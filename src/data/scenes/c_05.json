@@ -79,6 +79,68 @@
     {
       "type": "narration",
       "text": "지안이 일정표에서 밤샘이라는 글자를 지웠다. 대신 각자의 이름과 확인 시간을 적었다."
+    },
+    {
+      "type": "narration",
+      "text": "장비를 반납하러 운동장에 갔다. 체육학과 사용성 테스트 담당 차이서가 트랙 바깥에서 카메라를 내린다.",
+      "background": "track",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "다시! 고장 난 장면도 찍어도 돼요? 잘된 사진만 보면 설명서가 거짓말하잖아요.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "그 대신 제 당황한 얼굴은 삭제해줘요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "그건 당사자 확인 후 삭제. 고장 기록은 보관. 조건 분리 잘하시네요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "스물한 살, 체육학과 2학년. 사진 동아리에서도 활동한다는 이서는 팔목의 스포츠 시계를 두드렸다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "뛰는 사람 입장에서 버튼을 눌러봐 줄래요?",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_test"
+          ]
+        },
+        {
+          "label": "사용성 테스트 끝나면 사진 구도 하나 배워도 돼요?",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_photo"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "좋아요. 대신 제 페이스 따라 뛰는 건 선택 과목이에요. 첫날부터 낙제시키진 않을게요.",
+      "expression": "laugh",
+      "sprite_position": "center",
+      "clear_sprites": true
     }
   ],
   "next_scene": "c_06"

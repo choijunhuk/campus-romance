@@ -1,0 +1,73 @@
+{
+  "scene_id": "r6_06",
+  "title": "수고했어 대신 보고 싶었어",
+  "date": "5월 23일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "track",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "대회가 끝났다. 입상은 못 했지만 개인 기록은 좋아졌다고 이서가 웃는다. 나는 물과 작은 꽃 한 송이를 들고 있었다.",
+      "cg": "iseo_finish",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "꽃은 우승자만 받는 줄 알았는데.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "저한테 오늘 제일 눈에 띈 사람이라서요."
+    },
+    {
+      "type": "narration",
+      "text": "관중석에서 내가 엉뚱한 타이밍에 박수 친 이야기를 이서가 세 번 했다. 놀리는 줄 알았는데, 자꾸 웃을 핑계를 찾는 얼굴이었다.",
+      "requires_flags": [
+        "iseo_cheer"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "약속한 대로 경기 직후 연락이 왔다. 내 일정도 물어주는 메시지를 보고, 결과보다 만나서 할 말을 먼저 생각했다.",
+      "requires_flags": [
+        "iseo_own_day"
+      ]
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "다음엔 선수 말고 내 데이트 상대로 꽃 받아줘요.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_flirt"
+          ]
+        },
+        {
+          "label": "오늘 보고 싶었어요. 운동 안 하는 날에도요.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_miss"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "이서가 꽃으로 잠깐 얼굴을 가린다. 손목의 시계는 멈췄는데 우리 대화는 계속됐다.",
+      "cg": "iseo_finish",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "r6_07"
+}

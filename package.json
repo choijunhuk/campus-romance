@@ -1,7 +1,7 @@
 {
   "name": "campus-romance",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "engines": { "node": ">=24" },
   "type": "module",
   "scripts": {
@@ -16,7 +16,10 @@
     "test:e2e": "playwright test",
     "story:build": "node scripts/write-story.mjs",
     "art:pack": "node scripts/prepare-art.mjs",
-    "art:check": "node scripts/check-art.mjs"
+    "art:check": "node scripts/check-art.mjs",
+    "music:compose": "node scripts/compose-score.mjs",
+    "music:render": "node scripts/compose-score.mjs --render",
+    "audio:check": "node scripts/check-audio.mjs"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

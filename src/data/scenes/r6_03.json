@@ -1,0 +1,77 @@
+{
+  "scene_id": "r6_03",
+  "title": "승부는 과자까지",
+  "date": "5월 14일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "cafeteria",
+  "bgm_mood": "lively_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "동아리 체육대회 준비. 종이컵 탑 쌓기 예행연습에서 이서가 세 번 연속 졌다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "이건 운동 능력보다 건축 능력에 가깝잖아요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "결과에 이의 있으면 재경기할까요?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "있는데, 계속 같이 할 핑계도 생겨서 고민 중.",
+      "expression": "blush",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "같은 팀으로 옮겨서 최고 기록을 같이 만든다.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_team"
+          ]
+        },
+        {
+          "label": "한 판 더 겨루고 진 사람이 간식을 산다.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_rival"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "넷째 컵을 내가 올릴 때 이서가 받침을 잡아줬다. 성공하자 하이파이브가 손잡기로 잠깐 바뀌었다.",
+      "requires_flags": [
+        "iseo_team"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "내가 졌다. 이서는 제일 싼 과자와 제일 비싼 웃음을 골랐다. “다음엔 내가 사려고 져줄 수도 있어요.”",
+      "requires_flags": [
+        "iseo_rival"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "컵을 치우는 데 게임보다 오래 걸렸다. 둘이 일부러 서두르지 않았기 때문이다."
+    }
+  ],
+  "next_scene": "r6_04"
+}

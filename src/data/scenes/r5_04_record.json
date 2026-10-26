@@ -1,0 +1,40 @@
+{
+  "scene_id": "r5_04_record",
+  "title": "B면의 첫 곡",
+  "date": "5월 16일",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "cafe_street",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "서하가 내게 빠른 시티팝 음반을 골라준다. 나는 경쾌한 브라스가 들어간 재즈를 내밀었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "나를 너무 근사하게 생각한 거 아닌가요?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "서하가 골라준 나는 꽤 바쁘게 사네요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "가만히 있으면 자꾸 쳐다보게 되니까요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "직원이 웃자 둘 다 동시에 음반 설명을 읽는 척했다. 계산은 각자 했고, 들을 약속은 같이 잡았다."
+    }
+  ],
+  "next_scene": "r5_05"
+}

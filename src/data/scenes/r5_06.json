@@ -1,0 +1,71 @@
+{
+  "scene_id": "r5_06",
+  "title": "무대 뒤에도 같은 사람",
+  "date": "5월 23일",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "rooftop",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "축제 리허설이 길어졌다. 옥상에서 서하가 목을 풀며 내 음료를 한 모금 마셨다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "방송할 때랑 실제로 만날 때랑 많이 달라요?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "생각보다 승부욕이 있고, 장난치고 나서 제 반응을 확인하네요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "잘 보셨네. 평론 말고 감상은요?",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "계속 알아보고 싶어요. 데이트 상대로.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_named"
+          ]
+        },
+        {
+          "label": "긴장돼도 옆에 있고 싶어요. 서하는 어때요?",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_asked"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "나는 이미 다음 약속 생각하고 있어요. 친구한테 이러진 않거든요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "난간에서 나란히 돌아섰다. 둘 다 아는 일을 말로 확인하니, 오히려 눈을 마주치기가 어려워졌다."
+    }
+  ],
+  "next_scene": "r5_07"
+}

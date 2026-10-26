@@ -20,6 +20,10 @@ jobs:
 
       - run: npm run art:check
 
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - run: npm run audio:check
+
       - run: npm test
 
       - run: npm run build

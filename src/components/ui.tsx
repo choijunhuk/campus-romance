@@ -86,7 +86,7 @@ export function useTypewriter(text: string, dep: string, speed = 22) {
   return { shown, done, finish }
 }
 
-/** Quiet original Web Audio accompaniment, started by entering the story. */
+/** Keep the same score across lines; only scene scoring changes the player. */
 export function useBgm(track: string | null, volume: number, muted: boolean) {
   const player=useRef<ReturnType<typeof ambient>>(null)
   const level=useRef(muted?0:volume)

@@ -1,0 +1,69 @@
+{
+  "scene_id": "r6_10",
+  "title": "사진에 없는 연습",
+  "date": "6월 5일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "track",
+  "bgm_mood": "lively_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "전시 사진 설치를 돕는다. 내 사진에는 수평이 조금 기울어져 있었다. 이서는 액자를 고치며 그게 오히려 자기 시선과 닮았다고 했다."
+    },
+    {
+      "type": "narration",
+      "text": "‘또 할 마음’ 아래 이서가 직접 쓴 문장이 붙었다. 기록보다 다시 시작한 날을 남기고 싶다는 설명이었다.",
+      "requires_flags": [
+        "iseo_finish"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "웃는 사진은 전시에 걸리지 않았다. 대신 내 지갑을 보고 이서가 둘이만 아는 표정을 지었다.",
+      "requires_flags": [
+        "iseo_private"
+      ]
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "관람객 앞에서 사진 찍은 사람이라고 소개해줘.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_credit"
+          ]
+        },
+        {
+          "label": "오늘은 네 전시니까, 나는 옆에서 질문 받아줄게.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_support"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "어느 쪽이든 내 애인인 건 말할 거야. 그건 괜찮지?",
+      "expression": "blush",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "응. 그건 기쁘지."
+    },
+    {
+      "type": "narration",
+      "text": "내가 찍은 이서가 다른 사람들의 시선 속에서도 자기 이야기를 했다. 옆에서 보는 게 좋았다."
+    }
+  ],
+  "next_scene": "r6_11"
+}

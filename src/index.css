@@ -267,3 +267,25 @@ button { touch-action:manipulation; }
  .title-art { min-height:330px; }
 }
 @media(prefers-reduced-motion:reduce) { *,*:before,*:after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
+
+/* Four distinct heroines: portrait preview is independent of story route choice. */
+.heroine-picker {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:25px;max-width:390px;}
+.heroine-picker button {text-align:left;border:1px solid #d9d6cc;border-left:3px solid var(--heroine-accent);padding:10px 12px;background:#ffffff65;color:#40454d;min-height:52px;}
+.heroine-picker button[aria-pressed=true] {border-color:var(--heroine-accent);background:#fffaf4;box-shadow:0 2px 12px #34344b0c;}
+.heroine-picker button:hover {background:white;}
+.heroine-picker span {font-size:13px;font-weight:650;display:block;}
+.heroine-picker small {font-size:9px;display:block;color:#777783;margin-top:4px;}
+.title-featured {position:absolute;height:94%;width:auto;bottom:2%;left:50%;transform:translateX(-50%);z-index:3;animation:portrait-in .25s ease;}
+.heroine-caption {position:absolute;bottom:8%;left:6%;z-index:5;border-left:3px solid var(--heroine-accent);padding:10px 16px;background:#fffaf1eb;box-shadow:0 8px 28px #20223b14;}
+.heroine-caption strong {font-size:24px;letter-spacing:-.05em;display:block;color:var(--heroine-accent);}
+.heroine-caption span {font-size:11px;display:block;margin-top:5px;color:#41414b;}
+.title-campus {filter:saturate(.9);}
+.title-art {background:#e4e5ef;}
+.title-note {margin-top:14px;}
+.now-playing {font-size:9px!important;opacity:.8;}
+.choices {justify-content:safe center;}
+.gallery-filters {flex-wrap:wrap;}
+@keyframes portrait-in {from{opacity:0;transform:translateX(-48%)}to{opacity:1;transform:translateX(-50%)}}
+@media(max-width:800px) {.heroine-picker {gap:5px;margin-top:18px;}.heroine-picker button {padding:8px;}.title-featured {height:88%;}.heroine-caption {left:4%;bottom:9%;padding:8px 12px;}.heroine-caption strong {font-size:20px;}.heroine-caption span{font-size:10px;}}
+@media(max-width:480px) {.title-art {height:340px;border-radius:150px 150px 0 0;}.title-featured {height:105%;bottom:0;left:62%;}.heroine-caption {bottom:7%;left:4%;}.heroine-picker {max-width:none;}.heroine-picker button{min-height:53px;}.chapter-label .now-playing{margin-top:3px;font-size:8px!important;}.has-cg{grid-template-rows:126px minmax(0,1fr) auto;}.choices{justify-content:flex-start;padding-top:138px;}}
+@media(max-height:520px) and (min-width:481px) {.chapter-label .now-playing{display:none;}.choices{padding-top:65px;}}

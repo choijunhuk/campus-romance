@@ -1,0 +1,63 @@
+{
+  "scene_id": "r6_01",
+  "title": "기록 없는 한 바퀴",
+  "date": "5월 8일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "track",
+  "bgm_mood": "lively_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "이서는 운동화 끈을 묶다가 나를 보고 일어난다. 카메라는 가방 안에, 스톱워치는 꺼져 있다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "진짜 걷기만 해도 돼요. 데이트 신청을 체력장으로 오해할까 봐.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "데이트라고 불러도 돼요?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "아까부터 그 말 기다리고 있었는데.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "그럼 첫 데이트는 편의점까지. 아이스크림 걸고 걸을까요?",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_icecream"
+          ]
+        },
+        {
+          "label": "오늘은 카메라 없이 이서 얘기를 듣고 싶어요.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_nocamera"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "경주를 하지는 않았다. 이서가 보폭을 줄이는 대신 내가 맞추기 편한 길을 고르자고 물었다. 같이 걷는 데도 방법이 있었다."
+    }
+  ],
+  "next_scene": "r6_02"
+}

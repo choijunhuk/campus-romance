@@ -1,0 +1,71 @@
+{
+  "scene_id": "r5_01",
+  "title": "인터뷰에 없는 질문",
+  "date": "5월 8일",
+  "chapter": "윤서하 · 너에게만 하는 방송",
+  "background": "radio_room",
+  "bgm_mood": "lively_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "방송실 유리에 빨간 불이 꺼졌다. 서하가 헤드폰을 벗고 내 앞의 대본을 뒤집는다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "사적인 약속이라면서 왜 제품 설명서를 가져왔어요?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "빈손으로 오는 게 더 긴장돼서요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "그럼 첫 질문. 저 말고 다른 방송부원이었어도 왔어요?",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "아뇨. 윤서하라서 왔어요.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_direct"
+          ]
+        },
+        {
+          "label": "그래서 방송 없는 서하를 만나보고 싶었어요.",
+          "affection": {
+            "char_05": 5
+          },
+          "set_flags": [
+            "seoha_offair"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_05",
+      "text": "좋네. 편집 안 해도 되는 대답. 오늘은 제가 커피 살게요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "내가 의자를 빼주자 서하가 웃었다. 진행자처럼 능숙한데, 컵 뚜껑을 두 번 잘못 닫았다."
+    }
+  ],
+  "next_scene": "r5_02"
+}

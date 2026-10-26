@@ -46,8 +46,7 @@ const charIds = new Set(characters.map((c) => c.id));
 const exprByChar = new Map(characters.map((c) => [c.id, new Set(c.expression_set)]));
 const speakers = new Set([...charIds, 'protagonist']);
 
-const bgIds = new Set((prompts?.backgrounds?.list ?? []).map((b) => b.id));
-const cgEventIds = new Set((prompts?.event_cg ?? []).map((c) => c.event_id));
+const bgIds = new Set(Object.keys(art.backgrounds));
 
 const sceneFiles = readdirSync(SCENES).filter((f) => f.endsWith('.json'));
 const scenes = new Map();
@@ -168,13 +167,6 @@ function checkGoto(goto, nodes, last, at) {
 }
 
 // ── Cross-checks: declared routes & endings ───────────────────────────────────
-function checkCg(eventId) {
-  if (cgEventIds.size && !cgEventIds.has(eventId))
-    warn(`CG: "${eventId}" has no event_cg prompt (gallery slot will be placeholder)`);
-  if (!existsSync(join(ASSETS, 'cg', `${eventId}.png`)))
-    warn(`CG: "${eventId}" has no generated image at public/assets/cg/${eventId}.png`);
-}
-
 for (const route of routes.character_routes ?? []) {
   for (const sc of route.scenes ?? [])
     if (!scenes.has(sc.scene_id))
@@ -182,15 +174,12 @@ for (const route of routes.character_routes ?? []) {
   for (const tier of ['good', 'normal', 'bad']) {
     const sceneId = `end_${route.char_id}_${tier}`;
     if (!scenes.has(sceneId)) warn(`routes.json: ending scene "${sceneId}" missing`);
-    const eventId = `${route.char_id}_${tier}_ending`;
-    checkCg(eventId);
   }
 }
 
 if (routes.solo_route?.scene_id) {
   if (!scenes.has(routes.solo_route.scene_id))
     warn(`routes.json: solo scene "${routes.solo_route.scene_id}" missing`);
-  checkCg('solo_ending');
 }
 
 // ── Ending scenes referenced but unreachable check (light) ────────────────────

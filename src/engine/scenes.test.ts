@@ -60,8 +60,8 @@ describe('scene map basics', () => {
     expect(scenes.has('c_01')).toBe(true)
   })
 
-  it('contains all 13 expected ending scenes', () => {
-    const chars = ['char_01', 'char_02', 'char_03', 'char_04']
+  it('contains all 19 expected ending scenes', () => {
+    const chars = ['char_01', 'char_02', 'char_03', 'char_04', 'char_05', 'char_06']
     const tiers = ['good', 'normal', 'bad']
     for (const char of chars) {
       for (const tier of tiers) {
@@ -218,8 +218,8 @@ describe('ending reachability via branching engine', () => {
   const BAD    = thresholds.bad_ending_below // 20
 
   // Confirm all 13 ending scene ids exist and are marked as ending scenes
-  it('all 13 ending scene ids satisfy isEndingScene()', () => {
-    const chars = ['char_01', 'char_02', 'char_03', 'char_04']
+  it('all 19 ending scene ids satisfy isEndingScene()', () => {
+    const chars = ['char_01', 'char_02', 'char_03', 'char_04', 'char_05', 'char_06']
     for (const char of chars) {
       for (const tier of ['good', 'normal', 'bad']) {
         expect(isEndingScene(`end_${char}_${tier}`)).toBe(true)
@@ -241,6 +241,8 @@ describe('ending reachability via branching engine', () => {
     char_02: { good: 'doyun_understood', bad: 'doyun_hurt' },
     char_03: { good: 'narae_unmasked',   bad: 'narae_collapsed' },
     char_04: { good: 'sihyuk_confessed', bad: 'sihyuk_too_late' },
+    char_05: { good: 'seoha_future', bad: 'seoha_farewell' },
+    char_06: { good: 'iseo_future', bad: 'iseo_farewell' },
   }
 
   for (const [char, flags] of Object.entries(CHAR_FLAGS)) {

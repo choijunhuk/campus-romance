@@ -1,4 +1,6 @@
 node_modules
+.tools/
+.audio-work/
 test-results/
 playwright-report/
 ui-before-check.png

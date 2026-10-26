@@ -1,0 +1,63 @@
+{
+  "scene_id": "r6_02",
+  "title": "렌즈를 돌리는 사람",
+  "date": "5월 11일",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "track",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "사진 수업의 첫 과제는 서로를 찍는 것이다. 이서가 카메라 끈을 내 손목에 걸고 셔터 위치를 알려준다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "저를 멋있게 찍는 건 선택. 제 맘에 드는 건 필수.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "엄청 어려운 과목인데요."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "달리는 모습 대신, 웃다 멈춘 순간을 찍는다.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_candid"
+          ]
+        },
+        {
+          "label": "이서가 직접 포즈를 고르게 하고 구도를 맞춘다.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_pose"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "생각보다 진지하게 보네. 렌즈 말고, 나를.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "화면을 확인하는 이서와 어깨가 닿았다. 잘 찍혔는지보다 웃는 얼굴을 더 오래 봤다."
+    }
+  ],
+  "next_scene": "r6_03"
+}

@@ -3,6 +3,7 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { resolve, dirname } from 'node:path'
+import { expandStory } from './story-expansion.mjs'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const read = p => JSON.parse(readFileSync(resolve(root, p), 'utf8'))
 const write = (p, v) => writeFileSync(resolve(root, p), JSON.stringify(v, null, 2) + '\n')
@@ -383,7 +384,9 @@ for (const [cid,prefix,list] of friendRoutes) list.forEach(([title,date,bg,body]
  S(`${prefix}_0${i+1}`,title,date,bg,'warm_afternoon',[...body,C(...options),N(i===4?'학기는 끝나고, 함께할 일의 모양이 달라진다.':'각자의 방식은 달랐지만 다음에 무엇을 할지는 분명해졌다.')],i===4?`EVAL_ENDING:${cid}`:`${prefix}_0${i+2}`,'우정 · 함께 만드는 사람들')
 })
 
+const extraEndings = expandStory({S,N,D,P,C,O,IF,authored})
 const endingText = {
+ ...extraEndings,
  char_01: {
   good:['같은 편으로 맞는 여름','지안이 일정표의 빈 날을 짚는다. 이번에는 일정을 채워 넣기 전에 내 얼굴부터 본다.','“이 날, 바다 갈래? 일주일은 아직 못 비워도 하루는 되겠다.”','같이 일하는 방법을 배운 뒤, 같이 쉬는 방법을 배우기 시작했다.'],
   normal:['좋은 동료라는 다음 계절','지안이 잠깐 고개를 숙였다가 똑바로 나를 본다. 아쉽다는 말과 알겠다는 말을 둘 다 해준다.','그날 이후에도 동아리에서 만났다. 둘만의 약속을 당연하게 잡지는 않았지만, 서로의 일을 존중하는 마음은 남았다.'],
@@ -415,6 +418,15 @@ S('solo_end','혼자 고른 여름','6월 26일','rooftop','evening_wind',[
 ],null,'에필로그 · 나의 속도')
 
 const chars=read('src/data/characters.json')
+const newCharacters=[
+ {id:'char_05',name:'윤서하',age:23,year_major:'2022학번 · 국어국문학과 4학년 / 방송부 DJ',archetype:'장난을 먼저 거는 DJ',route_theme:'들려주는 목소리와 사적인 마음, 공개할 수 있는 범위를 함께 고르는 연애',accent:'#8b4ea3',tagline:'방송 끝나고, 네 얘기 들을래.',dating_flag:'seoha_dating',personality:{summary:'능숙한 농담으로 먼저 다가가지만 호감 앞에서는 실수도 한다. 사람의 말을 끝까지 듣고, 졸업 뒤에도 자기 목소리로 일하고 싶다.',strengths:['순발력','경청','기획과 편집'],flaw:'익숙한 진행자 역할로 사적인 긴장을 감춘다.',values:'말과 이미지의 주인은 당사자다.'},backstory:'월·수 19시 캠퍼스 라디오 진행. 금요일에는 후배 편집 교육, 토요일엔 레코드 숍 아르바이트. 축제 부스 인터뷰로 회로의 봄을 알게 되었다. 졸업 작품은 캠퍼스 소리와 학생 구술 기록을 엮은 오디오 다큐멘터리.',speech_style:{tone:'장난스럽게 반문하다 진심을 말할 때 짧고 또렷해진다.',sample_lines:['방송 말고 제 이름부터 불러주세요.','편집 안 해도 되는 대답이네.','방송 밖에서도 자주 보고 싶어.']},appearance_lock:{base:'23 year old adult Korean woman',hair:'asymmetric ink-violet bob, tucked behind one ear',eyes:'violet-brown catlike eyes',outfit_default:'plum varsity jacket, cream collared knit top, black pleated skirt',accessory:'crescent ear cuff and headphones'},seed:550315},
+ {id:'char_06',name:'차이서',age:21,year_major:'2025학번 · 체육학과 2학년 / 사진 동아리',archetype:'직진하는 운동부 사진가',route_theme:'각자의 속도와 선택권을 존중하며 함께 걷는 연애',accent:'#087e85',tagline:'기록 없는 날도, 너랑 한 바퀴.',dating_flag:'iseo_dating',personality:{summary:'승부욕과 장난기가 많고 호감을 돌려 말하지 않는다. 결과보다 다시 할 마음을 믿는다. 사진에 찍힌 사람의 선택을 중요하게 생각한다.',strengths:['추진력','솔직함','관찰력'],flaw:'스스로 정한 속도에 익숙해서 상대의 망설임을 놓치기도 한다.',values:'몸도 시간도 자기 것이며, 함께할 땐 서로 물어본다.'},backstory:'월·목 7시 육상 동아리 훈련, 수요일 사진 동아리, 주말 경기 기록 촬영. 체육학 실습의 사용성 관찰 과제로 굿모닝 박스 테스트에 참여했다. 봄 사진전은 잘된 기록보다 다시 시작한 사람들의 표정을 담는다.',speech_style:{tone:'명확하고 장난스럽다. 중요한 마음은 먼저 질문한다.',sample_lines:['데이트 신청을 체력장으로 오해할까 봐.','그럼 내가 이겼다. 아니, 같이 이긴 건가.','오늘은 네가 길 골라.']},appearance_lock:{base:'21 year old adult athletic Korean woman, lightly tanned skin',hair:'high chestnut ponytail with teal ribbon',eyes:'warm olive-brown lively eyes',outfit_default:'cream track jacket with navy stripes over teal athletic top and navy shorts',accessory:'sports watch, camera strap'},seed:660420}
+]
+for(const c of newCharacters){
+ const character={...c,route_kind:'romance',expression_set:['neutral','smile','laugh','blush','sad','angry','surprised','embarrassed'],affection_stages:{'0-30':'같은 캠퍼스에서 처음 만난다','31-60':'둘만의 약속을 잡는 사이','61-90':'마음을 확인하고 차이를 조율한다','91-100':'다음 계절을 함께 고른다'}}
+ const found=chars.find(x=>x.id===c.id)
+ if(found)Object.assign(found,character);else chars.push(character)
+}
 Object.assign(chars[0],{age:24,route_kind:'romance',year_major:'2021학번 · 전기전자공학부 4학년',backstory:'2022년 2학년 때 신입생 주인공과 같은 팀. 2024~2025년 건강 회복과 인턴십으로 휴학하고 2026년 4학년으로 돌아왔다. 현재 졸업 작품과 취업 면접을 준비한다. 도움받는 것을 빚으로 느끼지만 장난과 단것을 좋아하는 평범한 면도 있다.'})
 chars[0].appearance_lock.base='24 year old adult Korean woman, natural slender tall proportions, composed posture'
 Object.assign(chars[1],{age:21,route_kind:'friendship',year_major:'2025학번 · 컴퓨터공학부 2학년',backstory:'주인공과 2026년 봄 처음 만난다. 독학한 임베디드 개발을 실제 제품에 쓰고 싶어 입부했다. 설명을 생략하는 버릇 때문에 협업에서 마찰을 겪으며 상대의 분야를 배우는 중이다.',route_theme:'서로의 기여를 이름으로 남기는 협업과 우정'})
@@ -424,6 +436,10 @@ chars[2].personality.summary='사람들과 잘 어울리고 재치가 좋다. �
 Object.assign(chars[3],{age:24,route_kind:'friendship',year_major:'2022학번 · 기계공학부 3학년',backstory:'2022년 교양 수업에서 주인공과 친구가 되었다. 2023~2024년 군 복무, 2025년 복학. 2026년 봄 축제 공연을 준비하며 기계 설계와 밴드 활동을 병행하는 방법을 찾는다.',route_theme:'꿈을 하나로 줄이지 않고 각자의 리듬을 찾는 우정'})
 chars[3].speech_style.sample_lines=['네 자리 안 없어졌다. 의자가 없어졌지.','배고프면 말해. 나도 먹게.','축제 때 합주할 건데, 와서 소리 좀 들어줘.']
 chars[3].affection_stages={'0-30':'오랜만에 다시 만난 동기. 예전식 농담을 주고받는다.','31-60':'합주와 팀 작업을 도와주며 자주 함께한다.','61-90':'진로의 망설임을 편하게 이야기한다.','91-100':'하고 싶은 일을 다시 시작할 때 가장 먼저 부르는 친구.'}
+Object.assign(chars[0],{accent:'#3356a1',tagline:'일 말고, 나랑 보내는 금요일.',dating_flag:'jian_dating'})
+Object.assign(chars[0].appearance_lock,{hair:'long black hair in low ponytail, side swept fringe',outfit_default:'tailored navy blazer over fitted ivory ribbed top, high waist dark blue jeans'})
+Object.assign(chars[2],{accent:'#d96870',tagline:'좋아하는 건, 같이 만들자.',dating_flag:'narae_dating'})
+Object.assign(chars[2].appearance_lock,{hair:'wavy copper hair in half-up style',outfit_default:'coral cardigan over ivory tee, denim A-line skirt'})
 write('src/data/characters.json',chars)
 const world=read('src/data/world_bible.json')
 world.title=['과방 너머 봄']
@@ -432,18 +448,22 @@ world.protagonist={name_default:'이준',age:24,gender:'남성',year_major:'2022
 world.setting.season='2026년 3월 4일~6월 26일. 4월 중간고사, 5월 25일 주간 축제, 6월 19일 대회, 6월 말 종강.'
 world.setting.project={name:'굿모닝 박스',goal:'빛 알람과 자동 급수를 결합한 원룸용 아침 장치',budget:'총 32만 원: 동아리 지원 20만 원 + 팀 회비 12만 원',milestones:['3월 단독 모듈','4월 전원·펌프 통합','5월 축제 사용성 검증','6월 19일 발표'],rules:['학생증 야간 출입 기록','물통과 전원 분리','작업·검증 담당 이름 기록','회식·연애와 업무 일정 구분']}
 world.tone_rules=['모든 등장인물은 성인 대학생. 연애 감정·질투·입맞춤·관계의 속도를 솔직하게 다루되 노골적인 성행위 묘사는 쓰지 않는다.','즐거움과 존경, 장난과 갈등으로 서로에게 끌리는 이유를 보여준다. 취약성 고백만으로 사랑에 도달하지 않는다.','가까워지는 순간에는 두 사람의 의사가 드러나고 이후 연락·호칭·약속에 변화가 남는다. 천천히 가는 선택은 실패가 아니다.','남성 캐릭터는 우정과 진로·협업의 주체. 친절이 자동 연애 진입이 되지 않는다.','갈등 뒤에 구체적인 사과와 조율을 제공한다.']
-world.art_direction={style_keywords:'hand-inked indie 2D visual novel, matte flat colors, restrained cel shadows, natural adult proportions, muted paper palette, no photorealistic gloss',color_palette:['cream','charcoal','muted olive','dusty blue','dusty rose'],lighting_mood:'단순한 면과 절제된 그림자. 피부 광택·과한 빛 번짐·사진 같은 피사계 심도 없음.'}
+world.art_direction={style_keywords:'premium 2D bishoujo visual novel, clean ink, expressive adult faces, modern campus fashion, controlled cel shading',color_palette:['ivory','navy','coral','plum','teal'],lighting_mood:'선명한 인물 실루엣과 부드러운 셀 그림자. 사진·3D 피부 광택 대신 일관된 선화.'}
+for(const location of [{id:'radio_room',name:'학생회관 3층 방송실',desc:'방음 유리, ON AIR 표시와 믹서. 월·수 19시 정규 방송, 22시 폐실.'},{id:'track',name:'중앙 운동장과 관중석',desc:'400m 트랙과 낮은 관중석. 동아리 훈련·사용성 실습·사진 전시가 만나는 공간.'}])if(!world.setting.key_locations.some(x=>x.id===location.id))world.setting.key_locations.push(location)
 write('src/data/world_bible.json',world)
 const routes=read('src/data/routes.json')
+for(const [cid,prefix]of [['char_05','seoha'],['char_06','iseo']])if(!routes.character_routes.some(r=>r.char_id===cid))routes.character_routes.push({char_id:cid,scenes:[],endings:{good:{condition:`affection >= 75 AND flag '${prefix}_future' set`},normal:{condition:'good/bad 조건 미충족'},bad:{condition:`affection < 20 OR flag '${prefix}_farewell' set`}}})
 routes.common_route={scenes:authored.filter(s=>s.scene_id.startsWith('c_')).map(s=>({scene_id:s.scene_id,title:s.title})),branch_logic:'c_08에서 플레이어가 연애·우정·솔로 경로를 직접 선택한다. 호감도 최고 인물에게 자동 진입하지 않는다.'}
 for(const r of routes.character_routes){
- const prefix={char_01:'r1_',char_02:'r2_',char_03:'r3_',char_04:'r4_'}[r.char_id]
+ const prefix={char_01:'r1_',char_02:'r2_',char_03:'r3_',char_04:'r4_',char_05:'r5_',char_06:'r6_'}[r.char_id]
  r.scenes=authored.filter(s=>s.scene_id.startsWith(prefix)).map(s=>({scene_id:s.scene_id,title:s.title}))
- r.kind=['char_01','char_03'].includes(r.char_id)?'romance':'friendship'
+ r.kind=['char_02','char_04'].includes(r.char_id)?'friendship':'romance'
  for(const tier of ['good','normal','bad'])r.endings[tier].summary=endingText[r.char_id][tier].slice(1).join(' ')
  r.endings.normal.condition='bad 조건 미충족 AND good 조건 미충족 (호감도가 높아도 관계 지속 플래그가 없으면 normal)'
 }
 routes.solo_route.summary='누구와 연인이 될지보다 자신의 생활과 전공을 다시 정리하기로 한 봄. 동아리 친구들과 다음 학기를 약속한다.'
 routes.flags=[...new Set(authored.flatMap(s=>s.nodes.filter(n=>n.type==='choice').flatMap(n=>n.choices.flatMap(c=>c.set_flags??[]))))]
 write('src/data/routes.json',routes)
+// Common scenes were extended after initial authoring; persist the final source.
+for(const scene of authored)write(`src/data/scenes/${scene.scene_id}.json`,scene)
 console.log(`Authored ${authored.length} scenes, ${authored.reduce((n,s)=>n+s.nodes.length,0)} nodes.`)

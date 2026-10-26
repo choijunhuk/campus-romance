@@ -1,0 +1,65 @@
+{
+  "scene_id": "r6_07",
+  "title": "먼저 잡은 손",
+  "date": "5월 25일 · 축제",
+  "chapter": "차이서 · 한 바퀴 더",
+  "background": "track",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "축제 푸드트럭 줄에서 이서가 내 손을 잡아 당겼다. 줄이 줄어든 뒤에도 놓지 않는다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "나, 선배랑 사귀고 싶어요. 같이 뛰는 사람이 아니라 같이 지내는 사람으로.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "나도 좋아해요. 사실 오늘 말하려고 했는데."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_06",
+      "text": "그럼 내가 이겼다. 아니, 이건 같이 이긴 건가.",
+      "expression": "laugh",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "이제 편하게 이름 불러줘. 나도 이서라고 부를게.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_dating",
+            "iseo_names"
+          ]
+        },
+        {
+          "label": "손 잡고 있는 거 좋아. 앞으로도 먼저 잡아줘.",
+          "affection": {
+            "char_06": 5
+          },
+          "set_flags": [
+            "iseo_dating",
+            "iseo_hand"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "포장한 음식은 식었고, 잡은 손은 따뜻했다. 이서가 소스 묻은 내 손가락을 보고 물티슈부터 꺼내며 웃었다."
+    }
+  ],
+  "next_scene": "r6_08"
+}
