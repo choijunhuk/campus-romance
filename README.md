@@ -4,7 +4,7 @@
 
 한국어 캠퍼스 로맨스 비주얼 노벨입니다. 한울대학교 공과대학과 동아리 **회로의 봄**을 배경으로, 대회 프로젝트를 함께 준비하며 선택에 따라 관계와 결말이 달라집니다.
 
-[플레이하기](https://choijunhuk.github.io/campus-romance/) · [현재 스토리와 설정](src/data/world_bible.json) · [콘텐츠 작성 규약](src/data/SCHEMA.md)
+[플레이하기](https://choijunhuk.github.io/campus-romance/) · [현재 스토리와 설정](src/data/world_bible.json) · [콘텐츠 작성 규약](src/data/SCHEMA.md) · [리디자인 제안과 새 컷신 시안](docs/REDESIGN.md)
 
 ![봄날의 캠퍼스](public/assets/ui/title_screen.png)
 
@@ -38,6 +38,8 @@
 | 정시혁 | 24세 · 기계공학부 4학년 · 복학생 동기 | 진로와 미뤄 둔 마음, 다시 찾아온 타이밍 |
 
 ## 개선 방향
+
+구체적인 루트·선택지·설정·UI/UX 제안과 새 컷신 콘셉트 2장은 [리디자인 문서](docs/REDESIGN.md)에서 볼 수 있습니다. 두 시안은 실제 씬과 갤러리에 아직 연결되지 않았습니다.
 
 다음 항목은 **개발 목표이며 아직 구현되지 않았습니다.**
 
