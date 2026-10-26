@@ -1,0 +1,78 @@
+{
+  "scene_id": "r1_14",
+  "title": "다음 학기의 빈칸",
+  "date": "6월 26일 · 종강",
+  "chapter": "서지안 · 같은 편",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "대회 장려상 상금으로 뒤풀이를 했다. 그 뒤에 둘이 강변으로 나왔다. 지안은 다음 달 최종 면접, 나는 여름 계절학기를 앞두고 있다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "다음에는 수요일 저녁 하나로는 부족할 것 같아. 그래도 각자 할 일은 해야겠지.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "지안이 달력을 내 쪽으로 밀었다. ‘먼저 물어보기. 이 날은 어때?’ 우리가 정한 약속을 기억하고 있었다.",
+      "requires_flags": [
+        "jian_ask_first"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "일 얘기 없이 만나기로 한 날. 지안이 노트북 대신 그때 산 여행 에세이를 가방에 넣어왔다.",
+      "requires_flags": [
+        "jian_offday"
+      ]
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "다음 학기도 만나자. 이제 지안의 연인으로.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_opened_up"
+          ],
+          "clear_flags": [
+            "jian_pushed_away"
+          ]
+        },
+        {
+          "label": "서로 좋아하지만, 지금은 좋은 동료로 남고 싶다고 말한다.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [],
+          "clear_flags": [
+            "jian_opened_up",
+            "jian_pushed_away"
+          ]
+        },
+        {
+          "label": "계속 미뤄온 관계를 여기서 마무리하자고 솔직히 말한다.",
+          "set_flags": [
+            "jian_pushed_away"
+          ],
+          "clear_flags": [
+            "jian_opened_up"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "흘려보내지 않고, 다음에 어떤 사이로 만날지 말했다. 강 건너 불빛이 하나씩 켜진다."
+    }
+  ],
+  "next_scene": "EVAL_ENDING:char_01"
+}

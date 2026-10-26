@@ -1,13 +1,19 @@
 {
   "scene_id": "end_char_04_normal",
-  "title": "시혁 — 노멀엔딩: 편한 동기",
-  "background": "club_room",
-  "bgm_mood": "bittersweet",
+  "title": "각자의 리듬",
+  "date": "6월의 마지막 주",
+  "chapter": "에필로그 · 다른 이름의 관계",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
   "nodes": [
-    { "type": "narration", "text": "대회는 끝났고, 시혁과 나는 편한 동기로 남았다. 가끔 같이 밥을 먹고, 가끔 침묵을 나눈다. 그 이상은 또, 타이밍을 놓쳤다." },
-    { "type": "dialogue", "speaker": "char_04", "text": "배고프면 말해. 사줄게. 그냥. ...뭐. 다음 학기에도 보는 거지.", "expression": "neutral", "sprite_position": "center" },
-    { "type": "narration", "text": "다음 학기. 또 한 번의 타이밍이 남아 있다고, 그렇게 믿어보기로 한다." },
-    { "type": "narration", "text": "── 정시혁 루트 · NORMAL ENDING ──" }
+    {
+      "type": "narration",
+      "text": "시혁의 합주와 내 계절학기는 자주 겹쳤다. 대신 공연 영상을 보내면 끝까지 보고 답했다."
+    },
+    {
+      "type": "narration",
+      "text": "같은 장소에 매번 있지 않아도 오래 가는 우정이 있었다."
+    }
   ],
   "next_scene": null
 }

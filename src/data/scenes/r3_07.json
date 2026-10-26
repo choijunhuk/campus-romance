@@ -1,0 +1,77 @@
+{
+  "scene_id": "r3_07",
+  "title": "내가 먼저 고른 사람",
+  "date": "5월 27일",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "나래가 먼저 만나자고 했다. 근무 없는 수요일, 평소보다 조용한 강변. 가방에서 작은 스케치북을 꺼낸다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "선배가 기다릴 때 맨날 발끝으로 돌 차는 거 알아요?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "그걸 언제 그렸어?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "기다리는 사람을 보고 있었으니까.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "스케치북에는 내가 여러 번 있었다. 공부하는 얼굴보다 나래가 웃을 때 고개 드는 얼굴이 더 많았다.",
+      "cg": "narae_river",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "나도 좋아해. 이제 데이트라고 부르자.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_dating"
+          ]
+        },
+        {
+          "label": "좋아해. 서두르지 말고 우리 속도를 같이 정하자.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_taking_time"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "응. 나도 선배가 좋고, 선배랑 있을 때의 나도 좋아.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "나래가 스케치북을 덮고 내 손을 잡았다. 그날에는 누가 먼저 집에 가자는 말을 할지 오래 정하지 못했다."
+    }
+  ],
+  "next_scene": "r3_08"
+}

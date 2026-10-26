@@ -1,0 +1,44 @@
+{
+  "scene_id": "r3_05_sketch",
+  "title": "닮지 않아서 남는 그림",
+  "date": "5월 23일 · 스케치를 고른 오후",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "나래가 스케치북 한 장을 뜯어 반씩 나눈다. 지나가는 사람을 그리기 시작했는데, 내가 그린 강아지는 끝내 식빵처럼 보였다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "이건 강아지한테 사과해야겠는데요.",
+      "expression": "laugh",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "너도 그려줘. 그래야 공평하지."
+    },
+    {
+      "type": "narration",
+      "text": "나래는 내 그림을 고치지 않고, 옆에 작은 꼬리를 하나 보탰다. 그제야 둘 다 웃었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "틀린 거 고치는 게 아니라 같이 그린 거예요. 마음에 들어요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "둘이 멋대로 지은 이야기 때문에 한참 웃었다. 나래가 내 팔을 치다 그대로 손을 얹어둔다. 돌아갈 때 그 종이를 접어 가방에 넣었다."
+    }
+  ],
+  "next_scene": "r3_06"
+}

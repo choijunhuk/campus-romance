@@ -1,0 +1,96 @@
+{
+  "scene_id": "c_07",
+  "title": "축제 전의 작은 소란",
+  "date": "4월 29일 · 부스 회의",
+  "chapter": "다시, 봄",
+  "background": "club_room",
+  "bgm_mood": "lively_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "축제에는 완성 전 제품을 체험시켜 보기로 했다. 나래가 종이 모형을 들자 도윤이 진지하게 충전 단자를 찾는다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "종이에 충전하면 논문 쓸 수 있어.",
+      "expression": "laugh",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_02",
+      "text": "아니, 제가 확인한 건 사용성인데요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_04",
+      "text": "나도 축제 때 합주 잡았어. 기타 케이스에 부품 넣지 마라.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "대회 부스보다 네 공연이 먼저네. 한 번은 다 같이 보자.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "첫 주의 작은 시제품은 이제 케이스에 들어간다. 처음 결정한 ‘일단 켜 보기’가 여기까지 왔다.",
+      "requires_flags": [
+        "prototype_first"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "첫 주에 적은 불편 목록의 세 줄을 지웠다. 무엇을 해결했는지 나래가 눈에 보이게 표시해둔 덕분이다.",
+      "requires_flags": [
+        "user_first"
+      ]
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "내가 부스 초반을 맡을게. 지안은 면접 스터디 다녀와요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "festival_shift_jian"
+          ]
+        },
+        {
+          "label": "카페 근무 전까지 부스 같이 볼래? 끝나면 내가 마감 정리할게.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "festival_shift_narae"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "무작정 대신 해주겠다는 말보다, 언제부터 언제까지인지를 맞췄다. 지안은 캘린더를 열었고 나래는 근무표를 확인했다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_04",
+      "text": "야. 너 이제 누구한테 연락할지 고민하는 표정인데. 그거 회로 문제보다 티 나.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "c_08"
+}

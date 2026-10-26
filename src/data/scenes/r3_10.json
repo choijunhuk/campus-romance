@@ -1,0 +1,76 @@
+{
+  "scene_id": "r3_10",
+  "title": "듣기 전에 고치지 않기",
+  "date": "6월 3일",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "library",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "어제는 내가 네 마음을 먼저 정했어. 미안해."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "나도 늦는다고 한 줄 보낼 수 있었는데. 기다리게 해서 미안해요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "둘이 휴대폰을 테이블 위에 내려놓고 이야기를 했다. 나래가 생활을 전부 바꾸겠다고 하지는 않았고, 나도 그러길 바라지 않았다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "약속이 바뀌면 시간과 이유를 짧게라도 전하기로 한다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_checkin"
+          ]
+        },
+        {
+          "label": "만나는 날을 적게 잡더라도 확실히 비우기로 한다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_protected_day"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "싸웠다가 다시 만나니까, 선배가 더 진짜 같네.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "원래 진짜였는데."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "알아요. 좀 얄미운 것도 포함해서.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "나래가 먼저 내 손등을 톡 두드렸다. 어제 못 먹은 저녁을 오늘 먹자고 했다."
+    }
+  ],
+  "next_scene": "r3_11"
+}

@@ -1,0 +1,55 @@
+{
+  "scene_id": "r1_13",
+  "title": "함께 만든 장치",
+  "date": "6월 19일 · 대회",
+  "chapter": "서지안 · 같은 편",
+  "background": "lecture_hall",
+  "bgm_mood": "hopeful_morning",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "굿모닝 박스가 켜졌다. 물과 전원을 분리한 케이스, 손으로 끌 수 있는 버튼, 실패해도 다시 확인할 수 있는 로그. 모두 누군가의 이름이 붙은 개선이었다."
+    },
+    {
+      "type": "narration",
+      "text": "질문이 들어오자 지안이 그날 연습한 문장으로 시작했다. ‘처음에는 기준이 달랐습니다. 그래서 함께 정했습니다.’",
+      "requires_flags": [
+        "jian_practice"
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_02",
+      "text": "끝났죠? 이제 진짜 로그 닫아도 돼요?",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "사진부터. 수상 못 해도 남는 건 있어야지!",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "수고했어. 네가 네 파트 끝까지 해서 좋았어.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "선배도요."
+    },
+    {
+      "type": "narration",
+      "text": "팀 사진을 찍을 때에는 팀원으로 섰다. 사진을 확인하러 흩어진 뒤에, 지안이 내 손을 찾아 잡았다."
+    }
+  ],
+  "next_scene": "r1_14"
+}

@@ -1,14 +1,78 @@
 {
   "scene_id": "r1_05",
-  "title": "발표, 그리고 그 다음",
-  "background": "lecture_hall",
-  "bgm_mood": "hopeful_morning",
+  "title": "우리 둘만 아는 표정",
+  "date": "5월 19일",
+  "chapter": "서지안 · 같은 편",
+  "background": "gwabang",
+  "bgm_mood": "lively_afternoon",
   "nodes": [
-    { "type": "narration", "text": "대회 발표장. '굿모닝 박스'가 무대 위에서 정확히 작동한다. 빛이 켜지고, 작은 펌프가 부드럽게 돈다. 박수." },
-    { "type": "dialogue", "speaker": "char_01", "text": "...됐다. 우리가. 같이. (옆에 선 나를 본다)", "expression": "smile", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_02", "text": "거봐요 5ms 딜레이 죽이죠. 어 근데 두 분 분위기가 왜...", "expression": "surprised", "sprite_position": "right" },
-    { "type": "dialogue", "speaker": "char_03", "text": "헐 뭐야뭐야! 나만 몰랐어?! 디테일 좀!", "expression": "laugh", "sprite_position": "left" },
-    { "type": "narration", "text": "한 학기가 끝났다. 결과가 어떻든, 이 사람과 나란히 선 이 순간은 이미 무언가를 증명했다." }
+    {
+      "type": "narration",
+      "text": "팀 회의에서 지안은 다시 단정한 리더였다. 시혁이 내가 책갈피를 만지작거리는 걸 보고 눈썹을 올렸다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_04",
+      "text": "그거 지안 선배가 사준 거냐?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "회의부터 하자.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "말끝이 너무 빨랐다. 회의가 끝나고 지안이 복도에서 기다리고 있었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "아까 기분 나빴어? 너 숨기려는 건 아니었어. 팀 앞에서 뭐라고 해야 할지 몰라서.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "둘이 어떤 사이인지 먼저 정하고, 그다음 같이 말해요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_private"
+          ]
+        },
+        {
+          "label": "지금은 우리끼리 알아도 좋아요. 대신 모르는 척은 하지 말아요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_lowkey"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "응. 혼자 정하지 않을게. 너한테도 걸린 일이니까.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "지안이 내 손에서 책갈피를 빼내 책 안에 꽂아준다. 남들 앞에서 보여준 것보다 훨씬 부드러운 손짓이었다."
+    }
   ],
-  "next_scene": "EVAL_ENDING:char_01"
+  "next_scene": "r1_06"
 }

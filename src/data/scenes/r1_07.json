@@ -1,0 +1,89 @@
+{
+  "scene_id": "r1_07",
+  "title": "선배라는 말 다음에",
+  "date": "5월 25일 · 축제 첫날",
+  "chapter": "서지안 · 같은 편",
+  "background": "rooftop",
+  "bgm_mood": "night_city",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "축제 음악이 옥상까지 올라온다. 지안이 내 옆에 서서 난간의 먼지를 소매로 닦으려다 내가 보는 걸 깨닫고 멈춘다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "이런 데 올라오면 늘 일 얘기했는데. 오늘은 안 할래.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "‘아는 척은 하자고 했지.’ 지안이 내 손등을 손끝으로 한번 건드린다.",
+      "requires_flags": [
+        "jian_lowkey"
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "너를 기다리는 게 익숙해졌어. 그래서 이제는 기다린다는 말도 하고 싶어.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "나도 좋아해요. 이제 선배 말고, 지안이라고 불러도 돼요?",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_dating"
+          ]
+        },
+        {
+          "label": "좋아해요. 가까워지는 건 조금 천천히 해도 될까요?",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_taking_time"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "‘둘이 있을 땐.’ 지안이 대답한다. 손을 내밀자 이번에는 먼저 손가락을 맞춰 잡았다.",
+      "requires_flags": [
+        "jian_dating"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "‘좋아. 천천히가 모른 척은 아니면 돼.’ 지안이 웃으며 내 옆으로 한 걸음 다가왔다.",
+      "requires_flags": [
+        "jian_taking_time"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "멀리서 박수가 터졌다. 옥상에는 우리가 서로에게 해준 대답만 가까이 남았다.",
+      "cg": "jian_rooftop",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "오늘, 조금 더 같이 걸을래?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "r1_08"
+}

@@ -1,4 +1,7 @@
 node_modules
+test-results/
+playwright-report/
+ui-before-check.png
 dist
 .env
 *.local

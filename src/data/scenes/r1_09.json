@@ -1,0 +1,48 @@
+{
+  "scene_id": "r1_09",
+  "title": "마감과 약속 사이",
+  "date": "6월 2일",
+  "chapter": "서지안 · 같은 편",
+  "background": "club_room",
+  "bgm_mood": "tense_evening",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "예정에 없던 테스트 오류. 동시에 지안의 휴대폰에는 우리가 예약한 영화 시작 알림이 떴다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "또 이러네. 오늘도 미루면… 나 너한테 일만 시키는 사람 같겠다.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "영화는 다시 잡고 오늘은 끝낼 범위부터 정해요. 열 시에는 같이 나가요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_work_boundary"
+          ],
+          "goto": "r1_09_work"
+        },
+        {
+          "label": "남은 테스트는 인계하고 나가요. 내일 첫 시험은 제가 맡을게요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_kept_date"
+          ],
+          "goto": "r1_09_cinema"
+        }
+      ]
+    }
+  ],
+  "next_scene": null
+}

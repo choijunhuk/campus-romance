@@ -2,10 +2,15 @@ import { create } from 'zustand'
 import { START_SCENE, scenes, charById } from './engine/load'
 import { resolveNext, isEndingScene, endingEventId } from './engine/branching'
 import type { Choice, Scene } from './types'
+import { visibleNode, presentation } from './engine/presentation'
+import { eventById } from './art'
+
+export const STORY_VERSION = 2
 
 export type Screen = 'title' | 'game' | 'gallery'
 
 export interface SaveData {
+  storyVersion?: number
   playerName: string
   sceneId: string
   nodeIndex: number
@@ -31,7 +36,7 @@ export const SAVE_SLOTS = [
   { id: 's3', label: '슬롯 3' },
 ] as const
 
-const GALLERY_KEY = 'vn_gallery'
+const GALLERY_KEY = 'vn_gallery_v2'
 const SETTINGS_KEY = 'vn_settings'
 const SEEN_KEY = 'vn_seen'
 const slotKey = (slot: string) => `vn_save_${slot}`
@@ -53,6 +58,8 @@ function addToGallery(ids: string[]) {
 }
 
 interface Settings {
+  fontSize: number
+  showAffection: boolean
   textSpeed: number // ms per character (lower = faster)
   autoDelay: number // ms to wait before auto-advancing a finished line
   bgmVolume: number // 0..1
@@ -61,6 +68,8 @@ interface Settings {
   skipUnread: boolean // allow SKIP to race through never-seen text too
 }
 const DEFAULT_SETTINGS: Settings = {
+  fontSize: 19,
+  showAffection: false,
   textSpeed: 22,
   autoDelay: 1200,
   bgmVolume: 0.6,
@@ -70,7 +79,15 @@ const DEFAULT_SETTINGS: Settings = {
 }
 function readSettings(): Settings {
   try {
-    return { ...DEFAULT_SETTINGS, ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') }
+    const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}')
+    const settings = { ...DEFAULT_SETTINGS }
+    const ranges = {fontSize:[16,26],textSpeed:[2,60],autoDelay:[800,5000],bgmVolume:[0,1],sfxVolume:[0,1]} as const
+    for(const key of Object.keys(ranges) as (keyof typeof ranges)[]) {
+      const value=saved?.[key]
+      if(typeof value==='number'&&Number.isFinite(value))settings[key]=Math.max(ranges[key][0],Math.min(ranges[key][1],value))
+    }
+    for(const key of ['muted','skipUnread','showAffection'] as const)if(typeof saved?.[key]==='boolean')settings[key]=saved[key]
+    return settings
   } catch {
     return { ...DEFAULT_SETTINGS }
   }
@@ -151,6 +168,8 @@ interface GameState {
   advance: () => void
   choose: (choice: Choice) => void
   goToScene: (sceneId: string) => void
+  goToNode: (index: number) => void
+  unlockCG: (id: string) => void
 
   pushHistory: (name: string, text: string) => void
   toggleAuto: () => void
@@ -194,7 +213,7 @@ export const useGame = create<GameState>((set, get) => ({
   start: (name) => {
     set({
       screen: 'game',
-      playerName: name.trim() || '주인공',
+      playerName: name.trim() || '이준',
       sceneId: START_SCENE,
       nodeIndex: 0,
       affection: {},
@@ -219,10 +238,10 @@ export const useGame = create<GameState>((set, get) => ({
     // Node-level goto: narration/dialogue may jump after their line.
     // number = node index (same scene), string = scene_id. null/absent = sequential.
     const node = scene.nodes[nodeIndex]
+    if (node?.type === 'choice') return
     const goto = node && 'goto' in node ? node.goto : undefined
     if (typeof goto === 'number') {
-      set({ nodeIndex: goto, path: [...get().path, goto] })
-      get().save('auto')
+      get().goToNode(goto)
       return
     }
     if (typeof goto === 'string') {
@@ -231,8 +250,7 @@ export const useGame = create<GameState>((set, get) => ({
     }
     if (nodeIndex < scene.nodes.length - 1) {
       const ni = nodeIndex + 1
-      set({ nodeIndex: ni, path: [...get().path, ni] })
-      get().save('auto')
+      get().goToNode(ni)
     } else {
       const next = resolveNext(scene, get().affection, get().flags)
       if (next === null) {
@@ -245,6 +263,8 @@ export const useGame = create<GameState>((set, get) => ({
   },
 
   choose: (choice) => {
+    const current = scenes.get(get().sceneId)?.nodes[get().nodeIndex]
+    if (current?.type !== 'choice' || !current.choices.includes(choice)) return
     const affection = { ...get().affection }
     let pingChar: string | null = null
     let pingDelta = 0
@@ -258,26 +278,27 @@ export const useGame = create<GameState>((set, get) => ({
         }
       }
     }
-    const flags = [...new Set([...get().flags, ...(choice.set_flags ?? [])])]
+    const flags = [...new Set([...get().flags.filter((f) => !choice.clear_flags?.includes(f)), ...(choice.set_flags ?? [])])]
     const affPing = pingChar
       ? { charName: charById.get(pingChar)?.name ?? pingChar, delta: pingDelta, ts: Date.now() }
       : get().affPing
     // Choosing breaks any skip/auto run so the player sees the consequence.
-    set({ affection, flags, affPing, skip: false })
+    set({ affection, flags, affPing, skip: false, auto: false })
+    get().pushHistory('선택', choice.label)
 
     const goto = choice.goto ?? null
     if (typeof goto === 'number') {
-      set({ nodeIndex: goto, path: [...get().path, goto] })
-      get().save('auto')
+      get().goToNode(goto)
     } else if (typeof goto === 'string') {
       get().goToScene(goto)
     } else {
-      get().advance()
+      get().goToNode(get().nodeIndex + 1)
     }
   },
 
   goToScene: (sceneId) => {
-    set({ sceneId, nodeIndex: 0, path: [0], ended: false })
+    if (!scenes.has(sceneId)) return
+    set({ sceneId, nodeIndex: 0, path: [], ended: false })
     if (isEndingScene(sceneId)) {
       const eventId = endingEventId(sceneId)
       // Detect whether this CG is being unlocked for the first time this session.
@@ -289,7 +310,33 @@ export const useGame = create<GameState>((set, get) => ({
         set({ cgPing: { title: sceneTitle, ts: Date.now() } })
       }
     }
+    get().goToNode(0)
+  },
+
+  goToNode: (start) => {
+    const scene = scenes.get(get().sceneId)
+    if (!scene) return
+    const index = visibleNode(scene, start, get().flags)
+    if (index >= scene.nodes.length) {
+      const next = resolveNext(scene, get().affection, get().flags)
+      if (next) get().goToScene(next)
+      else set({ ended: true, auto: false, skip: false })
+    } else {
+      const path = [...get().path, index]
+      set({ nodeIndex: index, path })
+      const cg = presentation(scene, path).cg
+      if (cg) get().unlockCG(cg)
+    }
     get().save('auto')
+  },
+
+  unlockCG: (id) => {
+    const entry = eventById.get(id)
+    if (!entry) return
+    const isNew = !readGallery().includes(id)
+    set({ seenCG: [...new Set([...get().seenCG, id])] })
+    addToGallery([id])
+    if (isNew) set({ cgPing: { title: entry.title, ts: Date.now() } })
   },
 
   pushHistory: (name, text) => {
@@ -297,7 +344,7 @@ export const useGame = create<GameState>((set, get) => ({
     const lastEntry = h[h.length - 1]
     if (lastEntry && lastEntry.name === name && lastEntry.text === text) return // dedupe re-renders
     const next = [...h, { name, text }]
-    set({ history: next.length > 200 ? next.slice(next.length - 200) : next })
+    set({ history: next.length > 800 ? next.slice(next.length - 800) : next })
   },
 
   toggleAuto: () => set((s) => ({ auto: !s.auto, skip: false })),
@@ -330,6 +377,7 @@ export const useGame = create<GameState>((set, get) => ({
     const s = get()
     const scene = scenes.get(s.sceneId)
     const data: SaveData = {
+      storyVersion: STORY_VERSION,
       playerName: s.playerName,
       sceneId: s.sceneId,
       nodeIndex: s.nodeIndex,
@@ -360,6 +408,8 @@ export const useGame = create<GameState>((set, get) => ({
     }
     // Validate the shape before trusting it (corrupt/legacy/foreign localStorage).
     if (!data || typeof data.sceneId !== 'string' || !scenes.has(data.sceneId)) return false
+    if (data.storyVersion !== STORY_VERSION || !Number.isInteger(data.nodeIndex) || data.nodeIndex < 0 || data.nodeIndex >= scenes.get(data.sceneId)!.nodes.length) return false
+    if (typeof data.playerName !== 'string' || !Array.isArray(data.path) || data.path[data.path.length-1] !== data.nodeIndex || data.path.some(i => !Number.isInteger(i) || i<0 || i>=scenes.get(data!.sceneId)!.nodes.length)) return false
     set({
       screen: 'game',
       playerName: data.playerName,
@@ -369,17 +419,18 @@ export const useGame = create<GameState>((set, get) => ({
       path: Array.isArray(data.path)
         ? data.path
         : Array.from({ length: (data.nodeIndex ?? 0) + 1 }, (_, i) => i),
-      affection: data.affection ?? {},
-      flags: data.flags ?? [],
-      seenCG: data.seenCG ?? [],
+      affection: Object.fromEntries([...charById.keys()].map(id => [id, typeof data!.affection?.[id]==='number' ? clamp(data!.affection[id]) : 0])),
+      flags: Array.isArray(data.flags) ? data.flags.filter(f => typeof f==='string') : [],
+      seenCG: Array.isArray(data.seenCG) ? data.seenCG.filter(f => typeof f==='string') : [],
       ended: data.ended ?? false,
       history: [],
       auto: false,
       skip: false,
       uiHidden: false,
       affPing: null,
+      cgPing: null,
     })
-    addToGallery(data.seenCG ?? [])
+    addToGallery(get().seenCG)
     return true
   },
 
@@ -388,7 +439,8 @@ export const useGame = create<GameState>((set, get) => ({
     for (const { id } of SAVE_SLOTS) {
       try {
         const raw = localStorage.getItem(slotKey(id))
-        out[id] = raw ? JSON.parse(raw) : null
+        const candidate = raw ? JSON.parse(raw) : null
+        out[id] = candidate && typeof candidate==='object' && typeof candidate.sceneId==='string' && typeof candidate.sceneTitle==='string' && typeof candidate.playerName==='string' && typeof candidate.ts==='number' ? candidate : null
       } catch {
         out[id] = null
       }

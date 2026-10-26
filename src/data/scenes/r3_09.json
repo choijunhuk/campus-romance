@@ -1,0 +1,62 @@
+{
+  "scene_id": "r3_09",
+  "title": "말하지 않으면 모르는 일",
+  "date": "6월 2일",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "cafe_street",
+  "bgm_mood": "tense_evening",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "약속 시간 사십 분이 지나서 나래가 왔다. 카페 동료가 아파 대신 근무했다고 했다. 나는 화가 난 채 ‘또 괜찮다고 했네’라고 말했다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "그 말, 나한테 제일 듣기 싫은 말인 거 알아요? 오늘은 내가 선택한 거야. 연락 늦은 건 미안하지만.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "나는 나래를 이해하는 사람이라고 생각했다. 그런데 지금은 나래 대신 판단하고 있었다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "늦은 것보다 연락 없이 기다린 게 힘들었다고 정확히 말한다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_contact_boundary"
+          ]
+        },
+        {
+          "label": "오늘은 조금 쉬고 내일 이야기할 시간을 먼저 잡는다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_talk_later"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "나를 맨날 거절 못 하는 사람으로만 보지는 말아줘요.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "그 말이 남았다. 좋아한다는 게 상대의 선택을 미리 아는 일은 아니었다."
+    }
+  ],
+  "next_scene": "r3_10"
+}

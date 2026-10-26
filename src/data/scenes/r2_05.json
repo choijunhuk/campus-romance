@@ -1,13 +1,73 @@
 {
   "scene_id": "r2_05",
-  "title": "대회, 그리고 첫 마음",
+  "title": "프로젝트 다음에도",
+  "date": "6월 19일",
+  "chapter": "우정 · 함께 만드는 사람들",
   "background": "lecture_hall",
-  "bgm_mood": "hopeful_morning",
+  "bgm_mood": "warm_afternoon",
   "nodes": [
-    { "type": "narration", "text": "대회 발표장. 도윤이 짠 코드가 무대 위에서 5ms 딜레이로 완벽하게 돈다. 빛이 켜지고, 박수가 터진다." },
-    { "type": "dialogue", "speaker": "char_02", "text": "거봐요 제가 30분이면 끝낸다 그랬죠. ...어, 근데 박수는 왜 이렇게 떨려요? 이거 또 디버깅 안 되는 거예요.", "expression": "surprised", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_01", "text": "(옆에서) 됐고. 떨면 그냥 떠는 거지. 그것도 못 풀어?", "expression": "smile", "sprite_position": "left" },
-    { "type": "narration", "text": "한 학기가 끝났다. 천재의 외로움이 처음으로 누군가와 연결된 자리에서, 결과가 호명되려 한다." }
+    {
+      "type": "dialogue",
+      "speaker": "char_02",
+      "text": "끝나니까 이상하네요. 이제 어디다 새벽 두 시에 오류 보내죠?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "아침 아홉 시 이후에 나한테 보내. 그때는 볼게."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_02",
+      "text": "좋아요. 동료 계약 연장이네요.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "다음 약속도 함께한다. [우정 엔딩]",
+          "affection": {
+            "char_02": 20
+          },
+          "set_flags": [
+            "doyun_understood"
+          ],
+          "clear_flags": [
+            "doyun_hurt"
+          ]
+        },
+        {
+          "label": "각자 일정에 집중하되 좋은 동료로 남는다.",
+          "affection": {
+            "char_02": 5
+          },
+          "set_flags": [],
+          "clear_flags": [
+            "doyun_understood",
+            "doyun_hurt"
+          ]
+        },
+        {
+          "label": "함께하기 어렵다는 말을 미루지 않고 전한다.",
+          "set_flags": [
+            "doyun_hurt"
+          ],
+          "clear_flags": [
+            "doyun_understood"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "학기는 끝나고, 함께할 일의 모양이 달라진다."
+    }
   ],
   "next_scene": "EVAL_ENDING:char_02"
 }

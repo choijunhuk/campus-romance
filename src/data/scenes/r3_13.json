@@ -1,0 +1,54 @@
+{
+  "scene_id": "r3_13",
+  "title": "나래의 이름으로",
+  "date": "6월 19일 · 대회",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "lecture_hall",
+  "bgm_mood": "hopeful_morning",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "심사위원이 왜 버튼을 손으로 끌 수 있게 했느냐고 물었다. 나래가 시제품을 들어 보였다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "자동화가 편하려면 멈출 권한도 써보는 사람에게 있어야 해서요. 물통은 전원 쪽을 열지 않고 교체할 수 있습니다.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "옆에서 고개를 끄덕였다. 이 사람이 잘하는 것을 나는 이제 조금 구체적으로 설명할 수 있다."
+    },
+    {
+      "type": "narration",
+      "text": "분해하기 쉬운 구조를 보여주며 나래가 나를 한번 봤다. 둘이 처음 골랐던 안이 여기까지 왔다.",
+      "requires_flags": [
+        "narae_function"
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "디자인 설명 좋았다. 다음 발표도 네가 해.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "다음엔 선배들도 다 같이 연습해요. 저 혼자 떠안는 거 금지라면서요.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "기념사진에서 나래가 내 손목을 잡아 자기 옆으로 끌었다. 내가 좋아하는 사람, 발표 자료에는 디자이너 유나래. 두 이름이 서로를 가리지 않았다."
+    }
+  ],
+  "next_scene": "r3_14"
+}

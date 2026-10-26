@@ -1,13 +1,53 @@
 {
   "scene_id": "r3_05",
-  "title": "대회, 그리고 진짜 웃음",
-  "background": "lecture_hall",
-  "bgm_mood": "hopeful_morning",
+  "title": "만원짜리 취향",
+  "date": "5월 23일",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "han_river",
+  "bgm_mood": "warm_afternoon",
   "nodes": [
-    { "type": "narration", "text": "대회 발표장. 나래가 만든 포스터와 UI가 스크린을 가득 채운다. 따뜻한 노란빛 화면에 사람들이 탄성을 터뜨린다." },
-    { "type": "dialogue", "speaker": "char_03", "text": "헐 대박ㅋㅋ 내 디자인 저렇게 크게 보니까 부끄럽다! (나를 슬쩍 본다) ...근데 오늘은, 안 웃어도 안 무섭네. 진짜로.", "expression": "smile", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_01", "text": "(옆에서) 잘했어. 네 손이 제일 많이 갔으니까. ...칭찬은 여기까지.", "expression": "smile", "sprite_position": "left" },
-    { "type": "narration", "text": "한 학기가 끝났다. 모두를 비추던 사람이 처음으로 자기 자리에 선 그 순간, 결과가 호명되려 한다." }
+    {
+      "type": "narration",
+      "text": "나래가 오늘 예산은 각자 만 원이라고 선언했다. 캔 음료와 작은 빵 봉투가 벤치 가운데 놓였다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "이번 달 재료비 많이 나갔어요. 대신 플레이리스트는 제가 가져옴.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "오늘은 네가 고른 노래 듣고 싶었는데, 잘됐네."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "노래를 번갈아 고르며 각자 좋아하는 이유를 말한다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_playlist"
+          ],
+          "goto": "r3_05_music"
+        },
+        {
+          "label": "휴대폰은 넣고 지나가는 사람들의 하루를 함께 그려본다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_peoplewatch"
+          ],
+          "goto": "r3_05_sketch"
+        }
+      ]
+    }
   ],
-  "next_scene": "EVAL_ENDING:char_03"
+  "next_scene": null
 }

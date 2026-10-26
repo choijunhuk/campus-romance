@@ -1,0 +1,66 @@
+{
+  "scene_id": "r3_12",
+  "title": "내일도 어색하지 않게",
+  "date": "6월 12일",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "han_river",
+  "bgm_mood": "night_city",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "발표 뒤 강변을 걸었다. 나래가 먼저 내 팔을 끌어안았다. 웃음이 잦아든 뒤에도 가까운 거리는 그대로였다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "나 지금, 선배한테 더 가까이 가고 싶은데.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "나도 그래. 입 맞춰도 돼?",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_kiss"
+          ]
+        },
+        {
+          "label": "나도 좋아. 오늘은 이렇게 안고 조금 더 걷자.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_stay_close"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "나래가 작게 고개를 끄덕였다. 눈을 감기 직전까지 웃고 있는 게 보였다. 짧게 입을 맞추고 떨어지자 ‘한 번 더 웃으면 안 할 거야?’라고 물었다.",
+      "requires_flags": [
+        "narae_kiss"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "나래가 ‘응, 오래’라고 답했다. 손을 풀지 않은 채 벤치로 자리를 옮겼다. 편안한 침묵도 둘 사이에 들어올 자리가 있었다.",
+      "requires_flags": [
+        "narae_stay_close"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "집 앞에서 헤어지고도 대화가 끝나지 않았다. 다음 날 아침에는 ‘잘 잤어?’라는 메시지가 사진보다 먼저 왔다.",
+      "cg": "narae_river",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "r3_13"
+}

@@ -1,0 +1,78 @@
+{
+  "scene_id": "r3_14",
+  "title": "다음 약속은 내가",
+  "date": "6월 26일 · 종강",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "cafe_street",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "여름 근무표가 나왔다. 나래가 종이를 펴서 내 쪽으로 돌린다. 쉬는 날 두 칸이 비어 있다."
+    },
+    {
+      "type": "narration",
+      "text": "이어폰 한쪽에서 그날 강변에서 듣던 기타 곡이 흘렀다. 이제는 노래보다 그 옆의 얼굴이 먼저 떠오른다.",
+      "requires_flags": [
+        "narae_playlist"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "나래가 근무가 바뀐 날을 먼저 짚었다. 한 줄이라도 알려주기로 한 약속이 작은 습관이 되어 있었다.",
+      "requires_flags": [
+        "narae_checkin"
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "이번엔 내가 물어볼게. 다음 학기도 나랑 만날래?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "응. 다음 학기도 네 연인으로 만나고 싶어.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_unmasked"
+          ],
+          "clear_flags": [
+            "narae_collapsed"
+          ]
+        },
+        {
+          "label": "지금은 친구로 남고 싶다고 솔직히 답한다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [],
+          "clear_flags": [
+            "narae_unmasked",
+            "narae_collapsed"
+          ]
+        },
+        {
+          "label": "좋았던 시간은 남기고 이 관계는 여기서 끝내자고 말한다.",
+          "set_flags": [
+            "narae_collapsed"
+          ],
+          "clear_flags": [
+            "narae_unmasked"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "다음 계절의 약속을 적기 전에 서로의 대답부터 들었다. 창밖으로 늦은 저녁빛이 골목에 내려앉는다."
+    }
+  ],
+  "next_scene": "EVAL_ENDING:char_03"
+}

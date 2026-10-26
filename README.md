@@ -1,307 +1,117 @@
-# 회로의 봄 — Campus Romance
+# 과방 너머 봄 · Campus Romance
 
-복학 첫 학기, 공학관 동아리 **회로의 봄**에서 다시 마주친 네 사람과의 한 학기.
+> 함께 일하던 사람을, 조금 다르게 보기 시작했다. 수요일 저녁 다음의 약속은 누구와 할까.
 
-한울대학교 공과대학을 배경으로 한 한국어 캠퍼스 로맨스 비주얼 노벨입니다. 공통 루트(4개 씬)에서 쌓은 호감도가 4개 개별 루트와 **13개 엔딩** 중 하나로 분기됩니다. 선택지마다 호감도(0–100)와 플래그가 변하고, 루트 진입(≥40) · 굿엔딩(≥75) · 배드엔딩(<20) 세 임계값이 결말을 결정합니다.
+한울대학교 공학 동아리 **회로의 봄**을 배경으로 한 한국어 캠퍼스 로맨스 비주얼 노벨입니다. 24세 복학생 주인공이 한 학기의 프로젝트와 일상 속에서 연애·우정·자신의 생활을 선택합니다.
 
-Built with **React 18 + Vite + TypeScript + Zustand + Zod + Tailwind CSS**.
+[플레이하기](https://choijunhuk.github.io/campus-romance/) · [개편 내용](docs/REDESIGN.md) · [아트 방향과 제작 기록](docs/ART_DIRECTION.md) · [스토리 작성 규약](src/data/SCHEMA.md)
 
----
+![과방 너머 봄](docs/screenshots/title-desktop.png)
 
-## Quick Start
+## Story Edition 02 · v0.2
 
-**Prerequisites:** Node.js 18+
+| 이야기 | 구성 |
+| --- | --- |
+| 공통 루트 | 개강부터 축제 전까지 8씬 |
+| 서지안 | 함께 일하던 선배와 같은 편이 되어가는 연애 · 본편 14씬 + 선택에 따라 방문하는 2씬 |
+| 유나래 | 모두에게 친절한 사람과 둘만의 관계를 만드는 연애 · 본편 14씬 + 선택에 따라 방문하는 2씬 |
+| 한도윤 | 서로의 기여를 인정하는 우정·개발 프로젝트 5씬 |
+| 정시혁 | 진로와 밴드 활동을 함께 응원하는 우정 5씬 |
+| 결말 | 각 경로 3개 + 솔로 1개, 총 13개 |
 
-```bash
-npm install
-npm run dev        # 개발 서버 → http://localhost:5173
-npm run validate   # 씬 데이터 단독 검증 (빌드 전에도 실행 가능)
-npm run build      # validate → tsc -b → vite build
-npm run preview    # 빌드 결과 미리보기
-npm test           # Vitest 엔진 테스트 (branching + scene-graph)
-```
+전체 **63씬·404노드**입니다. 루트는 최고 호감도 인물로 자동 결정되지 않고, 공통 루트 마지막에서 직접 고릅니다. 선택한 데이트 활동과 대화 방식은 이후 대사와 방문 장면에 남습니다.
 
-> `npm run build` is wired to run `validate` first — a content error blocks the build with a non-zero exit code.
+모든 인물은 성인 대학생입니다. 서로에게 끌리는 과정, 관계 공개, 입맞춤, 약속과 마감의 충돌, 갈등 뒤의 대화까지 다룹니다. 관계를 천천히 진행하거나 입맞춤을 미루어도 좋은 결말에 도달할 수 있습니다. 연령 등급을 공식적으로 부여받은 작품은 아닙니다.
 
----
+## 플레이 기능
 
-## Project Structure
+- 투명 배경 캐릭터 스프라이트, 낮·밤 배경, 본편 중간 이벤트 CG 4장과 장면 모음.
+- 자동 진행, 읽은 대사 스킵, 선택 기록을 포함한 대사 로그, 인물별 관계 소개.
+- 자동 저장 1개·수동 슬롯 3개, 저장 덮어쓰기 확인, 장면의 선택 이력과 컷신 복원.
+- 글자 크기 16–26px, 대사 속도·자동 대기·음량 조절, 모션 줄이기 환경 설정 반영.
+- 관계 수치는 기본 숨김. 보고 싶다면 읽기 설정에서 켤 수 있습니다.
+- 별도 음악 파일 없이 재생되는 Web Audio 배경음과 선택 효과음.
+- 모바일 세로·가로 화면 대응, 키보드 조작, 메뉴 포커스 관리.
 
-```
-campus-romance/
-├── src/
-│   ├── main.tsx              # Entry point
-│   ├── App.tsx               # Root component / screen router
-│   ├── store.ts              # Zustand store (game state, saves, settings)
-│   ├── types.ts              # Zod schemas: NodeSchema, ChoiceSchema, SceneSchema, …
-│   ├── components/           # React UI (TitleScreen, Game, Gallery, SaveLoadMenu, …)
-│   ├── engine/
-│   │   ├── load.ts           # import.meta.glob scene loading + Zod validation
-│   │   ├── branching.ts      # BRANCH_TO_ROUTE, EVAL_ENDING, affection thresholds
-│   │   └── demo.ts           # Bundled fallback scenes (no real scene files needed)
-│   └── data/
-│       ├── SCHEMA.md         # Authoring schema — single source of truth
-│       ├── world_bible.json  # Setting, locations, protagonist, themes
-│       ├── characters.json   # Character definitions + expression sets
-│       ├── routes.json       # Affection system, route/ending conditions, flags
-│       ├── image_prompts.json# Art generation prompts (chars / BGs / CGs / UI)
-│       └── scenes/           # One JSON file per scene  ← add scenes here
-├── scripts/
-│   ├── validate-content.js   # Content validator (errors block build; warnings do not)
-│   ├── gen-images.js         # Batch image generator
-│   └── providers/            # Image backends: openai.js  gemini.js  replicate.js  local.js
-└── public/
-    └── assets/
-        ├── characters/       # {char_id}_{expression}.png
-        ├── backgrounds/      # {location_id}_{time}.png
-        ├── cg/               # {event_id}.png  (CG gallery)
-        └── ui/               # title_screen, dialogue_box, …
-```
+![본편 플레이 화면](docs/screenshots/game-mobile.png)
 
----
+| 조작 | 동작 |
+| --- | --- |
+| 클릭 / Space / Enter | 대사 전체 보기 또는 다음 대사 |
+| A | 자동 진행 |
+| Ctrl | 스킵 전환 |
+| H | 대사창 숨김·복귀 |
+| Esc | 메뉴 닫기 / 숨긴 UI 복귀 / 메뉴 열기 |
+| 숫자 1–5 | 현재 선택지 선택 |
+| 백틱 키 | 개발용 진행 정보 |
 
-## How the Engine Works
+자동 진행과 스킵은 선택지에서 멈춥니다. 기본 설정에서는 읽지 않은 대사를 건너뛰지 않습니다. 저장·읽은 대사·설정·장면 해금은 브라우저 localStorage에 보관되며 기기 간 자동 동기화되지 않습니다.
 
-### Scene loading
+**v0.1 저장 안내:** 이야기와 노드 구성이 달라 이전 버전 저장은 불러오지 않습니다. 수동 슬롯 원본은 덮어쓰지 않는 한 남으며, 새로 시작하면 자동 저장 슬롯은 v0.2 진행으로 바뀝니다.
 
-Scenes are **data-driven JSON files** loaded at bundle time via Vite's `import.meta.glob`:
+## 로컬 실행
 
-```ts
-// src/engine/load.ts
-const sceneModules = import.meta.glob('../data/scenes/*.json', { eager: true })
-```
-
-Every file is validated against `SceneSchema` (Zod) on load. Validation errors accumulate into `loadErrors[]` and are surfaced in the UI — they never throw. If `src/data/scenes/` is empty the engine runs the bundled demo (`src/engine/demo.ts`). The entry scene is `c_01` when present, otherwise the first scene found.
-
-### Node types
-
-Each scene has an ordered `nodes` array. Three types are supported:
-
-| Type | Required fields | Optional fields |
-|---|---|---|
-| `narration` | `text` | `background`, `bgm_mood`, `goto` |
-| `dialogue` | `speaker`, `text` | `expression`, `sprite_position`, `background`, `bgm_mood`, `goto` |
-| `choice` | `choices[]` | — |
-
-`speaker` must be a character `id` from `characters.json` or the string `"protagonist"`. `expression` must appear in that character's `expression_set`.
-
-### The `goto` contract
-
-`goto` is honoured on **all three node types** — including `narration` and `dialogue`:
-
-| Value | Effect |
-|---|---|
-| integer | Jump to that node index within the same scene |
-| string | Transition to that `scene_id` |
-| `null` or omitted | Advance to the next node sequentially |
-
-On a `choice`, each `Choice` object carries its own `goto` with the same semantics, applied immediately after affection/flag side-effects.
-
-### `next_scene` and sentinels
-
-When the last node in a scene is exhausted the engine reads `next_scene`:
-
-| Value | Effect |
-|---|---|
-| `"<scene_id>"` | Transition to that scene |
-| `"BRANCH_TO_ROUTE"` | Route-branch on highest affection ≥ 40. char_01→`r1_01`, char_02→`r2_01`, char_03→`r3_01`, char_04→`r4_01`. No qualifying character → `solo_end`. |
-| `"EVAL_ENDING:char_xx"` | Evaluate endings for that character (see below) |
-| `null` | Game ends — results screen |
-
-### Affection thresholds and endings
-
-Affection per character is clamped 0–100. Three thresholds from `routes.json` drive all branching:
-
-| Threshold | Default | Role |
-|---|---|---|
-| `route_unlock` | 40 | Minimum to enter a character route via `BRANCH_TO_ROUTE` |
-| `good_ending` | 75 | Floor for the good ending |
-| `bad_ending_below` | 20 | Ceiling for the bad ending |
-
-`EVAL_ENDING:char_xx` evaluates in this priority order:
-1. **bad** — affection < 20, OR the character's bad flag is set
-2. **good** — affection ≥ 75, AND the character's good flag is set
-3. **normal** — everything else
-
-Ending scene IDs follow the pattern `end_<char_id>_<good|normal|bad>` (e.g. `end_char_01_good`). The solo route uses `solo_end`. Reaching an ending scene automatically unlocks the corresponding CG gallery slot (`<char_id>_<tier>_ending`).
-
-### Visited-path sprite mechanism
-
-The Zustand store tracks `path: number[]` — the ordered list of node indices actually visited in the current scene. Background and sprite state is derived by replaying this path, not just reading `nodeIndex`. This is necessary because branch jumps and merges can make a cursor index alone ambiguous about which per-node `background` overrides are in effect.
-
----
-
-## Authoring Content
-
-### Adding a scene
-
-Drop a `.json` file in `src/data/scenes/`. The filename is arbitrary — the engine keys scenes by `scene_id` inside the JSON. See [`src/data/SCHEMA.md`](src/data/SCHEMA.md) for the complete field reference.
-
-Minimal scene skeleton:
-
-```json
-{
-  "scene_id": "c_05",
-  "title": "새 씬 제목",
-  "background": "club_room",
-  "bgm_mood": "warm_afternoon",
-  "nodes": [
-    { "type": "narration", "text": "동아리방 문을 열었다." },
-    {
-      "type": "dialogue",
-      "speaker": "char_01",
-      "expression": "smile",
-      "sprite_position": "left",
-      "text": "늦었네요."
-    },
-    {
-      "type": "choice",
-      "choices": [
-        { "label": "미안, 좀 늦었어.", "affection": { "char_01": 5 }, "goto": null },
-        { "label": "제 시간인데요.", "affection": { "char_01": -5 }, "goto": null }
-      ]
-    }
-  ],
-  "next_scene": "c_06"
-}
-```
-
-**Always run `npm run validate` after editing scene files.** The validator catches:
-
-- `goto` / `next_scene` targets that resolve to no known scene
-- `goto` integers out of range for the node array
-- Unknown `speaker` IDs or `expression` values absent from a character's `expression_set`
-- Unknown `background` IDs (warning, not error)
-- Unreachable (orphaned) nodes — dead content that no `goto` path can reach
-- `EVAL_ENDING:` pointing at an unknown character ID
-- Declared route/ending scenes with no corresponding JSON file
-- Missing labels or empty `choices` arrays on choice nodes
-
-Errors → exit 1 (build blocked). Warnings → exit 0 (printed, build continues).
-
-### Valid IDs at a glance
-
-| Field | Source of truth |
-|---|---|
-| `speaker` | `id` in `src/data/characters.json`, plus `"protagonist"` |
-| `expression` | `expression_set[]` per character in `characters.json` |
-| `background` | `setting.key_locations[].id` in `src/data/world_bible.json` |
-| flags | `flags[]` array in `src/data/routes.json` |
-
----
-
-## Generating Art
-
-The pipeline reads `src/data/image_prompts.json` and writes to `public/assets/`. Existing files are skipped automatically.
+**Node.js 24 이상**이 필요합니다. 게임 실행에 API 키는 필요하지 않습니다.
 
 ```bash
-# Preview every task — no API call made
-npm run gen-images:dry
-# (same as: node scripts/gen-images.js --dry-run)
-
-# Generate with a specific provider
-node scripts/gen-images.js --provider openai      # default
-node scripts/gen-images.js --provider gemini
-node scripts/gen-images.js --provider replicate
-node scripts/gen-images.js --provider local       # AUTOMATIC1111
-
-# Limit total generations (useful for smoke-testing)
-node scripts/gen-images.js --provider openai --limit 5
+git clone https://github.com/choijunhuk/campus-romance.git
+cd campus-romance
+npm ci
+npm run dev
 ```
 
-### Providers
+기본 개발 주소는 `http://localhost:5173`입니다.
 
-| Provider | Required env var |
-|---|---|
-| `openai` | `OPENAI_API_KEY` |
-| `gemini` | `GEMINI_API_KEY` |
-| `replicate` | `REPLICATE_API_TOKEN` |
-| `local` | `SD_API_URL` |
+| 명령어 | 용도 |
+| --- | --- |
+| `npm run validate` | 씬·분기·플래그·CG·에셋 참조 검사 |
+| `npm test` | 엔진·실제 스토리 경로·저장/복원 테스트 |
+| `npm run build` | 콘텐츠 검증 → TypeScript 검사 → 배포용 빌드 |
+| `npm run preview` | 빌드 결과 미리보기 |
+| `npm run test:e2e` | 실제 브라우저 플레이·갤러리·반응형 검사 |
+| `npm run story:build` | 작성 원본에서 씬 JSON과 설정 재생성 |
+| `npm run art:pack` | 원본 아틀라스에서 배경 추출·WebP 패킹 |
+| `npm run art:check` | 이미지 디코딩·해상도·스프라이트 알파 검사 |
 
-Set keys in a `.env` file at the project root (loaded automatically via `dotenv`).
-
-### Local Stable Diffusion (AUTOMATIC1111)
-
-Start A1111 with the `--api` flag, then:
+브라우저 테스트를 처음 실행할 때:
 
 ```bash
-SD_API_URL=http://127.0.0.1:7860 node scripts/gen-images.js --provider local
+npx playwright install chromium
+npm run test:e2e
 ```
 
-Recommended model family: **Illustrious / SDXL**. The pipeline targets portrait aspect (832×1216) for character sprites and 16:9 for CGs and backgrounds. Expression variants use the character's base image as a reference for consistency; if the base does not exist yet the pipeline generates without a reference and logs a warning.
+설치된 Chrome을 사용하려면 `PLAYWRIGHT_CHANNEL=chrome` 환경 변수를 설정하세요. CI는 Node 24에서 엔진 테스트·빌드·Chromium 플레이 검사를 실행합니다.
 
-### Output layout
+## 개발 구조
 
+```text
+src/
+├── components/       # 타이틀·플레이·저장·설정·갤러리
+├── data/
+│   ├── world_bible.json  # 학번·휴학·일정·작품 톤
+│   ├── characters.json   # 인물과 연애/우정 역할
+│   ├── routes.json       # 경로·결말·플래그
+│   ├── art.json          # 실제 사용 에셋 목록
+│   └── scenes/           # 씬별 JSON
+├── engine/           # 분기·조건 대사·화면 상태·배경음·테스트
+├── art.ts            # 표정 프레임·배경·컷신 매핑
+└── store.ts          # 진행·저장·설정
+scripts/
+├── write-story.mjs   # 스토리 작성 원본
+├── prepare-art.mjs   # 아틀라스 추출·WebP 패킹
+├── check-art.mjs     # 이미지 검증
+└── validate-content.js
+art/source/          # 새 아트의 원본 PNG, 배포에는 포함하지 않음
+public/assets/art-v2/# 본편에서 사용하는 WebP
+e2e/                 # 실제 브라우저 테스트
 ```
-public/assets/
-  characters/{char_id}_{expression}.png   # e.g. char_01_smile.png
-  backgrounds/{location_id}_{time}.png    # e.g. club_room_night.png
-  cg/{event_id}.png                       # e.g. char_01_good_ending.png
-  ui/{key}.png                            # title_screen, dialogue_box, …
-```
 
----
+React 18 · Vite 8 · TypeScript · Zustand · Zod 4 · CSS · Vitest · Playwright.
 
-## Testing
+스토리를 고칠 때는 `scripts/write-story.mjs`를 수정하고 `npm run story:build`를 실행합니다. JSON만 직접 고치면 다음 재생성 때 덮어써집니다. 이후 검증·테스트·빌드를 실행하세요. 세부 엔진 규약은 [SCHEMA.md](src/data/SCHEMA.md)에 있습니다.
 
-```bash
-npm test
-```
+이전 이미지 생성기(`npm run gen-images:dry`, `scripts/gen-images.js`)와 v0.1 에셋은 보관되어 있지만, v0.2 본편은 `art.json`의 새 아트를 사용합니다. 기존 수영복 보너스 갤러리는 현재 UI에서 사용하지 않습니다.
 
-Runs the **Vitest** suite covering:
+## 배포
 
-- **Branching logic** — `branchToRoute`, `evalEnding`, `resolveNext` with affection edge cases, flag conditions, and threshold boundaries
-- **Scene-graph reachability** — verifies every scene in `src/data/scenes/` is reachable from `START_SCENE` and that no `goto` / `next_scene` target is a dead end
-
----
-
-## Characters
-
-| ID | Name | Route start |
-|---|---|---|
-| `char_01` | 서지안 Seo Jian | `r1_01` |
-| `char_02` | 한도윤 Han Doyun | `r2_01` |
-| `char_03` | 유나래 Yu Narae | `r3_01` |
-| `char_04` | 정시혁 Jung Sihyuk | `r4_01` |
-
-Each character has 8 expressions: `neutral` `smile` `blush` `laugh` `sad` `angry` `surprised` `embarrassed`.
-
----
-
-## Save System
-
-One auto-save slot (`auto`) and three manual slots (`s1`–`s3`), persisted in `localStorage`. Auto-save fires on every node advance, choice, and scene transition. On load the engine validates the saved `scene_id` against the live scene map before restoring state — corrupt or stale saves are rejected gracefully rather than crashing.
-
-| Slot | Label |
-|---|---|
-| `auto` | 자동 저장 |
-| `s1` | 슬롯 1 |
-| `s2` | 슬롯 2 |
-| `s3` | 슬롯 3 |
-
----
-
-## Controls
-
-| Input | Action |
-|---|---|
-| Click / Space / Enter | Advance text (second press skips the typewriter) |
-| Backtick `` ` `` | Toggle debug overlay (affection values, flags, node index) |
-| In-game top bar | 저장 / 불러오기 / 갤러리 / 타이틀 |
-
----
-
-## 배포 / Deployment
-
-Live URL: **https://choijunhuk.github.io/campus-romance/**
-
-- **CI** — every pull request and push to `master` runs `npm test` and `npm run build` automatically via GitHub Actions.
-- **Pages deployment** — every push to `master` also triggers a deploy to GitHub Pages using the `deploy.yml` workflow.
-
-### One-time manual setup required
-
-The Pages deployment workflow cannot configure the GitHub Pages source itself. After the first push, go to:
-
-**Repo Settings → Pages → Source → select "GitHub Actions"**
-
-Without this step the `deploy.yml` workflow will fail with a 404/permissions error.
+`master` push 시 [GitHub Pages 워크플로](.github/workflows/deploy.yml)가 `/campus-romance/` 기준으로 빌드·배포합니다. Pages가 GitHub Actions를 사용하도록 설정되어 있어야 합니다. 브랜치와 PR의 변경은 병합 전까지 플레이 링크에 반영되지 않습니다.

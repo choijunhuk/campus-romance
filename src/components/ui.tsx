@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { ambient, selectionSound } from '../engine/audio'
 
 /**
  * Resolve a public asset path against Vite's base URL. Hardcoded "/assets/…"
@@ -17,11 +18,13 @@ export function SmartImage({
   alt,
   className = '',
   label,
+  fallbackSrc,
 }: {
   src: string
   alt: string
   className?: string
   label?: string
+  fallbackSrc?: string
 }) {
   const [failed, setFailed] = useState(false)
   useEffect(() => setFailed(false), [src])
@@ -29,14 +32,20 @@ export function SmartImage({
   if (failed) {
     return (
       <div
-        className={`flex items-center justify-center border border-white/15 bg-slate-700/60 px-2 text-center text-[11px] leading-tight text-slate-200 ${className}`}
+        role="img" aria-label={alt}
+        className={`image-fallback ${className}`}
       >
-        {label ?? alt}
+        <span className="sr-only">{label ?? alt}</span>
       </div>
     )
   }
   return (
-    <img src={src} alt={alt} className={className} onError={() => setFailed(true)} draggable={false} />
+    <img src={src} alt={alt} className={className} onError={(e) => {
+      if (fallbackSrc && e.currentTarget.dataset.fallback !== 'true') {
+        e.currentTarget.dataset.fallback = 'true'
+        e.currentTarget.src = fallbackSrc
+      } else setFailed(true)
+    }} draggable={false} />
   )
 }
 
@@ -77,56 +86,21 @@ export function useTypewriter(text: string, dep: string, speed = 22) {
   return { shown, done, finish }
 }
 
-/**
- * Looping background music for the current track. Missing files degrade
- * silently (browsers reject .play() / fire an error, which we swallow).
- * Audio only starts after a user gesture per autoplay policy — by the time
- * a track is set in-game the player has already clicked, so it's fine.
- */
+/** Quiet original Web Audio accompaniment, started by entering the story. */
 export function useBgm(track: string | null, volume: number, muted: boolean) {
-  const ref = useRef<HTMLAudioElement | null>(null)
-  if (ref.current === null && typeof Audio !== 'undefined') {
-    ref.current = new Audio()
-    ref.current.loop = true
-  }
-
-  useEffect(() => {
-    const a = ref.current
-    return () => {
-      if (a) a.pause()
-    }
-  }, [])
-
-  useEffect(() => {
-    const a = ref.current
-    if (!a) return
-    if (!track) {
-      a.pause()
-      return
-    }
-    const src = assetUrl(`assets/bgm/${track}.mp3`)
-    if (!a.src.endsWith(src)) {
-      a.src = src
-      a.play().catch(() => {
-        /* missing file or autoplay blocked — stay silent */
-      })
-    }
-  }, [track])
-
-  useEffect(() => {
-    const a = ref.current
-    if (a) a.volume = muted ? 0 : Math.max(0, Math.min(1, volume))
-  }, [volume, muted])
+  const player=useRef<ReturnType<typeof ambient>>(null)
+  const level=useRef(muted?0:volume)
+  level.current=muted?0:volume
+  useEffect(()=>{
+    if(!track)return
+    player.current=ambient(track)
+    player.current?.volume(level.current)
+    return ()=>{player.current?.stop();player.current=null}
+  },[track])
+  useEffect(()=>{player.current?.volume(muted?0:volume)},[volume,muted])
 }
 
-/** Fire-and-forget one-shot sound effect (public/assets/sfx/{name}.mp3). */
+/** Short synthesized feedback; no external media request. */
 export function playSfx(name: string, volume: number) {
-  if (typeof Audio === 'undefined' || volume <= 0) return
-  try {
-    const a = new Audio(assetUrl(`assets/sfx/${name}.mp3`))
-    a.volume = Math.max(0, Math.min(1, volume))
-    a.play().catch(() => {})
-  } catch {
-    /* ignore */
-  }
+  if(name==='select')selectionSound(volume)
 }

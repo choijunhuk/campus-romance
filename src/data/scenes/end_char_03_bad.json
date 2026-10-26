@@ -1,13 +1,19 @@
 {
   "scene_id": "end_char_03_bad",
-  "title": "나래 — 배드엔딩: 꺼진 햇살",
-  "background": "gwabang",
-  "bgm_mood": "lonely",
+  "title": "서로 다른 귀갓길",
+  "date": "6월의 마지막 주",
+  "chapter": "에필로그 · 서로 다른 방향",
+  "background": "han_river",
+  "bgm_mood": "evening_wind",
   "nodes": [
-    { "type": "narration", "text": "나래는 끝내 가면을 내리지 못했다. 모두에게 웃어주다 지친 그녀는, 어느 날 조용히 동아리에 발을 끊었다." },
-    { "type": "dialogue", "speaker": "char_03", "text": "나 잠깐 쉴게~ 걱정 마! 늘 그랬듯이, 괜찮아질 거야. ...아마.", "expression": "sad", "sprite_position": "center" },
-    { "type": "narration", "text": "마지막까지 웃는 얼굴. 그 웃음 뒤를 끝내 보지 못한 게, 오래 마음에 남았다." },
-    { "type": "narration", "text": "── 유나래 루트 · BAD ENDING ──" }
+    {
+      "type": "narration",
+      "text": "나래는 억지로 웃지 않았다. 나도 괜찮은 척을 부탁하지 않았다."
+    },
+    {
+      "type": "narration",
+      "text": "“잘 지내요.” 짧은 말 뒤에 버스가 왔다. 함께 걸었던 골목은 남았지만, 이제 돌아가는 길은 각자 골랐다."
+    }
   ],
   "next_scene": null
 }

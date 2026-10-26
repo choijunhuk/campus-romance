@@ -1,0 +1,57 @@
+{
+  "scene_id": "r1_09_work",
+  "title": "열 시에 닫은 노트북",
+  "date": "6월 2일 · 작업을 택한 밤",
+  "chapter": "서지안 · 같은 편",
+  "background": "cafe_street",
+  "bgm_mood": "night_city",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "열 시가 되자 내가 먼저 노트북을 닫았다. 지안도 마지막으로 화면을 보더니 전원을 껐다. 오류는 하나 남았고, 해결 방법은 메모에 적었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "이러고 나와도 되는 거였네. 끝까지 안 하면 내일도 망할 것 같았는데.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "영화는 놓쳤지만 저녁은 안 놓쳐도 되죠."
+    },
+    {
+      "type": "narration",
+      "text": "후문 분식집에서 가장 늦게 나온 떡볶이를 먹었다. 지안이 자기 만두를 반으로 잘라 내 접시에 놓았다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "약속 바꿨는데 화 안 났어?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "아쉬워요. 그래서 토요일 영화는 선배가 예약해요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "알겠어. 이번엔 내가 시간 지킬게.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "완벽한 데이트는 아니었다. 대신 끝내는 시간과 다음 만날 시간을 함께 정했다."
+    }
+  ],
+  "next_scene": "r1_10"
+}

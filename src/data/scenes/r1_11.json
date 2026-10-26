@@ -1,0 +1,81 @@
+{
+  "scene_id": "r1_11",
+  "title": "고치려는 말, 듣고 싶은 말",
+  "date": "6월 6일",
+  "chapter": "서지안 · 같은 편",
+  "background": "library",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "내가 챙긴다고 네 몫까지 가져갔네. 미안해.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "저도 힘든 건 말 안 하고 알아주길 바랐어요."
+    },
+    {
+      "type": "narration",
+      "text": "사과 뒤에 바로 손을 잡지는 않았다. 발표 파트를 다시 나누고, 서로 언제 쉬는지부터 말했다."
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "필요한 게 생기면 먼저 물어보기로 한다.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_ask_first"
+          ]
+        },
+        {
+          "label": "매주 하루는 일 얘기 없이 만나기로 한다.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_offday"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "이런 얘기 하다 마음 식을까 봐 겁났는데.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "저는 오히려 이제 좀 실감 나요."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "뭐가?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "우리가 진짜 만나고 있다는 거요."
+    },
+    {
+      "type": "narration",
+      "text": "지안이 한참 보다가 웃었다. 어색하게 떨어져 있던 손 사이가 천천히 좁아졌다."
+    }
+  ],
+  "next_scene": "r1_12"
+}

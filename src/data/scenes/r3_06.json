@@ -1,0 +1,84 @@
+{
+  "scene_id": "r3_06",
+  "title": "좋은 사람 말고 같이 있는 사람",
+  "date": "5월 25일 · 축제",
+  "chapter": "유나래 · 둘만의 속도",
+  "background": "club_room",
+  "bgm_mood": "evening_wind",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "부스 마감 직전. 다른 동아리에서 포스터 수정을 부탁했다. 나래가 ‘괜찮다’고 말하려다 나를 한번 본다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "오늘은 약속 있어서 못 해. 내일 저녁이면 볼 수 있어.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "방금 멋있었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "칭찬보다 지금 나 데리고 나가주는 게 더 좋아요.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "손을 내밀고 같이 축제 거리를 걷는다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_festival_hand"
+          ]
+        },
+        {
+          "label": "사람 적은 뒷길로 돌아서 둘이 공연을 듣는다.",
+          "affection": {
+            "char_03": 5
+          },
+          "set_flags": [
+            "narae_festival_quiet"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "멀리 시혁의 기타 소리가 들렸다. 나래는 다른 사람의 시선을 확인하는 대신 내 보폭을 확인했다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "오늘 나랑 같이 있고 싶었던 거죠? 의리로 남은 거 아니고.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "응. 그래서 약속한 거야."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_03",
+      "text": "좋네. 나도 그래요.",
+      "expression": "blush",
+      "sprite_position": "center",
+      "clear_sprites": true
+    }
+  ],
+  "next_scene": "r3_07"
+}

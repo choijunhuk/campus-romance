@@ -1,0 +1,85 @@
+{
+  "scene_id": "r1_08",
+  "title": "좋아한다는 말 이후의 아침",
+  "date": "5월 26일",
+  "chapter": "서지안 · 같은 편",
+  "background": "cafeteria",
+  "bgm_mood": "warm_afternoon",
+  "nodes": [
+    {
+      "type": "narration",
+      "text": "어제와 같은 학식. 다른 건 맞은편 사람이 내 식판에 계란말이를 하나 올려주는 일이다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "너 이거 좋아하잖아.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "팀원들 오는데요?"
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "그럼 같이 밥 먹자고 해요. 물어보면 솔직하게 말하고요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_public"
+          ]
+        },
+        {
+          "label": "우리가 먼저 이야기하고 싶어요. 오늘 저녁에 같이 말해요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_tell_later"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "시혁이 식판을 내려놓고 우리를 번갈아 본다. 지안이 먼저 ‘나 요즘 이 사람이랑 따로 만나’라고 말했다.",
+      "requires_flags": [
+        "jian_public"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "지안이 고개를 끄덕였다. 저녁 단톡에 둘이 쓴 짧은 메시지를 보내고 나서, 핸드폰을 나란히 뒤집어 놓았다.",
+      "requires_flags": [
+        "jian_tell_later"
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_02",
+      "text": "그럼 회의 시간 조율은 단톡에서 하는 거 맞죠?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "당연하지.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "도윤의 질문 덕분에 둘 다 웃었다. 연애가 시작돼도 우리에게는 각자의 일이 있었다."
+    }
+  ],
+  "next_scene": "r1_09"
+}

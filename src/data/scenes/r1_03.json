@@ -1,23 +1,91 @@
 {
   "scene_id": "r1_03",
-  "title": "기댈 줄 모르는 사람",
-  "background": "gwabang",
-  "bgm_mood": "tense_evening",
+  "title": "당연하게 기다리는 사람",
+  "date": "5월 14일",
+  "chapter": "서지안 · 같은 편",
+  "background": "club_room",
+  "bgm_mood": "quiet_night",
   "nodes": [
-    { "type": "narration", "text": "대회 일주일 전. 일정표가 빨갛다. 그리고 지안 선배는, 또, 모든 칸에 자기 이름을 적어 넣고 있다." },
-    { "type": "dialogue", "speaker": "char_01", "text": "발표 자료도 내가 하고, 최종 테스트도 내가 돌릴게. 너희는 각자 파트만.", "expression": "neutral", "sprite_position": "center" },
-    { "type": "narration", "text": "데자뷔. 작년의 그 패턴이다. 혼자 다 떠안다가 무너지는 그 길. 막아야 한다." },
-    { "type": "choice", "choices": [
-      { "label": "\"선배. 그거 작년이랑 똑같아요. 역할 나눠요, 지금.\"", "affection": { "char_01": 15 }, "set_flags": [], "goto": 4 },
-      { "label": "\"...알겠어요. 선배가 편한 대로 해요.\" (물러서기)", "affection": { "char_01": -10 }, "set_flags": ["jian_pushed_away"], "goto": 8 }
-    ] },
-    { "type": "dialogue", "speaker": "char_01", "text": "...작년이랑 똑같다고? (멈칫) ...너 진짜. 그 말 하려고 일주일 내내 나 본 거야?", "expression": "surprised", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_01", "text": "(긴 침묵) ...그래. 무서웠어. 또 맡겼다가 어그러질까 봐. 근데 그게 결국 또 나를 갉아먹는 거였네.", "expression": "sad", "sprite_position": "center" },
-    { "type": "dialogue", "speaker": "char_01", "text": "발표는... 같이 하자. 너랑. 처음으로 누구한테 이런 말 하는 거야. 잘 좀 받아줘.", "expression": "blush", "sprite_position": "center" },
-    { "type": "narration", "text": "일정표의 빨간 이름들이 넷으로 나뉘었다. 처음으로, 이 팀이 진짜 '팀'처럼 보였다.", "goto": 10 },
-    { "type": "dialogue", "speaker": "char_01", "text": "...그래. 그럼 그렇게 해. (등을 돌린다) 너도 별수 없네. 다들 그냥 두고 보기만 하지.", "expression": "sad", "sprite_position": "center" },
-    { "type": "narration", "text": "물러섰다. 편한 길이었다. 하지만 저 등이 다시 멀어지는 게 보였다. 작년처럼." },
-    { "type": "narration", "text": "대회는 다가오고, 마음의 거리도 정해져 간다." }
+    {
+      "type": "narration",
+      "text": "통합 테스트가 끝났다. 지안이 멀티탭을 끄고 커피 두 개를 꺼낸다. 오늘은 내가 먼저 가겠다고 말할 이유가 없었다."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "이제 네 거는 안 물어보고 사도 되겠다. 시럽 안 넣는 거.",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "언제 외웠어요?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "같이 마셨으니까. 그 정도는 기억하지.",
+      "expression": "smile",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "일이 끝나도 자리를 뜨지 않는 사람. 지안이 내 쪽으로 컵을 민다.",
+      "cg": "jian_coffee",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "카페에서 했던 말을 지안이 다시 꺼낸다. ‘회로는 다시 켤 수 있다며. 사람 쪽도, 바로 망하지는 않아.’",
+      "requires_flags": [
+        "jian_direct"
+      ]
+    },
+    {
+      "type": "narration",
+      "text": "카페에서 천천히 알아가자던 말이 떠올랐다. 벌써 알아낸 것이 꽤 있다. 기다릴 때 입술을 한번 누르는 버릇 같은 것.",
+      "requires_flags": [
+        "jian_slow"
+      ]
+    },
+    {
+      "type": "choice",
+      "choices": [
+        {
+          "label": "조금 더 있다 갈래요. 오늘은 일이 아니라 선배 때문에요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_after_hours"
+          ]
+        },
+        {
+          "label": "막차까지 십오 분 있어요. 그동안은 일 얘기 금지예요.",
+          "affection": {
+            "char_01": 5
+          },
+          "set_flags": [
+            "jian_last_bus"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dialogue",
+      "speaker": "char_01",
+      "text": "좋아. 그럼 묻자. 너 주말에는 진짜 뭐 해?",
+      "expression": "neutral",
+      "sprite_position": "center",
+      "clear_sprites": true
+    },
+    {
+      "type": "narration",
+      "text": "커피가 식는 동안 서로의 쓸데없는 이야기를 했다. 이상하게, 오늘 가장 필요했던 이야기였다."
+    }
   ],
   "next_scene": "r1_04"
 }
